@@ -1,0 +1,167 @@
+{
+  "sourceRecords": 5266,
+  "acceptedRecords": 5262,
+  "rejectedRecords": 4,
+  "recordsWithoutAppId": 0,
+  "duplicateAppIdGroups": 17,
+  "duplicateAppIds": [
+    {
+      "appId": "342180",
+      "names": [
+        "Arizona Sunshine",
+        "Arizona Sunshine® VR Legacy"
+      ]
+    },
+    {
+      "appId": "65790",
+      "names": [
+        "Arma: Cold War Assault",
+        "Arma: Cold War Assault Remastered"
+      ]
+    },
+    {
+      "appId": "2248760",
+      "names": [
+        "Car For Sale Simulator",
+        "Car For Sale Simulator 2023"
+      ]
+    },
+    {
+      "appId": "3321460",
+      "names": [
+        "Crimson Desert",
+        "Crimson Desert Enhanced"
+      ]
+    },
+    {
+      "appId": "289130",
+      "names": [
+        "ENDLESS Legend™",
+        "ENDLESS™ Legend"
+      ]
+    },
+    {
+      "appId": "208140",
+      "names": [
+        "ENDLESS Space™ - Definitive Edition",
+        "ENDLESS™ Space - Definitive Edition"
+      ]
+    },
+    {
+      "appId": "392110",
+      "names": [
+        "ENDLESS Space™ 2",
+        "ENDLESS™ Space 2"
+      ]
+    },
+    {
+      "appId": "220260",
+      "names": [
+        "Farming Simulator 2013",
+        "Farming Simulator 2013: Titanium Edition"
+      ]
+    },
+    {
+      "appId": "2461850",
+      "names": [
+        "Hellblade II: Senua’s Saga",
+        "Senua’s Saga: Hellblade II"
+      ]
+    },
+    {
+      "appId": "1373320",
+      "names": [
+        "Ia, Ia, Cofflhu Fhtagnyaa",
+        "Ia，Ia，Cofflhu Fhtagnyaa"
+      ]
+    },
+    {
+      "appId": "1292180",
+      "names": [
+        "Krush Kill ‘N Destroy 2: Krossfire",
+        "Krush Kill 'N Destroy 2: Krossfire"
+      ]
+    },
+    {
+      "appId": "1244090",
+      "names": [
+        "Sea of Stars",
+        "Sea of Stars: Sunset Edition"
+      ]
+    },
+    {
+      "appId": "1094000",
+      "names": [
+        "Survive on Raft",
+        "Survive the Ocean"
+      ]
+    },
+    {
+      "appId": "419460",
+      "names": [
+        "That Dragon, Cancer",
+        "That Dragon,Cancer"
+      ]
+    },
+    {
+      "appId": "838350",
+      "names": [
+        "The Scroll Of Taiwu",
+        "The Scroll of Taiwu : Beyond The Dome"
+      ]
+    },
+    {
+      "appId": "292030",
+      "names": [
+        "The Witcher 3: Wild Hunt",
+        "The Witcher 3: Wild Hunt - Complete Edition",
+        "The Witcher 3: Wild Hunt — Remastered"
+      ]
+    },
+    {
+      "appId": "285190",
+      "names": [
+        "Warhammer 40,000: Dawn of War III",
+        "Warhammer 40,000: Gladius - Relics of War"
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "sourceIndex": 1342,
+      "reason": "Invalid image URL",
+      "record": {
+        "name": "Dwarves: Glory",
+        "imageUrl": "Death and Loot",
+        "isFeatured": false
+      }
+    },
+    {
+      "sourceIndex": 2237,
+      "reason": "Invalid image URL",
+      "record": {
+        "name": "Invisible",
+        "imageUrl": "Inc.",
+        "isFeatured": false
+      }
+    },
+    {
+      "sourceIndex": 3022,
+      "reason": "Invalid image URL",
+      "record": {
+        "name": "Noob",
+        "imageUrl": "les Sans-Factions",
+        "isFeatured": false
+      }
+    },
+    {
+      "sourceIndex": 5037,
+      "reason": "Invalid image URL",
+      "record": {
+        "name": "Game Name",
+        "imageUrl": "Image URL",
+        "isFeatured": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "game-steam",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Searchable Steam game catalog",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "import": "node scripts/import-games.js",
+    "search": "node bin/search-games.js",
+    "start": "node src/server.js",
+    "test": "node --test"
+  }
+}
