@@ -10,7 +10,7 @@
   "scripts": {
     "import": "node scripts/import-games.js",
     "profiles:init": "node scripts/init-profiles.js",
-    "profiles:research": "node scripts/research-steam.js",
+    "profiles:research": "node --use-env-proxy scripts/research-steam.js",
     "search": "node bin/search-games.js",
     "start": "node src/server.js",
     "test": "node --test"

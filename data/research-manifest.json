@@ -1,8 +1,9 @@
 {
   "schemaVersion": 1,
   "inputRecords": 5262,
-  "researchedRecords": 0,
-  "pendingRecords": 5262,
+  "researchedRecords": 5135,
+  "pendingRecords": 0,
   "failedRecords": 0,
+  "notFoundRecords": 127,
   "orphanedProfileIds": []
 }

@@ -42,6 +42,33 @@ This requires network access to `store.steampowered.com`. Failed lookups are
 recorded and can be retried; name mismatches remain unlinked for manual or
 secondary-source verification.
 
+Verified profiles include a `steamMetadata` object with:
+
+- official Store, website, and support links;
+- minimum/recommended free-space requirements for Windows, macOS, and Linux;
+- Steam genres and original category evidence;
+- full, partial, or unknown controller support;
+- single-player, multiplayer, co-op, PvP, LAN, and split-screen flags.
+
+Steam's public app-details response does not reliably identify Xbox-specific
+controller compatibility or an exact maximum player count. These values remain
+`null` unless explicit evidence is available; generic controller or multiplayer
+labels are never treated as proof.
+
+The reusable functions can also be called directly:
+
+```js
+import { fetchSteamAppDetails } from "./src/steam-client.js";
+import { extractSteamMetadata } from "./src/steam-metadata.js";
+
+const appId = "251570";
+const details = await fetchSteamAppDetails(appId, {
+  language: "english",
+  country: "us"
+});
+const metadata = extractSteamMetadata(details, appId);
+```
+
 ## Search from the command line
 
 ```bash

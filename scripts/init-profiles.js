@@ -17,7 +17,8 @@ const profiles = games.map((game) => {
       ...existing,
       suppliedName: game.name,
       suppliedImageUrl: game.imageUrl,
-      candidateIdentifiers: { steamAppId: game.appId }
+      candidateIdentifiers: { steamAppId: game.appId },
+      steamMetadata: existing.steamMetadata ?? null
     };
   }
 
@@ -39,6 +40,7 @@ const profiles = games.map((game) => {
     platforms: [],
     genres: [],
     shortDescription: null,
+    steamMetadata: null,
     confusingWith: [],
     candidateIdentifiers: { steamAppId: game.appId },
     sources: [],
@@ -79,12 +81,14 @@ function createInputRecordId(game) {
 function buildManifest(items, orphaned) {
   const researched = items.filter((profile) => profile.research.steam.status === "success").length;
   const failed = items.filter((profile) => profile.research.steam.status === "failed").length;
+  const notFound = items.filter((profile) => profile.research.steam.status === "not_found").length;
   return {
     schemaVersion: 1,
     inputRecords: items.length,
     researchedRecords: researched,
-    pendingRecords: items.length - researched - failed,
+    pendingRecords: items.length - researched - failed - notFound,
     failedRecords: failed,
+    notFoundRecords: notFound,
     orphanedProfileIds: orphaned
   };
 }
