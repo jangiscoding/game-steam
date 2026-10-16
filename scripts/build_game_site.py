@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def main():
  p=argparse.ArgumentParser();p.add_argument('--input',type=Path,default=ROOT/'data/game-library.json');p.add_argument('--output',type=Path,default=ROOT/'web-game-library/dist');args=p.parse_args()
  source=json.loads(args.input.read_text()); out=args.output;out.mkdir(parents=True,exist_ok=True)
- for name in ('index.html','styles.css','app.js','hls.min.js'):shutil.copy2(ROOT/'web-game-library'/name,out/name)
+ for name in ('index.html','styles.css','app.js','hls.min.js','gamepad.js'):shutil.copy2(ROOT/'web-game-library'/name,out/name)
  data=out/'data';(data/'games').mkdir(parents=True,exist_ok=True)
  games=[]
  for g in source['games']:
