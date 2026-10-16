@@ -13,6 +13,7 @@
     "profiles:research": "node --use-env-proxy scripts/research-steam.js",
     "search": "node bin/search-games.js",
     "start": "node src/server.js",
-    "test": "node --test"
+    "test": "node --test",
+    "export:json": "python scripts/export_master_json.py"
   }
 }

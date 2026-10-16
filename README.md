@@ -110,3 +110,13 @@ npm test
 The master workbook is [exports/Thu-vien-game-TONG.xlsx](exports/Thu-vien-game-TONG.xlsx): 5,262 profiles across 26 sheets, including genres, controller support, local co-op and online co-op. Covers are embedded for offline viewing; 13 unavailable covers are listed in a separate sheet.
 
 See [MASTER-WORKBOOK.md](MASTER-WORKBOOK.md) for source data, generation scripts and rules for preserving future workbook additions. Install Excel export dependencies with `python -m pip install -r requirements-excel.txt`. The generation scripts currently use the original cloud workspace paths under `/workspace`; adjust those paths when running elsewhere.
+
+## Master JSON library
+
+[`data/game-library.json`](data/game-library.json) contains `metadata`, `games`, and `tabs`. Each game has a stable input-record `id`; tabs store only `gameIds`, so a game may appear in several tabs without copying its full record. The 24 game-list tabs match the Excel lists; Excel's Mục lục and Dữ liệu chi tiết correspond to JSON metadata and each game's `sourceProfile`.
+
+Run `npm run export:json` after installing `requirements-excel.txt`. The exporter accepts `--input`, `--output`, and `--image-report`. Unknown values remain `null`; controller/local play flags do not establish an exact player limit. `imageStatus` reflects the saved download report, not a live availability check. Full source profiles and source links are retained under `sourceProfile`.
+
+For future additions, put personal information in each game's `custom` object and give new tabs unique IDs with lists of existing `gameIds`. Re-exporting preserves custom game fields and custom tabs, refreshes generated fields/group membership, and backs up an existing JSON file under `exports/backups/`. Generated tab IDs/names/memberships are managed by the exporter. Invalid references stop the export before replacing the file. Game records absent from the source are removed; custom tabs referencing them must be adjusted first.
+
+Validate exporter behavior with `python scripts/test_master_json.py`.
