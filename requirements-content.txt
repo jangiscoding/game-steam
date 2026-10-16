@@ -1,0 +1,3 @@
+-r requirements-excel.txt
+ctranslate2>=4.5,<5
+sentencepiece>=0.2,<1

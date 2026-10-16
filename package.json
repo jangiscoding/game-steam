@@ -14,6 +14,9 @@
     "search": "node bin/search-games.js",
     "start": "node src/server.js",
     "test": "node --test",
-    "export:json": "python scripts/export_master_json.py"
+    "export:json": "python scripts/export_master_json.py",
+    "content:fetch": "python scripts/enrich_game_content.py",
+    "content:attach": "python scripts/enrich_game_content.py --attach-only",
+    "content:translate": "python scripts/translate_game_content.py"
   }
 }

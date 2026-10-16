@@ -9,3 +9,9 @@ __pycache__/
 exports/backups/
 exports/embedded-covers/
 exports/master-covers/
+
+# Content collection cache and local translation runtime
+exports/content-cache/
+exports/translation-models/
+.content-deps/
+exports/content-attach.lock

@@ -120,3 +120,31 @@ Run `npm run export:json` after installing `requirements-excel.txt`. The exporte
 For future additions, put personal information in each game's `custom` object and give new tabs unique IDs with lists of existing `gameIds`. Re-exporting preserves custom game fields and custom tabs, refreshes generated fields/group membership, and backs up an existing JSON file under `exports/backups/`. Generated tab IDs/names/memberships are managed by the exporter. Invalid references stop the export before replacing the file. Game records absent from the source are removed; custom tabs referencing them must be adjusted first.
 
 Validate exporter behavior with `python scripts/test_master_json.py`.
+
+## Detailed descriptions, screenshots and trailers
+
+`npm run content:fetch -- --workers 2 --interval 1.6` collects official Steam descriptions and media into `games[].content` in the same master JSON. It saves each App ID immediately under the ignored `exports/content-cache/` directory, resumes previously completed apps, and checkpoints the master file every 100 apps. Steam's per-IP limit requires roughly 1.5 seconds between requests; a 429 response pauses all workers for at least five minutes. Do not lower the interval to accelerate bulk runs.
+
+Content fields:
+
+- `status`: `pending_collection`, `success`, `not_found`, or `retry_pending`.
+- `identityStatus`: whether the linked input record was identified previously; source names remain in `steamName` for comparison.
+- `locales.en`: original short description, detailed description and optional distinct about-game text, extracted as plain text without executable HTML.
+- `locales.vi`: separate Vietnamese text with an explicit translation status/provider. Pending translations remain null, never mislabeled English.
+- `media.images`, `media.screenshots`, `media.videos`: source URLs, thumbnails and available video formats. Assets are referenced, not downloaded. Text in artwork and spoken audio/subtitles are not translated by this pipeline.
+- `sourceUrl`, `fetchedAt`: provenance for each app. Missing public data does not imply that no media exists elsewhere.
+
+The JSON progress summary is `metadata.content`; a small copy is saved at `exports/content-progress.json`. Existing custom fields and tabs remain intact. `npm run content:attach` rebuilds the content section from saved cache without contacting Steam. Content updates back up the existing master file under `exports/backups/`.
+
+### Local Vietnamese translation
+
+Install `requirements-content.txt` (or use `python -m pip install --target .content-deps ctranslate2 sentencepiece` in a restricted workspace). The runtime must allow `argos-net.com` before downloading the public Argos EN→VI model:
+
+```bash
+python scripts/setup_translation_model.py
+npm run content:translate -- --model-dir exports/translation-models/en-vi
+```
+
+The translator runs on CPU, splits long descriptions without dropping tail text, records the source-text hash and model provenance, and resumes already translated text. Translations are explicitly labeled `machine_translation_unreviewed`; set `locales.vi.status` to `reviewed` in the content cache to protect reviewed text. Source descriptions, images and video URLs remain intact. The model archive is downloaded from the public Argos model index; its observed SHA-256 and source URL are saved locally for reproducibility. Model weights and runtime dependencies are not committed.
+
+Run `python scripts/test_game_content.py` and `python scripts/test_master_json.py` to validate extraction and update behavior.
