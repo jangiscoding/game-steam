@@ -20,6 +20,7 @@
     "content:translate": "python scripts/translate_game_content.py",
     "site:build": "python scripts/build_game_site.py",
     "site:local": "python local-site/serve.py",
-    "site:local:build": "python scripts/build_game_site.py --output local-site"
+    "site:local:build": "python scripts/build_game_site.py --output local-site",
+    "site:html:build": "python scripts/build_html_package.py"
   }
 }

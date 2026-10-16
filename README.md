@@ -152,3 +152,7 @@ Run `python scripts/test_game_content.py` and `python scripts/test_master_json.p
 ## Run the complete website locally
 
 The standalone [`local-site/`](local-site/README.md) folder includes HTML/CSS/JavaScript, all game detail JSON files, and a Python-only launcher. Run `python local-site/serve.py`, then open http://127.0.0.1:8000. Windows users can double-click `local-site/start.bat`; macOS/Linux users can run `sh local-site/start.sh`. Rebuild from the master JSON with `npm run site:local:build`. Online media still requires Internet access.
+
+## Double-click HTML package (no local server)
+
+[`html-package/index.html`](html-package/index.html) opens directly from the filesystem in Chrome/Edge, without Python or npm. Keep its sibling scripts and `data/` directory together. Classic scripts supply the index and lazy-loaded complete game records; the packaged application does not fetch local JSON. Rebuild with `npm run site:html:build`, or add `--zip /absolute/path/game-archive-html.zip` when invoking the Python builder directly. Online media still needs Internet, and file-origin gamepad/video permissions depend on the browser. See [the package guide](html-package/README.md).
