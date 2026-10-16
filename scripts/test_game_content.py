@@ -5,6 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 import enrich_game_content as module
 from enrich_game_content import description, extract, safe_url
+from translate_game_content import decode
 
 class ContentTests(unittest.TestCase):
     def test_text_retains_structure_and_strips_executable_content(self):
@@ -42,5 +43,8 @@ class ContentTests(unittest.TestCase):
     def test_rejects_unsafe_urls(self):
         self.assertIsNone(safe_url('javascript:alert(1)'))
         self.assertEqual(safe_url('//example.com/a'),'https://example.com/a')
+
+    def test_translation_decoder_removes_sentencepiece_markers(self):
+        self.assertEqual(decode(['▁Một','▁trò','▁chơi','.']),'Một trò chơi.')
 
 if __name__=='__main__':unittest.main()

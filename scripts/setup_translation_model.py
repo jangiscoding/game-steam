@@ -17,7 +17,8 @@ def main():
     if not archive.exists():
         partial=archive.with_suffix('.download')
         try:
-            with urllib.request.urlopen(URL,timeout=60) as response,partial.open('wb') as output:
+            request=urllib.request.Request(URL,headers={'User-Agent':'game-steam-library/1.0'})
+            with urllib.request.urlopen(request,timeout=60) as response,partial.open('wb') as output:
                 shutil.copyfileobj(response,output)
             partial.replace(archive)
         finally:

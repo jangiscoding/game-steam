@@ -24,6 +24,11 @@ def chunks(text,tokenizer,limit=160):
     return result
 
 
+def decode(tokens):
+    """Decode Marian/Argos target pieces without leaking SentencePiece markers."""
+    return ''.join(tokens).replace('▁',' ').lstrip()
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--model-dir',type=Path,required=True)
@@ -55,7 +60,7 @@ def main():
             parts=chunks(text,tokenizer)
             tokenized=[p for p in parts if p is not None]
             results=translator.translate_batch(tokenized,max_batch_size=16,beam_size=2,max_decoding_length=512)
-            outputs=iter(tokenizer.decode(result.hypotheses[0]) for result in results)
+            outputs=iter(decode(result.hypotheses[0]) for result in results)
             translated[field]=re.sub(r' *\n *','\n',' '.join('\n' if part is None else next(outputs) for part in parts)).strip()
         content['locales']['vi']=translated
         atomic_json(path,content)
