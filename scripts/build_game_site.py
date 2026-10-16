@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-STATIC_FILES = ("index.html", "styles.css", "app.js", "hls.min.js", "gamepad.js")
+STATIC_FILES = ("index.html", "styles.css", "filters.css", "app.js", "hls.min.js", "gamepad.js")
 SUMMARY_FIELDS = (
     "id", "steamAppId", "name", "imageUrl", "genres", "controllerSupport",
     "platforms", "playerModes", "verificationStatus",
@@ -52,15 +52,16 @@ def public_media(media):
 
 def public_game(game):
     """Project the master record to fields consumed by the static application."""
+    source_profile = game.get("sourceProfile") or {}
     detail = pick(game, DETAIL_FIELDS)
     detail["steamTags"] = [
         tag.get("name") if isinstance(tag, dict) else tag
         for tag in game.get("steamTags") or []
         if (tag.get("name") if isinstance(tag, dict) else tag)
     ]
-    source_profile = pick(game.get("sourceProfile"), ("shortDescription", "developers"))
-    if source_profile:
-        detail["sourceProfile"] = source_profile
+    public_source_profile = pick(source_profile, ("shortDescription", "developers"))
+    if public_source_profile:
+        detail["sourceProfile"] = public_source_profile
 
     content = game.get("content") or {}
     locales = {
@@ -98,6 +99,11 @@ def main():
     for game in source["games"]:
         assert game["id"].replace("-", "").isalnum()
         summary = pick(game, SUMMARY_FIELDS)
+        source_profile = game.get("sourceProfile") or {}
+        summary["releaseYear"] = (
+            source_profile.get("identifiedVersionReleaseYear")
+            or source_profile.get("originalReleaseYear")
+        )
         summary["steamTags"] = [
             tag.get("name") if isinstance(tag, dict) else tag
             for tag in game.get("steamTags") or []
