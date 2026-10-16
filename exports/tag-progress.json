@@ -1,0 +1,11 @@
+{
+  "updatedAt": "2026-10-16T16:10:05.574037+00:00",
+  "recordsByStatus": {
+    "success": 5069,
+    "unavailable": 188,
+    "not_found": 5
+  },
+  "gamesWithTags": 5069,
+  "uniqueTags": 421,
+  "source": "Steam Store popular user-defined tags"
+}

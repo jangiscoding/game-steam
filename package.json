@@ -18,6 +18,8 @@
     "content:fetch": "python scripts/enrich_game_content.py",
     "content:attach": "python scripts/enrich_game_content.py --attach-only",
     "content:translate": "python scripts/translate_game_content.py",
+    "tags:fetch": "python scripts/enrich_steam_tags.py",
+    "tags:attach": "python scripts/enrich_steam_tags.py --attach-only",
     "site:build": "python scripts/build_game_site.py",
     "site:local": "python local-site/serve.py",
     "site:local:build": "python scripts/build_game_site.py --output local-site",

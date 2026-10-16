@@ -113,7 +113,7 @@ See [MASTER-WORKBOOK.md](MASTER-WORKBOOK.md) for source data, generation scripts
 
 ## Master JSON library
 
-[`data/game-library.json`](data/game-library.json) contains `metadata`, `games`, and `tabs`. Each game has a stable input-record `id`; tabs store only `gameIds`, so a game may appear in several tabs without copying its full record. The 24 game-list tabs match the Excel lists; Excel's Mục lục and Dữ liệu chi tiết correspond to JSON metadata and each game's `sourceProfile`.
+[`data/game-library.json`](data/game-library.json) contains `metadata`, `games`, and `tabs`. Each game has a stable input-record `id`; tabs store only `gameIds`, so a game may appear in several tabs without copying its full record. The base game-list tabs match the Excel lists, and additional `tag-*` tabs provide detailed Steam Tag categories. Excel's Mục lục and Dữ liệu chi tiết correspond to JSON metadata and each game's `sourceProfile`.
 
 Run `npm run export:json` after installing `requirements-excel.txt`. The exporter accepts `--input`, `--output`, and `--image-report`. Unknown values remain `null`; controller/local play flags do not establish an exact player limit. `imageStatus` reflects the saved download report, not a live availability check. Full source profiles and source links are retained under `sourceProfile`.
 
@@ -148,6 +148,14 @@ npm run content:translate -- --model-dir exports/translation-models/en-vi
 The translator runs on CPU, splits long descriptions without dropping tail text, records the source-text hash and model provenance, and resumes already translated text. Translations are explicitly labeled `machine_translation_unreviewed`; set `locales.vi.status` to `reviewed` in the content cache to protect reviewed text. Source descriptions, images and video URLs remain intact. The model archive is downloaded from the public Argos model index; its observed SHA-256 and source URL are saved locally for reproducibility. Model weights and runtime dependencies are not committed.
 
 Run `python scripts/test_game_content.py` and `python scripts/test_master_json.py` to validate extraction and update behavior.
+
+## Steam Tags and detailed categories
+
+`npm run tags:fetch` collects the complete ordered list of popular user-defined tags exposed on each public Steam Store page. Raw tag IDs and vote counts are cached under ignored `exports/tag-cache/`; the master JSON stores the ordered tag names in `games[].steamTags`. The collector is resumable, retries uncertain pages once, respects Steam cooldowns, and records unavailable regional or removed pages without guessing tags.
+
+The tag attachment step generates Vietnamese browsing groups such as Kinh dị, Sinh tồn, Giải đố, FPS, Roguelike, Thế giới mở, Metroidvania and chiến thuật. The website catalog also exposes every collected Steam Tag as a filter and search term. Run `npm run tags:attach` to rebuild the master fields and category tabs from an existing cache without contacting Steam. Progress is summarized in `metadata.steamTags` and `exports/tag-progress.json`.
+
+Validate tag extraction and generated categories with `python scripts/test_steam_tags.py`.
 
 ## Run the complete website locally
 

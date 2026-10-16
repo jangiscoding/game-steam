@@ -12,8 +12,10 @@ exports/master-covers/
 
 # Content collection cache and local translation runtime
 exports/content-cache/
+exports/tag-cache/
 exports/translation-models/
 .content-deps/
 exports/content-attach.lock
+exports/tag-attach.lock
 
 web-game-library/dist/

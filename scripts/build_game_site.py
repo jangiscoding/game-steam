@@ -4,6 +4,7 @@
 import argparse
 import json
 import shutil
+from collections import Counter
 from pathlib import Path
 
 
@@ -52,6 +53,11 @@ def public_media(media):
 def public_game(game):
     """Project the master record to fields consumed by the static application."""
     detail = pick(game, DETAIL_FIELDS)
+    detail["steamTags"] = [
+        tag.get("name") if isinstance(tag, dict) else tag
+        for tag in game.get("steamTags") or []
+        if (tag.get("name") if isinstance(tag, dict) else tag)
+    ]
     source_profile = pick(game.get("sourceProfile"), ("shortDescription", "developers"))
     if source_profile:
         detail["sourceProfile"] = source_profile
@@ -88,14 +94,27 @@ def main():
     games_dir.mkdir(parents=True)
 
     summaries = []
+    tag_counts = Counter()
     for game in source["games"]:
         assert game["id"].replace("-", "").isalnum()
-        summaries.append(pick(game, SUMMARY_FIELDS))
+        summary = pick(game, SUMMARY_FIELDS)
+        summary["steamTags"] = [
+            tag.get("name") if isinstance(tag, dict) else tag
+            for tag in game.get("steamTags") or []
+            if (tag.get("name") if isinstance(tag, dict) else tag)
+        ]
+        tag_counts.update(summary["steamTags"])
+        summaries.append(summary)
         (games_dir / f'{game["id"]}.json').write_text(
             json.dumps(public_game(game), ensure_ascii=False, separators=(",", ":"))
         )
 
-    catalog = {"metadata": source["metadata"], "tabs": source["tabs"], "games": summaries}
+    catalog = {
+        "metadata": source["metadata"],
+        "tabs": source["tabs"],
+        "tags": [{"name": name, "games": count} for name, count in tag_counts.most_common()],
+        "games": summaries,
+    }
     (data_dir / "catalog.json").write_text(
         json.dumps(catalog, ensure_ascii=False, separators=(",", ":"))
     )

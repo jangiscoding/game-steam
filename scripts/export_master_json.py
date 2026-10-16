@@ -6,6 +6,7 @@ import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 from export_local_controller_excel import GENRE_VI, unique_games
+from steam_tag_categories import rebuild_tag_tabs
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -57,6 +58,7 @@ def build(profiles, image_report, previous=None):
     generated = {tab['id'] for tab in tabs}
     tabs.extend(tab for tab in previous.get('tabs', []) if tab['id'] not in generated)
     result = {'metadata': {**previous.get('metadata', {}), 'schemaVersion': 1, 'updatedAt': datetime.now(timezone.utc).isoformat(), 'totalGames':len(games), 'totalTabs':len(tabs), 'source':'data/game-profiles.json', 'notes': 'Các tab tham chiếu hồ sơ qua gameIds; một App ID có thể có nhiều hồ sơ đầu vào. Mục lục và Dữ liệu chi tiết của Excel tương ứng metadata và sourceProfile.'}, 'games':games,'tabs':tabs}
+    rebuild_tag_tabs(result)
     validate(result)
     return result
 
