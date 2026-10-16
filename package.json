@@ -17,6 +17,7 @@
     "export:json": "python scripts/export_master_json.py",
     "content:fetch": "python scripts/enrich_game_content.py",
     "content:attach": "python scripts/enrich_game_content.py --attach-only",
-    "content:translate": "python scripts/translate_game_content.py"
+    "content:translate": "python scripts/translate_game_content.py",
+    "site:build": "python scripts/build_game_site.py"
   }
 }
