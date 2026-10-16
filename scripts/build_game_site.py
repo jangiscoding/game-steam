@@ -1,20 +1,109 @@
 #!/usr/bin/env python3
-"""Build a static searchable site from the complete master JSON, with lazy details."""
-import argparse,json,shutil
+"""Build the static site with a compact, lazy-loaded public data projection."""
+
+import argparse
+import json
+import shutil
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
+
+
+ROOT = Path(__file__).resolve().parents[1]
+STATIC_FILES = ("index.html", "styles.css", "app.js", "hls.min.js", "gamepad.js")
+SUMMARY_FIELDS = (
+    "id", "steamAppId", "name", "imageUrl", "genres", "controllerSupport",
+    "platforms", "playerModes", "verificationStatus",
+)
+DETAIL_FIELDS = (
+    "id", "steamAppId", "name", "imageUrl", "steamUrl", "genres", "platforms",
+    "controllerSupport", "playerModes", "storage", "verificationStatus",
+)
+LOCALE_FIELDS = ("status", "shortDescription", "detailedDescription", "aboutGame")
+PLAYABLE_VIDEO_FORMATS = {"mp4", "webm", "hls_h264"}
+
+
+def pick(source, fields):
+    """Return non-null public fields while preserving False and empty collections."""
+    source = source or {}
+    return {key: source[key] for key in fields if key in source and source[key] is not None}
+
+
+def public_media(media):
+    media = media or {}
+    videos = []
+    for video in media.get("videos") or []:
+        public_video = pick(video, ("id", "name", "thumbnailUrl", "highlight"))
+        public_video["sources"] = [
+            pick(source, ("format", "url"))
+            for source in video.get("sources") or []
+            if source.get("format") in PLAYABLE_VIDEO_FORMATS and source.get("url")
+        ]
+        videos.append(public_video)
+
+    return {
+        "images": [pick(image, ("role", "url", "alt")) for image in media.get("images") or []],
+        "screenshots": [
+            pick(screenshot, ("id", "thumbnailUrl", "url"))
+            for screenshot in media.get("screenshots") or []
+        ],
+        "videos": videos,
+    }
+
+
+def public_game(game):
+    """Project the master record to fields consumed by the static application."""
+    detail = pick(game, DETAIL_FIELDS)
+    source_profile = pick(game.get("sourceProfile"), ("shortDescription", "developers"))
+    if source_profile:
+        detail["sourceProfile"] = source_profile
+
+    content = game.get("content") or {}
+    locales = {
+        language: pick(locale, LOCALE_FIELDS)
+        for language, locale in (content.get("locales") or {}).items()
+        if language in {"en", "vi"}
+    }
+    detail["content"] = {
+        **pick(content, ("status", "fetchedAt", "identityStatus")),
+        "locales": locales,
+        "media": public_media(content.get("media")),
+    }
+    return detail
+
+
 def main():
- p=argparse.ArgumentParser();p.add_argument('--input',type=Path,default=ROOT/'data/game-library.json');p.add_argument('--output',type=Path,default=ROOT/'web-game-library/dist');args=p.parse_args()
- source=json.loads(args.input.read_text()); out=args.output;out.mkdir(parents=True,exist_ok=True)
- for name in ('index.html','styles.css','app.js','hls.min.js','gamepad.js'):shutil.copy2(ROOT/'web-game-library'/name,out/name)
- data=out/'data';(data/'games').mkdir(parents=True,exist_ok=True)
- games=[]
- for g in source['games']:
-  assert g['id'].replace('-','').isalnum()
-  summary={k:g.get(k) for k in ('id','steamAppId','name','imageUrl','genres','controllerSupport','platforms','playerModes','verificationStatus')}
-  games.append(summary)
-  (data/'games'/f'{g["id"]}.json').write_text(json.dumps(g,ensure_ascii=False,separators=(',',':')))
- index={'metadata':source['metadata'],'tabs':source['tabs'],'games':games}
- (data/'catalog.json').write_text(json.dumps(index,ensure_ascii=False,separators=(',',':')))
- print(f'Built {len(games)} game summaries, full detail records and {len(source["tabs"])} tabs → {out}')
-if __name__=='__main__':main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", type=Path, default=ROOT / "data/game-library.json")
+    parser.add_argument("--output", type=Path, default=ROOT / "web-game-library/dist")
+    args = parser.parse_args()
+
+    source = json.loads(args.input.read_text())
+    output = args.output
+    output.mkdir(parents=True, exist_ok=True)
+    for name in STATIC_FILES:
+        shutil.copy2(ROOT / "web-game-library" / name, output / name)
+
+    data_dir = output / "data"
+    games_dir = data_dir / "games"
+    shutil.rmtree(games_dir, ignore_errors=True)
+    games_dir.mkdir(parents=True)
+
+    summaries = []
+    for game in source["games"]:
+        assert game["id"].replace("-", "").isalnum()
+        summaries.append(pick(game, SUMMARY_FIELDS))
+        (games_dir / f'{game["id"]}.json').write_text(
+            json.dumps(public_game(game), ensure_ascii=False, separators=(",", ":"))
+        )
+
+    catalog = {"metadata": source["metadata"], "tabs": source["tabs"], "games": summaries}
+    (data_dir / "catalog.json").write_text(
+        json.dumps(catalog, ensure_ascii=False, separators=(",", ":"))
+    )
+    print(
+        f"Built {len(summaries)} compact game detail records and "
+        f'{len(source["tabs"])} tabs → {output}'
+    )
+
+
+if __name__ == "__main__":
+    main()
