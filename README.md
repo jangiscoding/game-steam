@@ -104,3 +104,9 @@ changing the source format.
 ```bash
 npm test
 ```
+
+## Excel library with embedded covers
+
+The master workbook is [exports/Thu-vien-game-TONG.xlsx](exports/Thu-vien-game-TONG.xlsx): 5,262 profiles across 26 sheets, including genres, controller support, local co-op and online co-op. Covers are embedded for offline viewing; 13 unavailable covers are listed in a separate sheet.
+
+See [MASTER-WORKBOOK.md](MASTER-WORKBOOK.md) for source data, generation scripts and rules for preserving future workbook additions. Install Excel export dependencies with `python -m pip install -r requirements-excel.txt`. The generation scripts currently use the original cloud workspace paths under `/workspace`; adjust those paths when running elsewhere.

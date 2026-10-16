@@ -1,0 +1,66 @@
+{
+  "recovered": [
+    {
+      "original": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2921380/portrait.png",
+      "used": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2921380/library_600x900.jpg"
+    },
+    {
+      "original": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/73230/portrait.png",
+      "used": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/73230/header.jpg"
+    }
+  ],
+  "failed": [
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1167920/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1530910/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1537710/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/19840/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/243380/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2441950/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/367540/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/397080/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4140000/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/524440/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/654310/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/843350/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/844630/portrait.png",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "workbook": "/workspace/Thu-vien-game-TONG.xlsx",
+  "profiles": 5262,
+  "sheets": {
+    "Tất cả game": 5262,
+    "2 người - tay cầm": 548,
+    "Hỗ trợ tay cầm": 3096,
+    "Local Co-op": 328,
+    "Online Co-op": 785,
+    "Hành động": 2511,
+    "Phiêu lưu": 2000,
+    "Giải trí nhẹ": 985,
+    "Truy cập sớm": 217,
+    "Miễn phí": 40,
+    "Phát triển game": 1,
+    "Máu me": 3,
+    "Game độc lập": 2568,
+    "Trực tuyến nhiều người": 70,
+    "Khỏa thân": 1,
+    "Nhập vai": 1597,
+    "Đua xe": 157,
+    "Nội dung tình dục": 1,
+    "Mô phỏng": 1390,
+    "Thể thao": 152,
+    "Chiến thuật": 1620,
+    "Bạo lực": 6,
+    "Chưa rõ thể loại": 142,
+    "Ảnh cần bổ sung": 13
+  },
+  "images_downloaded": 5238,
+  "image_failures": 13,
+  "source": "/workspace/game-steam/data/game-profiles.json"
+}

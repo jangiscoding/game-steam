@@ -2,3 +2,10 @@ node_modules/
 .DS_Store
 coverage/
 *.log
+
+# Generated image caches and local backups
+__pycache__/
+*.pyc
+exports/backups/
+exports/embedded-covers/
+exports/master-covers/
