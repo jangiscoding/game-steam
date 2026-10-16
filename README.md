@@ -148,3 +148,7 @@ npm run content:translate -- --model-dir exports/translation-models/en-vi
 The translator runs on CPU, splits long descriptions without dropping tail text, records the source-text hash and model provenance, and resumes already translated text. Translations are explicitly labeled `machine_translation_unreviewed`; set `locales.vi.status` to `reviewed` in the content cache to protect reviewed text. Source descriptions, images and video URLs remain intact. The model archive is downloaded from the public Argos model index; its observed SHA-256 and source URL are saved locally for reproducibility. Model weights and runtime dependencies are not committed.
 
 Run `python scripts/test_game_content.py` and `python scripts/test_master_json.py` to validate extraction and update behavior.
+
+## Run the complete website locally
+
+The standalone [`local-site/`](local-site/README.md) folder includes HTML/CSS/JavaScript, all game detail JSON files, and a Python-only launcher. Run `python local-site/serve.py`, then open http://127.0.0.1:8000. Windows users can double-click `local-site/start.bat`; macOS/Linux users can run `sh local-site/start.sh`. Rebuild from the master JSON with `npm run site:local:build`. Online media still requires Internet access.
