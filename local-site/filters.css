@@ -105,11 +105,18 @@
   color: #e7e7e7;
   text-align: left;
   cursor: pointer;
+  user-select: none;
+  transition: background .15s, outline .15s, box-shadow .15s;
 }
 
 .tag-option:hover,
+.tag-option:focus,
 .tag-option:focus-within {
-  background: #2a2d30;
+  background: rgba(0, 240, 255, 0.12);
+  outline: 2px solid #00f0ff;
+  outline-offset: -1px;
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
 }
 
 .tag-option input {
@@ -117,7 +124,7 @@
   height: 15px;
   margin: 0;
   flex: 0 0 auto;
-  accent-color: var(--orange);
+  accent-color: #00f0ff;
 }
 
 .tag-option > span {
@@ -128,7 +135,8 @@
 }
 
 .tag-option:has(input:checked) > span {
-  color: var(--orange);
+  color: #00f0ff;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.4);
 }
 
 .tag-options small {
