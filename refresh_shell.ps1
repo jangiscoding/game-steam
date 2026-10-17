@@ -16,7 +16,9 @@ Add-Type -TypeDefinition $code
 [ShellNotifier]::Refresh()
 
 $DesktopPath = [System.Environment]::GetFolderPath('Desktop')
-$ShortcutPath = Join-Path $DesktopPath 'Jang Game Archive.lnk'
-(Get-Item $ShortcutPath).LastWriteTime = Get-Date
+$ShortcutPath = Join-Path $DesktopPath 'Jang Play.lnk'
+if (Test-Path $ShortcutPath) {
+    (Get-Item $ShortcutPath).LastWriteTime = Get-Date
+}
 
 Write-Host "Shell notified successfully!"
