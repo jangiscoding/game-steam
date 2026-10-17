@@ -19,6 +19,11 @@ def main():
     print(f'Game Archive: http://127.0.0.1:{server.server_port}', flush=True)
     print('Press Ctrl+C to stop. Images and trailers use their online sources.', flush=True)
     try:
+        import webbrowser
+        webbrowser.open(f'http://127.0.0.1:{server.server_port}')
+    except Exception:
+        pass
+    try:
         server.serve_forever()
     except KeyboardInterrupt:
         pass
