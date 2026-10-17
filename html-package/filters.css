@@ -229,33 +229,13 @@
   display: none;
 }
 
-.daily-slogan-card {
-  width: fit-content;
-  max-width: 520px;
-  margin: -2px 0 18px;
-  padding: 12px 16px 13px;
-  border: 1px solid #ff79504d;
-  border-left: 3px solid var(--orange);
-  border-radius: 3px;
-  background: linear-gradient(90deg, #ff663619, #10111247);
-  box-shadow: 0 12px 36px #0003;
-  backdrop-filter: blur(8px);
-}
-
-.daily-slogan-card > span {
-  display: block;
-  margin-bottom: 6px;
-  color: #ff8c65;
-  font-size: 7px;
-  font-weight: 800;
-  letter-spacing: .22em;
-}
-
 .daily-slogan {
-  margin: 0 !important;
-  color: #fff3ed !important;
-  font: 600 clamp(14px,1.5vw,18px)/1.55 'Be Vietnam Pro',Arial,sans-serif !important;
-  letter-spacing: -.015em;
+  max-width: 540px !important;
+  margin: -4px 0 18px !important;
+  color: #f0b29d !important;
+  font: italic 500 clamp(14px,1.5vw,18px)/1.65 'Be Vietnam Pro',Arial,sans-serif !important;
+  letter-spacing: -.01em;
+  text-shadow: 0 2px 18px #0009;
 }
 
 body.welcome-active {
@@ -408,32 +388,16 @@ body.welcome-active {
   letter-spacing: -.055em;
 }
 
-.welcome-slogan-card {
-  min-width: min(430px, 82vw);
-  margin-top: 19px;
-  padding: 13px 22px 15px;
-  border: 1px solid #ff936d3d;
-  border-radius: 4px;
-  background: #ff66360c;
-  box-shadow: inset 0 0 24px #ff663608;
-}
-
-.welcome-slogan-card small {
-  display: block;
-  margin-bottom: 7px;
-  color: #ff8e67;
-  font-size: 7px;
-  font-weight: 800;
-  letter-spacing: .25em;
-}
-
-.welcome-slogan-card p {
-  margin: 0;
-  color: #f7f2ed;
+.welcome-slogan {
+  max-width: 540px;
+  margin: 18px auto 0;
+  color: #e8d4cc;
   font-size: clamp(14px,2.2vw,18px);
-  font-weight: 600;
-  line-height: 1.55;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.7;
   letter-spacing: -.01em;
+  text-shadow: 0 2px 20px #000;
 }
 
 .welcome-loader {
