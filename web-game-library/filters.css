@@ -229,6 +229,84 @@
   display: none;
 }
 
+.daily-slogan {
+  margin: -6px 0 13px;
+  color: #f1a287 !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.game-grid {
+  align-items: start;
+}
+
+.virtual-spacer {
+  grid-column: 1 / -1;
+  width: 100%;
+  pointer-events: none;
+}
+
+.game-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 330px;
+}
+
+.game-open {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: block;
+  color: inherit;
+  text-align: left;
+}
+
+.favorite-button {
+  position: absolute;
+  z-index: 3;
+  top: 9px;
+  right: 9px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #ffffff38;
+  border-radius: 50%;
+  background: #101315d9;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 19px;
+  line-height: 1;
+  backdrop-filter: blur(7px);
+}
+
+.favorite-button:hover,
+.favorite-button.selected {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.detail-actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.detail-actions > label {
+  display: grid;
+  gap: 5px;
+  color: #89959f;
+  font-size: 8px;
+  letter-spacing: .08em;
+}
+
+.detail-actions select {
+  min-width: 155px;
+  height: 43px;
+}
+
 .library-heading {
   margin-bottom: 24px;
 }
@@ -316,5 +394,9 @@
   .back-to-top {
     right: 14px;
     bottom: 14px;
+  }
+
+  .daily-slogan {
+    font-size: 12px !important;
   }
 }

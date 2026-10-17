@@ -4,6 +4,7 @@ import argparse
 import json
 import shutil
 import zipfile
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,7 +25,7 @@ def main():
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=True)
     assets = ROOT / 'web-game-library'
-    for name in ('styles.css', 'gamepad.js', 'hls.min.js'):
+    for name in ('styles.css', 'filters.css', 'gamepad.js', 'hls.min.js'):
         shutil.copy2(assets / name, out / name)
     html = (assets / 'index.html').read_text(encoding='utf-8')
     html = html.replace('<script src="./app.js" defer>', '<script src="./file-data.js" defer></script><script src="./data/catalog.js" defer></script><script src="./app.js" defer>')
@@ -36,16 +37,31 @@ def main():
     data = out / 'data'
     (data / 'games').mkdir(parents=True, exist_ok=True)
     games = []
+    tag_counts = Counter()
     ids = set()
     for game in source['games']:
         game_id = game['id']
         assert game_id.replace('-', '').isalnum() and game_id.isascii(), 'Unsafe game ID'
         assert game_id not in ids, 'Duplicate game ID'
         ids.add(game_id)
-        games.append({field: game.get(field) for field in SUMMARY_FIELDS})
+        summary = {field: game.get(field) for field in SUMMARY_FIELDS}
+        source_profile = game.get('sourceProfile') or {}
+        summary['releaseYear'] = source_profile.get('identifiedVersionReleaseYear') or source_profile.get('originalReleaseYear')
+        summary['steamTags'] = [
+            tag.get('name') if isinstance(tag, dict) else tag
+            for tag in game.get('steamTags') or []
+            if (tag.get('name') if isinstance(tag, dict) else tag)
+        ]
+        tag_counts.update(summary['steamTags'])
+        games.append(summary)
         (data / 'games' / f'{game_id}.js').write_text('window.GameArchiveFiles.register(' + javascript_json(game_id) + ',' + javascript_json(game) + ');\n', encoding='utf-8')
     assert all(set(tab['gameIds']) <= ids for tab in source['tabs'])
-    catalog = {'metadata': source['metadata'], 'tabs': source['tabs'], 'games': games}
+    catalog = {
+        'metadata': source['metadata'],
+        'tabs': source['tabs'],
+        'tags': [{'name': name, 'games': count} for name, count in tag_counts.most_common()],
+        'games': games,
+    }
     (data / 'catalog.js').write_text('window.GameArchiveFiles.catalog=' + javascript_json(catalog) + ';\n', encoding='utf-8')
     (out / 'README.md').write_text('''# Game Archive — bản mở trực tiếp bằng HTML
 
@@ -53,7 +69,7 @@ def main():
 2. Nhấp đúp **index.html** để mở bằng Chrome hoặc Edge.
 3. Giữ nguyên các file và thư mục `data` bên cạnh HTML. Không cần Python, Node.js, npm hoặc máy chủ.
 
-Đây là bản thư mục HTML + JavaScript, không phải một file HTML duy nhất. Có đủ 5.262 hồ sơ và 24 tab dữ liệu từ JSON tổng. Danh sách tải lúc mở trang; chi tiết từng game chỉ tải khi chọn game. Dữ liệu được đóng gói thành script cục bộ để không dùng fetch đọc JSON qua file://.
+Đây là bản thư mục HTML + JavaScript, không phải một file HTML duy nhất. Có đủ 5.262 hồ sơ và toàn bộ bộ sưu tập từ JSON tổng. Danh sách tải lúc mở trang; chi tiết từng game chỉ tải khi chọn game. Dữ liệu được đóng gói thành script cục bộ để không dùng fetch đọc JSON qua file://.
 
 Tìm kiếm, lọc và nội dung đã có chạy offline. Ảnh, trailer và font web vẫn lấy qua Internet; thiếu mạng sẽ dùng font mặc định và có thể không hiện media. Một số trailer có thể bị nguồn chặn khi mở từ file://; liên kết Steam vẫn được giữ. Mô tả chưa dịch/thu thập giữ đúng trạng thái, không tự điền dữ liệu giả.
 

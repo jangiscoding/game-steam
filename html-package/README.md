@@ -4,7 +4,7 @@
 2. Nhấp đúp **index.html** để mở bằng Chrome hoặc Edge.
 3. Giữ nguyên các file và thư mục `data` bên cạnh HTML. Không cần Python, Node.js, npm hoặc máy chủ.
 
-Đây là bản thư mục HTML + JavaScript, không phải một file HTML duy nhất. Có đủ 5.262 hồ sơ và 24 tab dữ liệu từ JSON tổng. Danh sách tải lúc mở trang; chi tiết từng game chỉ tải khi chọn game. Dữ liệu được đóng gói thành script cục bộ để không dùng fetch đọc JSON qua file://.
+Đây là bản thư mục HTML + JavaScript, không phải một file HTML duy nhất. Có đủ 5.262 hồ sơ và toàn bộ bộ sưu tập từ JSON tổng. Danh sách tải lúc mở trang; chi tiết từng game chỉ tải khi chọn game. Dữ liệu được đóng gói thành script cục bộ để không dùng fetch đọc JSON qua file://.
 
 Tìm kiếm, lọc và nội dung đã có chạy offline. Ảnh, trailer và font web vẫn lấy qua Internet; thiếu mạng sẽ dùng font mặc định và có thể không hiện media. Một số trailer có thể bị nguồn chặn khi mở từ file://; liên kết Steam vẫn được giữ. Mô tả chưa dịch/thu thập giữ đúng trạng thái, không tự điền dữ liệu giả.
 

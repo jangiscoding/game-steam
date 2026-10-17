@@ -40,7 +40,7 @@
   function enableMode() {
     gamepadMode = true; document.body.classList.add('gamepad-mode');
     if (!candidates().includes(document.activeElement)) {
-      focus(currentDialog()?.querySelector(ACTIONABLE) || document.querySelector('.game-card') || candidates()[0]);
+      focus(currentDialog()?.querySelector(ACTIONABLE) || document.querySelector('.game-open') || candidates()[0]);
     } else focus(document.activeElement);
   }
   function move(direction) {
@@ -70,7 +70,7 @@
   function closeKeyboard() {
     if (!keyboard?.open) return;
     keyboard.close(); keyboardTarget = null;
-    focus(selectedBeforeKeyboard?.isConnected ? selectedBeforeKeyboard : document.querySelector('.game-card'));
+    focus(selectedBeforeKeyboard?.isConnected ? selectedBeforeKeyboard : document.querySelector('.game-open'));
   }
   function openKeyboard(target) {
     if (!target) return;
@@ -84,7 +84,7 @@
       keyboard.addEventListener('click', event => {
         const key = event.target.closest('[data-key]')?.dataset.key;
         if (!key) return;
-        if (key === 'close' || key === 'done') { closeKeyboard(); if (key === 'done') focus(document.querySelector('.game-card')); return; }
+        if (key === 'close' || key === 'done') { closeKeyboard(); if (key === 'done') focus(document.querySelector('.game-open')); return; }
         editSearch(key);
       });
       keyboard.addEventListener('cancel', event => { event.preventDefault(); closeKeyboard(); });
@@ -109,19 +109,19 @@
       element.selectedIndex = (element.selectedIndex + 1) % element.options.length;
       element.dispatchEvent(new Event('change', {bubbles: true})); return;
     }
-    if (element.classList.contains('game-card')) returnFocus = element;
+    if (element.classList.contains('game-open')) returnFocus = element;
     element.click();
   }
   function back() {
     if (keyboard?.open) { closeKeyboard(); return; }
     const detail = document.querySelector('#detail[open]');
-    if (detail) { detail.querySelector('[data-close]')?.click(); focus(returnFocus?.isConnected ? returnFocus : document.querySelector('.game-card')); return; }
-    document.activeElement?.blur(); focus(document.querySelector('.game-card') || candidates()[0]);
+    if (detail) { detail.querySelector('[data-close]')?.click(); focus(returnFocus?.isConnected ? returnFocus : document.querySelector('.game-open')); return; }
+    document.activeElement?.blur(); focus(document.querySelector('.game-open') || candidates()[0]);
   }
   function changeCollection(direction) {
     if (currentDialog()) return;
     document.dispatchEvent(new CustomEvent('archive:gamepad-category', {detail: {direction}}));
-    focus(document.querySelector('.game-card') || candidates()[0]);
+    focus(document.querySelector('.game-open') || candidates()[0]);
   }
   function press(pad, index) { return Boolean(pad.buttons[index]?.pressed || pad.buttons[index]?.value > .5); }
   function poll(time) {
@@ -185,7 +185,7 @@
   document.addEventListener('keydown', leaveMode);
   new MutationObserver(() => {
     if (!gamepadMode || !bar.isConnected) return;
-    if (!candidates().includes(document.activeElement)) focus(currentDialog()?.querySelector(ACTIONABLE) || document.querySelector('.game-card') || candidates()[0]);
+    if (!candidates().includes(document.activeElement)) focus(currentDialog()?.querySelector(ACTIONABLE) || document.querySelector('.game-open') || candidates()[0]);
   }).observe(document.querySelector('main'), {childList: true, subtree: true});
   new MutationObserver(() => {
     if (gamepadMode && document.querySelector('#detail[open]')) focus(document.querySelector('#detail [data-close]'));
