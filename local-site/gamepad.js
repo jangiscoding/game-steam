@@ -177,6 +177,7 @@
     getAudio();
     if (!candidates().includes(document.activeElement)) {
       focus(
+        currentDialog()?.querySelector('a[href^="steam://"], .detail-actions .button.primary') ||
         currentDialog()?.querySelector(ACTIONABLE) ||
         welcomeScreen()?.querySelector(ACTIONABLE) ||
         (lastFocusedGameId && document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`)) ||
@@ -696,6 +697,12 @@
       playSound('select');
       playHaptic('medium');
       element.click();
+      setTimeout(() => {
+        const steamBtn = document.querySelector('#detail a[href^="steam://"], #detail .detail-actions .button.primary');
+        if (steamBtn) {
+          focus(steamBtn);
+        }
+      }, 60);
       return;
     }
 
@@ -907,9 +914,13 @@
 
   new MutationObserver(() => {
     if (gamepadMode && document.querySelector('#detail[open]')) {
-      focus(document.querySelector('#detail [data-close]'));
-      playSound('select');
-      playHaptic('medium');
+      const steamBtn = document.querySelector('#detail a[href^="steam://"], #detail .detail-actions .button.primary');
+      const target = steamBtn || document.querySelector('#detail [data-close]');
+      if (target) {
+        focus(target);
+        playSound('select');
+        playHaptic('medium');
+      }
     }
   }).observe(document.querySelector('#detail-inner'), {childList: true});
 
