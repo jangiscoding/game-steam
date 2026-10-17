@@ -237,6 +237,237 @@
   letter-spacing: .02em;
 }
 
+body.welcome-active {
+  overflow: hidden;
+}
+
+.welcome-screen {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 48%, #ff663627 0, #ff663609 24%, transparent 53%),
+    linear-gradient(145deg, #060809, #0d1011 56%, #050607);
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .75s cubic-bezier(.4,0,.2,1), visibility .75s;
+}
+
+.welcome-screen::before {
+  content: '';
+  position: absolute;
+  width: min(78vw, 850px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff875425 0 1%, #ff663610 21%, transparent 65%);
+  filter: blur(10px);
+  animation: welcome-breathe 2.7s ease-in-out infinite;
+}
+
+.welcome-screen::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 36%;
+  background: linear-gradient(transparent, #020303c9);
+  pointer-events: none;
+}
+
+.welcome-screen.is-leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.welcome-grid {
+  position: absolute;
+  inset: 0;
+  opacity: .14;
+  background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: radial-gradient(circle at center, #000, transparent 68%);
+  transform: perspective(650px) rotateX(64deg) translateY(34%);
+  transform-origin: center bottom;
+  animation: welcome-grid 4s linear infinite;
+}
+
+.welcome-stage {
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 620px);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.welcome-mark {
+  position: relative;
+  width: 154px;
+  height: 154px;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 0 32px #ff66365c);
+  animation: welcome-arrive 1.05s cubic-bezier(.16,1,.3,1) both;
+}
+
+.welcome-mark::before {
+  content: '';
+  position: absolute;
+  inset: 27px;
+  border: 1px solid #ffb49580;
+  border-radius: 34px;
+  background: linear-gradient(145deg, #ff7b49, #e34518);
+  box-shadow: inset 0 1px #fff7, inset 0 -18px 30px #8d220d45, 0 0 55px #ff66365c;
+  transform: rotate(45deg);
+}
+
+.welcome-mark strong {
+  position: relative;
+  z-index: 2;
+  color: #0d0f10;
+  font: 800 68px/1 'Barlow Condensed', Arial, sans-serif;
+  text-shadow: 0 1px #ffffff5c;
+}
+
+.welcome-orbit {
+  position: absolute;
+  inset: 3px;
+  border: 1px solid transparent;
+  border-top-color: #ff8156;
+  border-right-color: #ff663638;
+  border-radius: 50%;
+  animation: welcome-spin 2.4s linear infinite;
+}
+
+.welcome-orbit::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 13px 4px #ff6636;
+}
+
+.welcome-orbit.secondary {
+  inset: 17px;
+  border-top-color: transparent;
+  border-right-color: #ffffff2e;
+  border-bottom-color: #ff9b7738;
+  animation-direction: reverse;
+  animation-duration: 3.2s;
+}
+
+.welcome-orbit.secondary::after {
+  display: none;
+}
+
+.welcome-copy {
+  margin-top: 21px;
+  animation: welcome-copy .9s .58s cubic-bezier(.16,1,.3,1) both;
+}
+
+.welcome-copy > span {
+  color: #ff8e67;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .36em;
+}
+
+.welcome-copy h1 {
+  margin: 13px 0 8px;
+  color: #f5f4ef;
+  font-size: clamp(34px, 6vw, 54px);
+  letter-spacing: -.055em;
+}
+
+.welcome-copy p {
+  margin: 0;
+  color: #9da3a6;
+  font-size: 12px;
+  letter-spacing: .025em;
+}
+
+.welcome-loader {
+  width: min(280px, 62vw);
+  height: 2px;
+  margin-top: 42px;
+  overflow: hidden;
+  background: #ffffff12;
+  animation: welcome-copy .7s .95s both;
+}
+
+.welcome-loader span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #ff6636 18%, #ffd0bf 50%, #ff6636 82%, transparent);
+  transform: translateX(-100%);
+  animation: welcome-load 2.65s .65s cubic-bezier(.22,.68,.2,1) forwards;
+}
+
+.welcome-skip {
+  margin-top: 19px;
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: #697074;
+  font-size: 8px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  animation: welcome-copy .7s 1.25s both;
+}
+
+.welcome-skip:hover,
+.welcome-skip:focus-visible {
+  color: #d9dcdd;
+}
+
+.welcome-particles i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #ff966f;
+  box-shadow: 0 0 10px #ff6636;
+  animation: welcome-particle 2.8s ease-out infinite;
+}
+
+.welcome-particles i:nth-child(2) { --x: 28vw; --y: -20vh; animation-delay: .35s; }
+.welcome-particles i:nth-child(3) { --x: -32vw; --y: 16vh; animation-delay: .7s; }
+.welcome-particles i:nth-child(4) { --x: 20vw; --y: 27vh; animation-delay: 1.05s; }
+.welcome-particles i:nth-child(5) { --x: -21vw; --y: -26vh; animation-delay: 1.4s; }
+.welcome-particles i:nth-child(6) { --x: 36vw; --y: 7vh; animation-delay: 1.75s; }
+
+@keyframes welcome-arrive {
+  from { opacity: 0; transform: scale(.34) rotate(-14deg); filter: blur(15px) drop-shadow(0 0 60px #fff); }
+  58% { opacity: 1; transform: scale(1.07) rotate(1deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes welcome-copy {
+  from { opacity: 0; transform: translateY(18px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes welcome-spin { to { transform: rotate(360deg); } }
+@keyframes welcome-breathe { 50% { transform: scale(1.12); opacity: .72; } }
+@keyframes welcome-grid { to { background-position: 0 58px, 58px 0; } }
+@keyframes welcome-load { to { transform: translateX(100%); } }
+@keyframes welcome-particle {
+  0% { opacity: 0; transform: translate(0,0) scale(.5); }
+  22% { opacity: .8; }
+  100% { opacity: 0; transform: translate(var(--x, -27vw),var(--y, -18vh)) scale(1.8); }
+}
+
 .game-grid {
   align-items: start;
 }
@@ -398,5 +629,24 @@
 
   .daily-slogan {
     font-size: 12px !important;
+  }
+
+  .welcome-mark {
+    width: 132px;
+    height: 132px;
+  }
+
+  .welcome-mark strong {
+    font-size: 58px;
+  }
+
+  .welcome-copy {
+    margin-top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-screen {
+    transition-duration: .25s;
   }
 }

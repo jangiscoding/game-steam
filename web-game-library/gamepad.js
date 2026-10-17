@@ -20,7 +20,8 @@
   document.body.append(status);
   function announce(message) { status.textContent = message; }
   function currentDialog() { return [...document.querySelectorAll('dialog[open]')].at(-1); }
-  function scope() { return currentDialog() || document; }
+  function welcomeScreen() { return document.querySelector('#welcome-screen:not(.is-leaving)'); }
+  function scope() { return currentDialog() || welcomeScreen() || document; }
   function candidates() {
     return [...scope().querySelectorAll(ACTIONABLE)].filter(element => {
       if (element.closest('[hidden],.gamepad-bar,[inert]') || element.getAttribute('aria-hidden') === 'true') return false;
@@ -40,7 +41,7 @@
   function enableMode() {
     gamepadMode = true; document.body.classList.add('gamepad-mode');
     if (!candidates().includes(document.activeElement)) {
-      focus(currentDialog()?.querySelector(ACTIONABLE) || document.querySelector('.game-open') || candidates()[0]);
+      focus(currentDialog()?.querySelector(ACTIONABLE) || welcomeScreen()?.querySelector(ACTIONABLE) || document.querySelector('.game-open') || candidates()[0]);
     } else focus(document.activeElement);
   }
   function move(direction) {
@@ -114,12 +115,13 @@
   }
   function back() {
     if (keyboard?.open) { closeKeyboard(); return; }
+    if (welcomeScreen()) { welcomeScreen().querySelector('#welcome-skip')?.click(); return; }
     const detail = document.querySelector('#detail[open]');
     if (detail) { detail.querySelector('[data-close]')?.click(); focus(returnFocus?.isConnected ? returnFocus : document.querySelector('.game-open')); return; }
     document.activeElement?.blur(); focus(document.querySelector('.game-open') || candidates()[0]);
   }
   function changeCollection(direction) {
-    if (currentDialog()) return;
+    if (currentDialog() || welcomeScreen()) return;
     document.dispatchEvent(new CustomEvent('archive:gamepad-category', {detail: {direction}}));
     focus(document.querySelector('.game-open') || candidates()[0]);
   }
@@ -157,12 +159,12 @@
         if (down(0)) activate();
         if (down(1)) back();
         if (down(2) && keyboard?.open) editSearch('backspace');
-        if (down(3) && !document.querySelector('#detail[open]')) openKeyboard(document.querySelector('#search'));
+        if (down(3) && !document.querySelector('#detail[open]') && !welcomeScreen()) openKeyboard(document.querySelector('#search'));
         if (down(4)) changeCollection(-1);
         if (down(5)) changeCollection(1);
       }
       const scroll = pad.axes[3] || 0;
-      if (Math.abs(scroll) > .2) {
+      if (Math.abs(scroll) > .2 && !welcomeScreen()) {
         const amount = Math.sign(scroll) * ((Math.abs(scroll) - .2) / .8) * 15;
         const description = document.querySelector('#detail[open] .description-text');
         if (description && document.activeElement?.closest('.description-text')) description.scrollBy(0,amount);
