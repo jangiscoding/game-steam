@@ -686,32 +686,36 @@ body.welcome-active {
 /* --- Sidebar Steam Tags Section --- */
 .sidebar-tags-section {
   margin-top: 24px;
-  padding-top: 18px;
+  padding-top: 20px;
   border-top: 1px solid var(--line);
 }
 
-.sidebar-header-row {
+.sidebar-tags-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 6px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
-.sidebar-header-row .sidebar-label {
-  margin: 0;
+.sidebar-tags-title {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 9px;
+  gap: 6px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.2px;
   color: #8b9095;
 }
 
-.sidebar-header-row .sidebar-label b {
+.sidebar-tags-title .tags-badge {
+  background: #23272a;
   color: var(--orange);
-  font-weight: 800;
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 .tag-sort-group {
@@ -721,15 +725,16 @@ body.welcome-active {
   border-radius: 4px;
   padding: 2px;
   gap: 2px;
+  flex-shrink: 0;
 }
 
 .tag-sort-btn {
   border: 0;
   background: transparent;
   color: #889096;
-  font-size: 8.5px;
+  font-size: 9px;
   font-weight: 600;
-  padding: 3px 6px;
+  padding: 4px 8px;
   border-radius: 3px;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -738,7 +743,7 @@ body.welcome-active {
 
 .tag-sort-btn:hover {
   color: #fff;
-  background: #ffffff12;
+  background: #ffffff14;
 }
 
 .tag-sort-btn.active {
@@ -754,7 +759,7 @@ body.welcome-active {
 
 .tag-search-wrapper .tag-search-icon {
   position: absolute;
-  left: 9px;
+  left: 10px;
   top: 50%;
   transform: translateY(-50%);
   color: #747b80;
@@ -768,9 +773,9 @@ body.welcome-active {
   background: #16181b;
   border: 1px solid #2e3236;
   border-radius: 4px;
-  padding: 7px 10px 7px 27px;
+  padding: 8px 10px 8px 29px;
   color: #e5e8ea;
-  font-size: 10px;
+  font-size: 11px;
   outline: none;
   font-family: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -778,14 +783,14 @@ body.welcome-active {
 
 .tag-search-wrapper input:focus {
   border-color: var(--orange);
-  box-shadow: 0 0 10px rgba(255, 102, 54, 0.2);
+  box-shadow: 0 0 10px rgba(255, 102, 54, 0.25);
 }
 
 .sidebar-tags-box {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  max-height: 480px;
+  max-height: 440px;
   overflow-y: auto;
   padding-right: 4px;
   scrollbar-width: thin;
@@ -814,30 +819,33 @@ body.welcome-active {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  height: 32px;
+  box-sizing: border-box;
   text-align: left;
-  padding: 6px 9px;
-  border: 1px solid transparent;
+  padding: 0 10px;
+  border: 1px solid #23272a;
   border-radius: 4px;
-  background: #191b1e70;
+  background: #181a1d;
   color: #a4abb0;
-  font-size: 10px;
+  font-size: 11px;
   cursor: pointer;
   gap: 8px;
   transition: all 0.15s ease;
   font-family: inherit;
+  flex-shrink: 0;
 }
 
 .sidebar-tag-item:hover {
-  background: #ffffff0e;
+  background: #22262b;
   color: #fff;
-  border-color: #ffffff18;
+  border-color: #3b4247;
 }
 
 .sidebar-tag-item.selected {
-  background: #ff66361a;
+  background: rgba(255, 102, 54, 0.16);
   border-color: var(--orange);
   color: #fff;
-  box-shadow: inset 2px 0 var(--orange);
+  box-shadow: inset 3px 0 var(--orange);
 }
 
 .sidebar-tag-item .tag-vi {
@@ -845,6 +853,9 @@ body.welcome-active {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
 }
 
 .sidebar-tag-item .tag-meta {
@@ -856,33 +867,52 @@ body.welcome-active {
 }
 
 .sidebar-tag-item .tag-num {
-  font-weight: 400;
+  font-weight: 500;
   color: #7b8389;
-  background: #23272a;
-  padding: 1px 5px;
+  background: #22262a;
+  padding: 2px 6px;
   border-radius: 8px;
-  font-size: 8.5px;
+  font-size: 9px;
 }
 
 .sidebar-tag-item.selected .tag-num {
   background: var(--orange);
   color: #111;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .sidebar-tags-empty {
-  padding: 16px 8px;
+  padding: 24px 8px;
   text-align: center;
   color: #6c7379;
-  font-size: 9.5px;
+  font-size: 11px;
+}
+
+/* Controller / Gamepad Focus for Sidebar Tags & Controls */
+.gamepad-mode .sidebar-tag-item.gamepad-focus,
+.gamepad-mode .tag-sort-btn.gamepad-focus,
+.gamepad-mode .tag-search-wrapper input.gamepad-focus {
+  outline: 2px solid #00f0ff !important;
+  outline-offset: 1px !important;
+  border-color: #00f0ff !important;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.65), 0 0 25px rgba(0, 240, 255, 0.3) !important;
+  color: #fff !important;
+  position: relative;
+  z-index: 5;
+}
+
+.gamepad-mode .sidebar-tag-item.gamepad-focus {
+  transform: translateX(4px);
+  background: #1c2630 !important;
 }
 
 @media (max-width: 760px) {
-  .sidebar-header-row .sidebar-label {
-    display: flex !important;
+  .sidebar-tags-header {
+    margin-top: 10px;
   }
   .sidebar-tags-box {
-    max-height: 250px;
+    max-height: 280px;
   }
 }
+
 

@@ -327,10 +327,8 @@
       } else {
         // Top row of games: handoff upwards to the filter toolbar
         let target = document.querySelector('#search');
-        if (col === 0) target = document.querySelector('#search');
-        else if (col === 1) target = document.querySelector('#tag-picker summary') || document.querySelector('#controller');
-        else if (col === 2) target = document.querySelector('#controller') || document.querySelector('#sort');
-        else if (col === 3) target = document.querySelector('#sort') || document.querySelector('#reset');
+        if (col <= 1) target = document.querySelector('#search');
+        else if (col === 2) target = document.querySelector('#sort') || document.querySelector('#search');
         else target = document.querySelector('#reset') || document.querySelector('#sort');
 
         if (target) {
@@ -342,46 +340,168 @@
     }
   }
 
-  /* --- Navigation in Left Sidebar (#collections) --- */
+  /* --- Navigation in Left Sidebar (Collections & Steam Tags) --- */
+  function jumpToGrid() {
+    const firstGame = (lastFocusedGameId && document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`)) ||
+      document.querySelector('#game-grid .game-open') ||
+      document.querySelector('#search');
+    if (firstGame) {
+      focus(firstGame);
+      playSound('move');
+      playHaptic('light');
+    }
+  }
+
   function navigateInSidebar(active, direction) {
     const collections = [...document.querySelectorAll('#collections .collection')];
-    const index = collections.indexOf(active);
+    const isCollection = active?.classList.contains('collection');
+    const isTagItem = active?.classList.contains('sidebar-tag-item');
+    const isTagSearch = active?.id === 'sidebar-tag-search';
+    const isSortBtn = active?.classList.contains('tag-sort-btn');
 
-    if (direction === 'down') {
-      if (index + 1 < collections.length) {
-        focus(collections[index + 1]);
-        playSound('move');
-        playHaptic('light');
-      } else {
+    // 1. From Collections
+    if (isCollection) {
+      const index = collections.indexOf(active);
+      if (direction === 'down') {
+        if (index + 1 < collections.length) {
+          focus(collections[index + 1]);
+          playSound('move');
+          playHaptic('light');
+        } else {
+          // Transition down to tags header
+          const target = document.querySelector('.tag-sort-btn.active') || document.querySelector('#sidebar-tag-search') || document.querySelector('.sidebar-tag-item');
+          if (target) {
+            focus(target);
+            playSound('move');
+            playHaptic('light');
+          } else {
+            playSound('boundary');
+            playHaptic('boundary');
+          }
+        }
+      } else if (direction === 'up') {
+        if (index > 0) {
+          focus(collections[index - 1]);
+          playSound('move');
+          playHaptic('light');
+        } else {
+          const chip = document.querySelector('.genre-chips .chip') || document.querySelector('#search');
+          if (chip) {
+            focus(chip);
+            playSound('move');
+            playHaptic('light');
+          }
+        }
+      } else if (direction === 'right') {
+        jumpToGrid();
+      } else if (direction === 'left') {
         playSound('boundary');
         playHaptic('boundary');
       }
-    } else if (direction === 'up') {
-      if (index > 0) {
-        focus(collections[index - 1]);
-        playSound('move');
-        playHaptic('light');
-      } else {
-        const chip = document.querySelector('.genre-chips .chip') || document.querySelector('#search');
-        if (chip) {
-          focus(chip);
+      return;
+    }
+
+    // 2. From Sort Buttons
+    if (isSortBtn) {
+      if (direction === 'left' || direction === 'right') {
+        const sortBtns = [...document.querySelectorAll('.tag-sort-btn')];
+        const idx = sortBtns.indexOf(active);
+        const next = sortBtns[idx + (direction === 'right' ? 1 : -1)];
+        if (next) {
+          focus(next);
+          playSound('move');
+          playHaptic('light');
+        } else if (direction === 'right') {
+          jumpToGrid();
+        } else {
+          playSound('boundary');
+          playHaptic('boundary');
+        }
+      } else if (direction === 'up') {
+        const lastCol = collections.at(-1);
+        if (lastCol) {
+          focus(lastCol);
+          playSound('move');
+          playHaptic('light');
+        }
+      } else if (direction === 'down') {
+        const input = document.querySelector('#sidebar-tag-search') || document.querySelector('.sidebar-tag-item');
+        if (input) {
+          focus(input);
           playSound('move');
           playHaptic('light');
         }
       }
-    } else if (direction === 'right') {
-      const firstGame = (lastFocusedGameId && document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`)) ||
-        document.querySelector('#game-grid .game-open') ||
-        document.querySelector('#search');
-      if (firstGame) {
-        focus(firstGame);
-        playSound('move');
-        playHaptic('light');
-      }
-    } else if (direction === 'left') {
-      playSound('boundary');
-      playHaptic('boundary');
+      return;
     }
+
+    // 3. From Tag Search Input
+    if (isTagSearch) {
+      if (direction === 'up') {
+        const sortBtn = document.querySelector('.tag-sort-btn.active') || collections.at(-1);
+        if (sortBtn) {
+          focus(sortBtn);
+          playSound('move');
+          playHaptic('light');
+        }
+      } else if (direction === 'down') {
+        const firstTag = document.querySelector('.sidebar-tag-item');
+        if (firstTag) {
+          focus(firstTag);
+          firstTag.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+          playSound('move');
+          playHaptic('light');
+        } else {
+          playSound('boundary');
+          playHaptic('boundary');
+        }
+      } else if (direction === 'right') {
+        jumpToGrid();
+      } else if (direction === 'left') {
+        playSound('boundary');
+        playHaptic('boundary');
+      }
+      return;
+    }
+
+    // 4. From Tag Items
+    if (isTagItem) {
+      const tags = [...document.querySelectorAll('.sidebar-tag-item')];
+      const index = tags.indexOf(active);
+      if (direction === 'down') {
+        if (index + 1 < tags.length) {
+          focus(tags[index + 1]);
+          tags[index + 1].scrollIntoView({block: 'nearest', behavior: 'smooth'});
+          playSound('move');
+          playHaptic('light');
+        } else {
+          playSound('boundary');
+          playHaptic('boundary');
+        }
+      } else if (direction === 'up') {
+        if (index > 0) {
+          focus(tags[index - 1]);
+          tags[index - 1].scrollIntoView({block: 'nearest', behavior: 'smooth'});
+          playSound('move');
+          playHaptic('light');
+        } else {
+          const input = document.querySelector('#sidebar-tag-search') || document.querySelector('.tag-sort-btn.active') || collections.at(-1);
+          if (input) {
+            focus(input);
+            playSound('move');
+            playHaptic('light');
+          }
+        }
+      } else if (direction === 'right') {
+        jumpToGrid();
+      } else if (direction === 'left') {
+        playSound('boundary');
+        playHaptic('boundary');
+      }
+      return;
+    }
+
+    generalSpatialMove(direction);
   }
 
   /* --- Navigation in Filter Toolbar --- */
@@ -401,10 +521,8 @@
         const columns = window.__archive?.getColumns ? window.__archive.getColumns() : 4;
         let targetCol = 0;
         if (active.id === 'search') targetCol = 0;
-        else if (active.closest('#tag-picker')) targetCol = Math.min(columns - 1, 1);
-        else if (active.id === 'controller') targetCol = Math.min(columns - 1, 2);
-        else if (active.id === 'sort') targetCol = Math.min(columns - 1, 3);
-        else if (active.id === 'reset') targetCol = Math.min(columns - 1, 4);
+        else if (active.id === 'sort') targetCol = Math.min(columns - 1, 1);
+        else if (active.id === 'reset') targetCol = Math.min(columns - 1, 2);
 
         goToGridIndex(targetCol);
         return;
@@ -554,7 +672,7 @@
       navigateInGrid(active, direction);
       return;
     }
-    if (active?.classList.contains('collection')) {
+    if (active?.closest('#collections, .sidebar-tags-section, aside')) {
       navigateInSidebar(active, direction);
       return;
     }
@@ -633,6 +751,13 @@
       playSound('select');
       playHaptic('medium');
       link.click();
+      return;
+    }
+
+    if (element.classList.contains('sidebar-tag-item')) {
+      playSound('toggle');
+      playHaptic('medium');
+      element.click();
       return;
     }
 
@@ -836,12 +961,34 @@
       if (Math.abs(scroll) > 0.2 && !welcomeScreen()) {
         const amount = Math.sign(scroll) * ((Math.abs(scroll) - 0.2) / 0.8) * 16;
         const description = document.querySelector('#detail[open] .description-text');
+        const sidebarBox = document.querySelector('#sidebar-tags');
         if (description && document.activeElement?.closest('.description-text')) {
           description.scrollBy(0, amount);
+        } else if (sidebarBox && document.activeElement?.closest('#sidebar-tags, .sidebar-tags-section')) {
+          sidebarBox.scrollBy(0, amount * 1.5);
         } else if (currentDialog()) {
           currentDialog().scrollBy(0, amount);
         } else {
           window.scrollBy(0, amount);
+        }
+      }
+
+      // LT (button 6) and RT (button 7) page up/down when focusing sidebar tags
+      if (document.activeElement?.classList.contains('sidebar-tag-item')) {
+        const tags = [...document.querySelectorAll('.sidebar-tag-item')];
+        const curIdx = tags.indexOf(document.activeElement);
+        if (down(7) && curIdx !== -1) { // RT: page down 8 tags
+          const nextIdx = Math.min(tags.length - 1, curIdx + 8);
+          focus(tags[nextIdx]);
+          tags[nextIdx].scrollIntoView({block: 'nearest', behavior: 'smooth'});
+          playSound('move');
+          playHaptic('light');
+        } else if (down(6) && curIdx !== -1) { // LT: page up 8 tags
+          const prevIdx = Math.max(0, curIdx - 8);
+          focus(tags[prevIdx]);
+          tags[prevIdx].scrollIntoView({block: 'nearest', behavior: 'smooth'});
+          playSound('move');
+          playHaptic('light');
         }
       }
       previousButtons = pad.buttons.map(b => b.pressed || b.value > 0.5);
