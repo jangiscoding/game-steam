@@ -28,7 +28,7 @@ def main():
     for name in ('styles.css', 'filters.css', 'gamepad.js', 'hls.min.js'):
         shutil.copy2(assets / name, out / name)
     html = (assets / 'index.html').read_text(encoding='utf-8')
-    html = html.replace('<script src="./app.js" defer>', '<script src="./file-data.js" defer></script><script src="./data/catalog.js" defer></script><script src="./app.js" defer>')
+    html = html.replace('<script src="./app.js?v=12" defer>', '<script src="./file-data.js" defer></script><script src="./data/catalog.js" defer></script><script src="./app.js?v=12" defer>')
     (out / 'index.html').write_text(html, encoding='utf-8')
     app = (assets / 'app.js').read_text(encoding='utf-8')
     assert app.count('await fetch(') == 3, 'Data loader changed; review package adapter before rebuilding'
