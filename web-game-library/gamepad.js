@@ -79,7 +79,7 @@
       keyboard.setAttribute('aria-label', 'Nhập tên game bằng tay cầm');
       keyboard.innerHTML = '<div class="keyboard-head"><strong>Tìm game bằng tay cầm</strong><button type="button" data-key="close" aria-label="Đóng bàn phím">×</button></div><p class="keyboard-value" aria-live="polite"></p><p class="keyboard-tip">D-pad chọn phím · A nhập · X xóa ký tự · B đóng</p><div class="keyboard-keys">' +
         [...'1234567890QWERTYUIOPASDFGHJKLZXCVBNM'].map(key => '<button type="button" data-key="'+key.toLowerCase()+'">'+key+'</button>').join('') +
-        '</div><div class="keyboard-actions"><button type="button" data-key="space">Dấu cách</button><button type="button" data-key="backspace">⌫ Xóa</button><button type="button" data-key="clear">Xóa hết</button><button type="button" class="primary" data-key="done">Xem kết quả ↗</button></div>';
+        '</div><div class="keyboard-actions"><button type="button" data-key="space">Dấu cách</button><button type="button" data-key="backspace">⌫ Xóa</button><button type="button" data-key="clear">Xóa hết</button><button type="button" class="primary" data-key="done">Xem kết quả</button></div>';
       document.body.append(keyboard);
       keyboard.addEventListener('click', event => {
         const key = event.target.closest('[data-key]')?.dataset.key;
