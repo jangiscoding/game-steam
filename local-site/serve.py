@@ -33,6 +33,40 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
         '.svg': 'image/svg+xml',
     }
 
+    def do_GET(self):
+        if self.path.startswith('/api/open-steam'):
+            from urllib.parse import urlparse, parse_qs
+            parsed = urlparse(self.path)
+            query = parse_qs(parsed.query)
+            target_url = query.get('url', [''])[0]
+            app_id = query.get('appId', [''])[0]
+
+            if not target_url and app_id.isdigit():
+                target_url = f'steam://nav/games/details/{app_id}'
+
+            success = False
+            if target_url.startswith('steam://'):
+                try:
+                    os.startfile(target_url)
+                    success = True
+                except Exception:
+                    try:
+                        import webbrowser
+                        webbrowser.open(target_url)
+                        success = True
+                    except Exception:
+                        pass
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Cache-Control', 'no-cache, no-store')
+            self.end_headers()
+            self.wfile.write(b'{"ok":true}' if success else b'{"ok":false}')
+            return
+
+        super().do_GET()
+
     def end_headers(self):
         self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
         self.send_header('Pragma', 'no-cache')
@@ -90,9 +124,9 @@ def main():
     debug_log("main started")
     try:
         _run_main()
-    except Exception as e:
+    except BaseException as e:
         import traceback
-        debug_log(f"Exception: {e}\n{traceback.format_exc()}")
+        debug_log(f"BaseException: {type(e).__name__}: {e}\n{traceback.format_exc()}")
 
 
 def _run_main():
