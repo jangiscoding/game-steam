@@ -618,8 +618,22 @@
 
   /* --- Action Handlers (A, B, X, Y) --- */
   function activate() {
-    const element = document.activeElement;
-    if (!element) return;
+    let element = document.activeElement;
+    if (!element || element === document.body || !element.isConnected) {
+      element = document.querySelector('.gamepad-focus') || (lastFocused && lastFocused.isConnected ? lastFocused : null);
+      if (element) {
+        focus(element);
+      }
+    }
+    if (!element || element === document.body || !element.isConnected) return;
+
+    if (element.matches('a[href^="steam://"]') || element.closest('a[href^="steam://"]')) {
+      const link = element.matches('a[href^="steam://"]') ? element : element.closest('a[href^="steam://"]');
+      playSound('select');
+      playHaptic('medium');
+      link.click();
+      return;
+    }
 
     if (element.matches('input[type="search"], input[type="text"]')) {
       playSound('select');
@@ -834,6 +848,13 @@
 
   window.addEventListener('gamepadconnected', start);
   window.addEventListener('gamepaddisconnected', start);
+  window.addEventListener('focus', () => {
+    if (gamepadMode) {
+      const target = (lastFocused && lastFocused.isConnected) ? lastFocused : (document.querySelector('.gamepad-focus') || document.querySelector('#detail[open] .button.primary') || candidates()[0]);
+      if (target) focus(target);
+    }
+    start();
+  });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden && frame !== null) {
       cancelAnimationFrame(frame);

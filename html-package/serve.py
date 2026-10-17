@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""Serve this standalone Game Archive folder on localhost (Python standard library)."""
+import argparse
+from functools import partial
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+import os
+from pathlib import Path
+import signal
+import io
+import sys
+import time
+import webbrowser
+
+if sys.stdout is None:
+    sys.stdout = io.StringIO()
+if sys.stderr is None:
+    sys.stderr = io.StringIO()
+if sys.stdin is None:
+    sys.stdin = io.StringIO()
+
+DIR = Path(__file__).resolve().parent
+PID_FILE = DIR / '.server.pid'
+
+
+class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
+    extensions_map = {
+        **SimpleHTTPRequestHandler.extensions_map,
+        '.ico': 'image/x-icon',
+        '.js': 'application/javascript',
+        '.json': 'application/json',
+        '.css': 'text/css',
+        '.html': 'text/html; charset=utf-8',
+        '.svg': 'image/svg+xml',
+    }
+
+    def end_headers(self):
+        self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')
+        self.send_header('Pragma', 'no-cache')
+        self.send_header('Expires', '0')
+        super().end_headers()
+
+    def log_message(self, format, *args):
+        pass
+
+
+def is_port_responding(port: int) -> bool:
+    """Check if our server is responsive on the given port using raw socket."""
+    import socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(0.3)
+    try:
+        s.connect(('127.0.0.1', port))
+        s.sendall(b'HEAD / HTTP/1.0\r\nHost: 127.0.0.1\r\n\r\n')
+        data = s.recv(64)
+        s.close()
+        return b'200' in data or b'OK' in data
+    except Exception:
+        try:
+            s.close()
+        except Exception:
+            pass
+        return False
+
+
+def terminate_old_instance():
+    """If a previous server PID was recorded, terminate it cleanly if still alive."""
+    if not PID_FILE.exists():
+        return
+    try:
+        old_pid = int(PID_FILE.read_text().strip())
+        if old_pid != os.getpid():
+            try:
+                os.kill(old_pid, signal.SIGTERM)
+                time.sleep(0.3)
+            except (ProcessLookupError, PermissionError):
+                pass
+    except Exception:
+        pass
+
+
+def debug_log(msg):
+    try:
+        with open(DIR / 'serve.log', 'a', encoding='utf-8') as f:
+            f.write(f'{time.strftime("%H:%M:%S")} {msg}\n')
+    except Exception:
+        pass
+
+
+def main():
+    debug_log("main started")
+    try:
+        _run_main()
+    except Exception as e:
+        import traceback
+        debug_log(f"Exception: {e}\n{traceback.format_exc()}")
+
+
+def _run_main():
+    debug_log("step 1: parse_args")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--port', type=int, default=8000)
+    args = parser.parse_args()
+
+    debug_log(f"step 2: check if port responding")
+    for p in [args.port, 8001, 8002]:
+        if is_port_responding(p):
+            debug_log(f"port {p} is responding, opening browser")
+            webbrowser.open(f'http://127.0.0.1:{p}/')
+            return
+
+    debug_log("step 3: terminate old instance")
+    terminate_old_instance()
+
+    debug_log("step 4: creating handler")
+    handler = partial(ArchiveHTTPRequestHandler, directory=str(DIR))
+
+    ThreadingHTTPServer.allow_reuse_address = False
+
+    server = None
+    active_port = args.port
+    debug_log("step 5: binding server")
+    for p in [args.port, 8001, 8002, 8080]:
+        try:
+            debug_log(f"trying to bind port {p}")
+            server = ThreadingHTTPServer(('127.0.0.1', p), handler)
+            active_port = p
+            debug_log(f"successfully bound to {p}")
+            break
+        except OSError as e:
+            debug_log(f"bind failed on {p}: {e}")
+            continue
+
+    if server is None:
+        debug_log("all ports failed, trying fallback reuse")
+        ThreadingHTTPServer.allow_reuse_address = True
+        try:
+            server = ThreadingHTTPServer(('127.0.0.1', args.port), handler)
+            active_port = args.port
+        except OSError as e:
+            debug_log(f"fallback failed: {e}")
+            webbrowser.open(f'http://127.0.0.1:{args.port}/')
+            return
+
+    debug_log("step 6: write PID")
+    try:
+        PID_FILE.write_text(str(os.getpid()))
+    except Exception as e:
+        debug_log(f"PID write failed: {e}")
+
+    target_url = f'http://127.0.0.1:{active_port}/'
+    debug_log(f"step 7: open browser to {target_url}")
+
+    try:
+        webbrowser.open(target_url)
+    except Exception as e:
+        debug_log(f"webbrowser open failed: {e}")
+
+    debug_log("step 8: serve_forever entering")
+    try:
+        server.serve_forever()
+    except (KeyboardInterrupt, SystemExit) as e:
+        debug_log(f"serve_forever interrupted: {e}")
+    finally:
+        debug_log("finally: server closing")
+        try:
+            server.server_close()
+        except Exception:
+            pass
+        if PID_FILE.exists():
+            try:
+                if int(PID_FILE.read_text().strip()) == os.getpid():
+                    PID_FILE.unlink(missing_ok=True)
+            except Exception:
+                pass
+        debug_log("exited cleanly")
+
+
+if __name__ == '__main__':
+    main()
