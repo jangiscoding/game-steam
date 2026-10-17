@@ -23,6 +23,18 @@
   list-style: none;
 }
 
+.tag-picker summary strong {
+  min-width: 19px;
+  height: 19px;
+  margin-left: 8px;
+  border-radius: 10px;
+  background: var(--orange);
+  color: #17120e;
+  font-size: 9px;
+  line-height: 19px;
+  text-align: center;
+}
+
 .tag-picker summary::-webkit-details-marker {
   display: none;
 }
@@ -83,25 +95,39 @@
   overscroll-behavior: contain;
 }
 
-.tag-options button {
+.tag-option {
   width: 100%;
   padding: 9px 8px;
-  border: 0;
   border-radius: 3px;
-  background: transparent;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
+  align-items: center;
+  gap: 10px;
   color: #e7e7e7;
   text-align: left;
   cursor: pointer;
 }
 
-.tag-options button:hover,
-.tag-options button:focus-visible {
-  outline: none;
+.tag-option:hover,
+.tag-option:focus-within {
   background: #2a2d30;
+}
+
+.tag-option input {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  flex: 0 0 auto;
+  accent-color: var(--orange);
+}
+
+.tag-option > span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tag-option:has(input:checked) > span {
   color: var(--orange);
 }
 
@@ -114,6 +140,54 @@
   padding: 12px 8px;
   color: #8f9396;
   font-size: 11px;
+}
+
+.selected-tags {
+  min-height: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.selected-tags:not(:empty) {
+  margin-top: 10px;
+}
+
+.selected-tags button {
+  padding: 7px 8px 7px 10px;
+  border: 1px solid #ff663670;
+  border-radius: 20px;
+  background: #ff663614;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #f0b29e;
+  font-size: 9px;
+}
+
+.selected-tags button:hover {
+  border-color: var(--orange);
+  color: #fff;
+}
+
+.selected-tags button span {
+  color: var(--orange);
+  font-size: 15px;
+  line-height: 10px;
+}
+
+.library-section {
+  padding-top: 24px;
+}
+
+.library-heading {
+  margin-bottom: 24px;
+}
+
+.genre-filter-section {
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
 }
 
 .card-meta i {
@@ -148,5 +222,14 @@
 
   .tag-menu {
     width: 100%;
+  }
+
+  .library-section {
+    padding-top: 20px;
+  }
+
+  .genre-filter-section {
+    margin-bottom: 22px;
+    padding-bottom: 18px;
   }
 }
