@@ -219,6 +219,16 @@
   padding-top: 8px;
 }
 
+.hero {
+  min-height: 0;
+  align-items: flex-start;
+  padding-bottom: 16px;
+}
+
+.hero-number {
+  display: none;
+}
+
 .library-heading {
   margin-bottom: 24px;
 }
