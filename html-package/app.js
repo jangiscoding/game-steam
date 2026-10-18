@@ -276,7 +276,12 @@ async function runViethoaSearch(keyword){
             </ul>
           </div>
         `:''}
-        ${shortWord&&shortWord!==q?`<div><button type="button" class="button ghost" data-viethoa-retry="${esc(shortWord)}" style="font-size:10px;padding:6px 12px;margin-top:4px">🔍 Thử tìm theo tên ngắn: "${esc(shortWord)}"</button></div>`:''}
+        ${shortWord&&shortWord!==q?`<div style="margin-top:6px"><button type="button" class="button ghost" data-viethoa-retry="${esc(shortWord)}" style="font-size:10px;padding:6px 12px">🔍 Thử tìm theo tên ngắn: "${esc(shortWord)}"</button></div>`:''}
+        <div class="viethoa-google-fallback">
+          <a href="https://www.google.com/search?q=${encodeURIComponent(q+' steam việt hóa')}" target="_blank" rel="noopener" class="button ghost viethoa-google-btn">
+            <span>🌐</span> Tìm trên Google: <b>"${esc(q)} steam việt hóa"</b> ↗
+          </a>
+        </div>
       </div>
     `;
   }
