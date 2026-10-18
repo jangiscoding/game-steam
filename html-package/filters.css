@@ -1341,5 +1341,391 @@ dialog#lightbox::backdrop {
   font-weight: 700;
 }
 
+/* ==========================================================================
+   Vietnamese Localization Checker & Source Config
+   ========================================================================== */
+.viethoa-section {
+  margin: 24px 0;
+  background: #141920;
+  border: 1px solid #2a3543;
+  border-radius: 8px;
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.viethoa-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #ff3344, #ff8833);
+}
+
+.viethoa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.viethoa-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.viethoa-flag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.viethoa-header h3 {
+  margin: 0 !important;
+  font-size: 15px !important;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -0.2px;
+}
+
+.viethoa-config-trigger {
+  background: #1b222c;
+  border: 1px solid #364455;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.viethoa-config-trigger:hover,
+.gamepad-mode .viethoa-config-trigger.gamepad-focus {
+  color: #fff;
+  border-color: #64748b;
+  background: #242e3b;
+}
+
+.viethoa-search-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.viethoa-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.viethoa-search-bar input {
+  width: 100%;
+  background: #0d1117;
+  border: 1px solid #334155;
+  color: #f8fafc;
+  padding: 8px 12px;
+  padding-right: 30px;
+  border-radius: 5px;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+.viethoa-search-bar input:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 10px rgba(255, 102, 54, 0.3);
+}
+
+.viethoa-clear-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.viethoa-clear-btn:hover {
+  color: #fff;
+}
+
+.viethoa-search-bar select {
+  background: #0d1117;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  min-width: 140px;
+}
+
+.viethoa-search-btn {
+  padding: 8px 16px !important;
+  font-size: 11px !important;
+  white-space: nowrap;
+}
+
+.viethoa-results-container {
+  min-height: 48px;
+}
+
+.viethoa-loading-state {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #94a3b8;
+  font-size: 12px;
+  padding: 12px 0;
+}
+
+.viethoa-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #334155;
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: welcome-spin 0.8s linear infinite;
+}
+
+.viethoa-found-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(46, 204, 113, 0.12);
+  border: 1px solid rgba(46, 204, 113, 0.35);
+  border-radius: 6px;
+  padding: 9px 13px;
+  font-size: 12px;
+  color: #2ecc71;
+  margin-bottom: 12px;
+}
+
+.viethoa-found-icon {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.viethoa-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.viethoa-item-card {
+  display: flex;
+  gap: 12px;
+  background: #0f141a;
+  border: 1px solid #283544;
+  border-radius: 6px;
+  padding: 10px;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.viethoa-item-card:hover {
+  border-color: #ff6636;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.viethoa-item-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #1e2631;
+  flex-shrink: 0;
+}
+
+.viethoa-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.viethoa-item-name {
+  font-size: 12px;
+  color: #f1f5f9;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.viethoa-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px !important;
+  padding: 6px 12px !important;
+  border-radius: 4px;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.viethoa-empty-alert {
+  background: #10141a;
+  border: 1px dashed #2b3746;
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.viethoa-empty-alert p {
+  margin: 0 0 10px;
+}
+
+.viethoa-fallback-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.viethoa-fallback-actions .button {
+  font-size: 10px;
+  padding: 6px 11px;
+}
+
+/* Config Drawer */
+.viethoa-config-panel {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #273341;
+  animation: lbFadeIn 0.2s ease-out;
+}
+
+.viethoa-config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.viethoa-config-header h4 {
+  margin: 0;
+  font-size: 13px;
+  color: #e2e8f0;
+}
+
+.viethoa-config-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.viethoa-config-tip {
+  font-size: 11px;
+  color: #718096;
+  margin: 4px 0 12px;
+  line-height: 1.5;
+}
+
+.viethoa-config-tip code {
+  color: var(--orange);
+  background: #0d1117;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.viethoa-sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.viethoa-source-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: #0d1117;
+  border: 1px solid #232c37;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 11px;
+}
+
+.viethoa-source-meta strong {
+  color: #f1f5f9;
+  display: block;
+}
+
+.viethoa-source-meta span {
+  color: #64748b;
+  font-size: 10px;
+  word-break: break-all;
+}
+
+.viethoa-source-delete-btn {
+  background: transparent;
+  border: 1px solid #4a2328;
+  color: #ff6677;
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.viethoa-source-delete-btn:hover {
+  background: #ff3344;
+  color: #fff;
+}
+
+.viethoa-add-form {
+  background: #0d1117;
+  border: 1px solid #232c37;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.viethoa-form-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.viethoa-form-row input {
+  flex: 1;
+  min-width: 140px;
+  background: #141920;
+  border: 1px solid #334155;
+  color: #f8fafc;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.viethoa-form-row button {
+  font-size: 11px;
+  padding: 6px 14px;
+}
+
+.viethoa-config-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 

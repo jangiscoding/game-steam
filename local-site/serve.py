@@ -143,6 +143,45 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write(b'{"ok":true}' if success else b'{"ok":false}')
             return
 
+        if self.path.startswith('/api/search-viethoa'):
+            from urllib.parse import urlparse, parse_qs, quote_plus
+            import urllib.request
+            import json
+
+            parsed = urlparse(self.path)
+            query = parse_qs(parsed.query)
+            search_url_template = query.get('url', ['https://theredteam.vn/list-search.php?q='])[0]
+            keyword = query.get('q', [''])[0].strip()
+
+            results = []
+            error_msg = None
+            if keyword and search_url_template:
+                full_search_url = search_url_template + quote_plus(keyword)
+                try:
+                    req = urllib.request.Request(
+                        full_search_url,
+                        headers={
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+                            'Accept': 'application/json, text/plain, */*',
+                        }
+                    )
+                    with urllib.request.urlopen(req, timeout=8) as resp:
+                        raw = resp.read().decode('utf-8-sig', errors='replace')
+                        parsed_json = json.loads(raw)
+                        if isinstance(parsed_json, list):
+                            results = parsed_json
+                except Exception as e:
+                    error_msg = str(e)
+
+            payload = json.dumps({'ok': True, 'keyword': keyword, 'results': results, 'error': error_msg}).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Cache-Control', 'no-cache, no-store')
+            self.end_headers()
+            self.wfile.write(payload)
+            return
+
         super().do_GET()
 
     def end_headers(self):
