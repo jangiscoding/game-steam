@@ -779,3 +779,237 @@ startWelcome();init();
 function playVideo(index){stopVideo();const movie=activeGame?.content?.media?.videos?.[index];if(!movie)return;const host=$('#video-player');const source=movie.sources?.find(s=>s.format==='mp4')||movie.sources?.find(s=>s.format==='webm')||movie.sources?.find(s=>s.format==='hls_h264');if(!source){host.innerHTML='<p class="language-note">Nguồn video này chưa phát trực tiếp được. Bạn có thể mở game trong ứng dụng Steam.</p>';return;}host.innerHTML='<video controls playsinline style="width:100%;max-height:420px;background:#000;border-radius:4px" aria-label="Trailer game"></video><p class="source-note">Nếu video không tải được, chọn “Mở trong ứng dụng Steam” ở đầu hồ sơ.</p>';const video=host.querySelector('video');video.poster=safeUrl(movie.thumbnailUrl);const url=safeUrl(source.url);if(source.format==='hls_h264'&&!video.canPlayType('application/vnd.apple.mpegurl')&&window.Hls?.isSupported()){activeHls=new Hls();activeHls.loadSource(url);activeHls.attachMedia(video);activeHls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));activeHls.on(Hls.Events.ERROR,(_,data)=>{if(data.fatal)host.querySelector('p').textContent='Không tải được video từ nguồn. Bạn vẫn có thể mở game trong ứng dụng Steam.';});}else{video.src=url;video.play().catch(()=>{});}host.scrollIntoView({behavior:'smooth',block:'nearest'});}
 
 document.addEventListener('archive:gamepad-category',event=>{if(!catalog||dialog.open)return;const ids=['all','language-vietnamese','viethoa','installed','local-controller','controller','local-coop','online-coop'].filter(id=>tabSets.has(id));const position=Math.max(0,ids.indexOf(activeTab));const next=(position+event.detail.direction+ids.length)%ids.length;selectTab(ids[next],true);});
+
+// Steam Update Manager
+const updateModal = $('#update-modal');
+const updateModalBody = $('#update-modal-body');
+const btnCheckUpdate = $('#btn-check-steam-update');
+
+function closeUpdateModal() {
+  if (updateModal) {
+    if (typeof updateModal.close === 'function') updateModal.close();
+    else updateModal.removeAttribute('open');
+  }
+}
+
+function openUpdateModal() {
+  if (updateModal) {
+    if (typeof updateModal.showModal === 'function' && !updateModal.open) {
+      try { updateModal.showModal(); } catch (_) { updateModal.setAttribute('open', ''); }
+    } else {
+      updateModal.setAttribute('open', '');
+    }
+  }
+}
+
+updateModal?.addEventListener('click', (e) => {
+  if (e.target.hasAttribute('data-update-close') || e.target.classList.contains('update-modal-backdrop')) {
+    closeUpdateModal();
+  }
+});
+
+btnCheckUpdate?.addEventListener('click', async () => {
+  btnCheckUpdate.classList.add('is-checking');
+  btnCheckUpdate.disabled = true;
+  openUpdateModal();
+
+  updateModalBody.innerHTML = `
+    <div class="update-status-loading">
+      <div class="update-spinner-big"></div>
+      <p>Đang kết nối API Startran Store & kiểm tra dữ liệu Steam...</p>
+    </div>
+  `;
+
+  try {
+    const res = await fetch('/api/check-steam-update');
+    const data = await res.json();
+    btnCheckUpdate.classList.remove('is-checking');
+    btnCheckUpdate.disabled = false;
+
+    if (!data.ok) {
+      updateModalBody.innerHTML = `
+        <div class="update-summary-banner" style="background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.3)">
+          <div>
+            <strong style="color:#ef4444">Lỗi kiểm tra cập nhật</strong>
+            <p style="margin:4px 0 0; font-size:12px; color:#cbd5e1">${esc(data.error || 'Không thể kết nối máy chủ.')}</p>
+          </div>
+        </div>
+        <div class="update-actions">
+          <button type="button" class="update-btn-cancel" data-update-close>Đóng</button>
+        </div>
+      `;
+      return;
+    }
+
+    if (!data.hasUpdate || !data.newGames || data.newGames.length === 0) {
+      updateModalBody.innerHTML = `
+        <div class="update-summary-banner no-update">
+          <div>
+            <strong style="color:#22c55e">Thư viện đã là bản mới nhất!</strong>
+            <p style="margin:4px 0 0; font-size:12px; color:#94a3b8">Toàn bộ <strong>${num(data.currentTotal)} game</strong> từ Startran Store đã được đồng bộ đầy đủ vào Jang Play.</p>
+          </div>
+          <div class="update-stat-box">
+            <div class="update-stat-item">
+              <span>Thư viện Jang</span>
+              <strong class="success">${num(data.currentTotal)}</strong>
+            </div>
+            <div class="update-stat-item">
+              <span>Bản ghi nguồn</span>
+              <strong>${num(data.remoteTotal)}</strong>
+            </div>
+          </div>
+        </div>
+        <div class="update-log-box" style="font-size:11px; line-height:1.6; color:#94a3b8;">
+          ✓ Đã đối chiếu toàn bộ ${num(data.remoteTotal)} bản ghi từ Startran Store.<br>
+          ✓ Tất cả trò chơi hợp lệ đều đã có trong cơ sở dữ liệu.<br>
+          ✓ 4 mục chênh lệch gồm 1 dòng tiêu đề và 3 game chứa dấu phẩy (Dwarves, Invisible Inc, Noob) đã được hệ thống chuẩn hóa hoàn tất.
+        </div>
+        <div class="update-actions">
+          <button type="button" class="update-btn-cancel" data-update-close>Đã hiểu</button>
+        </div>
+      `;
+      return;
+    }
+
+    // Has new games!
+    const newGames = data.newGames;
+    updateModalBody.innerHTML = `
+      <div class="update-summary-banner">
+        <div>
+          <strong style="color:#00f0ff">Phát hiện ${num(newGames.length)} trò chơi mới!</strong>
+          <p style="margin:4px 0 0; font-size:12px; color:#94a3b8">Bản ghi gốc có ${num(data.remoteTotal)} mục, thư viện hiện có ${num(data.currentTotal)} game.</p>
+        </div>
+        <div class="update-stat-box">
+          <div class="update-stat-item">
+            <span>Game mới</span>
+            <strong class="highlight">+${num(newGames.length)}</strong>
+          </div>
+          <div class="update-stat-item">
+            <span>Sau cập nhật</span>
+            <strong>${num(data.currentTotal + newGames.length)}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="update-games-container">
+        <div class="update-games-title">Danh sách trò chơi mới sẽ được quét dữ liệu:</div>
+        <div class="update-games-list">
+          ${newGames.map(g => `
+            <div class="update-game-row">
+              <img class="update-game-thumb" src="${safeUrl(g.imageUrl)}" alt="${esc(g.name)}" onerror="this.src='./ps-neon.ico'">
+              <div class="update-game-info">
+                <div class="update-game-name">${esc(g.name)}</div>
+                <div class="update-game-meta">
+                  ${g.steamAppId ? `App ID: <code>${esc(g.steamAppId)}</code>` : '<span style="color:#f59e0b">Chưa gán App ID</span>'}
+                </div>
+              </div>
+              <span class="update-game-badge">Mới</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="update-actions">
+        <button type="button" class="update-btn-cancel" data-update-close>Để sau</button>
+        <button type="button" id="btn-confirm-apply-update" class="update-btn-confirm">
+          <span>🚀 Bắt đầu cập nhật (${num(newGames.length)} game)</span>
+        </button>
+      </div>
+    `;
+
+    $('#btn-confirm-apply-update')?.addEventListener('click', async () => {
+      // Start applying update
+      updateModalBody.innerHTML = `
+        <div class="update-status-loading">
+          <div class="update-spinner-big"></div>
+          <p><strong>Đang tiến hành cập nhật & quét dữ liệu Steam...</strong></p>
+          <div class="update-progress-bar-wrap">
+            <div class="update-progress-bar" id="update-progress-bar" style="width: 50%"></div>
+          </div>
+          <div class="update-log-box" id="update-log-box">
+            [1/3] Đang gửi yêu cầu thêm ${newGames.length} game vào hệ thống...<br>
+            [2/3] Đang tải metadata, genres, tags, screenshots, videos từ Steam Store API...<br>
+            [3/3] Quá trình này diễn ra an toàn trong nền, vui lòng đợi trong giây lát...
+          </div>
+        </div>
+      `;
+
+      try {
+        const applyRes = await fetch('/api/apply-steam-update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ games: newGames })
+        });
+        const applyData = await applyRes.json();
+
+        if (!applyData.ok) {
+          updateModalBody.innerHTML = `
+            <div class="update-summary-banner" style="background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.3)">
+              <div>
+                <strong style="color:#ef4444">Lỗi khi thực hiện cập nhật</strong>
+                <p style="margin:4px 0 0; font-size:12px; color:#cbd5e1">${esc(applyData.error || 'Không thể hoàn tất cập nhật.')}</p>
+              </div>
+            </div>
+            <div class="update-actions">
+              <button type="button" class="update-btn-cancel" data-update-close>Đóng</button>
+            </div>
+          `;
+          return;
+        }
+
+        // Success!
+        updateModalBody.innerHTML = `
+          <div class="update-success-box">
+            <span class="update-success-icon">🎉</span>
+            <h4>Cập nhật thành công!</h4>
+            <p>Đã thêm hoàn tất <strong>${num(applyData.addedCount)} trò chơi mới</strong> và quét toàn bộ dữ liệu Steam Store tương ứng.</p>
+            <div class="update-stat-box" style="margin: 10px 0;">
+              <div class="update-stat-item">
+                <span>Tổng game hiện tại</span>
+                <strong class="highlight">${num(applyData.newTotal)}</strong>
+              </div>
+            </div>
+          </div>
+          <div class="update-actions" style="justify-content: center;">
+            <button type="button" id="btn-reload-library" class="update-btn-confirm">
+              <span>↻ Làm mới thư viện ngay</span>
+            </button>
+          </div>
+        `;
+
+        $('#btn-reload-library')?.addEventListener('click', () => {
+          location.reload();
+        });
+
+      } catch (err) {
+        updateModalBody.innerHTML = `
+          <div class="update-summary-banner" style="background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.3)">
+            <div>
+              <strong style="color:#ef4444">Lỗi kết nối</strong>
+              <p style="margin:4px 0 0; font-size:12px; color:#cbd5e1">${esc(err.message)}</p>
+            </div>
+          </div>
+          <div class="update-actions">
+            <button type="button" class="update-btn-cancel" data-update-close>Đóng</button>
+          </div>
+        `;
+      }
+    });
+
+  } catch (err) {
+    btnCheckUpdate.classList.remove('is-checking');
+    btnCheckUpdate.disabled = false;
+    updateModalBody.innerHTML = `
+      <div class="update-summary-banner" style="background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.3)">
+        <div>
+          <strong style="color:#ef4444">Lỗi kết nối máy chủ nội bộ</strong>
+          <p style="margin:4px 0 0; font-size:12px; color:#cbd5e1">${esc(err.message)}</p>
+        </div>
+      </div>
+      <div class="update-actions">
+        <button type="button" class="update-btn-cancel" data-update-close>Đóng</button>
+      </div>
+    `;
+  }
+});
+

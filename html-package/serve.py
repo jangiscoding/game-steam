@@ -85,6 +85,394 @@ def get_installed_steam_app_ids():
     return sorted(list(installed_ids))
 
 
+def check_for_steam_updates(catalog_path):
+    import urllib.request, json, re
+    req = urllib.request.Request(
+        'https://startranstore.com/api/steam-acc-games?list=mac-dinh',
+        headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+    )
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        remote_data = json.loads(resp.read().decode('utf-8'))
+
+    with open(catalog_path, 'r', encoding='utf-8') as f:
+        catalog = json.load(f)
+
+    cat_appids = set()
+    cat_names = set()
+    for g in catalog.get('games', []):
+        if g.get('steamAppId'):
+            cat_appids.add(str(g['steamAppId']))
+        if g.get('name'):
+            cat_names.add(g['name'].strip().lower())
+
+    KNOWN_FIXES = {
+        'dwarves: glory': ('Dwarves: Glory, Death and Loot', '2205850', 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2205850/library_600x900.jpg'),
+        'invisible': ('Invisible, Inc.', '243970', 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/243970/library_600x900.jpg'),
+        'noob': ('Noob - The Factionless', '1623880', 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1623880/library_600x900.jpg'),
+    }
+
+    new_games = []
+    seen_candidates = set()
+    for idx, item in enumerate(remote_data):
+        raw_name = item.get('name', '').strip()
+        raw_img = item.get('imageUrl', '').strip()
+        if not raw_name or raw_name == 'Game Name' or raw_img == 'Image URL':
+            continue
+
+        name_lower = raw_name.lower()
+        if name_lower in KNOWN_FIXES:
+            fixed_name, fixed_appid, fixed_img = KNOWN_FIXES[name_lower]
+            if fixed_appid not in cat_appids and fixed_appid not in seen_candidates:
+                seen_candidates.add(fixed_appid)
+                new_games.append({
+                    'name': fixed_name,
+                    'steamAppId': fixed_appid,
+                    'imageUrl': fixed_img,
+                    'isFeatured': item.get('isFeatured', False)
+                })
+            continue
+
+        m = re.search(r'/apps/(\d+)/', raw_img)
+        appid = m.group(1) if m else None
+
+        is_new = False
+        if appid and appid not in cat_appids:
+            is_new = True
+        elif not appid and name_lower not in cat_names:
+            is_new = True
+
+        cand_key = appid or name_lower
+        if is_new and cand_key not in seen_candidates:
+            seen_candidates.add(cand_key)
+            new_games.append({
+                'name': raw_name,
+                'steamAppId': appid,
+                'imageUrl': raw_img if raw_img.startswith('http') else (f'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{appid}/library_600x900.jpg' if appid else ''),
+                'isFeatured': item.get('isFeatured', False)
+            })
+
+    return {
+        'ok': True,
+        'remoteTotal': len(remote_data),
+        'currentTotal': len(catalog.get('games', [])),
+        'hasUpdate': len(new_games) > 0,
+        'newCount': len(new_games),
+        'newGames': new_games
+    }
+
+
+def enrich_and_apply_steam_updates(catalog_path, games_dir, target_games=None):
+    import urllib.request, json, re, hashlib, datetime, os
+
+    if not target_games:
+        check_res = check_for_steam_updates(catalog_path)
+        target_games = check_res.get('newGames', [])
+
+    if not target_games:
+        return {'ok': True, 'addedCount': 0, 'addedGames': [], 'message': 'Không có game mới để cập nhật.'}
+
+    with open(catalog_path, 'r', encoding='utf-8') as f:
+        catalog = json.load(f)
+
+    existing_appids = {str(g.get('steamAppId')) for g in catalog.get('games', []) if g.get('steamAppId')}
+    existing_ids = {g.get('id') for g in catalog.get('games', []) if g.get('id')}
+
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+    added_games = []
+
+    html_package_dir = catalog_path.parent.parent.parent / 'html-package'
+    html_package_games_dir = html_package_dir / 'data' / 'games'
+    html_package_cat_json = html_package_dir / 'data' / 'catalog.json'
+    html_package_cat_js = html_package_dir / 'data' / 'catalog.js'
+
+    for g_item in target_games:
+        name = g_item.get('name', '').strip()
+        app_id = g_item.get('steamAppId')
+        img_url = g_item.get('imageUrl', '').strip()
+
+        # If app_id missing, try steam storesearch
+        if not app_id and name:
+            try:
+                import urllib.parse
+                s_url = f'https://store.steampowered.com/api/storesearch/?term={urllib.parse.quote(name)}&l=english&cc=US'
+                s_req = urllib.request.Request(s_url, headers=headers)
+                with urllib.request.urlopen(s_req, timeout=10) as s_resp:
+                    s_res = json.loads(s_resp.read().decode('utf-8', errors='ignore'))
+                    if s_res.get('items'):
+                        app_id = str(s_res['items'][0]['id'])
+                        if not img_url:
+                            img_url = f'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{app_id}/library_600x900.jpg'
+            except Exception:
+                pass
+
+        if app_id and str(app_id) in existing_appids:
+            continue
+
+        raw_key = (name + str(app_id or '')).encode('utf-8')
+        gid = 'input-' + hashlib.md5(raw_key).hexdigest()[:12]
+        if gid in existing_ids:
+            continue
+
+        app_data = {}
+        if app_id:
+            try:
+                url_en = f'https://store.steampowered.com/api/appdetails?appids={app_id}&l=english'
+                req_en = urllib.request.Request(url_en, headers=headers)
+                with urllib.request.urlopen(req_en, timeout=12) as resp:
+                    res = json.loads(resp.read().decode('utf-8', errors='ignore'))
+                    if res.get(str(app_id), {}).get('success'):
+                        app_data = res[str(app_id)]['data']
+            except Exception as e:
+                debug_log(f'Error fetching appdetails for {app_id}: {e}')
+
+        tags = []
+        if app_id:
+            try:
+                url_store = f'https://store.steampowered.com/app/{app_id}/'
+                req_store = urllib.request.Request(url_store, headers=headers)
+                with urllib.request.urlopen(req_store, timeout=12) as resp:
+                    html_content = resp.read().decode('utf-8', errors='ignore')
+                    m_tag = re.search(r'InitAppTagModal\(\s*\d+,\s*(\[.*?\])\s*,', html_content, re.DOTALL)
+                    if m_tag:
+                        tags = [t['name'] for t in json.loads(m_tag.group(1)) if 'name' in t][:20]
+            except Exception as e:
+                debug_log(f'Error fetching store tags for {app_id}: {e}')
+
+        cats = [c.get('description', '') for c in app_data.get('categories', [])]
+        genres = [g.get('description', '') for g in app_data.get('genres', [])]
+        ctrl = 'full' if app_data.get('controller_support') == 'full' or 'Full controller support' in cats else ('partial' if 'Partial Controller Support' in cats else None)
+
+        single = 'Single-player' in cats
+        multi = 'Multi-player' in cats
+        coop = 'Co-op' in cats or 'Online Co-op' in cats or 'Shared/Split Screen Co-op' in cats
+        local_coop = 'Shared/Split Screen' in cats or 'Shared/Split Screen Co-op' in cats or 'Local Co-op' in cats
+        online_coop = 'Online Co-op' in cats
+        shared_screen = 'Shared/Split Screen' in cats or 'Shared/Split Screen Co-op' in cats
+        supp_vi = 'vietnamese' in (app_data.get('supported_languages') or '').lower()
+
+        r_date = app_data.get('release_date', {}).get('date', '')
+        m_yr = re.search(r'\b(20\d\d|19\d\d)\b', r_date)
+        year = int(m_yr.group(1)) if m_yr else None
+
+        screenshots = []
+        for s in app_data.get('screenshots', []):
+            screenshots.append({
+                'id': s.get('id', 0),
+                'thumbnailUrl': s.get('path_thumbnail', ''),
+                'url': s.get('path_full', '')
+            })
+
+        videos = []
+        for m in app_data.get('movies', []):
+            mp4 = m.get('mp4', {})
+            hls_url = m.get('hls', {}).get('max') or m.get('hls', {}).get('480') or ''
+            mp4_url = mp4.get('max') or mp4.get('480') or ''
+            sources = []
+            if hls_url:
+                sources.append({'format': 'hls_h264', 'url': hls_url})
+            if mp4_url:
+                sources.append({'format': 'mp4_h264', 'url': mp4_url})
+            videos.append({
+                'id': m.get('id', 0),
+                'name': m.get('name', ''),
+                'thumbnailUrl': m.get('thumbnail', ''),
+                'highlight': m.get('highlight', False),
+                'sources': sources
+            })
+
+        final_img = img_url or (f'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{app_id}/library_600x900.jpg' if app_id else '')
+        final_name = app_data.get('name') or name
+
+        detail = {
+            'id': gid,
+            'steamAppId': str(app_id) if app_id else None,
+            'name': final_name,
+            'imageUrl': final_img,
+            'steamUrl': f'https://store.steampowered.com/app/{app_id}/' if app_id else None,
+            'genres': genres,
+            'platforms': ['windows'] if app_data.get('platforms', {}).get('windows', True) else [],
+            'controllerSupport': ctrl,
+            'playerModes': {
+                'singlePlayer': single,
+                'multiplayer': multi,
+                'coop': coop,
+                'localCoop': local_coop,
+                'sharedOrSplitScreen': shared_screen,
+                'onlineCoop': online_coop,
+                'maximumPlayers': None
+            },
+            'storage': {
+                'windowsMinimumGB': None,
+                'windowsMinimumDisplay': None
+            },
+            'verificationStatus': 'identified' if app_id else 'unidentified',
+            'supportsVietnamese': supp_vi,
+            'vietnameseSupportStatus': 'listed' if supp_vi else 'not_listed',
+            'steamTags': tags,
+            'sourceProfile': {
+                'shortDescription': app_data.get('short_description', ''),
+                'developers': app_data.get('developers', [])
+            },
+            'content': {
+                'status': 'success' if app_data else 'not_found',
+                'fetchedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                'identityStatus': 'verified' if app_id else 'unverified',
+                'locales': {
+                    'en': {
+                        'status': 'source',
+                        'shortDescription': app_data.get('short_description', ''),
+                        'detailedDescription': app_data.get('detailed_description', '')
+                    },
+                    'vi': {
+                        'status': 'source',
+                        'shortDescription': app_data.get('short_description', ''),
+                        'detailedDescription': app_data.get('detailed_description', '')
+                    }
+                },
+                'media': {
+                    'images': [],
+                    'screenshots': screenshots,
+                    'videos': videos
+                }
+            }
+        }
+
+        summary = {
+            'id': gid,
+            'steamAppId': str(app_id) if app_id else None,
+            'name': final_name,
+            'imageUrl': final_img,
+            'genres': genres,
+            'controllerSupport': ctrl,
+            'platforms': detail['platforms'],
+            'playerModes': detail['playerModes'],
+            'verificationStatus': detail['verificationStatus'],
+            'supportsVietnamese': supp_vi,
+            'vietnameseSupportStatus': detail['vietnameseSupportStatus'],
+            'releaseYear': year,
+            'steamTags': tags
+        }
+
+        # Save game detail file
+        game_file = games_dir / f'{gid}.json'
+        with open(game_file, 'w', encoding='utf-8') as gf:
+            json.dump(detail, gf, ensure_ascii=False, indent=2)
+
+        if html_package_games_dir.exists():
+            hp_game_file = html_package_games_dir / f'{gid}.json'
+            try:
+                with open(hp_game_file, 'w', encoding='utf-8') as hgf:
+                    json.dump(detail, hgf, ensure_ascii=False, indent=2)
+            except Exception:
+                pass
+
+        # Append to catalog
+        catalog['games'].append(summary)
+        existing_appids.add(str(app_id))
+        existing_ids.add(gid)
+
+        # Update tabs
+        tab_map = { t['id']: t for t in catalog.get('tabs', []) }
+        def add_to_tab(t_id):
+            if t_id in tab_map:
+                t_obj = tab_map[t_id]
+                if gid not in t_obj['gameIds']:
+                    t_obj['gameIds'].append(gid)
+
+        add_to_tab('all')
+        if ctrl in ('full', 'partial'):
+            add_to_tab('controller')
+            if local_coop or shared_screen:
+                add_to_tab('local-controller')
+        if local_coop:
+            add_to_tab('local-coop')
+        if online_coop:
+            add_to_tab('online-coop')
+        if supp_vi:
+            add_to_tab('language-vietnamese')
+
+        genre_slug_map = {
+            'Action': 'genre-action', 'Adventure': 'genre-adventure', 'Casual': 'genre-casual',
+            'Early Access': 'genre-early-access', 'Free to Play': 'genre-free-to-play',
+            'Game Development': 'genre-game-development', 'Gore': 'genre-gore', 'Indie': 'genre-indie',
+            'Massively Multiplayer': 'genre-massively-multiplayer', 'Nudity': 'genre-nudity',
+            'RPG': 'rpg', 'Racing': 'genre-racing', 'Sexual Content': 'genre-sexual-content',
+            'Simulation': 'genre-simulation', 'Sports': 'genre-sports', 'Strategy': 'genre-strategy',
+            'Violent': 'genre-violent',
+        }
+        for g in genres:
+            if g in genre_slug_map:
+                add_to_tab(genre_slug_map[g])
+
+        tag_slug_map = {
+            'Horror': 'tag-horror', 'Psychological Horror': 'tag-horror',
+            'Survival': 'tag-survival', 'Puzzle': 'tag-puzzle', 'FPS': 'tag-fps',
+            'Third-Person Shooter': 'tag-third-person-shooter', 'Fighting': 'tag-fighting',
+            'Platformer': 'tag-platformer', '2D Platformer': 'tag-platformer', '3D Platformer': 'tag-platformer',
+            'Roguelike': 'tag-roguelike', 'Roguelite': 'tag-roguelike', 'Action Roguelike': 'tag-roguelike',
+            'Open World': 'tag-open-world', 'Sandbox': 'tag-sandbox', 'Visual Novel': 'tag-visual-novel',
+            'Souls-like': 'tag-souls-like', 'Metroidvania': 'tag-metroidvania', 'Stealth': 'tag-stealth',
+            'Rhythm': 'tag-rhythm', 'Music': 'tag-rhythm',
+            'Card Battler': 'tag-card-deckbuilding', 'Deckbuilding': 'tag-card-deckbuilding', 'Card Game': 'tag-card-deckbuilding',
+            'Turn-Based': 'tag-turn-based', 'Turn-Based Strategy': 'tag-turn-based', 'Turn-Based Tactics': 'tag-turn-based', 'Turn-Based Combat': 'tag-turn-based',
+            'RTS': 'tag-rts', 'City Builder': 'tag-city-builder', 'Management': 'tag-management',
+            'Crafting': 'tag-crafting', 'MMORPG': 'tag-mmorpg', 'MOBA': 'tag-moba', 'Battle Royale': 'tag-battle-royale'
+        }
+        for t in tags:
+            if t in tag_slug_map:
+                add_to_tab(tag_slug_map[t])
+
+        # Update tags counts
+        tag_counter = { item['name']: item for item in catalog.get('tags', []) }
+        for t in tags:
+            if t in tag_counter:
+                tag_counter[t]['games'] = tag_counter[t].get('games', 0) + 1
+            else:
+                new_t = {'name': t, 'games': 1}
+                catalog.setdefault('tags', []).append(new_t)
+                tag_counter[t] = new_t
+
+        added_games.append({
+            'id': gid,
+            'steamAppId': app_id,
+            'name': final_name,
+            'imageUrl': final_img
+        })
+
+    # Update metadata
+    catalog['metadata']['totalGames'] = len(catalog['games'])
+    catalog['metadata']['updatedAt'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+    # Atomic write to catalog.json
+    tmp_file = catalog_path.with_suffix('.json.tmp')
+    with open(tmp_file, 'w', encoding='utf-8') as f:
+        json.dump(catalog, f, ensure_ascii=False)
+    os.replace(tmp_file, catalog_path)
+
+    # Sync to html-package
+    if html_package_cat_json.parent.exists():
+        try:
+            with open(html_package_cat_json, 'w', encoding='utf-8') as f:
+                json.dump(catalog, f, ensure_ascii=False)
+        except Exception:
+            pass
+
+    if html_package_cat_js.exists():
+        try:
+            with open(html_package_cat_js, 'w', encoding='utf-8') as f:
+                f.write('window.__CATALOG__ = ' + json.dumps(catalog, ensure_ascii=False) + ';')
+        except Exception:
+            pass
+
+    return {
+        'ok': True,
+        'addedCount': len(added_games),
+        'addedGames': added_games,
+        'newTotal': len(catalog['games']),
+        'updatedAt': catalog['metadata']['updatedAt']
+    }
+
+
 class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
     extensions_map = {
         **SimpleHTTPRequestHandler.extensions_map,
@@ -272,7 +660,74 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
             self.wfile.write(payload)
             return
 
+        if self.path.startswith('/api/check-steam-update'):
+            import json
+            try:
+                cat_path = DIR / 'data' / 'catalog.json'
+                res = check_for_steam_updates(cat_path)
+                payload = json.dumps(res).encode('utf-8')
+            except Exception as e:
+                debug_log(f'check-steam-update error: {e}')
+                payload = json.dumps({'ok': False, 'error': str(e)}).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Cache-Control', 'no-cache, no-store')
+            self.end_headers()
+            self.wfile.write(payload)
+            return
+
+        if self.path.startswith('/api/apply-steam-update'):
+            import json
+            try:
+                cat_path = DIR / 'data' / 'catalog.json'
+                games_dir = DIR / 'data' / 'games'
+                res = enrich_and_apply_steam_updates(cat_path, games_dir)
+                payload = json.dumps(res).encode('utf-8')
+            except Exception as e:
+                debug_log(f'apply-steam-update error: {e}')
+                payload = json.dumps({'ok': False, 'error': str(e)}).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Cache-Control', 'no-cache, no-store')
+            self.end_headers()
+            self.wfile.write(payload)
+            return
+
         super().do_GET()
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.end_headers()
+
+    def do_POST(self):
+        if self.path.startswith('/api/apply-steam-update'):
+            import json
+            try:
+                content_len = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_len).decode('utf-8') if content_len > 0 else '{}'
+                data = json.loads(body) if body.strip() else {}
+                target_games = data.get('games')
+                cat_path = DIR / 'data' / 'catalog.json'
+                games_dir = DIR / 'data' / 'games'
+                res = enrich_and_apply_steam_updates(cat_path, games_dir, target_games)
+                payload = json.dumps(res).encode('utf-8')
+            except Exception as e:
+                debug_log(f'POST apply-steam-update error: {e}')
+                payload = json.dumps({'ok': False, 'error': str(e)}).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Cache-Control', 'no-cache, no-store')
+            self.end_headers()
+            self.wfile.write(payload)
+            return
+
+        super().do_POST()
 
     def end_headers(self):
         self.send_header('Cache-Control', 'no-cache, no-store, must-revalidate')

@@ -144,7 +144,33 @@ Jang Play tích hợp hệ thống phát hiện và tìm kiếm bản dịch ti�
 
 ---
 
-## 7. 🚀 CÁCH KHỞI ĐỘNG VÀ KIỂM TRA NHANH
+## 7. 🔄 HỆ THỐNG CẬP NHẬT DỮ LIỆU TỪ STEAM ACC & STEAM STORE (UPDATE ENGINE)
+
+Jang Play tích hợp hệ thống kiểm tra và cập nhật game mới trực tiếp từ API nguồn Startran Store (`https://startranstore.com/api/steam-acc-games?list=mac-dinh`).
+
+### 1. Kiến trúc luồng cập nhật:
+- **Nút Cập nhật trên UI:** Nằm cạnh thẻ ngày cập nhật `#updated-at` trong khu vực `#library` (`Dữ liệu từ Steam`).
+- **Endpoint kiểm tra:** `GET /api/check-steam-update`
+  - Gọi API Startran Store với User-Agent chuẩn.
+  - So khớp với `catalog.json` hiện tại (`remoteTotal` vs `currentTotal`).
+  - Tự động bỏ qua dòng tiêu đề CSV rác (`Game Name, Image URL`).
+  - Tự động chuẩn hóa các bản ghi bị tách lỗi dấu phẩy từ nguồn gốc (`Dwarves: Glory, Death and Loot`, `Invisible, Inc.`, `Noob - The Factionless`).
+  - Trả về danh sách game mới (`newGames`, `newCount`, `hasUpdate`).
+- **Modal xác nhận (Cyberpunk Neon Dialog):**
+  - Nếu đã là bản mới nhất: Hiển thị bảng tổng hợp chi tiết và thông báo 100% dữ liệu đã khớp.
+  - Nếu phát hiện game mới: Hiển thị banner số lượng game mới, danh sách từng game kèm ảnh preview, tên và Steam App ID. Cung cấp nút xác nhận **"🚀 Bắt đầu cập nhật"**.
+- **Endpoint nạp & cào dữ liệu:** `POST /api/apply-steam-update` (hoặc `GET`)
+  - Tự động tìm kiếm App ID nếu thiếu qua Steam Store Search API.
+  - Cào metadata chi tiết qua Steam Store API (`appdetails`) đa ngôn ngữ (tiếng Anh & tiếng Việt).
+  - Trích xuất tags người dùng gán từ Steam Store page qua regex `InitAppTagModal`.
+  - Phân tích categories: chế độ chơi (Single-player, Multi-player, Local/Online Co-op, Split Screen), hỗ trợ tay cầm (Full / Partial), cấu hình bộ nhớ, năm phát hành, trailer video HLS/MP4, ảnh chụp màn hình.
+  - Lưu file chi tiết `data/games/{id}.json`.
+  - Chèn bản ghi summary vào `catalog.json`, cập nhật danh sách `tabs`, bộ đếm `tags`, `metadata.totalGames` và `metadata.updatedAt`.
+  - **Tự động đồng bộ sang `html-package/`** (cả `catalog.json`, `catalog.js` và `data/games/{id}.json`).
+
+---
+
+## 8. 🚀 CÁCH KHỞI ĐỘNG VÀ KIỂM TRA NHANH
 
 - **Chạy local test:**
   ```powershell
@@ -158,6 +184,14 @@ Jang Play tích hợp hệ thống phát hiện và tìm kiếm bản dịch ti�
   Chạy file `c:\LAB\game-steam\create-shortcut.bat` hoặc lệnh:
   ```powershell
   powershell -ExecutionPolicy Bypass -File "c:\LAB\game-steam\create-shortcut.ps1"
+  ```
+- **Kiểm tra API kiểm tra cập nhật Steam:**
+  ```powershell
+  Invoke-RestMethod -Uri "http://127.0.0.1:8000/api/check-steam-update"
+  ```
+- **Kiểm tra API áp dụng cập nhật Steam:**
+  ```powershell
+  Invoke-RestMethod -Uri "http://127.0.0.1:8000/api/apply-steam-update"
   ```
 - **Kiểm tra API mở Steam:**
   ```powershell
@@ -175,7 +209,7 @@ Jang Play tích hợp hệ thống phát hiện và tìm kiếm bản dịch ti�
 
 ---
 
-## 8. 🎨 PHONG CÁCH GIAO DIỆN & TONE GIỌNG
+## 9. 🎨 PHONG CÁCH GIAO DIỆN & TONE GIỌNG
 
 - **Phong cách:** Cyberpunk Neon, nền đen sâu (`#0a0d12`), viền phát quang Cyan (`#00f0ff`) và Cam lửa Neon (`#ff7700`).
 - **Không dùng viền trắng kép sắc nhọn** trên viền chọn tay cầm (chỉ dùng viền neon mềm mại phát sáng `gamepadNeonGlow`).
