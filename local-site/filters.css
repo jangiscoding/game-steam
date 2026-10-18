@@ -929,8 +929,50 @@ body.welcome-active {
 }
 
 /* ==========================================================================
-   Installed Steam Games (Badge, Banner, Launch Button)
+   Installed Steam Games (Badge, Banner, Launch Button, Collection & Chip)
    ========================================================================== */
+.collection-installed span:first-child span {
+  color: #2ecc71 !important;
+  font-weight: 800;
+}
+.collection-installed.selected {
+  background: rgba(46, 204, 113, 0.16) !important;
+  color: #2ecc71 !important;
+  box-shadow: inset 2px 0 #2ecc71 !important;
+}
+.collection-installed.selected b {
+  color: #2ecc71 !important;
+}
+
+.chip.chip-installed {
+  border-color: rgba(46, 204, 113, 0.5) !important;
+  background: rgba(46, 204, 113, 0.12) !important;
+  color: #2ecc71 !important;
+  font-weight: 700;
+}
+.chip.chip-installed span {
+  color: #2ecc71 !important;
+}
+.chip.chip-installed small {
+  background: rgba(46, 204, 113, 0.25);
+  color: #2ecc71;
+  padding: 1px 6px;
+  border-radius: 8px;
+}
+.chip.chip-installed:hover,
+.chip.chip-installed.selected {
+  border-color: #2ecc71 !important;
+  background: #2ecc71 !important;
+  color: #0b1e12 !important;
+  box-shadow: 0 0 16px rgba(46, 204, 113, 0.6) !important;
+}
+.chip.chip-installed:hover span,
+.chip.chip-installed.selected span,
+.chip.chip-installed:hover small,
+.chip.chip-installed.selected small {
+  color: #0b1e12 !important;
+}
+
 .badge-installed {
   position: absolute;
   right: 10px;
