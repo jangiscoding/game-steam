@@ -30,7 +30,8 @@ function genreName(id){return catalog.tabs.find(t=>t.id===id)?.name||id;}
 const DEFAULT_VIETHOA_SOURCES=[
   {id:'theredteam',name:'The Red Team',searchUrl:'https://theredteam.vn/list-search.php?q=',baseUrl:'https://theredteam.vn/'},
   {id:'canhcutteam',name:'Cánh Cụt Team',searchUrl:'https://canhcutteam.com/wp-json/wp/v2/product?_embed=1&search=',baseUrl:'https://canhcutteam.com/'},
-  {id:'gamethuanviet',name:'Game Thuần Việt',searchUrl:'https://gamethuanviet.com/wp-json/wp/v2/product?_embed=1&search=',baseUrl:'https://gamethuanviet.com/'}
+  {id:'gamethuanviet',name:'Game Thuần Việt',searchUrl:'https://gamethuanviet.com/wp-json/wp/v2/product?_embed=1&search=',baseUrl:'https://gamethuanviet.com/'},
+  {id:'viethoagame',name:'Việt Hóa Game',searchUrl:'https://viethoagame.com/search/search?q=',baseUrl:'https://viethoagame.com/'}
 ];
 let viethoaSources=null,theredteamCache=null,viethoaAppIds=new Set(),viethoaMatchesMap={};
 
