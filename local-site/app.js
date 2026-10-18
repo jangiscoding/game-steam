@@ -65,17 +65,11 @@ async function loadTheredteamCache(){
 async function initViethoaSection(g){
   const box=$('#viethoa-section');
   if(!box)return;
-  const sources=getViethoaSources();
-  const select=$('#viethoa-source-select');
-  if(select){
-    select.innerHTML=sources.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join('');
-  }
   const input=$('#viethoa-search-input');
   const cleanTitle=cleanTitleForSearch(g.name);
   if(input)input.value=cleanTitle;
   renderViethoaSourcesList();
-  const sourceId=select?.value||sources[0]?.id||'theredteam';
-  await runViethoaSearch(cleanTitle,sourceId);
+  await runViethoaSearch(cleanTitle);
 }
 
 function renderViethoaSourcesList(){
@@ -93,63 +87,86 @@ function renderViethoaSourcesList(){
   `).join('');
 }
 
-async function runViethoaSearch(keyword,sourceId){
+async function runViethoaSearch(keyword){
   const container=$('#viethoa-results-container');
   if(!container)return;
   const q=keyword.trim();
   const sources=getViethoaSources();
-  const source=sources.find(s=>s.id===sourceId)||sources[0];
-  if(!source)return;
+  if(!sources.length){
+    container.innerHTML='<div class="viethoa-empty-alert"><p>Chưa có nguồn tìm kiếm nào được cấu hình. Bấm <b>⚙ Cấu hình nguồn</b> để thêm nguồn.</p></div>';
+    return;
+  }
 
   if(!q){
     container.innerHTML='<div class="viethoa-empty-alert"><p>Vui lòng nhập tên game để tìm kiếm bản Việt Hóa.</p></div>';
     return;
   }
 
-  container.innerHTML='<div class="viethoa-loading-state"><span class="viethoa-spinner"></span> Đang tìm kiếm bản Việt Hóa trên <b>'+esc(source.name)+'</b>…</div>';
+  const srcNames=sources.map(s=>s.name).join(', ');
+  container.innerHTML=`<div class="viethoa-loading-state"><span class="viethoa-spinner"></span> Đang kiểm tra bản Việt Hóa trên tất cả các nguồn (${esc(srcNames)})…</div>`;
 
-  let results=[];
-  if(source.id==='theredteam'){
-    await loadTheredteamCache();
-    if(Array.isArray(theredteamCache)){
+  await loadTheredteamCache();
+
+  const searchPromises=sources.map(async source=>{
+    let sourceResults=[];
+    if(source.id==='theredteam'&&Array.isArray(theredteamCache)){
       const nq=norm(q);
       const matches=theredteamCache.filter(item=>norm(item.name).includes(nq)||norm(item.link).includes(nq));
-      if(matches.length)results=matches;
+      if(matches.length)sourceResults=matches;
+    }
+    if(!sourceResults.length&&source.searchUrl){
+      try{
+        const apiUrl=`/api/search-viethoa?url=${encodeURIComponent(source.searchUrl)}&q=${encodeURIComponent(q)}`;
+        const res=await fetch(apiUrl,{cache:'no-store'});
+        if(res.ok){
+          const data=await res.json();
+          if(data?.ok&&Array.isArray(data.results)&&data.results.length){
+            sourceResults=data.results;
+          }
+        }
+      }catch(_){}
+    }
+    return sourceResults.map(r=>({
+      ...r,
+      sourceName:source.name,
+      sourceBaseUrl:source.baseUrl||'https://theredteam.vn/'
+    }));
+  });
+
+  const settled=await Promise.allSettled(searchPromises);
+  const allResults=settled.flatMap(s=>s.status==='fulfilled'?s.value:[]);
+
+  const seen=new Set();
+  const uniqueResults=[];
+  for(const r of allResults){
+    const key=(r.link||'')+'|'+(r.name||'');
+    if(!seen.has(key)){
+      seen.add(key);
+      uniqueResults.push(r);
     }
   }
 
-  if(!results.length){
-    try{
-      const apiUrl=`/api/search-viethoa?url=${encodeURIComponent(source.searchUrl)}&q=${encodeURIComponent(q)}`;
-      const res=await fetch(apiUrl,{cache:'no-store'});
-      if(res.ok){
-        const data=await res.json();
-        if(data?.ok&&Array.isArray(data.results)&&data.results.length){
-          results=data.results;
-        }
-      }
-    }catch(_){}
-  }
-
-  if(results.length){
+  if(uniqueResults.length){
     container.innerHTML=`
       <div class="viethoa-found-alert">
         <span class="viethoa-found-icon">✔</span>
-        <span>Tìm thấy <b>${results.length}</b> kết quả Việt Hóa trên <b>${esc(source.name)}</b>:</span>
+        <span>Tìm thấy <b>${uniqueResults.length}</b> bản Việt Hóa từ các nguồn:</span>
       </div>
       <div class="viethoa-results-grid">
-        ${results.map(r=>{
+        ${uniqueResults.map(r=>{
           const linkStr=String(r.link||'');
-          const fullLink=linkStr.startsWith('http')?linkStr:(source.baseUrl.replace(/\/$/,'')+'/'+linkStr.replace(/^\//,''));
+          const base=(r.sourceBaseUrl||'https://theredteam.vn/').replace(/\/$/,'');
+          const fullLink=linkStr.startsWith('http')?linkStr:(base+'/'+linkStr.replace(/^\//,''));
           const imgStr=String(r.img||'');
-          const fullImg=imgStr?(imgStr.startsWith('http')?imgStr:(source.baseUrl.replace(/\/$/,'')+'/'+imgStr.replace(/^\//,''))):'';
+          const fullImg=imgStr?(imgStr.startsWith('http')?imgStr:(base+'/'+imgStr.replace(/^\//,''))):'';
           return `<div class="viethoa-item-card">
             ${fullImg?`<img src="${safeUrl(fullImg)}" class="viethoa-item-img" alt="${esc(r.name)}" loading="lazy">`:''}
             <div class="viethoa-item-info">
+              <div class="viethoa-item-source-tag">${esc(r.sourceName)}</div>
               <strong class="viethoa-item-name">${esc(r.name)}</strong>
               <div class="viethoa-item-actions">
                 <a href="${esc(fullLink)}" target="_blank" rel="noopener" class="button primary viethoa-download-btn">
-                  <span>📥</span> Tải Patch Việt Hóa (${esc(source.name)}) ↗
+                  <span>📥</span> Tải Patch (${esc(r.sourceName)}) ↗
                 </a>
               </div>
             </div>
@@ -161,19 +178,8 @@ async function runViethoaSearch(keyword,sourceId){
     const shortWord=q.split(/[:\-–]/)[0].trim();
     container.innerHTML=`
       <div class="viethoa-empty-alert">
-        <p>Chưa tìm thấy bản dịch trên <b>${esc(source.name)}</b> với từ khóa <i>"${esc(q)}"</i>.</p>
-        ${shortWord&&shortWord!==q?`<div style="margin-bottom:10px"><button type="button" class="button ghost" data-viethoa-retry="${esc(shortWord)}" style="font-size:10px;padding:5px 10px">Thử tìm tên ngắn: "${esc(shortWord)}"</button></div>`:''}
-        <div class="viethoa-fallback-actions">
-          <a href="https://www.google.com/search?q=${encodeURIComponent(q+' việt hóa patch')}" target="_blank" rel="noopener" class="button ghost">
-            🌐 Tìm trên Google
-          </a>
-          <a href="https://www.google.com/search?q=site:gametiengviet.com+${encodeURIComponent('"'+q+'"')}" target="_blank" rel="noopener" class="button ghost">
-            🟢 Tìm trên GameTiengViet
-          </a>
-          <a href="https://store.steampowered.com/search/?term=${encodeURIComponent(q)}&tags=11014" target="_blank" rel="noopener" class="button ghost">
-            ⚙ Steam Tag Tiếng Việt
-          </a>
-        </div>
+        <p>Chưa tìm thấy bản dịch Việt Hóa từ các nguồn đã cấu hình với từ khóa <i>"${esc(q)}"</i>.</p>
+        ${shortWord&&shortWord!==q?`<div><button type="button" class="button ghost" data-viethoa-retry="${esc(shortWord)}" style="font-size:10px;padding:6px 12px;margin-top:4px">🔍 Thử tìm theo tên ngắn: "${esc(shortWord)}"</button></div>`:''}
       </div>
     `;
   }
@@ -235,7 +241,7 @@ function scheduleVirtualRender(){if(virtualFrame)return;virtualFrame=requestAnim
 function stopVideo(){if(activeHls){activeHls.destroy();activeHls=null;}const video=$('#video-player video');if(video){video.pause();video.removeAttribute('src');video.load();}}
 function closeDetail(){stopVideo();closeLightbox();detailToken++;dialog.close();document.body.style.overflow='';if(location.hash.startsWith('#game/'))history.replaceState(null,'','#library');}
 async function openDetail(id){if(!byId.has(id))return;recentGames=[id,...recentGames.filter(gameId=>gameId!==id)].slice(0,30);savePersonal();if(activeTab==='recent')applyFilters();else renderCollections();const token=++detailToken;if(!dialog.open)dialog.showModal();document.body.style.overflow='hidden';$('#detail-inner').innerHTML='<button class="detail-close" data-close aria-label="Đóng chi tiết">×</button><div class="detail-loading">Đang mở trò chơi…</div>';history.replaceState(null,'',`#game/${encodeURIComponent(id)}`);try{let g=detailCache.get(id);if(!g){const response=await fetch(`./data/games/${encodeURIComponent(id)}.json`);if(!response.ok)throw Error('Không thể tải dữ liệu game.');g=await response.json();detailCache.set(id,g);}if(token!==detailToken)return;renderDetail(g);}catch(error){if(token!==detailToken)return;$('#detail-inner').innerHTML=`<button class="detail-close" data-close aria-label="Đóng">×</button><div class="detail-loading">${esc(error.message)}<br><button class="button ghost" data-game="${esc(id)}">Thử lại</button></div>`;}}
-function renderDetail(g){activeGame=g;const c=g.content||{},m=c.media||{},vi=c.locales?.vi||{},en=c.locales?.en||{};const hasVi=['translated','reviewed'].includes(vi.status)&&Boolean(vi.detailedDescription||vi.shortDescription);const text=hasVi?vi:en;const description=text.detailedDescription||text.shortDescription||g.sourceProfile?.shortDescription;const shots=m.screenshots||[];const cover=shots[0]?.url||m.images?.find(i=>i.role==='header')?.url||g.imageUrl;const allShots=shots.length?shots:(cover?[{thumbnailUrl:cover,url:cover}]:[]);const yes=v=>v===true?'Có':v===false?'Không':'Chưa xác định';const control={full:'Đầy đủ',partial:'Một phần',unknown:'Chưa xác định'}[g.controllerSupport]||'Chưa xác định';const labels=[...(g.genres||[]),...(g.steamTags||[])].filter((v,i,a)=>a.indexOf(v)===i).slice(0,12),status=gameStatuses[g.id]||'';const isInstalled=installedAppIds.has(String(g.steamAppId));$('#detail-inner').innerHTML=`<button class="detail-close" data-close aria-label="Đóng chi tiết">×</button><div class="detail-cover" id="detail-cover"></div><div class="detail-content"><div class="eyebrow orange">HỒ SƠ GAME · STEAM ${esc(g.steamAppId)}</div><h2>${esc(g.name)}</h2><div class="detail-tags">${labels.map(t=>`<span>${esc(tagLabel(t))}</span>`).join('')}</div><div class="detail-actions">${isInstalled?`<a class="button primary play-button" href="steam://run/${esc(g.steamAppId)}"><span class="play-icon">▶</span> CHƠI NGAY (Steam)</a><a class="button ghost" href="${esc(steamAppUrl(g.steamAppId))}">Mở trang Steam</a>`:`<a class="button primary" href="${esc(steamAppUrl(g.steamAppId))}">Mở trong ứng dụng Steam</a>`}${allShots.length?`<button type="button" class="button ghost gallery-open-btn" data-open-gallery aria-label="Xem ${allShots.length} ảnh gameplay"><span class="gallery-icon">🖼</span> Xem ảnh (${allShots.length})</button>`:''}</div>${isInstalled?'<div class="installed-banner">✔ Trò chơi đã được cài đặt sẵn trên máy tính của bạn</div>':''}<div class="detail-facts"><div><label>HỖ TRỢ TAY CẦM</label><strong>${control}</strong></div><div><label>LOCAL CO-OP</label><strong>${yes(g.playerModes?.localCoop)}</strong></div><div><label>ONLINE CO-OP</label><strong>${yes(g.playerModes?.onlineCoop)}</strong></div><div><label>WINDOWS TỐI THIỂU</label><strong>${esc(g.storage?.windowsMinimumDisplay||'Chưa có dữ liệu')}</strong></div></div><div class="viethoa-section" id="viethoa-section"><div class="viethoa-header"><div class="viethoa-title-group"><span class="viethoa-flag">🇻🇳</span><h3>Bản dịch Tiếng Việt (Việt Hóa)</h3></div><div class="viethoa-header-actions"><button type="button" class="viethoa-config-trigger" id="btn-viethoa-config" title="Cấu hình nguồn tra cứu Việt Hóa">⚙ Cấu hình nguồn</button></div></div><div class="viethoa-search-bar"><div class="viethoa-input-wrap"><input type="text" id="viethoa-search-input" value="${esc(cleanTitleForSearch(g.name))}" placeholder="Tên game để tìm Việt Hóa…" aria-label="Tên game tìm Việt Hóa"><button type="button" class="viethoa-clear-btn" id="viethoa-input-clear" title="Xóa từ khóa">×</button></div><select id="viethoa-source-select" aria-label="Chọn nguồn tìm kiếm Việt Hóa"></select><button type="button" class="button primary viethoa-search-btn" id="btn-run-viethoa-search">🔍 Tìm kiếm</button></div><div id="viethoa-results-container" class="viethoa-results-container"></div><div id="viethoa-config-panel" class="viethoa-config-panel" hidden><div class="viethoa-config-header"><h4>⚙ Cấu hình nguồn tìm kiếm Việt Hóa</h4><button type="button" class="viethoa-config-close" id="btn-viethoa-config-close">✕</button></div><p class="viethoa-config-tip">Bạn có thể cấu hình URL API tìm kiếm trả về danh sách JSON (mặc định: <code>https://theredteam.vn/list-search.php?q=</code>).</p><div id="viethoa-sources-list" class="viethoa-sources-list"></div><form id="viethoa-add-source-form" class="viethoa-add-form"><div class="viethoa-form-row"><input type="text" id="new-source-name" placeholder="Tên nguồn (vd: The Red Team)" required><input type="url" id="new-source-search" placeholder="URL tìm kiếm (vd: https://theredteam.vn/list-search.php?q=)" required></div><div class="viethoa-form-row"><input type="url" id="new-source-base" placeholder="Base URL bài viết (vd: https://theredteam.vn/)" required><button type="submit" class="button primary">＋ Thêm nguồn</button></div></form><div class="viethoa-config-actions"><button type="button" class="button ghost" id="btn-reset-viethoa-sources">Khôi phục mặc định</button></div></div></div><h3>Về trò chơi</h3><div class="language-note">${hasVi?(vi.status==='reviewed'?'Bản tiếng Việt đã duyệt.':'Bản dịch tiếng Việt tham khảo, chưa được duyệt.'):'Mô tả gốc từ Steam. Bản tiếng Việt đang được bổ sung.'}${c.status==='pending_collection'?' Mô tả chi tiết và media đang được thu thập.':''}${c.identityStatus==='needs_verification'?' Liên kết tên game với App ID cần được xác minh thêm.':''}</div><p class="description-text">${esc(description||'Chưa có mô tả công khai cho trò chơi này.')}</p>${hasVi&&en.detailedDescription?`<details><summary class="text-button">Xem mô tả gốc tiếng Anh</summary><p class="description-text">${esc(en.detailedDescription)}</p></details>`:''}<h3>Ảnh gameplay <span class="text-button">${allShots.length} ảnh</span></h3>${allShots.length?`<div class="gallery" id="gameplay-gallery">${allShots.map((s,i)=>`<button type="button" class="gallery-item" data-view-shot="${i}" aria-label="Xem ảnh ${i+1} của ${esc(g.name)}">${image(s.thumbnailUrl||s.url,`${g.name} — ảnh ${i+1}`,'loading="lazy"')}<span class="gallery-zoom-badge">🔍 Phóng to</span></button>`).join('')}</div>`:'<p class="source-note">Chưa có ảnh gameplay trong dữ liệu đã thu thập.</p>'}${m.images?.some(i=>i.role==='description')?`<h3>Hình ảnh giới thiệu</h3><div class="gallery">${m.images.filter(i=>i.role==='description').map((img,i)=>`<button type="button" class="gallery-item" data-view-desc-img="${i}" aria-label="Xem ảnh giới thiệu ${i+1}">${image(img.url,img.alt||g.name,'loading="lazy"')}<span class="gallery-zoom-badge">🔍 Phóng to</span></button>`).join('')}</div>`:''}<h3>Trailer & video</h3>${m.videos?.length?`<p class="source-note">Chọn trailer để phát. Video giữ nguyên âm thanh và phụ đề từ nguồn Steam.</p><div id="video-player"></div><div class="video-list">${m.videos.map((v,i)=>`<button class="video-link" data-play-video="${i}">${image(v.thumbnailUrl,v.name||'Trailer','loading="lazy"')}<span>▶</span>${esc(v.name||'Xem trailer')}</button>`).join('')}</div>`:'<p class="source-note">Chưa có video trong dữ liệu đã thu thập.</p>'}<p class="source-note">Nhà phát triển: ${esc(g.sourceProfile?.developers?.join(', ')||'Chưa có dữ liệu')}<br>Nền tảng: ${esc((g.platforms||[]).join(', ')||'Chưa có dữ liệu')}<br>Ảnh và video thuộc chủ sở hữu tương ứng. Dữ liệu cập nhật từ JSON thư viện${c.fetchedAt?' · '+new Date(c.fetchedAt).toLocaleDateString('vi-VN'):''}.</p></div>`;$('#detail-cover').style.backgroundImage=`url(${JSON.stringify(safeUrl(cover))})`;imageFallbacks(dialog);dialog.scrollTop=0;const steamBtn=dialog.querySelector('a[href^="steam://"]');if(steamBtn&&document.body.classList.contains('gamepad-mode')){setTimeout(()=>{steamBtn.focus();document.querySelectorAll('.gamepad-focus').forEach(el=>el.classList.remove('gamepad-focus'));steamBtn.classList.add('gamepad-focus');},30);}initViethoaSection(g);}
+function renderDetail(g){activeGame=g;const c=g.content||{},m=c.media||{},vi=c.locales?.vi||{},en=c.locales?.en||{};const hasVi=['translated','reviewed'].includes(vi.status)&&Boolean(vi.detailedDescription||vi.shortDescription);const text=hasVi?vi:en;const description=text.detailedDescription||text.shortDescription||g.sourceProfile?.shortDescription;const shots=m.screenshots||[];const cover=shots[0]?.url||m.images?.find(i=>i.role==='header')?.url||g.imageUrl;const allShots=shots.length?shots:(cover?[{thumbnailUrl:cover,url:cover}]:[]);const yes=v=>v===true?'Có':v===false?'Không':'Chưa xác định';const control={full:'Đầy đủ',partial:'Một phần',unknown:'Chưa xác định'}[g.controllerSupport]||'Chưa xác định';const labels=[...(g.genres||[]),...(g.steamTags||[])].filter((v,i,a)=>a.indexOf(v)===i).slice(0,12),status=gameStatuses[g.id]||'';const isInstalled=installedAppIds.has(String(g.steamAppId));$('#detail-inner').innerHTML=`<button class="detail-close" data-close aria-label="Đóng chi tiết">×</button><div class="detail-cover" id="detail-cover"></div><div class="detail-content"><div class="eyebrow orange">HỒ SƠ GAME · STEAM ${esc(g.steamAppId)}</div><h2>${esc(g.name)}</h2><div class="detail-tags">${labels.map(t=>`<span>${esc(tagLabel(t))}</span>`).join('')}</div><div class="detail-actions">${isInstalled?`<a class="button primary play-button" href="steam://run/${esc(g.steamAppId)}"><span class="play-icon">▶</span> CHƠI NGAY (Steam)</a><a class="button ghost" href="${esc(steamAppUrl(g.steamAppId))}">Mở trang Steam</a>`:`<a class="button primary" href="${esc(steamAppUrl(g.steamAppId))}">Mở trong ứng dụng Steam</a>`}${allShots.length?`<button type="button" class="button ghost gallery-open-btn" data-open-gallery aria-label="Xem ${allShots.length} ảnh gameplay"><span class="gallery-icon">🖼</span> Xem ảnh (${allShots.length})</button>`:''}</div>${isInstalled?'<div class="installed-banner">✔ Trò chơi đã được cài đặt sẵn trên máy tính của bạn</div>':''}<div class="detail-facts"><div><label>HỖ TRỢ TAY CẦM</label><strong>${control}</strong></div><div><label>LOCAL CO-OP</label><strong>${yes(g.playerModes?.localCoop)}</strong></div><div><label>ONLINE CO-OP</label><strong>${yes(g.playerModes?.onlineCoop)}</strong></div><div><label>WINDOWS TỐI THIỂU</label><strong>${esc(g.storage?.windowsMinimumDisplay||'Chưa có dữ liệu')}</strong></div></div><div class="viethoa-section" id="viethoa-section"><div class="viethoa-header"><div class="viethoa-title-group"><span class="viethoa-flag">🇻🇳</span><h3>Bản dịch Tiếng Việt (Việt Hóa)</h3></div><div class="viethoa-header-actions"><button type="button" class="viethoa-config-trigger" id="btn-viethoa-config" title="Cấu hình nguồn tra cứu Việt Hóa">⚙ Cấu hình nguồn</button></div></div><div class="viethoa-search-bar"><div class="viethoa-input-wrap"><input type="text" id="viethoa-search-input" value="${esc(cleanTitleForSearch(g.name))}" placeholder="Tên game để tìm Việt Hóa…" aria-label="Tên game tìm Việt Hóa"><button type="button" class="viethoa-clear-btn" id="viethoa-input-clear" title="Xóa từ khóa">×</button></div><button type="button" class="button primary viethoa-search-btn" id="btn-run-viethoa-search">🔍 Tìm kiếm</button></div><div id="viethoa-results-container" class="viethoa-results-container"></div><div id="viethoa-config-panel" class="viethoa-config-panel" hidden><div class="viethoa-config-header"><h4>⚙ Cấu hình nguồn tìm kiếm Việt Hóa</h4><button type="button" class="viethoa-config-close" id="btn-viethoa-config-close">✕</button></div><p class="viethoa-config-tip">Bạn có thể cấu hình URL API tìm kiếm trả về danh sách JSON (mặc định: <code>https://theredteam.vn/list-search.php?q=</code>).</p><div id="viethoa-sources-list" class="viethoa-sources-list"></div><form id="viethoa-add-source-form" class="viethoa-add-form"><div class="viethoa-form-row"><input type="text" id="new-source-name" placeholder="Tên nguồn (vd: The Red Team)" required><input type="url" id="new-source-search" placeholder="URL tìm kiếm (vd: https://theredteam.vn/list-search.php?q=)" required></div><div class="viethoa-form-row"><input type="url" id="new-source-base" placeholder="Base URL bài viết (vd: https://theredteam.vn/)" required><button type="submit" class="button primary">＋ Thêm nguồn</button></div></form><div class="viethoa-config-actions"><button type="button" class="button ghost" id="btn-reset-viethoa-sources">Khôi phục mặc định</button></div></div></div><h3>Về trò chơi</h3><div class="language-note">${hasVi?(vi.status==='reviewed'?'Bản tiếng Việt đã duyệt.':'Bản dịch tiếng Việt tham khảo, chưa được duyệt.'):'Mô tả gốc từ Steam. Bản tiếng Việt đang được bổ sung.'}${c.status==='pending_collection'?' Mô tả chi tiết và media đang được thu thập.':''}${c.identityStatus==='needs_verification'?' Liên kết tên game với App ID cần được xác minh thêm.':''}</div><p class="description-text">${esc(description||'Chưa có mô tả công khai cho trò chơi này.')}</p>${hasVi&&en.detailedDescription?`<details><summary class="text-button">Xem mô tả gốc tiếng Anh</summary><p class="description-text">${esc(en.detailedDescription)}</p></details>`:''}<h3>Ảnh gameplay <span class="text-button">${allShots.length} ảnh</span></h3>${allShots.length?`<div class="gallery" id="gameplay-gallery">${allShots.map((s,i)=>`<button type="button" class="gallery-item" data-view-shot="${i}" aria-label="Xem ảnh ${i+1} của ${esc(g.name)}">${image(s.thumbnailUrl||s.url,`${g.name} — ảnh ${i+1}`,'loading="lazy"')}<span class="gallery-zoom-badge">🔍 Phóng to</span></button>`).join('')}</div>`:'<p class="source-note">Chưa có ảnh gameplay trong dữ liệu đã thu thập.</p>'}${m.images?.some(i=>i.role==='description')?`<h3>Hình ảnh giới thiệu</h3><div class="gallery">${m.images.filter(i=>i.role==='description').map((img,i)=>`<button type="button" class="gallery-item" data-view-desc-img="${i}" aria-label="Xem ảnh giới thiệu ${i+1}">${image(img.url,img.alt||g.name,'loading="lazy"')}<span class="gallery-zoom-badge">🔍 Phóng to</span></button>`).join('')}</div>`:''}<h3>Trailer & video</h3>${m.videos?.length?`<p class="source-note">Chọn trailer để phát. Video giữ nguyên âm thanh và phụ đề từ nguồn Steam.</p><div id="video-player"></div><div class="video-list">${m.videos.map((v,i)=>`<button class="video-link" data-play-video="${i}">${image(v.thumbnailUrl,v.name||'Trailer','loading="lazy"')}<span>▶</span>${esc(v.name||'Xem trailer')}</button>`).join('')}</div>`:'<p class="source-note">Chưa có video trong dữ liệu đã thu thập.</p>'}<p class="source-note">Nhà phát triển: ${esc(g.sourceProfile?.developers?.join(', ')||'Chưa có dữ liệu')}<br>Nền tảng: ${esc((g.platforms||[]).join(', ')||'Chưa có dữ liệu')}<br>Ảnh và video thuộc chủ sở hữu tương ứng. Dữ liệu cập nhật từ JSON thư viện${c.fetchedAt?' · '+new Date(c.fetchedAt).toLocaleDateString('vi-VN'):''}.</p></div>`;$('#detail-cover').style.backgroundImage=`url(${JSON.stringify(safeUrl(cover))})`;imageFallbacks(dialog);dialog.scrollTop=0;const steamBtn=dialog.querySelector('a[href^="steam://"]');if(steamBtn&&document.body.classList.contains('gamepad-mode')){setTimeout(()=>{steamBtn.focus();document.querySelectorAll('.gamepad-focus').forEach(el=>el.classList.remove('gamepad-focus'));steamBtn.classList.add('gamepad-focus');},30);}initViethoaSection(g);}
 async function openSteamUrl(url,linkEl){if(linkEl){const orig=linkEl.dataset.origText||linkEl.textContent;linkEl.dataset.origText=orig;linkEl.classList.add('steam-launching');linkEl.textContent='Đang mở Steam…';setTimeout(()=>{linkEl.textContent=orig;linkEl.classList.remove('steam-launching');},1800);}try{const res=await fetch(`/api/open-steam?url=${encodeURIComponent(url)}`,{cache:'no-store'});if(res.ok){const data=await res.json();if(data?.ok)return;}}catch(_){}try{window.location.assign(url);}catch(_){try{window.location.href=url;}catch(_){}}}
 
 function openLightbox(images,index,triggerEl){
@@ -323,8 +329,7 @@ document.addEventListener('click',event=>{
   if(viethoaBtn){
     event.preventDefault();
     const q=$('#viethoa-search-input')?.value||'';
-    const srcId=$('#viethoa-source-select')?.value||'theredteam';
-    runViethoaSearch(q,srcId);
+    runViethoaSearch(q);
     return;
   }
   const clearBtn=event.target.closest('#viethoa-input-clear');
@@ -352,16 +357,12 @@ document.addEventListener('click',event=>{
     if(!list.length)list=[...DEFAULT_VIETHOA_SOURCES];
     saveViethoaSources(list);
     renderViethoaSourcesList();
-    const sel=$('#viethoa-source-select');
-    if(sel){sel.innerHTML=list.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join('');}
     return;
   }
   const rstSources=event.target.closest('#btn-reset-viethoa-sources');
   if(rstSources){
     saveViethoaSources([...DEFAULT_VIETHOA_SOURCES]);
     renderViethoaSourcesList();
-    const sel=$('#viethoa-source-select');
-    if(sel){sel.innerHTML=DEFAULT_VIETHOA_SOURCES.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join('');}
     return;
   }
   const retryBtn=event.target.closest('[data-viethoa-retry]');
@@ -369,8 +370,7 @@ document.addEventListener('click',event=>{
     const kw=retryBtn.dataset.viethoaRetry;
     const inp=$('#viethoa-search-input');
     if(inp)inp.value=kw;
-    const srcId=$('#viethoa-source-select')?.value||'theredteam';
-    runViethoaSearch(kw,srcId);
+    runViethoaSearch(kw);
     return;
   }
   const steamLink=event.target.closest('a[href^="steam://"]');
@@ -470,8 +470,7 @@ document.addEventListener('keydown',event=>{
   if(event.target.matches('#viethoa-search-input')&&event.key==='Enter'){
     event.preventDefault();
     const q=event.target.value;
-    const srcId=$('#viethoa-source-select')?.value||'theredteam';
-    runViethoaSearch(q,srcId);
+    runViethoaSearch(q);
     return;
   }
   const lb=$('#lightbox');
@@ -485,10 +484,6 @@ document.addEventListener('keydown',event=>{
   }
 });
 document.addEventListener('change',event=>{
-  if(event.target.matches('#viethoa-source-select')){
-    const q=$('#viethoa-search-input')?.value||'';
-    runViethoaSearch(q,event.target.value);
-  }
   if(event.target.matches('[data-game-status]')){
     const id=event.target.dataset.gameStatus,value=event.target.value;
     if(value)gameStatuses[id]=value;else delete gameStatuses[id];
@@ -509,15 +504,11 @@ document.addEventListener('submit',event=>{
       list.push({id:newId,name,searchUrl:sUrl,baseUrl:bUrl});
       saveViethoaSources(list);
       renderViethoaSourcesList();
-      const sel=$('#viethoa-source-select');
-      if(sel){
-        sel.innerHTML=list.map(s=>`<option value="${esc(s.id)}" ${s.id===newId?'selected':''}>${esc(s.name)}</option>`).join('');
-      }
       $('#new-source-name').value='';
       $('#new-source-search').value='';
       $('#new-source-base').value='';
       const q=$('#viethoa-search-input')?.value||'';
-      runViethoaSearch(q,newId);
+      runViethoaSearch(q);
     }
   }
 });
