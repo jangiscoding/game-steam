@@ -256,7 +256,7 @@ body.welcome-active {
   inset: 0;
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 48%, #ff663627 0, #ff663609 24%, transparent 53%),
+    radial-gradient(circle at 50% 48%, var(--neon-primary-glow, rgba(255, 102, 54, 0.15)) 0, transparent 53%),
     linear-gradient(145deg, #060809, #0d1011 56%, #050607);
   display: grid;
   place-items: center;
@@ -272,7 +272,7 @@ body.welcome-active {
   width: min(78vw, 850px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, #ff875425 0 1%, #ff663610 21%, transparent 65%);
+  background: radial-gradient(circle, var(--neon-secondary-glow, rgba(0, 240, 255, 0.15)) 0 1%, var(--neon-primary-glow, rgba(255, 102, 54, 0.08)) 21%, transparent 65%);
   filter: blur(10px);
   animation: welcome-breathe 2.7s ease-in-out infinite;
 }
@@ -319,7 +319,7 @@ body.welcome-active {
   height: 154px;
   display: grid;
   place-items: center;
-  filter: drop-shadow(0 0 32px #ff66365c);
+  filter: drop-shadow(0 0 32px var(--neon-primary-glow, rgba(255, 102, 54, 0.6)));
   animation: welcome-arrive 1.05s cubic-bezier(.16,1,.3,1) both;
 }
 
@@ -327,17 +327,17 @@ body.welcome-active {
   content: '';
   position: absolute;
   inset: 27px;
-  border: 1px solid #ffb49580;
+  border: 1px solid var(--neon-secondary, #00f0ff);
   border-radius: 34px;
-  background: linear-gradient(145deg, #ff7b49, #e34518);
-  box-shadow: inset 0 1px #fff7, inset 0 -18px 30px #8d220d45, 0 0 55px #ff66365c;
+  background: linear-gradient(145deg, var(--neon-primary, #ff7b49), var(--neon-secondary, #00f0ff));
+  box-shadow: inset 0 1px #fff7, inset 0 -18px 30px rgba(0, 0, 0, 0.5), 0 0 55px var(--neon-primary-glow, rgba(255, 102, 54, 0.6));
   transform: rotate(45deg);
 }
 
 .welcome-mark strong {
   position: relative;
   z-index: 2;
-  color: #0d0f10;
+  color: var(--neon-primary-text, #0d0f10);
   font: 800 68px/1 'Barlow Condensed', Arial, sans-serif;
   text-shadow: 0 1px #ffffff5c;
 }
@@ -346,8 +346,8 @@ body.welcome-active {
   position: absolute;
   inset: 3px;
   border: 1px solid transparent;
-  border-top-color: #ff8156;
-  border-right-color: #ff663638;
+  border-top-color: var(--neon-primary, #ff8156);
+  border-right-color: var(--neon-primary-glow, rgba(255, 102, 54, 0.3));
   border-radius: 50%;
   animation: welcome-spin 2.4s linear infinite;
 }
@@ -361,14 +361,15 @@ body.welcome-active {
   height: 6px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 0 13px 4px #ff6636;
+  box-shadow: 0 0 13px 4px var(--neon-primary, #ff6636);
 }
 
 .welcome-orbit.secondary {
   inset: 17px;
   border-top-color: transparent;
-  border-right-color: #ffffff2e;
-  border-bottom-color: #ff9b7738;
+  border-right-color: rgba(255, 255, 255, 0.18);
+  border-bottom-color: var(--neon-secondary, #00f0ff);
+  border-left-color: var(--neon-secondary-glow, rgba(0, 240, 255, 0.3));
   animation-direction: reverse;
   animation-duration: 3.2s;
 }
@@ -383,10 +384,11 @@ body.welcome-active {
 }
 
 .welcome-copy > span {
-  color: #ff8e67;
+  color: var(--neon-secondary, #00f0ff);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: .36em;
+  text-shadow: 0 0 10px var(--neon-secondary-glow, rgba(0, 240, 255, 0.5));
 }
 
 .welcome-copy h1 {
@@ -421,7 +423,8 @@ body.welcome-active {
   display: block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, #ff6636 18%, #ffd0bf 50%, #ff6636 82%, transparent);
+  background: linear-gradient(90deg, transparent, var(--neon-primary, #ff6636) 18%, #ffffff 50%, var(--neon-secondary, #00f0ff) 82%, transparent);
+  box-shadow: 0 0 10px var(--neon-primary-glow, rgba(255, 102, 54, 0.6));
   transform: translateX(-100%);
   animation: welcome-load 2.65s .65s cubic-bezier(.22,.68,.2,1) forwards;
 }
@@ -440,7 +443,8 @@ body.welcome-active {
 
 .welcome-skip:hover,
 .welcome-skip:focus-visible {
-  color: #d9dcdd;
+  color: var(--neon-secondary, #00f0ff);
+  text-shadow: 0 0 8px var(--neon-secondary-glow, rgba(0, 240, 255, 0.6));
 }
 
 .welcome-particles i {
@@ -450,9 +454,14 @@ body.welcome-active {
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: #ff966f;
-  box-shadow: 0 0 10px #ff6636;
+  background: var(--neon-primary, #ff966f);
+  box-shadow: 0 0 10px var(--neon-primary, #ff6636);
   animation: welcome-particle 2.8s ease-out infinite;
+}
+
+.welcome-particles i:nth-child(even) {
+  background: var(--neon-secondary, #00f0ff);
+  box-shadow: 0 0 10px var(--neon-secondary, #00f0ff);
 }
 
 .welcome-particles i:nth-child(2) { --x: 28vw; --y: -20vh; animation-delay: .35s; }
@@ -668,8 +677,32 @@ body.welcome-active {
 /* --- Genre Chips Full Display --- */
 .genre-chips {
   display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 8px !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.genre-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.genre-chips-row.special-row {
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 760px) {
+  .genre-chips {
+    overflow: visible !important;
+  }
+  .genre-chips-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .chip small {
@@ -1902,9 +1935,8 @@ dialog#lightbox::backdrop {
    ========================================================================== */
 .library-steam-meta {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
+  align-items: center;
+  gap: 10px;
 }
 
 .library-steam-label {
@@ -1920,32 +1952,27 @@ dialog#lightbox::backdrop {
   gap: 10px;
 }
 
-.library-steam-sub #updated-at {
-  font-size: 11px;
-  color: #64748b;
-}
-
 .steam-update-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.35);
-  color: #00f0ff;
+  background: var(--neon-secondary-glow, rgba(0, 240, 255, 0.12));
+  border: 1px solid var(--neon-secondary, #00f0ff);
+  color: var(--neon-secondary, #00f0ff);
   padding: 3px 10px;
   border-radius: 999px;
   font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 10px var(--neon-secondary-glow, rgba(0, 240, 255, 0.1));
 }
 
 .steam-update-btn:hover {
-  background: rgba(0, 240, 255, 0.22);
-  border-color: #00f0ff;
-  color: #ffffff;
-  box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+  background: var(--neon-secondary, #00f0ff);
+  border-color: var(--neon-secondary, #00f0ff);
+  color: var(--neon-primary-text, #101112);
+  box-shadow: 0 0 16px var(--neon-secondary-glow, rgba(0, 240, 255, 0.5));
   transform: translateY(-1px);
 }
 

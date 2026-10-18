@@ -225,6 +225,11 @@ Jang Play tích hợp hệ thống kiểm tra và cập nhật game mới trực
     8. *Quantum Violet:* Electric Violet (`#a855f7`) + Neon Cyan (`#00f0ff`)
   - Chống trùng màu liên tiếp qua `sessionStorage.getItem('jang_neon_theme')`.
   - Điều khiển tập trung qua các biến CSS: `--neon-primary`, `--neon-secondary`, `--neon-primary-glow`, `--neon-secondary-glow`, `--neon-primary-text`, và `--orange`.
+  - Màn hình chào (`.welcome-screen`): Logo chữ J, vòng quay orbit, vệt tải loader, quầng sáng aura và hạt particle đồng bộ 100% theo màu chủ đạo ngẫu nhiên trên mỗi lần F5.
+- **Bố cục Phân loại & Dữ liệu Steam:**
+  - Bỏ hiển thị chuỗi thời gian dưới "Dữ liệu từ Steam", gom nhãn và nút "↻ Cập nhật" trên một hàng gọn gàng.
+  - Phân tách danh mục chips thành 2 hàng độc lập (`.genre-chips-row`): Hàng 1 cho Bộ sưu tập nhanh (*Ngôn ngữ tiếng Việt*, *Có Việt Hóa*, *Game đã cài trên máy*); Hàng 2 rớt dòng riêng biệt cho các thể loại game (*Game độc lập*, *Hành động*, *Phiêu lưu*, *Chiến thuật*...).
+  - Tay cầm điều hướng mượt mà giữa 2 tầng chip (Lên/Xuống giữa 2 tầng, Trái/Phải di chuyển từng chip và sang sidebar khi ở biên trái).
 - **Cơ chế điều khiển Gamepad Analog chống rung lắc (Oscillation Fix):**
   - Hàm `navigateInGrid` tiến bước dứt khoát theo dòng (`currIndex + columns`), không dùng lại card giả lập khi thẻ hiện tại còn nằm trong DOM.
   - Hàm `scrollCardIntoComfortView` sử dụng `behavior: 'auto'` (cuộn tức thì không lag) thay cho `smooth`, loại bỏ tình trạng kẹt hàng đợi animation khi gạt analog liên tục 180ms.

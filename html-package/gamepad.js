@@ -593,6 +593,10 @@
   function navigateInToolbar(active, direction) {
     if (direction === 'down') {
       if (active.closest('.genre-chips')) {
+        if (active.closest('.special-row')) {
+          generalSpatialMove('down');
+          return;
+        }
         const search = document.querySelector('#search');
         if (search) {
           focus(search);
@@ -615,8 +619,12 @@
     }
 
     if (direction === 'up') {
+      if (active.closest('.genres-row')) {
+        generalSpatialMove('up');
+        return;
+      }
       if (active.closest('.filterbar')) {
-        const chip = document.querySelector('.genre-chips .chip') || document.querySelector('.brand');
+        const chip = document.querySelector('.genre-chips .genres-row .chip') || document.querySelector('.genre-chips .chip') || document.querySelector('.brand');
         if (chip) {
           focus(chip);
           playSound('move');
@@ -627,10 +635,38 @@
     }
 
     if (direction === 'left') {
-      if (active.id === 'search' || active.closest('.genre-chips')) {
+      if (active.closest('.genre-chips')) {
+        const prevChip = active.previousElementSibling;
+        if (prevChip && prevChip.classList.contains('chip')) {
+          focus(prevChip);
+          playSound('move');
+          playHaptic('light');
+          return;
+        }
         const activeCollection = document.querySelector('#collections .collection.selected') || document.querySelector('#collections .collection');
         if (activeCollection) {
           focus(activeCollection);
+          playSound('move');
+          playHaptic('light');
+          return;
+        }
+      }
+      if (active.id === 'search') {
+        const activeCollection = document.querySelector('#collections .collection.selected') || document.querySelector('#collections .collection');
+        if (activeCollection) {
+          focus(activeCollection);
+          playSound('move');
+          playHaptic('light');
+          return;
+        }
+      }
+    }
+
+    if (direction === 'right') {
+      if (active.closest('.genre-chips')) {
+        const nextChip = active.nextElementSibling;
+        if (nextChip && nextChip.classList.contains('chip')) {
+          focus(nextChip);
           playSound('move');
           playHaptic('light');
           return;
