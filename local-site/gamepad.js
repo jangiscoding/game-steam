@@ -164,6 +164,68 @@
     });
   }
 
+  function isCardInViewport(card) {
+    if (!card || !card.isConnected) return false;
+    const el = card.closest('.game-card') || card;
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    return rect.top >= 80 && rect.bottom <= vh - 85;
+  }
+
+  function scrollCardIntoComfortView(element) {
+    if (!element) return;
+    const card = element.closest('.game-card') || element;
+    const rect = card.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const topSafe = 100;
+    const bottomSafe = vh - 100;
+
+    if (rect.top < topSafe) {
+      window.scrollBy({
+        top: rect.top - topSafe - 15,
+        behavior: 'smooth'
+      });
+    } else if (rect.bottom > bottomSafe) {
+      window.scrollBy({
+        top: rect.bottom - bottomSafe + 15,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  function getBestVisibleGameCard() {
+    const cards = [...document.querySelectorAll('#game-grid .game-open')];
+    if (!cards.length) return null;
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const topSafe = 90;
+    const bottomSafe = vh - 90;
+
+    const visibleCards = cards.filter(card => {
+      const rect = (card.closest('.game-card') || card).getBoundingClientRect();
+      const visibleHeight = Math.min(rect.bottom, bottomSafe) - Math.max(rect.top, topSafe);
+      return visibleHeight > 80;
+    });
+
+    if (visibleCards.length) {
+      visibleCards.sort((a, b) => {
+        const ra = (a.closest('.game-card') || a).getBoundingClientRect();
+        const rb = (b.closest('.game-card') || b).getBoundingClientRect();
+        if (Math.abs(ra.top - rb.top) > 40) return ra.top - rb.top;
+        return ra.left - rb.left;
+      });
+      return visibleCards[0];
+    }
+
+    const centerY = vh / 2;
+    cards.sort((a, b) => {
+      const ra = (a.closest('.game-card') || a).getBoundingClientRect();
+      const rb = (b.closest('.game-card') || b).getBoundingClientRect();
+      const midA = (ra.top + ra.bottom) / 2, midB = (rb.top + rb.bottom) / 2;
+      return Math.abs(midA - centerY) - Math.abs(midB - centerY);
+    });
+    return cards[0] || null;
+  }
+
   function focus(element) {
     if (!element) return;
     for (const sel of ['#tag-picker', '#genre-picker']) {
@@ -173,11 +235,14 @@
     document.querySelectorAll('.gamepad-focus').forEach(el => el.classList.remove('gamepad-focus'));
     element.classList.add('gamepad-focus');
     element.focus({preventScroll: true});
-    element.scrollIntoView({block: 'nearest', inline: 'nearest', behavior: 'smooth'});
-    lastFocused = element;
-    if (element.classList.contains('game-open') && element.dataset.game) {
-      lastFocusedGameId = element.dataset.game;
+
+    if (element.classList.contains('game-open') || element.closest('.game-card')) {
+      scrollCardIntoComfortView(element);
+      lastFocusedGameId = element.dataset?.game || element.closest('.game-card')?.querySelector('.game-open')?.dataset?.game;
+    } else {
+      element.scrollIntoView({block: 'nearest', inline: 'nearest', behavior: 'smooth'});
     }
+    lastFocused = element;
   }
 
   function enableMode() {
@@ -185,14 +250,16 @@
     document.body.classList.add('gamepad-mode');
     getAudio();
     if (!candidates().includes(document.activeElement)) {
-      focus(
-        currentDialog()?.querySelector('a[href^="steam://"], .detail-actions .button.primary') ||
+      let candidate = currentDialog()?.querySelector('a[href^="steam://"], .detail-actions .button.primary') ||
         currentDialog()?.querySelector(ACTIONABLE) ||
-        welcomeScreen()?.querySelector(ACTIONABLE) ||
-        (lastFocusedGameId && document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`)) ||
-        document.querySelector('.game-open') ||
-        candidates()[0]
-      );
+        welcomeScreen()?.querySelector(ACTIONABLE);
+      if (!candidate && lastFocusedGameId) {
+        const match = document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`);
+        if (match && isCardInViewport(match)) candidate = match;
+      }
+      if (!candidate) candidate = getBestVisibleGameCard();
+      if (!candidate) candidate = candidates()[0];
+      focus(candidate);
     } else {
       focus(document.activeElement);
     }
@@ -288,6 +355,13 @@
   }
 
   function navigateInGrid(active, direction) {
+    if (!isCardInViewport(active)) {
+      const visibleCard = getBestVisibleGameCard();
+      if (visibleCard && visibleCard !== active) {
+        active = visibleCard;
+        focus(active);
+      }
+    }
     const gameId = active.dataset.game;
     const filtered = window.__archive?.getFiltered ? window.__archive.getFiltered() : [];
     const columns = window.__archive?.getColumns ? window.__archive.getColumns() : 4;
@@ -351,11 +425,15 @@
 
   /* --- Navigation in Left Sidebar (Collections & Steam Tags) --- */
   function jumpToGrid() {
-    const firstGame = (lastFocusedGameId && document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`)) ||
-      document.querySelector('#game-grid .game-open') ||
-      document.querySelector('#search');
-    if (firstGame) {
-      focus(firstGame);
+    let target = null;
+    if (lastFocusedGameId) {
+      const match = document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`);
+      if (match && isCardInViewport(match)) target = match;
+    }
+    if (!target) target = getBestVisibleGameCard();
+    if (!target) target = document.querySelector('#search');
+    if (target) {
+      focus(target);
       playSound('move');
       playHaptic('light');
     }
@@ -710,7 +788,7 @@
     if (!keyboard?.open) return;
     keyboard.close();
     keyboardTarget = null;
-    focus(selectedBeforeKeyboard?.isConnected ? selectedBeforeKeyboard : document.querySelector('.game-open'));
+    focus(selectedBeforeKeyboard?.isConnected ? selectedBeforeKeyboard : (getBestVisibleGameCard() || candidates()[0]));
   }
 
   function openKeyboard(target) {
@@ -728,7 +806,7 @@
         if (!key) return;
         if (key === 'close' || key === 'done') {
           closeKeyboard();
-          if (key === 'done') focus(document.querySelector('.game-open'));
+          if (key === 'done') focus(getBestVisibleGameCard() || candidates()[0]);
           return;
         }
         editSearch(key);
@@ -762,6 +840,13 @@
     if (!element || element === document.body || !element.isConnected) {
       element = document.querySelector('.gamepad-focus') || (lastFocused && lastFocused.isConnected ? lastFocused : null);
       if (element) {
+        focus(element);
+      }
+    }
+    if (element?.classList.contains('game-open') && !isCardInViewport(element)) {
+      const best = getBestVisibleGameCard();
+      if (best) {
+        element = best;
         focus(element);
       }
     }
@@ -895,8 +980,14 @@
     const detail = document.querySelector('#detail[open]');
     if (detail) {
       detail.querySelector('[data-close]')?.click();
-      const target = returnFocus?.isConnected ? returnFocus : (lastFocusedGameId ? document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`) : null);
-      focus(target || document.querySelector('.game-open') || candidates()[0]);
+      let target = null;
+      if (returnFocus?.isConnected && isCardInViewport(returnFocus)) target = returnFocus;
+      else if (lastFocusedGameId) {
+        const match = document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`);
+        if (match && isCardInViewport(match)) target = match;
+      }
+      if (!target) target = getBestVisibleGameCard();
+      focus(target || candidates()[0]);
       playSound('back');
       playHaptic('light');
       return;
@@ -934,10 +1025,8 @@
     playSound('move');
     playHaptic('light');
     setTimeout(() => {
-      const firstGame = (lastFocusedGameId && document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`)) ||
-        document.querySelector('.game-open') ||
-        candidates()[0];
-      focus(firstGame);
+      const bestGame = getBestVisibleGameCard() || candidates()[0];
+      if (bestGame) focus(bestGame);
     }, 50);
   }
 
@@ -949,7 +1038,7 @@
       resetBtn.click();
       announce('Đã xóa tất cả bộ lọc.');
       setTimeout(() => {
-        const first = document.querySelector('.game-open') || candidates()[0];
+        const first = getBestVisibleGameCard() || candidates()[0];
         if (first) focus(first);
       }, 60);
     }
@@ -1026,6 +1115,7 @@
           currentDialog().scrollBy(0, amount);
         } else {
           window.scrollBy(0, amount);
+          onAnalogScrollGrid();
         }
       }
 
@@ -1052,6 +1142,23 @@
     frame = requestAnimationFrame(poll);
   }
 
+  let analogScrollTimer = null;
+  function onAnalogScrollGrid() {
+    clearTimeout(analogScrollTimer);
+    analogScrollTimer = setTimeout(() => {
+      if (!gamepadMode || currentDialog() || keyboard?.open || welcomeScreen()) return;
+      const active = document.activeElement;
+      const currentCard = active?.classList.contains('game-open') ? active : document.querySelector('.gamepad-focus.game-open');
+      if (currentCard && !isCardInViewport(currentCard)) {
+        const best = getBestVisibleGameCard();
+        if (best && best !== currentCard) {
+          focus(best);
+          playSound('move');
+        }
+      }
+    }, 90);
+  }
+
   function start() {
     if (frame === null && !document.hidden) frame = requestAnimationFrame(poll);
   }
@@ -1060,7 +1167,7 @@
   window.addEventListener('gamepaddisconnected', start);
   window.addEventListener('focus', () => {
     if (gamepadMode) {
-      const target = (lastFocused && lastFocused.isConnected) ? lastFocused : (document.querySelector('.gamepad-focus') || document.querySelector('#detail[open] .button.primary') || candidates()[0]);
+      const target = (lastFocused && lastFocused.isConnected && isElementVisible(lastFocused)) ? lastFocused : (document.querySelector('.gamepad-focus') || document.querySelector('#detail[open] .button.primary') || getBestVisibleGameCard() || candidates()[0]);
       if (target) focus(target);
     }
     start();
@@ -1093,9 +1200,14 @@
     if (!gamepadMode || currentDialog() || keyboard?.open) return;
     if (lastFocusedGameId) {
       const match = document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`);
-      if (match && document.activeElement !== match) {
-        focus(match);
+      if (match && isCardInViewport(match)) {
+        if (document.activeElement !== match) focus(match);
+        return;
       }
+    }
+    const best = getBestVisibleGameCard();
+    if (best && document.activeElement !== best) {
+      focus(best);
     }
   });
 
@@ -1104,14 +1216,14 @@
     if (currentDialog() || keyboard?.open) return;
     if (lastFocusedGameId) {
       const match = document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`);
-      if (match) {
+      if (match && isCardInViewport(match)) {
         if (document.activeElement !== match) focus(match);
         return;
       }
     }
-    if (document.activeElement && candidates().includes(document.activeElement)) return;
-    const firstGame = document.querySelector('#game-grid .game-open');
-    if (firstGame) focus(firstGame);
+    if (document.activeElement && candidates().includes(document.activeElement) && isElementVisible(document.activeElement)) return;
+    const bestGame = getBestVisibleGameCard();
+    if (bestGame) focus(bestGame);
     else focus(candidates()[0]);
   }).observe(document.querySelector('main'), {childList: true, subtree: true});
 

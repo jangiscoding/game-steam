@@ -916,6 +916,27 @@ body.welcome-active {
 }
 
 /* ==========================================================================
+   Gamepad Safe Viewport & Scroll Margins (Never hide focused item)
+   ========================================================================== */
+html {
+  scroll-padding-top: 100px;
+  scroll-padding-bottom: 115px;
+}
+
+body.gamepad-mode {
+  scroll-padding-top: 100px;
+  scroll-padding-bottom: 115px;
+}
+
+.gamepad-mode .game-card {
+  scroll-margin: 105px 16px 115px 16px !important;
+}
+
+.gamepad-mode .collection {
+  scroll-margin: 90px 16px 90px 16px !important;
+}
+
+/* ==========================================================================
    Xbox Gamepad View Button & Reset Shortcut HUD
    ========================================================================== */
 .gamepad-bar .pad-view,
