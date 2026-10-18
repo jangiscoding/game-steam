@@ -21,3 +21,5 @@ exports/tag-attach.lock
 web-game-library/dist/
 *.pid
 .server.pid
+
+exports/language-cache/

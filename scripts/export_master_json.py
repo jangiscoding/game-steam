@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Export a tabbed JSON library; preserve custom game fields and custom tabs."""
+from library_data import load_library, save_library, atomic_write, encode
+
 import argparse
 import json
-import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 from export_local_controller_excel import GENRE_VI, unique_games
@@ -79,17 +80,15 @@ def main():
     parser.add_argument('--output',type=Path,default=ROOT/'data/game-library.json')
     parser.add_argument('--image-report',type=Path,default=ROOT/'exports/master-image-report.json')
     args = parser.parse_args()
-    previous = json.loads(args.output.read_text()) if args.output.exists() else None
+    previous = load_library(args.output) if args.output.exists() else None
     report = json.loads(args.image_report.read_text()) if args.image_report.exists() else {}
     result = build(json.loads(args.input.read_text()),report,previous)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     if args.output.exists():
         backups = ROOT/'exports/backups'
         backups.mkdir(parents=True,exist_ok=True)
-        shutil.copy2(args.output,backups/f'{args.output.stem}-{datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")}.json')
-    temporary = args.output.with_suffix('.tmp')
-    temporary.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    temporary.replace(args.output)
+        atomic_write(backups/f'{args.output.stem}-{datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")}.json', encode(previous))
+    save_library(args.output, result)
     print(f'Exported {len(result["games"])} games / {len(result["tabs"])} tabs: {args.output}')
 
 if __name__ == '__main__':

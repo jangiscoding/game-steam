@@ -113,7 +113,7 @@ See [MASTER-WORKBOOK.md](MASTER-WORKBOOK.md) for source data, generation scripts
 
 ## Master JSON library
 
-[`data/game-library.json`](data/game-library.json) contains `metadata`, `games`, and `tabs`. Each game has a stable input-record `id`; tabs store only `gameIds`, so a game may appear in several tabs without copying its full record. The base game-list tabs match the Excel lists, and additional `tag-*` tabs provide detailed Steam Tag categories. Excel's Mục lục and Dữ liệu chi tiết correspond to JSON metadata and each game's `sourceProfile`.
+[`data/game-library.json`](data/game-library.json) is a manifest containing `metadata`, `tabs`, and `gameFiles`. Full game records live in content-addressed `data/game-library-parts/*.json` shards of about 2 MiB each. Use `load_library` / `save_library` from `scripts/library_data.py` to read or update the logical library; they also accept the previous single-file format and validate shard counts and SHA-256 checksums. Keep the manifest and its shards together. Each game has a stable input-record `id`; tabs store only `gameIds`, so a game may appear in several tabs without copying its full record. The base game-list tabs match the Excel lists, and additional `tag-*` tabs provide detailed Steam Tag categories. Excel's Mục lục and Dữ liệu chi tiết correspond to JSON metadata and each game's `sourceProfile`.
 
 Run `npm run export:json` after installing `requirements-excel.txt`. The exporter accepts `--input`, `--output`, and `--image-report`. Unknown values remain `null`; controller/local play flags do not establish an exact player limit. `imageStatus` reflects the saved download report, not a live availability check. Full source profiles and source links are retained under `sourceProfile`.
 
@@ -164,3 +164,13 @@ The standalone [`local-site/`](local-site/README.md) folder includes HTML/CSS/Ja
 ## Double-click HTML package (no local server)
 
 [`html-package/index.html`](html-package/index.html) opens directly from the filesystem in Chrome/Edge, without Python or npm. Keep its sibling scripts and `data/` directory together. Classic scripts supply the index and lazy-loaded complete game records; the packaged application does not fetch local JSON. Rebuild with `npm run site:html:build`, or add `--zip /absolute/path/game-archive-html.zip` when invoking the Python builder directly. Online media still needs Internet, and file-origin gamepad/video permissions depend on the browser. See [the package guide](html-package/README.md).
+
+## Official Vietnamese language support
+
+Run `npm run languages:fetch` to collect every page of Steam Store's official `supportedlang=vietnamese` game search, then compare all library App IDs. Evidence is saved in `data/steam-languages/search-results.json`; per-app results are divided into 250-record `part-*.json` files. Requests are paced, cached for resumption, and back off on HTTP 429. Remove `exports/language-cache/search-*.json` before starting a fresh search snapshot. Use `npm run languages:attach` to rebuild library fields from saved evidence without contacting Steam.
+
+Each game has a boolean `supportsVietnamese` and a `vietnameseSupportStatus`. `listed` confirms membership in Steam's Vietnamese-language search. `not_listed` means Steam did not list it in the public `cc=us` search; it does not prove lack of support for unavailable, delisted, unreleased, or region-restricted games. `missing_app_id`, `unavailable`, `error`, and `pending` represent missing evidence. The boolean is `false` whenever support has not been confirmed. Optional `--method details --workers 2 --interval 1.6` checks individual `appdetails` language metadata; `success` means a direct successful check, whose boolean may be true or false.
+
+This flag describes Steam's declared in-game language support. It is separate from Vietnamese catalog descriptions and community translation patches. Confirmed games appear in the **Ngôn ngữ tiếng Việt** collection, accessible by mouse and gamepad. Rebuild with `npm run site:local:build` and `npm run site:html:build` after attaching data. Builders use the current `local-site` interface so rebuilding does not restore older templates.
+
+Run `python scripts/test_steam_languages.py` for language parsing, collection membership, data preservation, and shard integrity tests.

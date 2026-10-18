@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Collect complete popular Steam tags from Store pages and attach them safely."""
 
+from library_data import load_library, save_library
+
 import argparse
 import json
 import re
-import shutil
 import threading
 import time
 import urllib.error
@@ -135,7 +136,7 @@ def attach(library_path):
     lock_path.parent.mkdir(parents=True, exist_ok=True)
     with lock_path.open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
-        library = json.loads(library_path.read_text())
+        library = load_library(library_path)
         statuses = Counter()
         unique_tags = Counter()
         games_with_tags = 0
@@ -165,8 +166,8 @@ def attach(library_path):
         }
         backup = ROOT / "exports/backups" / f'game-library-tags-{datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")}.json'
         backup.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(library_path, backup)
-        atomic_json(library_path, library)
+        atomic_json(backup, load_library(library_path))
+        save_library(library_path, library)
         atomic_json(ROOT / "exports/tag-progress.json", library["metadata"]["steamTags"], pretty=True)
         print("Tags attached:", json.dumps(library["metadata"]["steamTags"], ensure_ascii=False), flush=True)
 
@@ -181,7 +182,7 @@ def main():
     library_path = ROOT / "data/game-library.json"
 
     if not args.attach_only:
-        library = json.loads(library_path.read_text())
+        library = load_library(library_path)
         ids = sorted({game["steamAppId"] for game in library["games"] if game.get("steamAppId")}, key=int)
         if args.limit is not None:
             ids = ids[:args.limit]

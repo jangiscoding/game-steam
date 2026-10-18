@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Package the catalog as classic local scripts: double-click HTML, no HTTP server."""
+from library_data import load_library
+
 import argparse
 import json
+import re
 import shutil
 import zipfile
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SUMMARY_FIELDS = ('id', 'steamAppId', 'name', 'imageUrl', 'genres', 'controllerSupport', 'platforms', 'playerModes', 'verificationStatus')
+SUMMARY_FIELDS = ('id', 'steamAppId', 'name', 'imageUrl', 'genres', 'controllerSupport', 'platforms', 'playerModes', 'verificationStatus', 'supportsVietnamese', 'vietnameseSupportStatus')
 
 
 def javascript_json(value):
@@ -21,19 +24,25 @@ def main():
     parser.add_argument('--output', type=Path, default=ROOT / 'html-package')
     parser.add_argument('--zip', type=Path, help='Optional download archive, kept outside the package folder')
     args = parser.parse_args()
-    source = json.loads(args.input.read_text(encoding='utf-8'))
+    source = load_library(args.input)
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=True)
-    assets = ROOT / 'web-game-library'
+    assets = ROOT / 'local-site'
     for name in ('styles.css', 'filters.css', 'gamepad.js', 'hls.min.js'):
         shutil.copy2(assets / name, out / name)
     html = (assets / 'index.html').read_text(encoding='utf-8')
-    html = html.replace('<script src="./app.js?v=13" defer>', '<script src="./file-data.js" defer></script><script src="./data/catalog.js" defer></script><script src="./app.js?v=13" defer>')
+    html = re.sub(r'(<script src="\./app\.js\?v=\d+" defer>)', '<script src="./file-data.js" defer></script><script src="./data/catalog.js" defer></script><script src="./data/extras.js" defer></script>'+r'\1', html)
     (out / 'index.html').write_text(html, encoding='utf-8')
     app = (assets / 'app.js').read_text(encoding='utf-8')
-    assert app.count('await fetch(') == 3, 'Data loader changed; review package adapter before rebuilding'
     (out / 'app.js').write_text(app.replace('await fetch(', 'await window.GameArchiveFiles.request(').replace("history.replaceState(null,'',", 'window.GameArchiveFiles.replaceHash('), encoding='utf-8')
     shutil.copy2(ROOT / 'scripts/file-data-loader.js', out / 'file-data.js')
+    (out / 'data').mkdir(parents=True, exist_ok=True)
+    extras = []
+    for name in ('theredteam.json', 'viethoa_games.json'):
+        shutil.copy2(assets / 'data' / name, out / 'data' / name)
+        value = json.loads((assets / 'data' / name).read_text(encoding='utf-8'))
+        extras.append('window.GameArchiveFiles.registerData(' + javascript_json('./data/' + name) + ',' + javascript_json(value) + ');')
+    (out / 'data/extras.js').write_text('\n'.join(extras), encoding='utf-8')
     data = out / 'data'
     (data / 'games').mkdir(parents=True, exist_ok=True)
     games = []

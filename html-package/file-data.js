@@ -3,6 +3,7 @@
   'use strict';
   const records = new Map();
   const pending = new Map();
+  const extraData = new Map();
   function loadGame(id) {
     if (records.has(id)) return Promise.resolve(records.get(id));
     if (pending.has(id)) return pending.get(id);
@@ -35,13 +36,15 @@
       if (!/^[a-zA-Z0-9-]+$/.test(id) || game?.id !== id) throw new Error('Invalid packaged game record');
       records.set(id, game);
     },
-    async request(path) {
+    registerData(path, value) { extraData.set(path, value); },
+    async request(path, options) {
+      if (extraData.has(path)) return {ok: true, json: async () => extraData.get(path)};
       if (path === './data/catalog.json') {
         if (!this.catalog) throw new Error('Thiếu danh sách game. Hãy giải nén đầy đủ thư mục data.');
         return {ok: true, json: async () => this.catalog};
       }
       const match = /^\.\/data\/games\/([a-zA-Z0-9-]+)\.json$/.exec(path);
-      if (!match) throw new Error('Unknown packaged data path');
+      if (!match) return fetch(path, options);
       const game = await loadGame(match[1]);
       return {ok: true, json: async () => game};
     }

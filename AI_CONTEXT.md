@@ -180,3 +180,11 @@ Jang Play tích hợp hệ thống phát hiện và tìm kiếm bản dịch ti�
 - **Phong cách:** Cyberpunk Neon, nền đen sâu (`#0a0d12`), viền phát quang Cyan (`#00f0ff`) và Cam lửa Neon (`#ff7700`).
 - **Không dùng viền trắng kép sắc nhọn** trên viền chọn tay cầm (chỉ dùng viền neon mềm mại phát sáng `gamepadNeonGlow`).
 - **Giao tiếp với người dùng:** Ngắn gọn, súc tích, chuyên nghiệp, phản hồi bằng tiếng Việt.
+
+## Ngôn ngữ tiếng Việt chính thức từ Steam
+
+- `supportsVietnamese` (boolean) và `vietnameseSupportStatus` nằm trên từng game, độc lập với mô tả dịch và bản Việt Hóa cộng đồng.
+- `scripts/enrich_steam_languages.py` đối chiếu toàn bộ danh mục với bộ lọc `supportedlang=vietnamese` của Steam; `listed` xác nhận hỗ trợ, `not_listed` là không xuất hiện trong kết quả công khai tại `cc=us`, chưa kết luận cho game đã gỡ/giới hạn khu vực.
+- Bằng chứng: `data/steam-languages/`, chia tối đa 250 App ID mỗi file. Mục giao diện mới: `language-vietnamese` / **Ngôn ngữ tiếng Việt**.
+- `data/game-library.json` nay là manifest; bản ghi đầy đủ nằm trong `data/game-library-parts/*.json` (~2 MiB/phần). Dùng `load_library` / `save_library` từ `scripts/library_data.py`, không đọc trực tiếp trường `games` từ manifest. Giữ manifest và các phần trong cùng lần commit.
+- Hai lệnh build dùng giao diện hiện hành tại `local-site/`. Bản `html-package` thêm adapter tải dữ liệu bằng script để chạy trực tiếp qua `file://`.

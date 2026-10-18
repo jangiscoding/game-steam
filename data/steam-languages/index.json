@@ -1,0 +1,37 @@
+{
+  "updatedAt": "2026-10-18T18:11:18.856829+00:00",
+  "checkedAt": "2026-10-18T18:11:17.924620+00:00",
+  "totalGames": 5262,
+  "uniqueApps": 5244,
+  "recordsByStatus": {
+    "not_listed": 4831,
+    "success": 215,
+    "listed": 216
+  },
+  "gamesSupportingVietnamese": 219,
+  "source": "Steam Vietnamese language search plus appdetails supported_languages (cc=us)",
+  "falseMeaning": "No confirmed official support; not_listed means absent from public Vietnamese-language search in cc=us, not proof for delisted or region-restricted apps.",
+  "chunks": [
+    "part-001.json",
+    "part-002.json",
+    "part-003.json",
+    "part-004.json",
+    "part-005.json",
+    "part-006.json",
+    "part-007.json",
+    "part-008.json",
+    "part-009.json",
+    "part-010.json",
+    "part-011.json",
+    "part-012.json",
+    "part-013.json",
+    "part-014.json",
+    "part-015.json",
+    "part-016.json",
+    "part-017.json",
+    "part-018.json",
+    "part-019.json",
+    "part-020.json",
+    "part-021.json"
+  ]
+}

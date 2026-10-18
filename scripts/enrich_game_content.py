@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Resumable official Steam text/media collection, with explicit locale status."""
+from library_data import load_library, save_library
+
 import argparse
 import json
 import re
@@ -148,7 +150,7 @@ def attach(library_path):
 
 
 def _attach_locked(library_path):
-    library=json.loads(library_path.read_text())
+    library=load_library(library_path)
     counts={}; image_count=video_count=0; vi_counts={}
     for game in library['games']:
         app=game.get('steamAppId')
@@ -171,10 +173,9 @@ def _attach_locked(library_path):
         video_count+=len(content.get('media',{}).get('videos',[]))
     library['metadata']['updatedAt']=now()
     library['metadata']['content']={'updatedAt':now(),'recordsByStatus':counts,'vietnameseByStatus':vi_counts,'screenshots':image_count,'videos':video_count,'defaultLocale':'vi','fallbackLocale':'en'}
-    import shutil
     backup=ROOT/'exports/backups'/f'game-library-content-{datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")}.json'
-    backup.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(library_path,backup)
-    atomic_json(library_path,library)
+    backup.parent.mkdir(parents=True,exist_ok=True);atomic_json(backup,load_library(library_path))
+    save_library(library_path,library)
     atomic_json(ROOT/'exports/content-progress.json',library['metadata']['content'])
     print('Content attached:',json.dumps(library['metadata']['content'],ensure_ascii=False),flush=True)
 
@@ -188,7 +189,7 @@ def main():
     args=parser.parse_args()
     path=ROOT/'data/game-library.json'
     if not args.attach_only:
-        library=json.loads(path.read_text())
+        library=load_library(path)
         # A cloned repository can resume from the content already in its master JSON.
         for game in library['games']:
             cached=game.get('content',{})

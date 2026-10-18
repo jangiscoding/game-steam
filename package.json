@@ -23,6 +23,8 @@
     "site:build": "python scripts/build_game_site.py",
     "site:local": "python local-site/serve.py",
     "site:local:build": "python scripts/build_game_site.py --output local-site",
-    "site:html:build": "python scripts/build_html_package.py"
+    "site:html:build": "python scripts/build_html_package.py",
+    "languages:fetch": "python scripts/enrich_steam_languages.py",
+    "languages:attach": "python scripts/enrich_steam_languages.py --attach-only"
   }
 }

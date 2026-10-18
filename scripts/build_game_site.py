@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Build the static site with a compact, lazy-loaded public data projection."""
 
+from library_data import load_library
+
 import argparse
 import json
 import shutil
@@ -12,11 +14,11 @@ ROOT = Path(__file__).resolve().parents[1]
 STATIC_FILES = ("index.html", "styles.css", "filters.css", "app.js", "hls.min.js", "gamepad.js")
 SUMMARY_FIELDS = (
     "id", "steamAppId", "name", "imageUrl", "genres", "controllerSupport",
-    "platforms", "playerModes", "verificationStatus",
+    "platforms", "playerModes", "verificationStatus", "supportsVietnamese", "vietnameseSupportStatus",
 )
 DETAIL_FIELDS = (
     "id", "steamAppId", "name", "imageUrl", "steamUrl", "genres", "platforms",
-    "controllerSupport", "playerModes", "storage", "verificationStatus",
+    "controllerSupport", "playerModes", "storage", "verificationStatus", "supportsVietnamese", "vietnameseSupportStatus",
 )
 LOCALE_FIELDS = ("status", "shortDescription", "detailedDescription", "aboutGame")
 PLAYABLE_VIDEO_FORMATS = {"mp4", "webm", "hls_h264"}
@@ -83,13 +85,21 @@ def main():
     parser.add_argument("--output", type=Path, default=ROOT / "web-game-library/dist")
     args = parser.parse_args()
 
-    source = json.loads(args.input.read_text())
+    source = load_library(args.input)
     output = args.output
     output.mkdir(parents=True, exist_ok=True)
     for name in STATIC_FILES:
-        shutil.copy2(ROOT / "web-game-library" / name, output / name)
+        source_asset = ROOT / "local-site" / name
+        if source_asset.resolve() != (output / name).resolve():
+            shutil.copy2(source_asset, output / name)
 
     data_dir = output / "data"
+    for name in ("theredteam.json", "viethoa_games.json"):
+        source_extra = ROOT / "local-site/data" / name
+        destination = data_dir / name
+        data_dir.mkdir(parents=True, exist_ok=True)
+        if source_extra.resolve() != destination.resolve():
+            shutil.copy2(source_extra, destination)
     games_dir = data_dir / "games"
     shutil.rmtree(games_dir, ignore_errors=True)
     games_dir.mkdir(parents=True)
