@@ -918,12 +918,14 @@ body.welcome-active {
 /* ==========================================================================
    Xbox Gamepad View Button & Reset Shortcut HUD
    ========================================================================== */
-.gamepad-bar .pad-view {
+.gamepad-bar .pad-view,
+.gamepad-bar .pad-menu {
   color: #fff !important;
   border-color: #8899aa !important;
   border-radius: 4px !important;
   background: #1c2530 !important;
   box-shadow: 0 0 8px rgba(136, 153, 170, 0.4) !important;
+  padding: 1px 6px !important;
 }
 
 /* ==========================================================================

@@ -115,7 +115,7 @@
   bar.className = 'gamepad-bar';
   bar.hidden = true;
   bar.setAttribute('aria-label', 'Hướng dẫn điều khiển tay cầm');
-  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-view">⧉</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span>';
+  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰ Menu</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span>';
   document.body.append(bar);
 
   const status = document.createElement('div');
@@ -999,7 +999,7 @@
       }
       heldDirection = direction;
 
-      if ([0, 1, 2, 3, 4, 5, 8, 10].some(down)) {
+      if ([0, 1, 2, 3, 4, 5, 8, 9, 10].some(down)) {
         if (!gamepadMode) enableMode();
         if (down(0)) activate();
         if (down(1)) back();
@@ -1007,7 +1007,7 @@
         if (down(3) && !document.querySelector('#detail[open]') && !welcomeScreen() && !isLightboxOpen()) openKeyboard(document.querySelector('#search'));
         if (down(4)) changeCollection(-1);
         if (down(5)) changeCollection(1);
-        if ((down(8) || down(10)) && !document.querySelector('#detail[open]') && !welcomeScreen() && !isLightboxOpen()) resetFilters();
+        if ((down(9) || down(8) || down(10)) && !document.querySelector('#detail[open]') && !welcomeScreen() && !isLightboxOpen()) resetFilters();
       }
 
       const scroll = pad.axes[3] || 0;
