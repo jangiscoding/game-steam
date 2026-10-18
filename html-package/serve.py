@@ -22,6 +22,69 @@ DIR = Path(__file__).resolve().parent
 PID_FILE = DIR / '.server.pid'
 
 
+def get_installed_steam_app_ids():
+    import glob, re
+    steam_path = None
+    if sys.platform == 'win32':
+        import winreg
+        for root, subkey in [
+            (winreg.HKEY_CURRENT_USER, r'Software\Valve\Steam'),
+            (winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\Valve\Steam'),
+            (winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\WOW6432Node\Valve\Steam'),
+        ]:
+            try:
+                with winreg.OpenKey(root, subkey) as k:
+                    val = winreg.QueryValueEx(k, 'SteamPath')[0]
+                    if val and os.path.exists(val):
+                        steam_path = val
+                        break
+            except Exception:
+                pass
+    else:
+        candidates = [
+            os.path.expanduser('~/.steam/steam'),
+            os.path.expanduser('~/.local/share/Steam'),
+            os.path.expanduser('~/Library/Application Support/Steam'),
+        ]
+        for c in candidates:
+            if os.path.isdir(c):
+                steam_path = c
+                break
+
+    if not steam_path:
+        return []
+
+    library_paths = [os.path.normpath(steam_path)]
+    vdf_path = os.path.join(steam_path, 'steamapps', 'libraryfolders.vdf')
+    if os.path.exists(vdf_path):
+        try:
+            with open(vdf_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read()
+            for m in re.finditer(r'"path"\s+"([^"]+)"', content):
+                p = os.path.normpath(m.group(1).replace(r'\\', r'\\'))
+                if os.path.exists(p) and p not in library_paths:
+                    library_paths.append(p)
+        except Exception:
+            pass
+
+    installed_ids = set()
+    for lib in library_paths:
+        apps_dir = os.path.join(lib, 'steamapps')
+        if not os.path.isdir(apps_dir):
+            continue
+        for manifest in glob.glob(os.path.join(apps_dir, 'appmanifest_*.acf')):
+            try:
+                with open(manifest, 'r', encoding='utf-8', errors='ignore') as f:
+                    txt = f.read()
+                appid_m = re.search(r'"appid"\s+"(\d+)"', txt)
+                if appid_m:
+                    installed_ids.add(appid_m.group(1))
+            except Exception:
+                pass
+
+    return sorted(list(installed_ids))
+
+
 class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
     extensions_map = {
         **SimpleHTTPRequestHandler.extensions_map,
@@ -34,6 +97,21 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
     }
 
     def do_GET(self):
+        if self.path.startswith('/api/installed-games'):
+            import json
+            try:
+                installed = get_installed_steam_app_ids()
+                payload = json.dumps({'ok': True, 'installedAppIds': installed, 'count': len(installed)}).encode('utf-8')
+            except Exception as e:
+                payload = json.dumps({'ok': False, 'error': str(e), 'installedAppIds': []}).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Cache-Control', 'no-cache, no-store')
+            self.end_headers()
+            self.wfile.write(payload)
+            return
+
         if self.path.startswith('/api/open-steam'):
             from urllib.parse import urlparse, parse_qs
             parsed = urlparse(self.path)

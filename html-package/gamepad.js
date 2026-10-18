@@ -115,7 +115,7 @@
   bar.className = 'gamepad-bar';
   bar.hidden = true;
   bar.setAttribute('aria-label', 'Hướng dẫn điều khiển tay cầm');
-  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span>';
+  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-view">⧉</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span>';
   document.body.append(bar);
 
   const status = document.createElement('div');
@@ -123,6 +123,11 @@
   status.setAttribute('role', 'status');
   document.body.append(status);
   function announce(message) { status.textContent = message; }
+
+  function isLightboxOpen() {
+    const lb = document.querySelector('#lightbox');
+    return Boolean(lb && !lb.hidden);
+  }
 
   function currentDialog() { return [...document.querySelectorAll('dialog[open]')].at(-1); }
   function welcomeScreen() { return document.querySelector('#welcome-screen:not(.is-leaving)'); }
@@ -135,6 +140,8 @@
   }
 
   function candidates() {
+    const lb = document.querySelector('#lightbox:not([hidden])');
+    if (lb) return [...lb.querySelectorAll(ACTIONABLE)].filter(isElementVisible);
     const dialog = currentDialog();
     if (dialog) return [...dialog.querySelectorAll(ACTIONABLE)].filter(isElementVisible);
     const welcome = welcomeScreen();
@@ -646,6 +653,19 @@
   }
 
   function move(direction) {
+    const lb = document.querySelector('#lightbox:not([hidden])');
+    if (lb) {
+      if (direction === 'left') {
+        document.querySelector('#lightbox-prev')?.click();
+        playSound('move');
+        playHaptic('light');
+      } else if (direction === 'right') {
+        document.querySelector('#lightbox-next')?.click();
+        playSound('move');
+        playHaptic('light');
+      }
+      return;
+    }
     if (keyboard?.open) {
       navigateWithin(keyboard, direction);
       return;
@@ -843,6 +863,16 @@
       playHaptic('light');
       return;
     }
+    const lb = document.querySelector('#lightbox:not([hidden])');
+    if (lb) {
+      const closeBtn = lb.querySelector('[data-lightbox-close]');
+      if (closeBtn) closeBtn.click();
+      else if (window.__lightbox?.close) window.__lightbox.close();
+      else lb.hidden = true;
+      playSound('back');
+      playHaptic('light');
+      return;
+    }
     if (welcomeScreen()) {
       welcomeScreen().querySelector('#welcome-skip')?.click();
       playSound('back');
@@ -888,6 +918,14 @@
   }
 
   function changeCollection(direction) {
+    const lb = document.querySelector('#lightbox:not([hidden])');
+    if (lb) {
+      if (direction < 0) document.querySelector('#lightbox-prev')?.click();
+      else document.querySelector('#lightbox-next')?.click();
+      playSound('move');
+      playHaptic('light');
+      return;
+    }
     if (currentDialog() || welcomeScreen()) return;
     document.dispatchEvent(new CustomEvent('archive:gamepad-category', {detail: {direction}}));
     playSound('move');
@@ -898,6 +936,20 @@
         candidates()[0];
       focus(firstGame);
     }, 50);
+  }
+
+  function resetFilters() {
+    const resetBtn = document.querySelector('#reset');
+    if (resetBtn) {
+      playSound('toggle');
+      playHaptic('medium');
+      resetBtn.click();
+      announce('Đã xóa tất cả bộ lọc.');
+      setTimeout(() => {
+        const first = document.querySelector('.game-open') || candidates()[0];
+        if (first) focus(first);
+      }, 60);
+    }
   }
 
   function press(pad, index) {
@@ -947,14 +999,15 @@
       }
       heldDirection = direction;
 
-      if ([0, 1, 2, 3, 4, 5].some(down)) {
+      if ([0, 1, 2, 3, 4, 5, 8, 10].some(down)) {
         if (!gamepadMode) enableMode();
         if (down(0)) activate();
         if (down(1)) back();
         if (down(2)) toggleFavorite();
-        if (down(3) && !document.querySelector('#detail[open]') && !welcomeScreen()) openKeyboard(document.querySelector('#search'));
+        if (down(3) && !document.querySelector('#detail[open]') && !welcomeScreen() && !isLightboxOpen()) openKeyboard(document.querySelector('#search'));
         if (down(4)) changeCollection(-1);
         if (down(5)) changeCollection(1);
+        if ((down(8) || down(10)) && !document.querySelector('#detail[open]') && !welcomeScreen() && !isLightboxOpen()) resetFilters();
       }
 
       const scroll = pad.axes[3] || 0;

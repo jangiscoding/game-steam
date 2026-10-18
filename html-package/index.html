@@ -8,4 +8,29 @@
 <section class="library-section" id="library"><div class="library-heading"><div><div class="eyebrow orange">MỘT THƯ VIỆN. VÔ VÀN LỰA CHỌN.</div><h2>Tìm trò chơi tiếp theo<span>.</span></h2></div><p>Dữ liệu từ Steam<br><span id="updated-at">Đang tải thư viện</span></p></div><div class="genre-filter-section" id="genres"><div class="section-caption">BẠN MUỐN CHƠI GÌ HÔM NAY?</div><div class="genre-chips" id="genre-chips"><span class="loading-note">Đang tải các thể loại…</span></div></div><div class="library-layout"><aside><div class="sidebar-label">BỘ SƯU TẬP</div><div id="collections" class="collections"></div><div class="sidebar-tags-section"><div class="sidebar-tags-header"><div class="sidebar-tags-title"><span>STEAM TAGS</span><span class="tags-badge" id="tags-count-label">421</span></div><div class="tag-sort-group" role="group" aria-label="Sắp xếp Steam Tags"><button type="button" class="tag-sort-btn active" id="btn-sort-alpha" data-tag-sort="alpha" title="Sắp xếp chữ cái A-Z theo Tiếng Việt">A-Z</button><button type="button" class="tag-sort-btn" id="btn-sort-count" data-tag-sort="count" title="Sắp xếp theo số lượng game">Số lượng</button></div></div><div class="tag-search-wrapper"><span class="tag-search-icon">⌕</span><input type="search" id="sidebar-tag-search" placeholder="Tìm kiếm trong 421 tags…" aria-label="Tìm Steam Tag"></div><div id="sidebar-tags" class="sidebar-tags-box" role="group" aria-label="Danh sách 421 Steam Tags"></div></div><div class="sidebar-note"><strong>Chơi theo cách của bạn.</strong><p>Một mình, cùng bạn bè, hay cả thế giới. Luôn có một trò chơi dành cho bạn.</p></div></aside><div class="library-main"><div class="filterbar"><label class="searchbox"><span>⌕</span><input id="search" type="search" placeholder="Tên game, thể loại, Steam Tag…" aria-label="Tìm tên game, thể loại hoặc Steam Tag"><kbd>/</kbd></label><select id="sort" aria-label="Sắp xếp"><option value="featured">Nổi bật trước</option><option value="az">Tên: A đến Z</option><option value="za">Tên: Z đến A</option><option value="release-new">Phát hành: mới nhất</option><option value="release-old">Phát hành: cũ nhất</option></select></div><div class="active-filters" aria-live="polite"><div><strong>Thể loại:</strong><span class="selected-tags" id="selected-genres"><em>Tất cả</em></span></div><div><strong>Tags:</strong><span class="selected-tags" id="selected-tags"><em>Tất cả</em></span></div></div><div class="results-line"><div><strong id="current-tab">Tất cả game</strong> <span id="result-count">Đang tải…</span></div><button id="reset" class="text-button">Xóa bộ lọc</button></div><div id="notice" role="status"></div><div class="game-grid" id="game-grid" aria-live="polite"></div><div class="pagination" id="pagination"></div></div></div></section>
 </main><footer><a class="footer-brand" href="#">J · JANG PLAY</a><span>Dữ liệu cá nhân được lưu trong trình duyệt. Dữ liệu & media thuộc các chủ sở hữu tương ứng.</span></footer><button class="back-to-top" id="back-to-top" type="button" aria-label="Cuộn đến bộ lọc" title="Đến bộ lọc" hidden>↑</button>
 <dialog id="detail"><div id="detail-inner"></div></dialog>
+<div id="lightbox" class="lightbox" hidden role="dialog" aria-modal="true" aria-label="Xem ảnh chụp màn hình">
+  <div class="lightbox-backdrop" data-lightbox-close></div>
+  <div class="lightbox-container">
+    <div class="lightbox-toolbar">
+      <button type="button" class="lightbox-back-btn" data-lightbox-close title="Quay lại hồ sơ game (Esc hoặc B)">
+        <span class="lightbox-back-icon">←</span> Quay lại
+      </button>
+      <span class="lightbox-counter" id="lightbox-counter">1 / 1</span>
+      <div class="lightbox-actions">
+        <a class="lightbox-external-btn" id="lightbox-full-link" href="" target="_blank" rel="noopener" title="Mở ảnh gốc trong thẻ mới">⤢ Ảnh gốc</a>
+        <button type="button" class="lightbox-close-btn" data-lightbox-close aria-label="Đóng ảnh (Esc)">✕</button>
+      </div>
+    </div>
+    <div class="lightbox-stage">
+      <button type="button" class="lightbox-nav-btn prev" id="lightbox-prev" aria-label="Ảnh trước (Mũi tên trái / LB)">‹</button>
+      <div class="lightbox-image-wrap">
+        <img id="lightbox-img" src="" alt="Ảnh gameplay">
+      </div>
+      <button type="button" class="lightbox-nav-btn next" id="lightbox-next" aria-label="Ảnh tiếp theo (Mũi tên phải / RB)">›</button>
+    </div>
+    <div class="lightbox-footer-tip">
+      <span><b>← / →</b> Đổi ảnh</span> · <span><b>Esc / B</b> Quay lại hồ sơ</span> · <span><b>LB / RB</b> Đổi ảnh bằng tay cầm</span>
+    </div>
+  </div>
+</div>
 </body></html>

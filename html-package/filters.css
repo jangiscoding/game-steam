@@ -915,4 +915,348 @@ body.welcome-active {
   }
 }
 
+/* ==========================================================================
+   Xbox Gamepad View Button & Reset Shortcut HUD
+   ========================================================================== */
+.gamepad-bar .pad-view {
+  color: #fff !important;
+  border-color: #8899aa !important;
+  border-radius: 4px !important;
+  background: #1c2530 !important;
+  box-shadow: 0 0 8px rgba(136, 153, 170, 0.4) !important;
+}
+
+/* ==========================================================================
+   Installed Steam Games (Badge, Banner, Launch Button)
+   ========================================================================== */
+.badge-installed {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: rgba(10, 35, 20, 0.92);
+  color: #2ecc71;
+  border: 1px solid #2ecc71;
+  box-shadow: 0 0 12px rgba(46, 204, 113, 0.55), 0 2px 6px #000;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  padding: 4px 7px;
+  border-radius: 4px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.game-card.is-installed {
+  border-color: rgba(46, 204, 113, 0.35);
+}
+
+.game-card.is-installed:hover {
+  border-color: #2ecc71;
+  box-shadow: 0 0 18px rgba(46, 204, 113, 0.35), 0 8px 24px #0009;
+}
+
+.installed-banner {
+  background: rgba(46, 204, 113, 0.12);
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  color: #2ecc71;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.play-button {
+  background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+  color: #0b1e12 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 16px rgba(46, 204, 113, 0.5);
+  border: none !important;
+}
+
+.play-button:hover,
+.gamepad-mode .play-button.gamepad-focus {
+  background: linear-gradient(135deg, #40d47e, #2ecc71) !important;
+  box-shadow: 0 0 24px rgba(46, 204, 113, 0.85) !important;
+  transform: translateY(-2px);
+  color: #05140b !important;
+}
+
+.play-button .play-icon {
+  font-size: 13px;
+  margin-right: -14px;
+}
+
+/* ==========================================================================
+   In-Modal Screenshot Gallery & Fullscreen Lightbox Viewer
+   ========================================================================== */
+.gallery-item {
+  flex: 0 0 230px;
+  background: transparent;
+  border: 1px solid #343b40;
+  border-radius: 4px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.gallery-item:hover,
+.gallery-item:focus-visible,
+.gamepad-mode .gallery-item.gamepad-focus {
+  transform: scale(1.04);
+  border-color: var(--orange);
+  box-shadow: 0 0 16px rgba(255, 102, 54, 0.6), 0 8px 20px #000b;
+  outline: none;
+}
+
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-zoom-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(16, 17, 18, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 3px 6px;
+  border-radius: 3px;
+  backdrop-filter: blur(4px);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-zoom-badge {
+  opacity: 1;
+  background: var(--orange);
+  color: #111;
+  border-color: var(--orange);
+}
+
+/* Lightbox Overlay */
+.lightbox[hidden] {
+  display: none !important;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  animation: lbFadeIn 0.2s ease-out;
+}
+
+@keyframes lbFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 8, 10, 0.95);
+  backdrop-filter: blur(14px);
+}
+
+.lightbox-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px;
+  box-sizing: border-box;
+}
+
+.lightbox-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  flex-shrink: 0;
+}
+
+.lightbox-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1c2229;
+  border: 1px solid #3a4450;
+  color: #e5eaef;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lightbox-back-btn:hover,
+.gamepad-mode .lightbox-back-btn.gamepad-focus {
+  background: var(--orange);
+  color: #111;
+  border-color: var(--orange);
+  box-shadow: 0 0 16px rgba(255, 102, 54, 0.6);
+}
+
+.lightbox-back-icon {
+  font-size: 16px;
+}
+
+.lightbox-counter {
+  font-size: 13px;
+  font-weight: 700;
+  color: #8b96a0;
+  letter-spacing: 1px;
+}
+
+.lightbox-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox-external-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #181d24;
+  border: 1px solid #2e3742;
+  color: #a4b0be;
+  font-size: 11px;
+  padding: 7px 12px;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.lightbox-external-btn:hover {
+  color: #fff;
+  border-color: #556272;
+}
+
+.lightbox-close-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1f252d;
+  border: 1px solid #3a4552;
+  color: #fff;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lightbox-close-btn:hover,
+.gamepad-mode .lightbox-close-btn.gamepad-focus {
+  background: #ff3366;
+  border-color: #ff3366;
+  color: #fff;
+  box-shadow: 0 0 14px rgba(255, 51, 102, 0.7);
+}
+
+.lightbox-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+  min-height: 0;
+  margin: 12px 0;
+}
+
+.lightbox-nav-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(24, 30, 38, 0.85);
+  border: 1px solid #3c4856;
+  color: #fff;
+  font-size: 28px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-nav-btn:hover,
+.gamepad-mode .lightbox-nav-btn.gamepad-focus {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #111;
+  box-shadow: 0 0 20px rgba(255, 102, 54, 0.75);
+  transform: scale(1.1);
+}
+
+.lightbox-nav-btn:disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.lightbox-image-wrap {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.lightbox-image-wrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85), 0 0 2px rgba(255, 255, 255, 0.15);
+  animation: lbImgPop 0.2s ease-out;
+}
+
+@keyframes lbImgPop {
+  from { transform: scale(0.96); opacity: 0.8; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightbox-footer-tip {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 11px;
+  color: #788590;
+  flex-shrink: 0;
+}
+
+.lightbox-footer-tip b {
+  color: #cbd4dc;
+  font-weight: 700;
+}
+
+
 
