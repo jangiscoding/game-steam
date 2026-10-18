@@ -319,7 +319,7 @@ body.welcome-active {
   height: 154px;
   display: grid;
   place-items: center;
-  filter: drop-shadow(0 0 18px var(--neon-primary-glow, rgba(245, 158, 11, 0.3)));
+  filter: drop-shadow(0 0 24px var(--neon-primary-glow, rgba(245, 158, 11, 0.4)));
   animation: welcome-arrive 1.05s cubic-bezier(.16,1,.3,1) both;
 }
 
@@ -330,7 +330,7 @@ body.welcome-active {
   border: 1px solid var(--neon-secondary, #06b6d4);
   border-radius: 34px;
   background: linear-gradient(145deg, var(--neon-primary, #f59e0b), var(--neon-secondary, #06b6d4));
-  box-shadow: inset 0 1px #fff7, inset 0 -18px 30px rgba(0, 0, 0, 0.5), 0 0 24px var(--neon-primary-glow, rgba(245, 158, 11, 0.3));
+  box-shadow: inset 0 1px #fff7, inset 0 -18px 30px rgba(0, 0, 0, 0.5), 0 0 34px var(--neon-primary-glow, rgba(245, 158, 11, 0.4));
   transform: rotate(45deg);
 }
 
@@ -1018,7 +1018,7 @@ body.gamepad-mode {
   border-color: var(--neon-secondary, #10b981) !important;
   background: var(--neon-secondary, #10b981) !important;
   color: var(--neon-primary-text, #0b1e12) !important;
-  box-shadow: 0 0 10px var(--neon-secondary-glow, rgba(16, 185, 129, 0.35)) !important;
+  box-shadow: 0 0 14px var(--neon-secondary-glow, rgba(16, 185, 129, 0.45)) !important;
 }
 .chip.chip-installed:hover span,
 .chip.chip-installed.selected span,
@@ -1063,7 +1063,7 @@ body.gamepad-mode {
   border-color: var(--neon-primary, #f59e0b) !important;
   background: var(--neon-primary, #f59e0b) !important;
   color: var(--neon-primary-text, #101112) !important;
-  box-shadow: 0 0 10px var(--neon-primary-glow, rgba(245, 158, 11, 0.35)) !important;
+  box-shadow: 0 0 14px var(--neon-primary-glow, rgba(245, 158, 11, 0.45)) !important;
 }
 .chip.chip-viethoa:hover span,
 .chip.chip-viethoa.selected span,

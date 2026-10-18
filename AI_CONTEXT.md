@@ -224,7 +224,7 @@ Jang Play tích hợp hệ thống kiểm tra và cập nhật game mới trực
     7. *Hotline Sunset:* Hồng hoàng hôn Sunset Pink (`#f43f5e`) + Vàng ấm Amber Gold (`#f59e0b`)
     8. *Quantum Violet:* Tím sâu Deep Violet (`#9333ea`) + Xanh da trời Azure (`#0284c7`)
   - Chống trùng màu liên tiếp qua `sessionStorage.getItem('jang_neon_theme')`.
-  - Giảm độ chói toàn diện: quầng sáng glow giảm từ 0.65 xuống 0.28, thu nhỏ bán kính đổ bóng gamepad-focus và drop-shadow, bỏ viền mờ chữ text-shadow để chữ sắc nét và dịu mắt khi nhìn lâu trong phòng tối.
+  - Tinh chỉnh cân bằng quầng sáng: quầng sáng glow được nâng nhẹ lên mức lý tưởng 0.38 - 0.40, bán kính phát sáng gamepad-focus và drop-shadow được cân đối vừa đủ độ bốc Cyberpunk mà vẫn êm mắt, text-shadow có ánh hào quang tinh tế mà không làm mờ nét chữ.
   - Điều khiển tập trung qua các biến CSS: `--neon-primary`, `--neon-secondary`, `--neon-primary-glow`, `--neon-secondary-glow`, `--neon-primary-text`, và `--orange`.
   - Màn hình chào (`.welcome-screen`): Logo chữ J, vòng quay orbit, vệt tải loader, quầng sáng aura và hạt particle đồng bộ 100% theo màu chủ đạo ngẫu nhiên trên mỗi lần F5.
 - **Bố cục Phân loại & Dữ liệu Steam:**
