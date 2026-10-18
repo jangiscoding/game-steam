@@ -214,16 +214,17 @@ Jang Play tích hợp hệ thống kiểm tra và cập nhật game mới trực
 - **Phong cách:** Cyberpunk Neon, nền đen sâu (`#0a0d12`), hỗ trợ đổi cặp màu neon ngẫu nhiên mỗi lần tải lại trang (F5).
 - **Bộ máy Random Cyberpunk Neon Theme on Reload (F5):**
   - Thực thi tức thì ngay trong thẻ `<head>` của `index.html` trước khi render, tránh giật màn hình (FOUC).
-  - Sử dụng 8 bộ phối màu Neon chuẩn phong cách Cyberpunk:
-    1. *Cyberpunk 2077:* Vàng Neon (`#fcee0a`) + Xanh Cyan (`#00f0ff`)
-    2. *Synthwave Neon:* Hồng Magenta (`#ff007f`) + Xanh Cyan (`#00f0ff`)
-    3. *Neo Tokyo Grid:* Xanh lá Toxic (`#00ff88`) + Tím Điện Electric Violet (`#b537f2`)
-    4. *Blade Runner:* Cam Lửa Amber (`#ff6600`) + Xanh Băng Ice Cyan (`#00e5ff`)
-    5. *Akira Red:* Đỏ Laser (`#ff1744`) + Cyber Cyan (`#00f0ff`)
-    6. *Matrix Overdrive:* Acid Green (`#00ff66`) + Sky Blue (`#00d0ff`)
-    7. *Hotline Vice:* Neon Pink (`#ff2a85`) + Amber Gold (`#ffb300`)
-    8. *Quantum Violet:* Electric Violet (`#a855f7`) + Neon Cyan (`#00f0ff`)
+  - Sử dụng 8 bộ phối màu Neon chuẩn phong cách Cyberpunk OLED (được tinh chỉnh dịu mắt, độ chói thấp, quầng sáng aura mềm mại 0.28):
+    1. *Cyberpunk Amber:* Vàng hổ phách Cyber Gold (`#f59e0b`) + Xanh băng Ice Cyan (`#06b6d4`)
+    2. *Synthwave Velvet:* Đỏ nhung Velvet Rose (`#e11d48`) + Xanh trời Sky Cyan (`#0ea5e9`)
+    3. *Neo Tokyo Jade:* Ngọc bích Emerald Jade (`#10b981`) + Tím điện Amethyst (`#a855f7`)
+    4. *Blade Runner Teal:* Cam hoàng hôn Sunset Orange (`#ea580c`) + Xanh vịt Deep Teal (`#14b8a6`)
+    5. *Akira Crimson:* Đỏ Crimson (`#e11d48`) + Lam Cobalt (`#38bdf8`)
+    6. *Matrix Forest:* Xanh lá rừng Forest Green (`#22c55e`) + Xanh thép Steel Cyan (`#0ea5e9`)
+    7. *Hotline Sunset:* Hồng hoàng hôn Sunset Pink (`#f43f5e`) + Vàng ấm Amber Gold (`#f59e0b`)
+    8. *Quantum Violet:* Tím sâu Deep Violet (`#9333ea`) + Xanh da trời Azure (`#0284c7`)
   - Chống trùng màu liên tiếp qua `sessionStorage.getItem('jang_neon_theme')`.
+  - Giảm độ chói toàn diện: quầng sáng glow giảm từ 0.65 xuống 0.28, thu nhỏ bán kính đổ bóng gamepad-focus và drop-shadow, bỏ viền mờ chữ text-shadow để chữ sắc nét và dịu mắt khi nhìn lâu trong phòng tối.
   - Điều khiển tập trung qua các biến CSS: `--neon-primary`, `--neon-secondary`, `--neon-primary-glow`, `--neon-secondary-glow`, `--neon-primary-text`, và `--orange`.
   - Màn hình chào (`.welcome-screen`): Logo chữ J, vòng quay orbit, vệt tải loader, quầng sáng aura và hạt particle đồng bộ 100% theo màu chủ đạo ngẫu nhiên trên mỗi lần F5.
 - **Bố cục Phân loại & Dữ liệu Steam:**

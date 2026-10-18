@@ -319,7 +319,7 @@ body.welcome-active {
   height: 154px;
   display: grid;
   place-items: center;
-  filter: drop-shadow(0 0 32px var(--neon-primary-glow, rgba(255, 102, 54, 0.6)));
+  filter: drop-shadow(0 0 18px var(--neon-primary-glow, rgba(245, 158, 11, 0.3)));
   animation: welcome-arrive 1.05s cubic-bezier(.16,1,.3,1) both;
 }
 
@@ -327,10 +327,10 @@ body.welcome-active {
   content: '';
   position: absolute;
   inset: 27px;
-  border: 1px solid var(--neon-secondary, #00f0ff);
+  border: 1px solid var(--neon-secondary, #06b6d4);
   border-radius: 34px;
-  background: linear-gradient(145deg, var(--neon-primary, #ff7b49), var(--neon-secondary, #00f0ff));
-  box-shadow: inset 0 1px #fff7, inset 0 -18px 30px rgba(0, 0, 0, 0.5), 0 0 55px var(--neon-primary-glow, rgba(255, 102, 54, 0.6));
+  background: linear-gradient(145deg, var(--neon-primary, #f59e0b), var(--neon-secondary, #06b6d4));
+  box-shadow: inset 0 1px #fff7, inset 0 -18px 30px rgba(0, 0, 0, 0.5), 0 0 24px var(--neon-primary-glow, rgba(245, 158, 11, 0.3));
   transform: rotate(45deg);
 }
 
@@ -1015,10 +1015,10 @@ body.gamepad-mode {
 }
 .chip.chip-installed:hover,
 .chip.chip-installed.selected {
-  border-color: var(--neon-secondary, #2ecc71) !important;
-  background: var(--neon-secondary, #2ecc71) !important;
+  border-color: var(--neon-secondary, #10b981) !important;
+  background: var(--neon-secondary, #10b981) !important;
   color: var(--neon-primary-text, #0b1e12) !important;
-  box-shadow: 0 0 16px var(--neon-secondary-glow, rgba(46, 204, 113, 0.6)) !important;
+  box-shadow: 0 0 10px var(--neon-secondary-glow, rgba(16, 185, 129, 0.35)) !important;
 }
 .chip.chip-installed:hover span,
 .chip.chip-installed.selected span,
@@ -1031,39 +1031,39 @@ body.gamepad-mode {
    Việt Hóa Category & Badges
    ========================================================================== */
 .collection-viethoa span:first-child span {
-  color: var(--neon-primary, #ff6636) !important;
+  color: var(--neon-primary, #f59e0b) !important;
   font-weight: 800;
 }
 .collection-viethoa.selected {
-  background: var(--neon-primary-glow, rgba(255, 102, 54, 0.16)) !important;
-  color: var(--neon-primary, #ff6636) !important;
-  box-shadow: inset 2px 0 var(--neon-primary, #ff6636) !important;
+  background: var(--neon-primary-glow, rgba(245, 158, 11, 0.16)) !important;
+  color: var(--neon-primary, #f59e0b) !important;
+  box-shadow: inset 2px 0 var(--neon-primary, #f59e0b) !important;
 }
 .collection-viethoa.selected b {
-  color: var(--neon-primary, #ff6636) !important;
+  color: var(--neon-primary, #f59e0b) !important;
 }
 
 .chip.chip-viethoa {
-  border-color: var(--neon-primary, rgba(255, 102, 54, 0.5)) !important;
+  border-color: var(--neon-primary, rgba(245, 158, 11, 0.5)) !important;
   background: rgba(0, 0, 0, 0.35) !important;
-  color: var(--neon-primary, #ff6636) !important;
+  color: var(--neon-primary, #f59e0b) !important;
   font-weight: 700;
 }
 .chip.chip-viethoa span {
-  color: var(--neon-primary, #ff6636) !important;
+  color: var(--neon-primary, #f59e0b) !important;
 }
 .chip.chip-viethoa small {
   background: rgba(255, 255, 255, 0.1);
-  color: var(--neon-primary, #ff8555);
+  color: var(--neon-primary, #fbbf24);
   padding: 1px 6px;
   border-radius: 8px;
 }
 .chip.chip-viethoa:hover,
 .chip.chip-viethoa.selected {
-  border-color: var(--neon-primary, #ff6636) !important;
-  background: var(--neon-primary, #ff6636) !important;
+  border-color: var(--neon-primary, #f59e0b) !important;
+  background: var(--neon-primary, #f59e0b) !important;
   color: var(--neon-primary-text, #101112) !important;
-  box-shadow: 0 0 16px var(--neon-primary-glow, rgba(255, 102, 54, 0.6)) !important;
+  box-shadow: 0 0 10px var(--neon-primary-glow, rgba(245, 158, 11, 0.35)) !important;
 }
 .chip.chip-viethoa:hover span,
 .chip.chip-viethoa.selected span,
