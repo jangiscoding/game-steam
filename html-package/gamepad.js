@@ -169,7 +169,7 @@
     const el = card.closest('.game-card') || card;
     const rect = el.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    return rect.top >= 80 && rect.bottom <= vh - 85;
+    return rect.bottom > 90 && rect.top < vh - 90;
   }
 
   function scrollCardIntoComfortView(element) {
@@ -182,13 +182,13 @@
 
     if (rect.top < topSafe) {
       window.scrollBy({
-        top: rect.top - topSafe - 15,
-        behavior: 'smooth'
+        top: rect.top - topSafe,
+        behavior: 'auto'
       });
     } else if (rect.bottom > bottomSafe) {
       window.scrollBy({
-        top: rect.bottom - bottomSafe + 15,
-        behavior: 'smooth'
+        top: rect.bottom - bottomSafe,
+        behavior: 'auto'
       });
     }
   }
@@ -199,24 +199,23 @@
     const vh = window.innerHeight || document.documentElement.clientHeight;
     const topSafe = 90;
     const bottomSafe = vh - 90;
+    const centerY = vh / 2;
 
     const visibleCards = cards.filter(card => {
       const rect = (card.closest('.game-card') || card).getBoundingClientRect();
-      const visibleHeight = Math.min(rect.bottom, bottomSafe) - Math.max(rect.top, topSafe);
-      return visibleHeight > 80;
+      return rect.bottom > topSafe && rect.top < bottomSafe;
     });
 
     if (visibleCards.length) {
       visibleCards.sort((a, b) => {
         const ra = (a.closest('.game-card') || a).getBoundingClientRect();
         const rb = (b.closest('.game-card') || b).getBoundingClientRect();
-        if (Math.abs(ra.top - rb.top) > 40) return ra.top - rb.top;
-        return ra.left - rb.left;
+        const midA = (ra.top + ra.bottom) / 2, midB = (rb.top + rb.bottom) / 2;
+        return Math.abs(midA - centerY) - Math.abs(midB - centerY);
       });
       return visibleCards[0];
     }
 
-    const centerY = vh / 2;
     cards.sort((a, b) => {
       const ra = (a.closest('.game-card') || a).getBoundingClientRect();
       const rb = (b.closest('.game-card') || b).getBoundingClientRect();
@@ -337,35 +336,34 @@
     }
 
     let targetCard = document.querySelector(`.game-open[data-game="${targetGame.id}"]`);
+    if (!targetCard && window.__archive?.renderGames) {
+      window.__archive.renderGames(true);
+      targetCard = document.querySelector(`.game-open[data-game="${targetGame.id}"]`);
+    }
+
     if (targetCard) {
       focus(targetCard);
+      scrollCardIntoComfortView(targetCard);
       playSound('move');
       playHaptic('light');
-    } else {
-      if (window.__archive?.renderGames) {
-        window.__archive.renderGames(true);
-        targetCard = document.querySelector(`.game-open[data-game="${targetGame.id}"]`);
-        if (targetCard) {
-          focus(targetCard);
-          playSound('move');
-          playHaptic('light');
-        }
-      }
     }
   }
 
   function navigateInGrid(active, direction) {
-    if (!isCardInViewport(active)) {
-      const visibleCard = getBestVisibleGameCard();
-      if (visibleCard && visibleCard !== active) {
-        active = visibleCard;
-        focus(active);
-      }
-    }
-    const gameId = active.dataset.game;
     const filtered = window.__archive?.getFiltered ? window.__archive.getFiltered() : [];
     const columns = window.__archive?.getColumns ? window.__archive.getColumns() : 4;
-    const currIndex = filtered.findIndex(g => g.id === gameId);
+    let gameId = active?.dataset?.game;
+    let currIndex = filtered.findIndex(g => g.id === gameId);
+
+    if (currIndex === -1 || !active?.isConnected) {
+      const visibleCard = getBestVisibleGameCard();
+      if (visibleCard) {
+        active = visibleCard;
+        focus(active);
+        gameId = active.dataset?.game;
+        currIndex = filtered.findIndex(g => g.id === gameId);
+      }
+    }
 
     if (currIndex === -1) {
       generalSpatialMove(direction);

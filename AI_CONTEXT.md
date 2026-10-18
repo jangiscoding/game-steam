@@ -211,7 +211,24 @@ Jang Play tích hợp hệ thống kiểm tra và cập nhật game mới trực
 
 ## 9. 🎨 PHONG CÁCH GIAO DIỆN & TONE GIỌNG
 
-- **Phong cách:** Cyberpunk Neon, nền đen sâu (`#0a0d12`), viền phát quang Cyan (`#00f0ff`) và Cam lửa Neon (`#ff7700`).
+- **Phong cách:** Cyberpunk Neon, nền đen sâu (`#0a0d12`), hỗ trợ đổi cặp màu neon ngẫu nhiên mỗi lần tải lại trang (F5).
+- **Bộ máy Random Cyberpunk Neon Theme on Reload (F5):**
+  - Thực thi tức thì ngay trong thẻ `<head>` của `index.html` trước khi render, tránh giật màn hình (FOUC).
+  - Sử dụng 8 bộ phối màu Neon chuẩn phong cách Cyberpunk:
+    1. *Cyberpunk 2077:* Vàng Neon (`#fcee0a`) + Xanh Cyan (`#00f0ff`)
+    2. *Synthwave Neon:* Hồng Magenta (`#ff007f`) + Xanh Cyan (`#00f0ff`)
+    3. *Neo Tokyo Grid:* Xanh lá Toxic (`#00ff88`) + Tím Điện Electric Violet (`#b537f2`)
+    4. *Blade Runner:* Cam Lửa Amber (`#ff6600`) + Xanh Băng Ice Cyan (`#00e5ff`)
+    5. *Akira Red:* Đỏ Laser (`#ff1744`) + Cyber Cyan (`#00f0ff`)
+    6. *Matrix Overdrive:* Acid Green (`#00ff66`) + Sky Blue (`#00d0ff`)
+    7. *Hotline Vice:* Neon Pink (`#ff2a85`) + Amber Gold (`#ffb300`)
+    8. *Quantum Violet:* Electric Violet (`#a855f7`) + Neon Cyan (`#00f0ff`)
+  - Chống trùng màu liên tiếp qua `sessionStorage.getItem('jang_neon_theme')`.
+  - Điều khiển tập trung qua các biến CSS: `--neon-primary`, `--neon-secondary`, `--neon-primary-glow`, `--neon-secondary-glow`, `--neon-primary-text`, và `--orange`.
+- **Cơ chế điều khiển Gamepad Analog chống rung lắc (Oscillation Fix):**
+  - Hàm `navigateInGrid` tiến bước dứt khoát theo dòng (`currIndex + columns`), không dùng lại card giả lập khi thẻ hiện tại còn nằm trong DOM.
+  - Hàm `scrollCardIntoComfortView` sử dụng `behavior: 'auto'` (cuộn tức thì không lag) thay cho `smooth`, loại bỏ tình trạng kẹt hàng đợi animation khi gạt analog liên tục 180ms.
+  - Vùng an toàn `isCardInViewport` và `getBestVisibleGameCard` neo theo tâm màn hình (`midA - centerY`), bảo đảm card luôn nằm gọn trong khung nhìn Console TV.
 - **Không dùng viền trắng kép sắc nhọn** trên viền chọn tay cầm (chỉ dùng viền neon mềm mại phát sáng `gamepadNeonGlow`).
 - **Giao tiếp với người dùng:** Ngắn gọn, súc tích, chuyên nghiệp, phản hồi bằng tiếng Việt.
 
@@ -222,3 +239,4 @@ Jang Play tích hợp hệ thống kiểm tra và cập nhật game mới trực
 - Bằng chứng: `data/steam-languages/`, chia tối đa 250 App ID mỗi file. Mục giao diện mới: `language-vietnamese` / **Ngôn ngữ tiếng Việt**.
 - `data/game-library.json` nay là manifest; bản ghi đầy đủ nằm trong `data/game-library-parts/*.json` (~2 MiB/phần). Dùng `load_library` / `save_library` từ `scripts/library_data.py`, không đọc trực tiếp trường `games` từ manifest. Giữ manifest và các phần trong cùng lần commit.
 - Hai lệnh build dùng giao diện hiện hành tại `local-site/`. Bản `html-package` thêm adapter tải dữ liệu bằng script để chạy trực tiếp qua `file://`.
+
