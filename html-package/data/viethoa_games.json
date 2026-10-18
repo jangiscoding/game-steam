@@ -1,0 +1,1727 @@
+{
+  "updatedAt": "2026-10-18T23:15:00Z",
+  "total": 191,
+  "gameIds": [
+    "input-7581f01fd91e",
+    "input-cb3c1836065f",
+    "input-c2f5596d290d",
+    "input-dff634b50ef2",
+    "input-0ab6d58a5748",
+    "input-729b19f9149b",
+    "input-7055a6aa899a",
+    "input-fecdfe168b51",
+    "input-75048f1b17be",
+    "input-f096a6666676",
+    "input-703f60bd030c",
+    "input-2c74bd96abd2",
+    "input-b301309ba843",
+    "input-7c4f1ed6ab76",
+    "input-6aa23b22bf3e",
+    "input-a0cb68acbd9a",
+    "input-8339699984fb",
+    "input-dab20232e6a7",
+    "input-750217283f6a",
+    "input-5705a664e507",
+    "input-9b5a731105b9",
+    "input-b4611a30c9ed",
+    "input-c59e5a8353f0",
+    "input-5bde0e948045",
+    "input-097dcdfc18f5",
+    "input-56d0e019fb61",
+    "input-0033a11b8ee1",
+    "input-b31f7f838d6d",
+    "input-f7c536e1e904",
+    "input-af8d96dc4dae",
+    "input-e71e1dc1ffc9",
+    "input-92127c55d911",
+    "input-249762837678",
+    "input-c88f96fa9046",
+    "input-36b6b24b04ae",
+    "input-eb1ac405d413",
+    "input-5fb347cf4d5a",
+    "input-1daecbe4a7c0",
+    "input-bf46c9b4d3b2",
+    "input-68da871f45f6",
+    "input-15afdff59f41",
+    "input-c1ff776ffb10",
+    "input-7fda996b8675",
+    "input-dcdf79c05f66",
+    "input-2423c139f3b2",
+    "input-9d774d40a977",
+    "input-05380a4ac135",
+    "input-0cae0c3572d1",
+    "input-5746ba93f686",
+    "input-f99c0fcc13bc",
+    "input-20a4b9ebbba2",
+    "input-adb5d2676cb7",
+    "input-1df40922cef4",
+    "input-ceb0bbc57703",
+    "input-0adcfa17ab9e",
+    "input-36c92f9a2e11",
+    "input-758db7ea91e8",
+    "input-d3ab9c9da10a",
+    "input-4b3474c8016f",
+    "input-136e4af2a8a6",
+    "input-33d871b5a83e",
+    "input-8d823b6cd5b4",
+    "input-f813aa5d9d94",
+    "input-54e9cdabe4a8",
+    "input-764888821d07",
+    "input-3de2f427028e",
+    "input-c4003844feb5",
+    "input-e129b3957a5a",
+    "input-e6c88ab9d756",
+    "input-205f351bcf59",
+    "input-6e665a55e018",
+    "input-fd01b01736f1",
+    "input-ce3d56702145",
+    "input-ef015084c8ef",
+    "input-0ce5ede6f9a1",
+    "input-863ced6fb44d",
+    "input-61b3003afdc7",
+    "input-b75a8a2f7c03",
+    "input-40e34a738b3e",
+    "input-b8959ff0c082",
+    "input-604ae7e26f70",
+    "input-64e8bb3907c4",
+    "input-bc74e6b2bb1b",
+    "input-2d659e862c54",
+    "input-3c4b59dbe598",
+    "input-f0690ff4ab89",
+    "input-eb6c67429aaa",
+    "input-9db1159ff63d",
+    "input-df5756510140",
+    "input-15395338ddcd",
+    "input-2bb425bca164",
+    "input-755034c9c2da",
+    "input-43d1b9b7ddd0",
+    "input-5aba7b5099cf",
+    "input-ff99ab29f880",
+    "input-39f2292c2da6",
+    "input-594e8289cb0d",
+    "input-12e2867b1cdd",
+    "input-86c32c903df0",
+    "input-30a399f6d8d7",
+    "input-954c80def9f1",
+    "input-9f9018f1e228",
+    "input-b48be011176f",
+    "input-d34fde69d644",
+    "input-05304fbaa491",
+    "input-d7528dfc7a86",
+    "input-efee69944550",
+    "input-f53b193f87b7",
+    "input-0ee6eaa43265",
+    "input-357476d1f447",
+    "input-cd8a7783af94",
+    "input-1f8f4b52250d",
+    "input-2062e66f4522",
+    "input-025469205a58",
+    "input-9d2e16266e4f",
+    "input-0a74fce62039",
+    "input-4afcf05c6f7f",
+    "input-02c7b5bbc3e2",
+    "input-585c3efad531",
+    "input-1ad7490f0d37",
+    "input-db401aec1008",
+    "input-1fedad4e317e",
+    "input-5a28a3e073ea",
+    "input-122dc45443e8",
+    "input-df3d9b774235",
+    "input-01048fdd315d",
+    "input-45b82f386e7d",
+    "input-7f675f92508d",
+    "input-cbdccdcdc064",
+    "input-4db08dd6fdc8",
+    "input-4b9340b608ba",
+    "input-9bc377ee731a",
+    "input-91f2e882a0ae",
+    "input-478210940c60",
+    "input-26ad7ff88ef6",
+    "input-1ca76a87ce17",
+    "input-e665669d9785",
+    "input-a86b9704557c",
+    "input-d1634bb02ccc",
+    "input-8dcdf8de10fd",
+    "input-5f41fc6ddfb2",
+    "input-032a24a85b1e",
+    "input-933cab9ee415",
+    "input-b5e568805fe4",
+    "input-cd55d25f05c5",
+    "input-6b228f8ddfa0",
+    "input-ed8a9354559f",
+    "input-c9934da79c1a",
+    "input-574238e105c4",
+    "input-e305c32c216a",
+    "input-d59ec21c6b17",
+    "input-99c7502332c0",
+    "input-b5a9d1fbfe23",
+    "input-bd5ef6ff7474",
+    "input-4ab6a3374e78",
+    "input-9111f5086bc9",
+    "input-2dda811fc126",
+    "input-febbb0e0f769",
+    "input-025158bb264f",
+    "input-e48b758f9992",
+    "input-2e4b62043147",
+    "input-26e1bc0d0c83",
+    "input-26a4dda5848a",
+    "input-01714a6f0f3c",
+    "input-5728f1228deb",
+    "input-aa884940331f",
+    "input-6dcb5833fa9a",
+    "input-2bdc5cfd9b2f",
+    "input-7383a5c693f8",
+    "input-37a35df94583",
+    "input-803ce900fc55",
+    "input-782aa342ab6d",
+    "input-a449c30d5447",
+    "input-fec5b29705f7",
+    "input-28751a014866",
+    "input-d4f03f48efbe",
+    "input-d5cb9ee2faec",
+    "input-ab9fa78c7530",
+    "input-7ba1224f9b8a",
+    "input-121091fd8170",
+    "input-2de683057757",
+    "input-6eb2e497b87e",
+    "input-78c819ea17bd",
+    "input-45c52cb939dc",
+    "input-b23214499b10",
+    "input-896e84dfee04",
+    "input-dbcee45c7b92",
+    "input-3977ff13acde",
+    "input-1da499ab6efd",
+    "input-6fc8dcaba1e4",
+    "input-9ce887f72832"
+  ],
+  "items": {
+    "input-7581f01fd91e": {
+      "gameId": "input-7581f01fd91e",
+      "gameName": "007 First Light",
+      "source": "The Red Team",
+      "trName": "007 First Light",
+      "link": "https://theredteam.vn/007-first-light-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/007_ava.png"
+    },
+    "input-cb3c1836065f": {
+      "gameId": "input-cb3c1836065f",
+      "gameName": "A Plague Tale: Innocence",
+      "source": "The Red Team",
+      "trName": "A Plague Tale: Innocence",
+      "link": "https://theredteam.vn/a-plague-tale-innocence-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/apti_ava.png"
+    },
+    "input-c2f5596d290d": {
+      "gameId": "input-c2f5596d290d",
+      "gameName": "A Plague Tale: Requiem",
+      "source": "The Red Team",
+      "trName": "A Plague Tale Requiem",
+      "link": "https://theredteam.vn/A-Plague-Tale-Requiem-Viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/gallery/A-Plague-Tale-Requiem-Viet-hoa-avatar.jpg"
+    },
+    "input-dff634b50ef2": {
+      "gameId": "input-dff634b50ef2",
+      "gameName": "A Short Hike",
+      "source": "The Red Team",
+      "trName": "A Short Hike",
+      "link": "https://theredteam.vn/a-short-hike-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ash_ava.png"
+    },
+    "input-0ab6d58a5748": {
+      "gameId": "input-0ab6d58a5748",
+      "gameName": "A Space for the Unbound",
+      "source": "The Red Team",
+      "trName": "A Space for the Unbound",
+      "link": "https://theredteam.vn/a-space-for-the-unbound-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/aspace_ava.png"
+    },
+    "input-729b19f9149b": {
+      "gameId": "input-729b19f9149b",
+      "gameName": "Alan Wake",
+      "source": "The Red Team",
+      "trName": "Alan Wake",
+      "link": "https://theredteam.vn/alan-wake-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/alan-wake-viet-hoa_ava.png"
+    },
+    "input-7055a6aa899a": {
+      "gameId": "input-7055a6aa899a",
+      "gameName": "Alone in the Dark (2008)",
+      "source": "The Red Team",
+      "trName": "Alone In The Dark",
+      "link": "https://theredteam.vn/alone-in-the-dark-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/alone_ava.png"
+    },
+    "input-fecdfe168b51": {
+      "gameId": "input-fecdfe168b51",
+      "gameName": "Amnesia: The Bunker",
+      "source": "The Red Team",
+      "trName": "Amnesia The Bunker",
+      "link": "https://theredteam.vn/amnesia-the-bunker-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bunker_ava.jpg"
+    },
+    "input-75048f1b17be": {
+      "gameId": "input-75048f1b17be",
+      "gameName": "ANNO: Mutationem",
+      "source": "The Red Team",
+      "trName": "Anno Mutationem",
+      "link": "https://theredteam.vn/anno-mutationem-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/anno_ava.jpg"
+    },
+    "input-f096a6666676": {
+      "gameId": "input-f096a6666676",
+      "gameName": "As Dusk Falls",
+      "source": "The Red Team",
+      "trName": "As Dusk Falls",
+      "link": "https://theredteam.vn/as-dusk-falls-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/asduskfalls_ava.png"
+    },
+    "input-703f60bd030c": {
+      "gameId": "input-703f60bd030c",
+      "gameName": "ASTRONEER",
+      "source": "The Red Team",
+      "trName": "Astroneer",
+      "link": "https://theredteam.vn/astroneer-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/astroneer_ava.png"
+    },
+    "input-2c74bd96abd2": {
+      "gameId": "input-2c74bd96abd2",
+      "gameName": "Atomic Heart",
+      "source": "The Red Team",
+      "trName": "Atomic Heart",
+      "link": "https://theredteam.vn/atomic-heart-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/main-slider/atomic_ava.png"
+    },
+    "input-b301309ba843": {
+      "gameId": "input-b301309ba843",
+      "gameName": "Back 4 Blood",
+      "source": "The Red Team",
+      "trName": "Back 4 Blood",
+      "link": "https://theredteam.vn/back-4-blood-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/b4b_ava.png"
+    },
+    "input-7c4f1ed6ab76": {
+      "gameId": "input-7c4f1ed6ab76",
+      "gameName": "Beast of Reincarnation",
+      "source": "The Red Team",
+      "trName": "Beast of Reincarnation",
+      "link": "https://theredteam.vn/beast-of-reincarnation-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bor_ava.png"
+    },
+    "input-6aa23b22bf3e": {
+      "gameId": "input-6aa23b22bf3e",
+      "gameName": "Before Your Eyes",
+      "source": "The Red Team",
+      "trName": "Before Your Eyes",
+      "link": "https://theredteam.vn/before-your-eyes-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bfye_ava.png"
+    },
+    "input-a0cb68acbd9a": {
+      "gameId": "input-a0cb68acbd9a",
+      "gameName": "Beholder: Conductor",
+      "source": "The Red Team",
+      "trName": "Beholder: Conductor",
+      "link": "https://theredteam.vn/beholder-conductor-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/beholder_ava.png"
+    },
+    "input-8339699984fb": {
+      "gameId": "input-8339699984fb",
+      "gameName": "Bellwright",
+      "source": "The Red Team",
+      "trName": "Bellwright",
+      "link": "https://theredteam.vn/bellwright-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bellwright2_ava.png"
+    },
+    "input-dab20232e6a7": {
+      "gameId": "input-dab20232e6a7",
+      "gameName": "Beyond: Two Souls",
+      "source": "The Red Team",
+      "trName": "Beyond: Two Souls",
+      "link": "https://theredteam.vn/beyond-two-souls-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bts_ava.png"
+    },
+    "input-750217283f6a": {
+      "gameId": "input-750217283f6a",
+      "gameName": "Black Myth: Wukong",
+      "source": "The Red Team",
+      "trName": "Black Myth: Wukong",
+      "link": "https://theredteam.vn/black-myth-wukong-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wukong_ava.png"
+    },
+    "input-5705a664e507": {
+      "gameId": "input-5705a664e507",
+      "gameName": "Blasphemous",
+      "source": "The Red Team",
+      "trName": "Blasphemous",
+      "link": "https://theredteam.vn/blasphemous-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/b1_ava.png"
+    },
+    "input-9b5a731105b9": {
+      "gameId": "input-9b5a731105b9",
+      "gameName": "Blasphemous 2",
+      "source": "The Red Team",
+      "trName": "Blasphemous 2",
+      "link": "https://theredteam.vn/blasphemous-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/blas2_ava.jpg"
+    },
+    "input-b4611a30c9ed": {
+      "gameId": "input-b4611a30c9ed",
+      "gameName": "Bramble: The Mountain King",
+      "source": "The Red Team",
+      "trName": "Bramble",
+      "link": "https://theredteam.vn/bramble-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/b_ava.png"
+    },
+    "input-c59e5a8353f0": {
+      "gameId": "input-c59e5a8353f0",
+      "gameName": "Bum Simulator",
+      "source": "The Red Team",
+      "trName": "Bum Simulator",
+      "link": "https://theredteam.vn/bum-simulator-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bum_ava.png"
+    },
+    "input-5bde0e948045": {
+      "gameId": "input-5bde0e948045",
+      "gameName": "Carto",
+      "source": "The Red Team",
+      "trName": "Carto",
+      "link": "https://theredteam.vn/carto-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/carto_ava.png"
+    },
+    "input-097dcdfc18f5": {
+      "gameId": "input-097dcdfc18f5",
+      "gameName": "Chained Echoes",
+      "source": "The Red Team",
+      "trName": "Chained Echoes",
+      "link": "https://theredteam.vn/chained-echoes-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/chained_ava.jpg"
+    },
+    "input-56d0e019fb61": {
+      "gameId": "input-56d0e019fb61",
+      "gameName": "Conan Exiles - Public Beta Client",
+      "source": "The Red Team",
+      "trName": "Conan Exiles Enhanced",
+      "link": "https://theredteam.vn/conan-exiles-enhanced-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/conan_ava.png"
+    },
+    "input-0033a11b8ee1": {
+      "gameId": "input-0033a11b8ee1",
+      "gameName": "Conan Exiles Enhanced",
+      "source": "The Red Team",
+      "trName": "Conan Exiles Enhanced",
+      "link": "https://theredteam.vn/conan-exiles-enhanced-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/conan_ava.png"
+    },
+    "input-b31f7f838d6d": {
+      "gameId": "input-b31f7f838d6d",
+      "gameName": "Contraband Police",
+      "source": "The Red Team",
+      "trName": "Contraband Police",
+      "link": "https://theredteam.vn/Contraband-Police-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/main-slider/ava_Police.jpg"
+    },
+    "input-f7c536e1e904": {
+      "gameId": "input-f7c536e1e904",
+      "gameName": "Coral Island",
+      "source": "The Red Team",
+      "trName": "Coral Island",
+      "link": "https://theredteam.vn/coral-island-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/coral_ava.png"
+    },
+    "input-af8d96dc4dae": {
+      "gameId": "input-af8d96dc4dae",
+      "gameName": "Core Keeper",
+      "source": "The Red Team",
+      "trName": "Core Keeper",
+      "link": "https://theredteam.vn/core-keeper-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/keeper_ava.jpg"
+    },
+    "input-e71e1dc1ffc9": {
+      "gameId": "input-e71e1dc1ffc9",
+      "gameName": "Crimson Snow (2023)",
+      "source": "The Red Team",
+      "trName": "Crimson Snow",
+      "link": "https://theredteam.vn/crimson-snow-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/crimson_ava.png"
+    },
+    "input-92127c55d911": {
+      "gameId": "input-92127c55d911",
+      "gameName": "Cult of the Lamb",
+      "source": "The Red Team",
+      "trName": "Cult of the Lamb",
+      "link": "https://theredteam.vn/cult-of-the-lamb",
+      "img": "https://theredteam.vn/index_files/images/gallery/cotl.jpg"
+    },
+    "input-249762837678": {
+      "gameId": "input-249762837678",
+      "gameName": "Cyberpunk 2077",
+      "source": "The Red Team",
+      "trName": "Cyberpunk 2077",
+      "link": "https://theredteam.vn/cyberpunk-2077",
+      "img": "https://theredteam.vn/index_files/images/gallery/Cyberpunk_500x500.jpg"
+    },
+    "input-c88f96fa9046": {
+      "gameId": "input-c88f96fa9046",
+      "gameName": "DAVE THE DIVER",
+      "source": "The Red Team",
+      "trName": "Dave The Diver",
+      "link": "https://theredteam.vn/Dave-The-Diver-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/davenew_ava.png"
+    },
+    "input-36b6b24b04ae": {
+      "gameId": "input-36b6b24b04ae",
+      "gameName": "Days Gone",
+      "source": "The Red Team",
+      "trName": "Days Gone",
+      "link": "https://theredteam.vn/Days-gone-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/DG_ava.jpg"
+    },
+    "input-eb1ac405d413": {
+      "gameId": "input-eb1ac405d413",
+      "gameName": "Dead Island 2",
+      "source": "The Red Team",
+      "trName": "Dead Island 2",
+      "link": "https://theredteam.vn/dead-island-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dead2_ava.jpg"
+    },
+    "input-5fb347cf4d5a": {
+      "gameId": "input-5fb347cf4d5a",
+      "gameName": "Dead Island Definitive Edition",
+      "source": "The Red Team",
+      "trName": "Dead Island",
+      "link": "https://theredteam.vn/dead-island",
+      "img": "https://theredteam.vn/index_files/images/gallery/di.jpg"
+    },
+    "input-1daecbe4a7c0": {
+      "gameId": "input-1daecbe4a7c0",
+      "gameName": "Dead Island: Riptide Definitive Edition",
+      "source": "The Red Team",
+      "trName": "Dead Island",
+      "link": "https://theredteam.vn/dead-island",
+      "img": "https://theredteam.vn/index_files/images/gallery/di.jpg"
+    },
+    "input-bf46c9b4d3b2": {
+      "gameId": "input-bf46c9b4d3b2",
+      "gameName": "Death in the Water 2",
+      "source": "The Red Team",
+      "trName": "Death In The Water 2",
+      "link": "https://theredteam.vn/death-in-the-water-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ditw2_ava.png"
+    },
+    "input-68da871f45f6": {
+      "gameId": "input-68da871f45f6",
+      "gameName": "DEATH STRANDING",
+      "source": "The Red Team",
+      "trName": "Death Stranding",
+      "link": "https://theredteam.vn/death-stranding-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ds_ava.png"
+    },
+    "input-15afdff59f41": {
+      "gameId": "input-15afdff59f41",
+      "gameName": "DEATH STRANDING 2: ON THE BEACH",
+      "source": "The Red Team",
+      "trName": "Death Stranding 2: On The Beach",
+      "link": "https://theredteam.vn/death-stranding-2-on-the-beach-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ds2_ava.png"
+    },
+    "input-c1ff776ffb10": {
+      "gameId": "input-c1ff776ffb10",
+      "gameName": "Detroit: Become Human",
+      "source": "The Red Team",
+      "trName": "Detroit: Become Human",
+      "link": "https://theredteam.vn/detroit-become-human-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dbh_ava.png"
+    },
+    "input-7fda996b8675": {
+      "gameId": "input-7fda996b8675",
+      "gameName": "Devil May Cry 5",
+      "source": "The Red Team",
+      "trName": "Devil May Cry 5",
+      "link": "https://theredteam.vn/devil-may-cry-5-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dmc5_ava.png"
+    },
+    "input-dcdf79c05f66": {
+      "gameId": "input-dcdf79c05f66",
+      "gameName": "Dishonored",
+      "source": "The Red Team",
+      "trName": "Dishonored",
+      "link": "https://theredteam.vn/dishonored-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dvh_ava.png"
+    },
+    "input-2423c139f3b2": {
+      "gameId": "input-2423c139f3b2",
+      "gameName": "Dishonored®: Death of the Outsider™",
+      "source": "The Red Team",
+      "trName": "Dishonored",
+      "link": "https://theredteam.vn/dishonored-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dvh_ava.png"
+    },
+    "input-9d774d40a977": {
+      "gameId": "input-9d774d40a977",
+      "gameName": "Dispatch",
+      "source": "The Red Team",
+      "trName": "Dispatch",
+      "link": "https://theredteam.vn/dispatch-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dp_ava.png"
+    },
+    "input-05380a4ac135": {
+      "gameId": "input-05380a4ac135",
+      "gameName": "Dragon's Dogma 2",
+      "source": "The Red Team",
+      "trName": "Dragons Dogma 2",
+      "link": "https://theredteam.vn/dragons-dogma-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dd2_ava.png"
+    },
+    "input-0cae0c3572d1": {
+      "gameId": "input-0cae0c3572d1",
+      "gameName": "DragonSword : Awakening",
+      "source": "The Red Team",
+      "trName": "DragonSword : Awakening",
+      "link": "https://theredteam.vn/dragonsword-awakening-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dragonsword-awakening-viet-hoa_ava.jpg"
+    },
+    "input-5746ba93f686": {
+      "gameId": "input-5746ba93f686",
+      "gameName": "DREDGE",
+      "source": "The Red Team",
+      "trName": "Dredge",
+      "link": "https://theredteam.vn/Dredge-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dredge_ava.png"
+    },
+    "input-f99c0fcc13bc": {
+      "gameId": "input-f99c0fcc13bc",
+      "gameName": "Dying Light: The Beast",
+      "source": "The Red Team",
+      "trName": "Dying Light: The Beast",
+      "link": "https://theredteam.vn/dying-light-the-beast-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dltb_ava.png"
+    },
+    "input-20a4b9ebbba2": {
+      "gameId": "input-20a4b9ebbba2",
+      "gameName": "Eastward",
+      "source": "The Red Team",
+      "trName": "Eastward",
+      "link": "https://theredteam.vn/eastward-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/eastward_ava.png"
+    },
+    "input-adb5d2676cb7": {
+      "gameId": "input-adb5d2676cb7",
+      "gameName": "ELDEN RING",
+      "source": "The Red Team",
+      "trName": "Elden Ring",
+      "link": "https://theredteam.vn/elden-ring",
+      "img": "https://theredteam.vn/index_files/images/gallery/er.jpg"
+    },
+    "input-1df40922cef4": {
+      "gameId": "input-1df40922cef4",
+      "gameName": "ELDEN RING NIGHTREIGN",
+      "source": "The Red Team",
+      "trName": "Elden Ring: Nightreign",
+      "link": "https://theredteam.vn/elden-ring-nightreign-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ern_ava.png"
+    },
+    "input-ceb0bbc57703": {
+      "gameId": "input-ceb0bbc57703",
+      "gameName": "Everdream Valley",
+      "source": "The Red Team",
+      "trName": "Everdream Valley",
+      "link": "https://theredteam.vn/everdream-valley-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/everdream_ava.jpg"
+    },
+    "input-0adcfa17ab9e": {
+      "gameId": "input-0adcfa17ab9e",
+      "gameName": "Evil West",
+      "source": "The Red Team",
+      "trName": "Evil West",
+      "link": "https://theredteam.vn/evil-west-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/gallery/evil-west-viet-hoa-1.png"
+    },
+    "input-36c92f9a2e11": {
+      "gameId": "input-36c92f9a2e11",
+      "gameName": "Fabledom",
+      "source": "The Red Team",
+      "trName": "Fabledom",
+      "link": "https://theredteam.vn/fabledom-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/f_ava.png"
+    },
+    "input-758db7ea91e8": {
+      "gameId": "input-758db7ea91e8",
+      "gameName": "Farthest Frontier",
+      "source": "The Red Team",
+      "trName": "Farthest Frontier",
+      "link": "https://theredteam.vn/ff",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff_ava.png"
+    },
+    "input-d3ab9c9da10a": {
+      "gameId": "input-d3ab9c9da10a",
+      "gameName": "FATAL FRAME / PROJECT ZERO: Mask of the Lunar Eclipse",
+      "source": "The Red Team",
+      "trName": "FATAL FRAME / PROJECT ZERO: Mask of the Lunar Eclipse",
+      "link": "https://theredteam.vn/fatal-frame-project-zero-mask-of-the-lunar-eclipse-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ffiv_ava.png"
+    },
+    "input-4b3474c8016f": {
+      "gameId": "input-4b3474c8016f",
+      "gameName": "Fear & Hunger",
+      "source": "The Red Team",
+      "trName": "Fear And Hunger",
+      "link": "https://theredteam.vn/fear-and-hunger-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/fah_ava.png"
+    },
+    "input-136e4af2a8a6": {
+      "gameId": "input-136e4af2a8a6",
+      "gameName": "FINAL FANTASY II",
+      "source": "The Red Team",
+      "trName": "Final Fantasy II",
+      "link": "https://theredteam.vn/final-fantasy-ii",
+      "img": "https://theredteam.vn/index_files/images/New_2023/FF2_Ava.jpg"
+    },
+    "input-33d871b5a83e": {
+      "gameId": "input-33d871b5a83e",
+      "gameName": "FINAL FANTASY IV",
+      "source": "The Red Team",
+      "trName": "Final Fantasy IV",
+      "link": "https://theredteam.vn/FinalFantasyIV",
+      "img": "https://theredteam.vn/index_files/images/main-slider/FinalFantasyIVAva.jpg"
+    },
+    "input-8d823b6cd5b4": {
+      "gameId": "input-8d823b6cd5b4",
+      "gameName": "Final Fantasy IV (3D Remake)",
+      "source": "The Red Team",
+      "trName": "Final Fantasy IV",
+      "link": "https://theredteam.vn/FinalFantasyIV",
+      "img": "https://theredteam.vn/index_files/images/main-slider/FinalFantasyIVAva.jpg"
+    },
+    "input-f813aa5d9d94": {
+      "gameId": "input-f813aa5d9d94",
+      "gameName": "FINAL FANTASY IV: THE AFTER YEARS",
+      "source": "The Red Team",
+      "trName": "Final Fantasy IV",
+      "link": "https://theredteam.vn/FinalFantasyIV",
+      "img": "https://theredteam.vn/index_files/images/main-slider/FinalFantasyIVAva.jpg"
+    },
+    "input-54e9cdabe4a8": {
+      "gameId": "input-54e9cdabe4a8",
+      "gameName": "FINAL FANTASY V",
+      "source": "The Red Team",
+      "trName": "Final Fantasy V",
+      "link": "https://theredteam.vn/final-fantasy-v-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff5_ava.png"
+    },
+    "input-764888821d07": {
+      "gameId": "input-764888821d07",
+      "gameName": "FINAL FANTASY VII",
+      "source": "The Red Team",
+      "trName": "Final Fantasy VII",
+      "link": "https://theredteam.vn/final-fantasy-VII-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff7_ava.jpg"
+    },
+    "input-3de2f427028e": {
+      "gameId": "input-3de2f427028e",
+      "gameName": "FINAL FANTASY VII",
+      "source": "The Red Team",
+      "trName": "Final Fantasy VII",
+      "link": "https://theredteam.vn/final-fantasy-VII-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff7_ava.jpg"
+    },
+    "input-c4003844feb5": {
+      "gameId": "input-c4003844feb5",
+      "gameName": "FINAL FANTASY VII REBIRTH",
+      "source": "The Red Team",
+      "trName": "Final Fantasy VII Rebirth",
+      "link": "https://theredteam.vn/final-fantasy-vii-rebirth-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff7r_ava.jpg"
+    },
+    "input-e129b3957a5a": {
+      "gameId": "input-e129b3957a5a",
+      "gameName": "Firework",
+      "source": "The Red Team",
+      "trName": "Firework",
+      "link": "https://theredteam.vn/firework-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/firework_ava.png"
+    },
+    "input-e6c88ab9d756": {
+      "gameId": "input-e6c88ab9d756",
+      "gameName": "Frostpunk",
+      "source": "The Red Team",
+      "trName": "Frostpunk",
+      "link": "https://theredteam.vn/frost-punk",
+      "img": "https://theredteam.vn/index_files/images/gallery/fp.png"
+    },
+    "input-205f351bcf59": {
+      "gameId": "input-205f351bcf59",
+      "gameName": "Frostpunk 2",
+      "source": "The Red Team",
+      "trName": "Frostpunk 2",
+      "link": "https://theredteam.vn/frost-punk-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/fp2_ava.png"
+    },
+    "input-6e665a55e018": {
+      "gameId": "input-6e665a55e018",
+      "gameName": "Ghostrunner 2",
+      "source": "The Red Team",
+      "trName": "Ghostrunner 2",
+      "link": "https://theredteam.vn/ghostrunner-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ghostrunner2_ava.jpg"
+    },
+    "input-fd01b01736f1": {
+      "gameId": "input-fd01b01736f1",
+      "gameName": "God of War Ragnarök",
+      "source": "The Red Team",
+      "trName": "God of War Ragnarök",
+      "link": "https://theredteam.vn/god-of-war-ragnarok-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/gowr_ava.png"
+    },
+    "input-ce3d56702145": {
+      "gameId": "input-ce3d56702145",
+      "gameName": "Gord",
+      "source": "The Red Team",
+      "trName": "Gord",
+      "link": "https://theredteam.vn/gord-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Gord_ava.jpg"
+    },
+    "input-ef015084c8ef": {
+      "gameId": "input-ef015084c8ef",
+      "gameName": "Gothic 1 Remake",
+      "source": "The Red Team",
+      "trName": "Gothic 1 Remake",
+      "link": "https://theredteam.vn/gothic-1-remake-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/gothic-1-remake-viet-hoa_ava.jpg"
+    },
+    "input-0ce5ede6f9a1": {
+      "gameId": "input-0ce5ede6f9a1",
+      "gameName": "Granblue Fantasy: Relink",
+      "source": "The Red Team",
+      "trName": "Granblue Fantasy: Relink",
+      "link": "https://theredteam.vn/granblue-fantasy-relink-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/granblue_ava.png"
+    },
+    "input-863ced6fb44d": {
+      "gameId": "input-863ced6fb44d",
+      "gameName": "Graveyard Keeper",
+      "source": "The Red Team",
+      "trName": "Graveyard Keeper",
+      "link": "https://theredteam.vn/Graveyard-keeper",
+      "img": "https://theredteam.vn/index_files/images/New_2023/GRAVE_ava.jpg"
+    },
+    "input-61b3003afdc7": {
+      "gameId": "input-61b3003afdc7",
+      "gameName": "Grounded",
+      "source": "The Red Team",
+      "trName": "Grounded",
+      "link": "https://theredteam.vn/Grounded-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Grounded_ava.jpg"
+    },
+    "input-b75a8a2f7c03": {
+      "gameId": "input-b75a8a2f7c03",
+      "gameName": "Halo: The Master Chief Collection",
+      "source": "The Red Team",
+      "trName": "Halo The Master Chief Collection",
+      "link": "https://theredteam.vn/halo-the-master-chief-collection-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/halo_ava.png"
+    },
+    "input-40e34a738b3e": {
+      "gameId": "input-40e34a738b3e",
+      "gameName": "High On Life",
+      "source": "The Red Team",
+      "trName": "High On Life",
+      "link": "https://theredteam.vn/HighOnLife",
+      "img": "https://theredteam.vn/index_files/images/main-slider/High_On_life_Ava.jpg"
+    },
+    "input-b8959ff0c082": {
+      "gameId": "input-b8959ff0c082",
+      "gameName": "Hogwarts Legacy",
+      "source": "The Red Team",
+      "trName": "Hogwarts Legacy",
+      "link": "https://theredteam.vn/hogwarts-legacy-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/HL_ava.jpg"
+    },
+    "input-604ae7e26f70": {
+      "gameId": "input-604ae7e26f70",
+      "gameName": "Indiana Jones and the Great Circle",
+      "source": "The Red Team",
+      "trName": "Indiana Jones And The Great Circle",
+      "link": "https://theredteam.vn/indiana-jones-and-the-great-circle-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ij_ava.png"
+    },
+    "input-64e8bb3907c4": {
+      "gameId": "input-64e8bb3907c4",
+      "gameName": "inZOI",
+      "source": "The Red Team",
+      "trName": "inZOI",
+      "link": "https://theredteam.vn/inZOI-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/inzoi_ava.png"
+    },
+    "input-bc74e6b2bb1b": {
+      "gameId": "input-bc74e6b2bb1b",
+      "gameName": "Judgment",
+      "source": "The Red Team",
+      "trName": "Judgment",
+      "link": "https://theredteam.vn/judgment-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/judgment-viet-hoa_ava.jpg"
+    },
+    "input-2d659e862c54": {
+      "gameId": "input-2d659e862c54",
+      "gameName": "Judgment: Apocalypse Survival Simulation",
+      "source": "The Red Team",
+      "trName": "Judgment",
+      "link": "https://theredteam.vn/judgment-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/judgment-viet-hoa_ava.jpg"
+    },
+    "input-3c4b59dbe598": {
+      "gameId": "input-3c4b59dbe598",
+      "gameName": "Kena: Bridge of Spirits",
+      "source": "The Red Team",
+      "trName": "Kena: Bridge Of Spirits",
+      "link": "https://theredteam.vn/kena-bridge-of-spirits-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/kena_ava.png"
+    },
+    "input-f0690ff4ab89": {
+      "gameId": "input-f0690ff4ab89",
+      "gameName": "Kingdom Come: Deliverance",
+      "source": "The Red Team",
+      "trName": "Kingdom Come Deliverance",
+      "link": "https://theredteam.vn/kingdom-come-deliverance",
+      "img": "https://theredteam.vn/index_files/images/gallery/kingdom.jpg"
+    },
+    "input-eb6c67429aaa": {
+      "gameId": "input-eb6c67429aaa",
+      "gameName": "Kingdoms and Castles",
+      "source": "The Red Team",
+      "trName": "Kingdoms And Castles",
+      "link": "https://theredteam.vn/kingdoms-and-castles-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/kas_ava.png"
+    },
+    "input-9db1159ff63d": {
+      "gameId": "input-9db1159ff63d",
+      "gameName": "Let's School",
+      "source": "The Red Team",
+      "trName": "Let’s School",
+      "link": "https://theredteam.vn/lets-school-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/school_ava.png"
+    },
+    "input-df5756510140": {
+      "gameId": "input-df5756510140",
+      "gameName": "Lethal Company",
+      "source": "The Red Team",
+      "trName": "Lethal Company",
+      "link": "https://theredteam.vn/lethal-company-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lethal_ava.jpg"
+    },
+    "input-15395338ddcd": {
+      "gameId": "input-15395338ddcd",
+      "gameName": "Lies of P",
+      "source": "The Red Team",
+      "trName": "Lies Of P",
+      "link": "https://theredteam.vn/lies-of-p-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lop_ava.jpg"
+    },
+    "input-2bb425bca164": {
+      "gameId": "input-2bb425bca164",
+      "gameName": "Life is Strange 2",
+      "source": "The Red Team",
+      "trName": "Life Is Strange 2",
+      "link": "https://theredteam.vn/life-is-strange-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/LIS2_ava.jpg"
+    },
+    "input-755034c9c2da": {
+      "gameId": "input-755034c9c2da",
+      "gameName": "Life is Strange: Before the Storm",
+      "source": "The Red Team",
+      "trName": "Life Is Strange: Before The Storm",
+      "link": "https://theredteam.vn/lis-before-the-storm",
+      "img": "https://theredteam.vn/index_files/images/gallery/LIS_BTS.jpg"
+    },
+    "input-43d1b9b7ddd0": {
+      "gameId": "input-43d1b9b7ddd0",
+      "gameName": "Life is Strange: Before the Storm Remastered",
+      "source": "The Red Team",
+      "trName": "Life Is Strange: Before The Storm",
+      "link": "https://theredteam.vn/lis-before-the-storm",
+      "img": "https://theredteam.vn/index_files/images/gallery/LIS_BTS.jpg"
+    },
+    "input-5aba7b5099cf": {
+      "gameId": "input-5aba7b5099cf",
+      "gameName": "Life is Strange: True Colors",
+      "source": "The Red Team",
+      "trName": "Life Is Strange: True Colors",
+      "link": "https://theredteam.vn/Life_Is_Strange_-_True_Colors",
+      "img": "https://theredteam.vn/index_files/images/gallery/lis.png"
+    },
+    "input-ff99ab29f880": {
+      "gameId": "input-ff99ab29f880",
+      "gameName": "Lost Judgment",
+      "source": "The Red Team",
+      "trName": "Lost Judgment",
+      "link": "https://theredteam.vn/lost-judgment-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lj_ava.png"
+    },
+    "input-39f2292c2da6": {
+      "gameId": "input-39f2292c2da6",
+      "gameName": "Luma Island",
+      "source": "The Red Team",
+      "trName": "Luma Island",
+      "link": "https://theredteam.vn/luma-island-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lumaisland_ava.png"
+    },
+    "input-594e8289cb0d": {
+      "gameId": "input-594e8289cb0d",
+      "gameName": "Mafia: The Old Country",
+      "source": "The Red Team",
+      "trName": "Mafia: The Old Country",
+      "link": "https://theredteam.vn/mafia-the-old-country-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mafia_ava.png"
+    },
+    "input-12e2867b1cdd": {
+      "gameId": "input-12e2867b1cdd",
+      "gameName": "Maneater",
+      "source": "The Red Team",
+      "trName": "Maneater",
+      "link": "https://theredteam.vn/maneater-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/maneater_ava.png"
+    },
+    "input-86c32c903df0": {
+      "gameId": "input-86c32c903df0",
+      "gameName": "Manor Lords",
+      "source": "The Red Team",
+      "trName": "Manor Lords",
+      "link": "https://theredteam.vn/manor-lords-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/manor_ava.png"
+    },
+    "input-30a399f6d8d7": {
+      "gameId": "input-30a399f6d8d7",
+      "gameName": "Martha Is Dead",
+      "source": "The Red Team",
+      "trName": "Martha is Dead",
+      "link": "https://theredteam.vn/martha-is-dead",
+      "img": "https://theredteam.vn/index_files/images/gallery/martha.jpg"
+    },
+    "input-954c80def9f1": {
+      "gameId": "input-954c80def9f1",
+      "gameName": "METAL GEAR SOLID V: GROUND ZEROES",
+      "source": "The Red Team",
+      "trName": "Metal Gear Solid V",
+      "link": "https://theredteam.vn/MGSV-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/MGSV_Ava.jpg"
+    },
+    "input-9f9018f1e228": {
+      "gameId": "input-9f9018f1e228",
+      "gameName": "METAL GEAR SOLID V: THE PHANTOM PAIN",
+      "source": "The Red Team",
+      "trName": "Metal Gear Solid V",
+      "link": "https://theredteam.vn/MGSV-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/MGSV_Ava.jpg"
+    },
+    "input-b48be011176f": {
+      "gameId": "input-b48be011176f",
+      "gameName": "Monster Hunter Wilds",
+      "source": "The Red Team",
+      "trName": "Monster Hunter Wilds",
+      "link": "https://theredteam.vn/monster-hunter-wilds-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mhw_ava.jpg"
+    },
+    "input-d34fde69d644": {
+      "gameId": "input-d34fde69d644",
+      "gameName": "Mortal Shell II",
+      "source": "The Red Team",
+      "trName": "Mortal Shell II",
+      "link": "https://theredteam.vn/mortal-shell-ii-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mortal-shell-ii-viet-hoa_ava.jpg"
+    },
+    "input-05304fbaa491": {
+      "gameId": "input-05304fbaa491",
+      "gameName": "MOUSE: P.I. For Hire",
+      "source": "The Red Team",
+      "trName": "MOUSE: P.I. For Hire",
+      "link": "https://theredteam.vn/mouse-pi-for-hire-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/chuotloz_ava.png"
+    },
+    "input-d7528dfc7a86": {
+      "gameId": "input-d7528dfc7a86",
+      "gameName": "Murdered: Soul Suspect",
+      "source": "The Red Team",
+      "trName": "Murdered: Soul Suspect",
+      "link": "https://theredteam.vn/murdered-soul-suspect-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mss_ava.png"
+    },
+    "input-efee69944550": {
+      "gameId": "input-efee69944550",
+      "gameName": "My Time at Sandrock",
+      "source": "The Red Team",
+      "trName": "My Time At Sandrock",
+      "link": "https://theredteam.vn/my-time-at-sand-rock-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sandrock_ava.png"
+    },
+    "input-f53b193f87b7": {
+      "gameId": "input-f53b193f87b7",
+      "gameName": "Neighbours back From Hell",
+      "source": "The Red Team",
+      "trName": "Neighbours Back From Hell",
+      "link": "https://theredteam.vn/neighbours-back-from-hell-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/nbfh_ava.png"
+    },
+    "input-0ee6eaa43265": {
+      "gameId": "input-0ee6eaa43265",
+      "gameName": "Nine Sols",
+      "source": "The Red Team",
+      "trName": "Nine Sols",
+      "link": "https://theredteam.vn/nine-sols-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ninesols_ava.png"
+    },
+    "input-357476d1f447": {
+      "gameId": "input-357476d1f447",
+      "gameName": "Nobody - The Turnaround",
+      "source": "The Red Team",
+      "trName": "Nobody - The Turnaround",
+      "link": "https://theredteam.vn/nobody-the-turnaround-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/nobody-the-turnaround-viet-hoa_ava.jpg"
+    },
+    "input-cd8a7783af94": {
+      "gameId": "input-cd8a7783af94",
+      "gameName": "Onimusha: Way of the Sword",
+      "source": "The Red Team",
+      "trName": "Onimusha: Way of the Sword",
+      "link": "https://theredteam.vn/onimusha-way-of-the-sword-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/onimusha-way-of-the-sword-viet-hoa_ava.jpg"
+    },
+    "input-1f8f4b52250d": {
+      "gameId": "input-1f8f4b52250d",
+      "gameName": "Outlast",
+      "source": "The Red Team",
+      "trName": "Outlast Collection",
+      "link": "https://theredteam.vn/outlast-collection-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/oc_ava.png"
+    },
+    "input-2062e66f4522": {
+      "gameId": "input-2062e66f4522",
+      "gameName": "Outward Definitive Edition",
+      "source": "The Red Team",
+      "trName": "Outward Definitive",
+      "link": "https://theredteam.vn/outward",
+      "img": "https://theredteam.vn/index_files/images/New_2023/OW_ava.png"
+    },
+    "input-025469205a58": {
+      "gameId": "input-025469205a58",
+      "gameName": "Palworld",
+      "source": "The Red Team",
+      "trName": "Palworld",
+      "link": "https://theredteam.vn/palworld-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/palworld_ava.jpg"
+    },
+    "input-9d2e16266e4f": {
+      "gameId": "input-9d2e16266e4f",
+      "gameName": "港詭實錄ParanormalHK",
+      "source": "The Red Team",
+      "trName": "港詭實錄 Paranormal HK",
+      "link": "https://theredteam.vn/paranormalhk-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/paranormal_ava.png"
+    },
+    "input-0a74fce62039": {
+      "gameId": "input-0a74fce62039",
+      "gameName": "Potion Permit",
+      "source": "The Red Team",
+      "trName": "Potion Permit",
+      "link": "https://theredteam.vn/potion-permit-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/pp_ava.png"
+    },
+    "input-4afcf05c6f7f": {
+      "gameId": "input-4afcf05c6f7f",
+      "gameName": "PRAGMATA",
+      "source": "The Red Team",
+      "trName": "Pragmata",
+      "link": "https://theredteam.vn/pragmata-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/p_ava.png"
+    },
+    "input-02c7b5bbc3e2": {
+      "gameId": "input-02c7b5bbc3e2",
+      "gameName": "Quarantine Zone: The Last Check",
+      "source": "The Red Team",
+      "trName": "Quarantine Zone: The Last Check",
+      "link": "https://theredteam.vn/quarantine-zone-the-last-check-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/qzsim_ava.png"
+    },
+    "input-585c3efad531": {
+      "gameId": "input-585c3efad531",
+      "gameName": "Ravenous Devils",
+      "source": "The Red Team",
+      "trName": "Ravenous Devils",
+      "link": "https://theredteam.vn/ravenous-devils",
+      "img": "https://theredteam.vn/index_files/images/gallery/ravenous_ava.jpg"
+    },
+    "input-1ad7490f0d37": {
+      "gameId": "input-1ad7490f0d37",
+      "gameName": "REPLACED",
+      "source": "The Red Team",
+      "trName": "Replaced",
+      "link": "https://theredteam.vn/replaced-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/r_ava.png"
+    },
+    "input-db401aec1008": {
+      "gameId": "input-db401aec1008",
+      "gameName": "Resident Evil 5",
+      "source": "The Red Team",
+      "trName": "Resident Evil 5",
+      "link": "https://theredteam.vn/resident-evil-5-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re5_ava.png"
+    },
+    "input-1fedad4e317e": {
+      "gameId": "input-1fedad4e317e",
+      "gameName": "Resident Evil 6",
+      "source": "The Red Team",
+      "trName": "Resident Evil 6",
+      "link": "https://theredteam.vn/resident-evil-6-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re6_ava.png"
+    },
+    "input-5a28a3e073ea": {
+      "gameId": "input-5a28a3e073ea",
+      "gameName": "Resident Evil 7 Biohazard",
+      "source": "The Red Team",
+      "trName": "Resident Evil 7 Biohazard",
+      "link": "https://theredteam.vn/resident-evil-7-biohazard-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re7_ava.png"
+    },
+    "input-122dc45443e8": {
+      "gameId": "input-122dc45443e8",
+      "gameName": "Resident Evil Requiem",
+      "source": "The Red Team",
+      "trName": "Resident Evil Requiem",
+      "link": "https://theredteam.vn/resident-evil-requiem-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re9_ava.png"
+    },
+    "input-df3d9b774235": {
+      "gameId": "input-df3d9b774235",
+      "gameName": "Resident Evil Village",
+      "source": "The Red Team",
+      "trName": "Resident Evil Village",
+      "link": "https://theredteam.vn/resident-evil-village-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re8_ava.png"
+    },
+    "input-01048fdd315d": {
+      "gameId": "input-01048fdd315d",
+      "gameName": "Resonance: A Plague Tale Legacy",
+      "source": "The Red Team",
+      "trName": "Resonance: A Plague Tale Legacy",
+      "link": "https://theredteam.vn/resonance-a-plague-tale-legacy-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/resonance-a-plague-tale-legacy-viet-hoa_ava.jpg"
+    },
+    "input-45b82f386e7d": {
+      "gameId": "input-45b82f386e7d",
+      "gameName": "Rise of the Ronin",
+      "source": "The Red Team",
+      "trName": "Rise Of The Ronin",
+      "link": "https://theredteam.vn/rise-of-the-ronin-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ronin_ava.png"
+    },
+    "input-7f675f92508d": {
+      "gameId": "input-7f675f92508d",
+      "gameName": "Rise of the Tomb Raider™",
+      "source": "The Red Team",
+      "trName": "Rise Of The Tomb Raider",
+      "link": "https://theredteam.vn/rise-of-the-tomb-raider-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/rottr_ava.jpg"
+    },
+    "input-cbdccdcdc064": {
+      "gameId": "input-cbdccdcdc064",
+      "gameName": "RoboCop: Rogue City",
+      "source": "The Red Team",
+      "trName": "Robocop",
+      "link": "https://theredteam.vn/robocop-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/robocop_ava.png"
+    },
+    "input-4db08dd6fdc8": {
+      "gameId": "input-4db08dd6fdc8",
+      "gameName": "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
+      "source": "The Red Team",
+      "trName": "Stalker 2",
+      "link": "https://theredteam.vn/stalker-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/s2_ava.png"
+    },
+    "input-4b9340b608ba": {
+      "gameId": "input-4b9340b608ba",
+      "gameName": "Sea of Stars: Sunset Edition",
+      "source": "The Red Team",
+      "trName": "Sea Of Stars",
+      "link": "https://theredteam.vn/sea-of-stars-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sos_ava.jpg"
+    },
+    "input-9bc377ee731a": {
+      "gameId": "input-9bc377ee731a",
+      "gameName": "Sea of Stars: Sunset Edition",
+      "source": "The Red Team",
+      "trName": "Sea Of Stars",
+      "link": "https://theredteam.vn/sea-of-stars-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sos_ava.jpg"
+    },
+    "input-91f2e882a0ae": {
+      "gameId": "input-91f2e882a0ae",
+      "gameName": "Shadow of the Tomb Raider: Definitive Edition",
+      "source": "The Red Team",
+      "trName": "Shadow Of The Tomb Raider",
+      "link": "https://theredteam.vn/shadow-of-the-tomb-raider-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/SOTR_ava.jpg"
+    },
+    "input-478210940c60": {
+      "gameId": "input-478210940c60",
+      "gameName": "Sherlock Holmes Chapter One",
+      "source": "The Red Team",
+      "trName": "Sherlock Holmes Chapter One",
+      "link": "https://theredteam.vn/sherlock-holmes-chapter-one",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Sherlock_C1_ava.jpg"
+    },
+    "input-26ad7ff88ef6": {
+      "gameId": "input-26ad7ff88ef6",
+      "gameName": "Sherlock Holmes The Awakened",
+      "source": "The Red Team",
+      "trName": "Sherlock Holmes The Awakened",
+      "link": "https://theredteam.vn/sherlock-holmes-the-awakened-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/awk_ava.jpg"
+    },
+    "input-1ca76a87ce17": {
+      "gameId": "input-1ca76a87ce17",
+      "gameName": "Sherlock Holmes: Crimes and Punishments",
+      "source": "The Red Team",
+      "trName": "Sherlock Holmes: Crimes & Punishments",
+      "link": "https://theredteam.vn/sherlock-holmes-crimes-and-punishments-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sh_ava.png"
+    },
+    "input-e665669d9785": {
+      "gameId": "input-e665669d9785",
+      "gameName": "Sherlock Holmes: The Awakened (2008)",
+      "source": "The Red Team",
+      "trName": "Sherlock Holmes The Awakened",
+      "link": "https://theredteam.vn/sherlock-holmes-the-awakened-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/awk_ava.jpg"
+    },
+    "input-a86b9704557c": {
+      "gameId": "input-a86b9704557c",
+      "gameName": "SILENT HILL 2",
+      "source": "The Red Team",
+      "trName": "Silent Hill 2",
+      "link": "https://theredteam.vn/silent-hill-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sh2_ava.png"
+    },
+    "input-d1634bb02ccc": {
+      "gameId": "input-d1634bb02ccc",
+      "gameName": "SILENT HILL f",
+      "source": "The Red Team",
+      "trName": "Silent Hill F",
+      "link": "https://theredteam.vn/silent-hill-f-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/shf_ava.png"
+    },
+    "input-8dcdf8de10fd": {
+      "gameId": "input-8dcdf8de10fd",
+      "gameName": "Skul: The Hero Slayer",
+      "source": "The Red Team",
+      "trName": "Skul The Hero Slayer",
+      "link": "https://theredteam.vn/skul-the-hero-slayer-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/skul_ava.jpg"
+    },
+    "input-5f41fc6ddfb2": {
+      "gameId": "input-5f41fc6ddfb2",
+      "gameName": "SONG OF HORROR COMPLETE EDITION",
+      "source": "The Red Team",
+      "trName": "Song Of Horror",
+      "link": "https://theredteam.vn/song-of-horror-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/soh_ava.png"
+    },
+    "input-032a24a85b1e": {
+      "gameId": "input-032a24a85b1e",
+      "gameName": "Sons Of The Forest",
+      "source": "The Red Team",
+      "trName": "Sons Of The Forest",
+      "link": "https://theredteam.vn/Son-Of-The-Forest",
+      "img": "https://theredteam.vn/index_files/images/main-slider/ava_SOTF.jpg"
+    },
+    "input-933cab9ee415": {
+      "gameId": "input-933cab9ee415",
+      "gameName": "Sons of Valhalla",
+      "source": "The Red Team",
+      "trName": "Sons Of Valhalla",
+      "link": "https://theredteam.vn/sons-of-valhalla-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sov_ava.png"
+    },
+    "input-b5e568805fe4": {
+      "gameId": "input-b5e568805fe4",
+      "gameName": "Spiritfarer®: Farewell Edition",
+      "source": "The Red Team",
+      "trName": "Spiritfarer",
+      "link": "https://theredteam.vn/spiritfarer-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/spiritfarer_ava.png"
+    },
+    "input-cd55d25f05c5": {
+      "gameId": "input-cd55d25f05c5",
+      "gameName": "Split Fiction",
+      "source": "The Red Team",
+      "trName": "Split Fiction",
+      "link": "https://theredteam.vn/split-fiction-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sf_ava.jpg"
+    },
+    "input-6b228f8ddfa0": {
+      "gameId": "input-6b228f8ddfa0",
+      "gameName": "Stellar Blade™",
+      "source": "The Red Team",
+      "trName": "Stellar Blade",
+      "link": "https://theredteam.vn/stellar-blade-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sb_ava.png"
+    },
+    "input-ed8a9354559f": {
+      "gameId": "input-ed8a9354559f",
+      "gameName": "Still Wakes the Deep",
+      "source": "The Red Team",
+      "trName": "Still Wakes The Deep",
+      "link": "https://theredteam.vn/still-wakes-the-deep-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/swtd_ava.png"
+    },
+    "input-c9934da79c1a": {
+      "gameId": "input-c9934da79c1a",
+      "gameName": "Stray",
+      "source": "The Red Team",
+      "trName": "Stray",
+      "link": "https://theredteam.vn/stray-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/stray_ava.png"
+    },
+    "input-574238e105c4": {
+      "gameId": "input-574238e105c4",
+      "gameName": "Streamer Life Simulator 2",
+      "source": "The Red Team",
+      "trName": "Streamer Life Simulator 2",
+      "link": "https://theredteam.vn/streamer-life-simulator-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sls2_ava.png"
+    },
+    "input-e305c32c216a": {
+      "gameId": "input-e305c32c216a",
+      "gameName": "Subnautica 2",
+      "source": "The Red Team",
+      "trName": "Subnautica 2",
+      "link": "https://theredteam.vn/subnautica-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sub2_ava.png"
+    },
+    "input-d59ec21c6b17": {
+      "gameId": "input-d59ec21c6b17",
+      "gameName": "Summer of '58",
+      "source": "The Red Team",
+      "trName": "Summer Of 58",
+      "link": "https://theredteam.vn/summer-of-58-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/summer_ava.jpg"
+    },
+    "input-99c7502332c0": {
+      "gameId": "input-99c7502332c0",
+      "gameName": "Tainted Grail: The Fall of Avalon",
+      "source": "The Red Team",
+      "trName": "Tainted Grail: The Fall of Avalon",
+      "link": "https://theredteam.vn/tainted-grail-the-fall-of-avalon-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tainted_ava.png"
+    },
+    "input-b5a9d1fbfe23": {
+      "gameId": "input-b5a9d1fbfe23",
+      "gameName": "Tchia",
+      "source": "The Red Team",
+      "trName": "Tchia",
+      "link": "https://theredteam.vn/tchia-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tchia_ava.png"
+    },
+    "input-bd5ef6ff7474": {
+      "gameId": "input-bd5ef6ff7474",
+      "gameName": "The Alters",
+      "source": "The Red Team",
+      "trName": "The Alters",
+      "link": "https://theredteam.vn/the-alters-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ta_ava.png"
+    },
+    "input-4ab6a3374e78": {
+      "gameId": "input-4ab6a3374e78",
+      "gameName": "The Beast Inside",
+      "source": "The Red Team",
+      "trName": "The Beast Inside",
+      "link": "https://theredteam.vn/the-beast-inside-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tbi_ava.png"
+    },
+    "input-9111f5086bc9": {
+      "gameId": "input-9111f5086bc9",
+      "gameName": "The Casting of Frank Stone™",
+      "source": "The Red Team",
+      "trName": "The Casting Of Frank Stone",
+      "link": "https://theredteam.vn/the-casting-of-frank-stone-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tcofs_ava.png"
+    },
+    "input-2dda811fc126": {
+      "gameId": "input-2dda811fc126",
+      "gameName": "The Dark Pictures Anthology: House of Ashes",
+      "source": "The Red Team",
+      "trName": "The Dark Pictures Anthology",
+      "link": "https://theredteam.vn/the-dark-pictures-anthology-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Darkpicture_ava.jpg"
+    },
+    "input-febbb0e0f769": {
+      "gameId": "input-febbb0e0f769",
+      "gameName": "The Dark Pictures Anthology: House of Ashes - Friend's Pass",
+      "source": "The Red Team",
+      "trName": "The Dark Pictures Anthology",
+      "link": "https://theredteam.vn/the-dark-pictures-anthology-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Darkpicture_ava.jpg"
+    },
+    "input-025158bb264f": {
+      "gameId": "input-025158bb264f",
+      "gameName": "The Dark Pictures Anthology: Little Hope",
+      "source": "The Red Team",
+      "trName": "The Dark Pictures Anthology",
+      "link": "https://theredteam.vn/the-dark-pictures-anthology-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Darkpicture_ava.jpg"
+    },
+    "input-e48b758f9992": {
+      "gameId": "input-e48b758f9992",
+      "gameName": "The Dark Pictures Anthology: Little Hope - Friend's Pass",
+      "source": "The Red Team",
+      "trName": "The Dark Pictures Anthology",
+      "link": "https://theredteam.vn/the-dark-pictures-anthology-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Darkpicture_ava.jpg"
+    },
+    "input-2e4b62043147": {
+      "gameId": "input-2e4b62043147",
+      "gameName": "The Dark Pictures Anthology: Man of Medan",
+      "source": "The Red Team",
+      "trName": "The Dark Pictures Anthology",
+      "link": "https://theredteam.vn/the-dark-pictures-anthology-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Darkpicture_ava.jpg"
+    },
+    "input-26e1bc0d0c83": {
+      "gameId": "input-26e1bc0d0c83",
+      "gameName": "The Dark Pictures Anthology: The Devil in Me",
+      "source": "The Red Team",
+      "trName": "The Dark Pictures Anthology",
+      "link": "https://theredteam.vn/the-dark-pictures-anthology-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Darkpicture_ava.jpg"
+    },
+    "input-26a4dda5848a": {
+      "gameId": "input-26a4dda5848a",
+      "gameName": "The Dark Pictures Anthology: The Devil In Me - Friend's Pass",
+      "source": "The Red Team",
+      "trName": "The Dark Pictures Anthology",
+      "link": "https://theredteam.vn/the-dark-pictures-anthology-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Darkpicture_ava.jpg"
+    },
+    "input-01714a6f0f3c": {
+      "gameId": "input-01714a6f0f3c",
+      "gameName": "The Elder Scrolls IV: Oblivion Remastered",
+      "source": "The Red Team",
+      "trName": "The Elder Scrolls IV: Oblivion Remastered",
+      "link": "https://theredteam.vn/the-elder-scrolls-iv-oblivion-remastered-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/or_ava.png"
+    },
+    "input-5728f1228deb": {
+      "gameId": "input-5728f1228deb",
+      "gameName": "The Evil Within",
+      "source": "The Red Team",
+      "trName": "The Evil Within",
+      "link": "https://theredteam.vn/the-evil-within-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tew_ava.png"
+    },
+    "input-aa884940331f": {
+      "gameId": "input-aa884940331f",
+      "gameName": "The Evil Within 2",
+      "source": "The Red Team",
+      "trName": "The Evil Within 2",
+      "link": "https://theredteam.vn/the-evil-within-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tew2_ava.png"
+    },
+    "input-6dcb5833fa9a": {
+      "gameId": "input-6dcb5833fa9a",
+      "gameName": "The First Berserker: Khazan",
+      "source": "The Red Team",
+      "trName": "The First Berserker: Khazan",
+      "link": "https://theredteam.vn/the-first-berserker-khazan-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/khazan_ava.png"
+    },
+    "input-2bdc5cfd9b2f": {
+      "gameId": "input-2bdc5cfd9b2f",
+      "gameName": "The Last of Us™ Part I",
+      "source": "The Red Team",
+      "trName": "The Last Of Us Part I",
+      "link": "https://theredteam.vn/the-last-of-us-part-i-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/TLOU_ava.jpg"
+    },
+    "input-7383a5c693f8": {
+      "gameId": "input-7383a5c693f8",
+      "gameName": "The Last of Us™ Part II Remastered",
+      "source": "The Red Team",
+      "trName": "The Last Of Us Part II",
+      "link": "https://theredteam.vn/the-last-of-us-part-ii-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tlou2_ava.png"
+    },
+    "input-37a35df94583": {
+      "gameId": "input-37a35df94583",
+      "gameName": "The Medium",
+      "source": "The Red Team",
+      "trName": "The Medium",
+      "link": "https://theredteam.vn/the-medium",
+      "img": "https://theredteam.vn/index_files/images/gallery/500x500_medium.jpg"
+    },
+    "input-803ce900fc55": {
+      "gameId": "input-803ce900fc55",
+      "gameName": "The Precinct",
+      "source": "The Red Team",
+      "trName": "The Precinct",
+      "link": "https://theredteam.vn/the-precinct-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tp_ava.png"
+    },
+    "input-782aa342ab6d": {
+      "gameId": "input-782aa342ab6d",
+      "gameName": "The Quarry",
+      "source": "The Red Team",
+      "trName": "The Quarry",
+      "link": "https://theredteam.vn/the-quarry-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tq_ava.png"
+    },
+    "input-a449c30d5447": {
+      "gameId": "input-a449c30d5447",
+      "gameName": "The Sinking City Remastered",
+      "source": "The Red Team",
+      "trName": "The Sinking City",
+      "link": "https://theredteam.vn/the-sinking-city-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sinking_ava.png"
+    },
+    "input-fec5b29705f7": {
+      "gameId": "input-fec5b29705f7",
+      "gameName": "The Walking Dead",
+      "source": "The Red Team",
+      "trName": "The Walking Dead Definitive Series",
+      "link": "https://theredteam.vn/twd-definitive-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/twdfull_ava.jpg"
+    },
+    "input-28751a014866": {
+      "gameId": "input-28751a014866",
+      "gameName": "The Walking Dead: The Telltale Definitive Series",
+      "source": "The Red Team",
+      "trName": "The Walking Dead Definitive Series",
+      "link": "https://theredteam.vn/twd-definitive-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/twdfull_ava.jpg"
+    },
+    "input-d4f03f48efbe": {
+      "gameId": "input-d4f03f48efbe",
+      "gameName": "The Wandering Village",
+      "source": "The Red Team",
+      "trName": "The Wandering Village",
+      "link": "https://theredteam.vn/wandering-village",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Wandering_ava_2023.jpg"
+    },
+    "input-d5cb9ee2faec": {
+      "gameId": "input-d5cb9ee2faec",
+      "gameName": "Thief Simulator 2",
+      "source": "The Red Team",
+      "trName": "Thief Simulator 2",
+      "link": "https://theredteam.vn/thief-simulator-2-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/thief2_ava.png"
+    },
+    "input-ab9fa78c7530": {
+      "gameId": "input-ab9fa78c7530",
+      "gameName": "This War of Mine",
+      "source": "The Red Team",
+      "trName": "This War Of Mine",
+      "link": "https://theredteam.vn/this-war-of-mine-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/TWOM_ava.jpg"
+    },
+    "input-7ba1224f9b8a": {
+      "gameId": "input-7ba1224f9b8a",
+      "gameName": "Travellers Rest",
+      "source": "The Red Team",
+      "trName": "Travellers Rest",
+      "link": "https://theredteam.vn/Travellers-Rest-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Traveller_ava.png"
+    },
+    "input-121091fd8170": {
+      "gameId": "input-121091fd8170",
+      "gameName": "Trek to Yomi",
+      "source": "The Red Team",
+      "trName": "Trek To Yomi",
+      "link": "https://theredteam.vn/trek-to-yomi-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tty_ava.png"
+    },
+    "input-2de683057757": {
+      "gameId": "input-2de683057757",
+      "gameName": "UNCHARTED™: Legacy of Thieves Collection",
+      "source": "The Red Team",
+      "trName": "UNCHARTED: Legacy of Thieves",
+      "link": "https://theredteam.vn/uncharted",
+      "img": "https://theredteam.vn/index_files/images/gallery/uncharted-logo.jpg"
+    },
+    "input-6eb2e497b87e": {
+      "gameId": "input-6eb2e497b87e",
+      "gameName": "UnderMine",
+      "source": "The Red Team",
+      "trName": "Undermine",
+      "link": "https://theredteam.vn/undermine-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/undermine_ava.png"
+    },
+    "input-78c819ea17bd": {
+      "gameId": "input-78c819ea17bd",
+      "gameName": "V Rising",
+      "source": "The Red Team",
+      "trName": "V Rising",
+      "link": "https://theredteam.vn/v-rising-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/vrising_ava.png"
+    },
+    "input-45c52cb939dc": {
+      "gameId": "input-45c52cb939dc",
+      "gameName": "Visage",
+      "source": "The Red Team",
+      "trName": "Visage",
+      "link": "https://theredteam.vn/visage-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/visage_ava.jpg"
+    },
+    "input-b23214499b10": {
+      "gameId": "input-b23214499b10",
+      "gameName": "Warhammer 40,000: Space Marine 2",
+      "source": "The Red Team",
+      "trName": "Warhammer 40.000: Space Marine 2",
+      "link": "https://theredteam.vn/warhammer-40k-space-marine-2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/40k_ava.png"
+    },
+    "input-896e84dfee04": {
+      "gameId": "input-896e84dfee04",
+      "gameName": "Windrose",
+      "source": "The Red Team",
+      "trName": "Windrose",
+      "link": "https://theredteam.vn/windrose-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/windrose_ava.png"
+    },
+    "input-dbcee45c7b92": {
+      "gameId": "input-dbcee45c7b92",
+      "gameName": "Witchfire",
+      "source": "The Red Team",
+      "trName": "Witchfire",
+      "link": "https://theredteam.vn/witchfire-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/witch_ava.png"
+    },
+    "input-3977ff13acde": {
+      "gameId": "input-3977ff13acde",
+      "gameName": "Wo Long: Fallen Dynasty",
+      "source": "The Red Team",
+      "trName": "Wo Long: Fallen Dynasty",
+      "link": "https://theredteam.vn/wo-long-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wolong_ava.jpg"
+    },
+    "input-1da499ab6efd": {
+      "gameId": "input-1da499ab6efd",
+      "gameName": "WORLD OF HORROR",
+      "source": "The Red Team",
+      "trName": "World Of Horror",
+      "link": "https://theredteam.vn/world-of-horror-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/woh_ava.png"
+    },
+    "input-6fc8dcaba1e4": {
+      "gameId": "input-6fc8dcaba1e4",
+      "gameName": "WUCHANG: Fallen Feathers",
+      "source": "The Red Team",
+      "trName": "WUCHANG: Fallen Feathers",
+      "link": "https://theredteam.vn/wuchang-fallen-feathers-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wc_ava.png"
+    },
+    "input-9ce887f72832": {
+      "gameId": "input-9ce887f72832",
+      "gameName": "Yakuza 0",
+      "source": "The Red Team",
+      "trName": "Yakuza 0",
+      "link": "https://theredteam.vn/yakuza-0-viet-hoa",
+      "img": "https://theredteam.vn/index_files/images/New_2023/yakuza0_ava.png"
+    }
+  }
+}
