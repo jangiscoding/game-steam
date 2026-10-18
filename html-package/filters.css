@@ -1669,6 +1669,58 @@ dialog#lightbox::backdrop {
   color: #94a3b8;
 }
 
+.viethoa-sources-warning {
+  margin-top: 12px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.viethoa-sources-error-box {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: #fca5a5;
+  text-align: left;
+}
+
+.viethoa-error-box-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #ef4444;
+}
+
+.viethoa-error-list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.viethoa-error-src {
+  font-weight: 700;
+  color: #fee2e2;
+}
+
+.viethoa-error-desc {
+  color: #f87171;
+}
+
 .viethoa-empty-alert p {
   margin: 0 0 10px;
 }

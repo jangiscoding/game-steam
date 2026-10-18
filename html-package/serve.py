@@ -153,6 +153,31 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
             search_url_template = query.get('url', ['https://theredteam.vn/list-search.php?q='])[0]
             keyword = query.get('q', [''])[0].strip()
 
+            def friendly_http_error(err):
+                err_str = str(err)
+                if 'timed out' in err_str.lower():
+                    return 'Hết thời gian chờ kết nối (Timeout)'
+                if 'getaddrinfo failed' in err_str or 'name or service not known' in err_str.lower():
+                    return 'Không thể kết nối đến máy chủ nguồn (DNS/Network Error)'
+                if 'connection refused' in err_str.lower() or 'actively refused' in err_str.lower():
+                    return 'Máy chủ nguồn từ chối kết nối hoặc không phản hồi'
+                import re
+                code_m = re.search(r'HTTP Error (\d+)', err_str)
+                if code_m:
+                    code = code_m.group(1)
+                    labels = {
+                        '401': 'Yêu cầu đăng nhập / xác thực (HTTP 401 Unauthorized)',
+                        '403': 'Bị máy chủ nguồn chặn truy cập (HTTP 403 Forbidden)',
+                        '404': 'Không tìm thấy trang tìm kiếm (HTTP 404 Not Found)',
+                        '429': 'Bị giới hạn tần suất yêu cầu (HTTP 429 Rate Limit)',
+                        '500': 'Máy chủ nguồn bị lỗi nội bộ (HTTP 500)',
+                        '502': 'Cổng kết nối máy chủ lỗi (HTTP 502 Bad Gateway)',
+                        '503': 'Máy chủ nguồn đang quá tải hoặc bảo trì (HTTP 503)',
+                        '504': 'Hết hạn cổng kết nối (HTTP 504 Gateway Timeout)'
+                    }
+                    return labels.get(code, f'Máy chủ trả về lỗi HTTP {code}')
+                return err_str
+
             results = []
             error_msg = None
             if keyword and search_url_template:
@@ -197,8 +222,10 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
                                     full_lk = 'https://viethoagame.com' + clean_link if clean_link.startswith('/') else clean_link
                                     normalized.append({'name': t, 'link': full_lk, 'img': ''})
                                 results = normalized
+                        else:
+                            error_msg = 'Không thể lấy mã CSRF từ diễn đàn'
                     except Exception as e:
-                        error_msg = str(e)
+                        error_msg = friendly_http_error(e)
                 else:
                     full_search_url = search_url_template + quote_plus(keyword)
                     try:
@@ -234,7 +261,7 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
                                     normalized.append({'name': t, 'link': link, 'img': img})
                                 results = normalized
                     except Exception as e:
-                        error_msg = str(e)
+                        error_msg = friendly_http_error(e)
 
             payload = json.dumps({'ok': True, 'keyword': keyword, 'results': results, 'error': error_msg}).encode('utf-8')
             self.send_response(200)

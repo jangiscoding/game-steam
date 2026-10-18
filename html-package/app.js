@@ -172,6 +172,7 @@ async function runViethoaSearch(keyword){
 
   const searchPromises=sources.map(async source=>{
     let sourceResults=[];
+    let sourceError=null;
     if(source.id==='theredteam'&&Array.isArray(theredteamCache)){
       const nq=norm(q);
       const matches=theredteamCache.filter(item=>norm(item.name).includes(nq)||norm(item.link).includes(nq));
@@ -183,21 +184,34 @@ async function runViethoaSearch(keyword){
         const res=await fetch(apiUrl,{cache:'no-store'});
         if(res.ok){
           const data=await res.json();
+          if(data?.error){
+            sourceError=data.error;
+          }
           if(data?.ok&&Array.isArray(data.results)&&data.results.length){
             sourceResults=data.results;
           }
+        }else{
+          sourceError=`Lỗi phản hồi HTTP ${res.status}`;
         }
-      }catch(_){}
+      }catch(err){
+        sourceError=err.message||'Mất kết nối máy chủ';
+      }
     }
-    return sourceResults.map(r=>({
-      ...r,
-      sourceName:source.name,
-      sourceBaseUrl:source.baseUrl||'https://theredteam.vn/'
-    }));
+    return {
+      source,
+      results: sourceResults.map(r=>({
+        ...r,
+        sourceName:source.name,
+        sourceBaseUrl:source.baseUrl||'https://theredteam.vn/'
+      })),
+      error: sourceError
+    };
   });
 
   const settled=await Promise.allSettled(searchPromises);
-  const allResults=settled.flatMap(s=>s.status==='fulfilled'?s.value:[]);
+  const outcomes=settled.map(s=>s.status==='fulfilled'?s.value:null).filter(Boolean);
+  const allResults=outcomes.flatMap(o=>o.results);
+  const failedSources=outcomes.filter(o=>o.error&&!o.results.length).map(o=>({name:o.source.name,error:o.error}));
 
   const seen=new Set();
   const uniqueResults=[];
@@ -239,12 +253,29 @@ async function runViethoaSearch(keyword){
           </div>`;
         }).join('')}
       </div>
+      ${failedSources.length?`
+        <div class="viethoa-sources-warning">
+          <span class="viethoa-warning-icon">⚠️</span>
+          <span><b>Lưu ý kết nối:</b> Không thể kiểm tra ${failedSources.map(f=>`<b>${esc(f.name)}</b> (${esc(f.error)})`).join(', ')}.</span>
+        </div>
+      `:''}
     `;
   }else{
     const shortWord=q.split(/[:\-–]/)[0].trim();
     container.innerHTML=`
       <div class="viethoa-empty-alert">
-        <p>Chưa tìm thấy bản dịch Việt Hóa từ các nguồn đã cấu hình với từ khóa <i>"${esc(q)}"</i>.</p>
+        <p>Chưa tìm thấy bản dịch Việt Hóa từ các nguồn hoạt động với từ khóa <i>"${esc(q)}"</i>.</p>
+        ${failedSources.length?`
+          <div class="viethoa-sources-error-box">
+            <div class="viethoa-error-box-header">
+              <span class="viethoa-warning-icon">⚠️</span>
+              <strong>Phát hiện nguồn gặp sự cố kết nối (${failedSources.length}):</strong>
+            </div>
+            <ul class="viethoa-error-list">
+              ${failedSources.map(f=>`<li><span class="viethoa-error-src">${esc(f.name)}</span>: <span class="viethoa-error-desc">${esc(f.error)}</span></li>`).join('')}
+            </ul>
+          </div>
+        `:''}
         ${shortWord&&shortWord!==q?`<div><button type="button" class="button ghost" data-viethoa-retry="${esc(shortWord)}" style="font-size:10px;padding:6px 12px;margin-top:4px">🔍 Thử tìm theo tên ngắn: "${esc(shortWord)}"</button></div>`:''}
       </div>
     `;
