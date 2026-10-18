@@ -126,10 +126,10 @@
 
   function isLightboxOpen() {
     const lb = document.querySelector('#lightbox');
-    return Boolean(lb && !lb.hidden);
+    return Boolean(lb && (lb.open || !lb.hidden));
   }
 
-  function currentDialog() { return [...document.querySelectorAll('dialog[open]')].at(-1); }
+  function currentDialog() { return [...document.querySelectorAll('dialog[open]')].filter(d => d.id !== 'lightbox').at(-1); }
   function welcomeScreen() { return document.querySelector('#welcome-screen:not(.is-leaving)'); }
 
   function isElementVisible(element) {
@@ -140,8 +140,10 @@
   }
 
   function candidates() {
-    const lb = document.querySelector('#lightbox:not([hidden])');
-    if (lb) return [...lb.querySelectorAll(ACTIONABLE)].filter(isElementVisible);
+    if (isLightboxOpen()) {
+      const lb = document.querySelector('#lightbox');
+      if (lb) return [...lb.querySelectorAll(ACTIONABLE)].filter(isElementVisible);
+    }
     const dialog = currentDialog();
     if (dialog) return [...dialog.querySelectorAll(ACTIONABLE)].filter(isElementVisible);
     const welcome = welcomeScreen();
@@ -653,8 +655,7 @@
   }
 
   function move(direction) {
-    const lb = document.querySelector('#lightbox:not([hidden])');
-    if (lb) {
+    if (isLightboxOpen()) {
       if (direction === 'left') {
         document.querySelector('#lightbox-prev')?.click();
         playSound('move');
@@ -863,12 +864,15 @@
       playHaptic('light');
       return;
     }
-    const lb = document.querySelector('#lightbox:not([hidden])');
-    if (lb) {
-      const closeBtn = lb.querySelector('[data-lightbox-close]');
+    if (isLightboxOpen()) {
+      const lb = document.querySelector('#lightbox');
+      const closeBtn = lb?.querySelector('[data-lightbox-close]');
       if (closeBtn) closeBtn.click();
       else if (window.__lightbox?.close) window.__lightbox.close();
-      else lb.hidden = true;
+      else if (lb) {
+        if (typeof lb.close === 'function') lb.close();
+        lb.hidden = true;
+      }
       playSound('back');
       playHaptic('light');
       return;
@@ -918,8 +922,7 @@
   }
 
   function changeCollection(direction) {
-    const lb = document.querySelector('#lightbox:not([hidden])');
-    if (lb) {
+    if (isLightboxOpen()) {
       if (direction < 0) document.querySelector('#lightbox-prev')?.click();
       else document.querySelector('#lightbox-next')?.click();
       playSound('move');

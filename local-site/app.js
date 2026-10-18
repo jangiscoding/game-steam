@@ -83,7 +83,7 @@ function scheduleVirtualRender(){if(virtualFrame)return;virtualFrame=requestAnim
 function stopVideo(){if(activeHls){activeHls.destroy();activeHls=null;}const video=$('#video-player video');if(video){video.pause();video.removeAttribute('src');video.load();}}
 function closeDetail(){stopVideo();closeLightbox();detailToken++;dialog.close();document.body.style.overflow='';if(location.hash.startsWith('#game/'))history.replaceState(null,'','#library');}
 async function openDetail(id){if(!byId.has(id))return;recentGames=[id,...recentGames.filter(gameId=>gameId!==id)].slice(0,30);savePersonal();if(activeTab==='recent')applyFilters();else renderCollections();const token=++detailToken;if(!dialog.open)dialog.showModal();document.body.style.overflow='hidden';$('#detail-inner').innerHTML='<button class="detail-close" data-close aria-label="Đóng chi tiết">×</button><div class="detail-loading">Đang mở trò chơi…</div>';history.replaceState(null,'',`#game/${encodeURIComponent(id)}`);try{let g=detailCache.get(id);if(!g){const response=await fetch(`./data/games/${encodeURIComponent(id)}.json`);if(!response.ok)throw Error('Không thể tải dữ liệu game.');g=await response.json();detailCache.set(id,g);}if(token!==detailToken)return;renderDetail(g);}catch(error){if(token!==detailToken)return;$('#detail-inner').innerHTML=`<button class="detail-close" data-close aria-label="Đóng">×</button><div class="detail-loading">${esc(error.message)}<br><button class="button ghost" data-game="${esc(id)}">Thử lại</button></div>`;}}
-function renderDetail(g){activeGame=g;const c=g.content||{},m=c.media||{},vi=c.locales?.vi||{},en=c.locales?.en||{};const hasVi=['translated','reviewed'].includes(vi.status)&&Boolean(vi.detailedDescription||vi.shortDescription);const text=hasVi?vi:en;const description=text.detailedDescription||text.shortDescription||g.sourceProfile?.shortDescription;const shots=m.screenshots||[];const cover=shots[0]?.url||m.images?.find(i=>i.role==='header')?.url||g.imageUrl;const yes=v=>v===true?'Có':v===false?'Không':'Chưa xác định';const control={full:'Đầy đủ',partial:'Một phần',unknown:'Chưa xác định'}[g.controllerSupport]||'Chưa xác định';const labels=[...(g.genres||[]),...(g.steamTags||[])].filter((v,i,a)=>a.indexOf(v)===i).slice(0,12),status=gameStatuses[g.id]||'';const isInstalled=installedAppIds.has(String(g.steamAppId));$('#detail-inner').innerHTML=`<button class="detail-close" data-close aria-label="Đóng chi tiết">×</button><div class="detail-cover" id="detail-cover"></div><div class="detail-content"><div class="eyebrow orange">HỒ SƠ GAME · STEAM ${esc(g.steamAppId)}</div><h2>${esc(g.name)}</h2><div class="detail-tags">${labels.map(t=>`<span>${esc(tagLabel(t))}</span>`).join('')}</div><div class="detail-actions">${isInstalled?`<a class="button primary play-button" href="steam://run/${esc(g.steamAppId)}"><span class="play-icon">▶</span> CHƠI NGAY (Steam)</a><a class="button ghost" href="${esc(steamAppUrl(g.steamAppId))}">Mở trang Steam</a>`:`<a class="button primary" href="${esc(steamAppUrl(g.steamAppId))}">Mở trong ứng dụng Steam</a>`}</div>${isInstalled?'<div class="installed-banner">✔ Trò chơi đã được cài đặt sẵn trên máy tính của bạn</div>':''}<div class="detail-facts"><div><label>HỖ TRỢ TAY CẦM</label><strong>${control}</strong></div><div><label>LOCAL CO-OP</label><strong>${yes(g.playerModes?.localCoop)}</strong></div><div><label>ONLINE CO-OP</label><strong>${yes(g.playerModes?.onlineCoop)}</strong></div><div><label>WINDOWS TỐI THIỂU</label><strong>${esc(g.storage?.windowsMinimumDisplay||'Chưa có dữ liệu')}</strong></div></div><h3>Về trò chơi</h3><div class="language-note">${hasVi?(vi.status==='reviewed'?'Bản tiếng Việt đã duyệt.':'Bản dịch tiếng Việt tham khảo, chưa được duyệt.'):'Mô tả gốc từ Steam. Bản tiếng Việt đang được bổ sung.'}${c.status==='pending_collection'?' Mô tả chi tiết và media đang được thu thập.':''}${c.identityStatus==='needs_verification'?' Liên kết tên game với App ID cần được xác minh thêm.':''}</div><p class="description-text">${esc(description||'Chưa có mô tả công khai cho trò chơi này.')}</p>${hasVi&&en.detailedDescription?`<details><summary class="text-button">Xem mô tả gốc tiếng Anh</summary><p class="description-text">${esc(en.detailedDescription)}</p></details>`:''}<h3>Ảnh gameplay <span class="text-button">${shots.length} ảnh</span></h3>${shots.length?`<div class="gallery">${shots.map((s,i)=>`<button type="button" class="gallery-item" data-view-shot="${i}" aria-label="Xem ảnh ${i+1} của ${esc(g.name)}">${image(s.thumbnailUrl||s.url,`${g.name} — ảnh ${i+1}`,'loading="lazy"')}<span class="gallery-zoom-badge">🔍 Phóng to</span></button>`).join('')}</div>`:'<p class="source-note">Chưa có ảnh gameplay trong dữ liệu đã thu thập.</p>'}${m.images?.some(i=>i.role==='description')?`<h3>Hình ảnh giới thiệu</h3><div class="gallery">${m.images.filter(i=>i.role==='description').map((img,i)=>`<button type="button" class="gallery-item" data-view-desc-img="${i}" aria-label="Xem ảnh giới thiệu ${i+1}">${image(img.url,img.alt||g.name,'loading="lazy"')}<span class="gallery-zoom-badge">🔍 Phóng to</span></button>`).join('')}</div>`:''}<h3>Trailer & video</h3>${m.videos?.length?`<p class="source-note">Chọn trailer để phát. Video giữ nguyên âm thanh và phụ đề từ nguồn Steam.</p><div id="video-player"></div><div class="video-list">${m.videos.map((v,i)=>`<button class="video-link" data-play-video="${i}">${image(v.thumbnailUrl,v.name||'Trailer','loading="lazy"')}<span>▶</span>${esc(v.name||'Xem trailer')}</button>`).join('')}</div>`:'<p class="source-note">Chưa có video trong dữ liệu đã thu thập.</p>'}<p class="source-note">Nhà phát triển: ${esc(g.sourceProfile?.developers?.join(', ')||'Chưa có dữ liệu')}<br>Nền tảng: ${esc((g.platforms||[]).join(', ')||'Chưa có dữ liệu')}<br>Ảnh và video thuộc chủ sở hữu tương ứng. Dữ liệu cập nhật từ JSON thư viện${c.fetchedAt?' · '+new Date(c.fetchedAt).toLocaleDateString('vi-VN'):''}.</p></div>`;$('#detail-cover').style.backgroundImage=`url(${JSON.stringify(safeUrl(cover))})`;imageFallbacks(dialog);dialog.scrollTop=0;const steamBtn=dialog.querySelector('a[href^="steam://"]');if(steamBtn&&document.body.classList.contains('gamepad-mode')){setTimeout(()=>{steamBtn.focus();document.querySelectorAll('.gamepad-focus').forEach(el=>el.classList.remove('gamepad-focus'));steamBtn.classList.add('gamepad-focus');},30);}}
+function renderDetail(g){activeGame=g;const c=g.content||{},m=c.media||{},vi=c.locales?.vi||{},en=c.locales?.en||{};const hasVi=['translated','reviewed'].includes(vi.status)&&Boolean(vi.detailedDescription||vi.shortDescription);const text=hasVi?vi:en;const description=text.detailedDescription||text.shortDescription||g.sourceProfile?.shortDescription;const shots=m.screenshots||[];const cover=shots[0]?.url||m.images?.find(i=>i.role==='header')?.url||g.imageUrl;const allShots=shots.length?shots:(cover?[{thumbnailUrl:cover,url:cover}]:[]);const yes=v=>v===true?'Có':v===false?'Không':'Chưa xác định';const control={full:'Đầy đủ',partial:'Một phần',unknown:'Chưa xác định'}[g.controllerSupport]||'Chưa xác định';const labels=[...(g.genres||[]),...(g.steamTags||[])].filter((v,i,a)=>a.indexOf(v)===i).slice(0,12),status=gameStatuses[g.id]||'';const isInstalled=installedAppIds.has(String(g.steamAppId));$('#detail-inner').innerHTML=`<button class="detail-close" data-close aria-label="Đóng chi tiết">×</button><div class="detail-cover" id="detail-cover"></div><div class="detail-content"><div class="eyebrow orange">HỒ SƠ GAME · STEAM ${esc(g.steamAppId)}</div><h2>${esc(g.name)}</h2><div class="detail-tags">${labels.map(t=>`<span>${esc(tagLabel(t))}</span>`).join('')}</div><div class="detail-actions">${isInstalled?`<a class="button primary play-button" href="steam://run/${esc(g.steamAppId)}"><span class="play-icon">▶</span> CHƠI NGAY (Steam)</a><a class="button ghost" href="${esc(steamAppUrl(g.steamAppId))}">Mở trang Steam</a>`:`<a class="button primary" href="${esc(steamAppUrl(g.steamAppId))}">Mở trong ứng dụng Steam</a>`}${allShots.length?`<button type="button" class="button ghost gallery-open-btn" data-open-gallery aria-label="Xem ${allShots.length} ảnh gameplay"><span class="gallery-icon">🖼</span> Xem ảnh (${allShots.length})</button>`:''}</div>${isInstalled?'<div class="installed-banner">✔ Trò chơi đã được cài đặt sẵn trên máy tính của bạn</div>':''}<div class="detail-facts"><div><label>HỖ TRỢ TAY CẦM</label><strong>${control}</strong></div><div><label>LOCAL CO-OP</label><strong>${yes(g.playerModes?.localCoop)}</strong></div><div><label>ONLINE CO-OP</label><strong>${yes(g.playerModes?.onlineCoop)}</strong></div><div><label>WINDOWS TỐI THIỂU</label><strong>${esc(g.storage?.windowsMinimumDisplay||'Chưa có dữ liệu')}</strong></div></div><h3>Về trò chơi</h3><div class="language-note">${hasVi?(vi.status==='reviewed'?'Bản tiếng Việt đã duyệt.':'Bản dịch tiếng Việt tham khảo, chưa được duyệt.'):'Mô tả gốc từ Steam. Bản tiếng Việt đang được bổ sung.'}${c.status==='pending_collection'?' Mô tả chi tiết và media đang được thu thập.':''}${c.identityStatus==='needs_verification'?' Liên kết tên game với App ID cần được xác minh thêm.':''}</div><p class="description-text">${esc(description||'Chưa có mô tả công khai cho trò chơi này.')}</p>${hasVi&&en.detailedDescription?`<details><summary class="text-button">Xem mô tả gốc tiếng Anh</summary><p class="description-text">${esc(en.detailedDescription)}</p></details>`:''}<h3>Ảnh gameplay <span class="text-button">${allShots.length} ảnh</span></h3>${allShots.length?`<div class="gallery" id="gameplay-gallery">${allShots.map((s,i)=>`<button type="button" class="gallery-item" data-view-shot="${i}" aria-label="Xem ảnh ${i+1} của ${esc(g.name)}">${image(s.thumbnailUrl||s.url,`${g.name} — ảnh ${i+1}`,'loading="lazy"')}<span class="gallery-zoom-badge">🔍 Phóng to</span></button>`).join('')}</div>`:'<p class="source-note">Chưa có ảnh gameplay trong dữ liệu đã thu thập.</p>'}${m.images?.some(i=>i.role==='description')?`<h3>Hình ảnh giới thiệu</h3><div class="gallery">${m.images.filter(i=>i.role==='description').map((img,i)=>`<button type="button" class="gallery-item" data-view-desc-img="${i}" aria-label="Xem ảnh giới thiệu ${i+1}">${image(img.url,img.alt||g.name,'loading="lazy"')}<span class="gallery-zoom-badge">🔍 Phóng to</span></button>`).join('')}</div>`:''}<h3>Trailer & video</h3>${m.videos?.length?`<p class="source-note">Chọn trailer để phát. Video giữ nguyên âm thanh và phụ đề từ nguồn Steam.</p><div id="video-player"></div><div class="video-list">${m.videos.map((v,i)=>`<button class="video-link" data-play-video="${i}">${image(v.thumbnailUrl,v.name||'Trailer','loading="lazy"')}<span>▶</span>${esc(v.name||'Xem trailer')}</button>`).join('')}</div>`:'<p class="source-note">Chưa có video trong dữ liệu đã thu thập.</p>'}<p class="source-note">Nhà phát triển: ${esc(g.sourceProfile?.developers?.join(', ')||'Chưa có dữ liệu')}<br>Nền tảng: ${esc((g.platforms||[]).join(', ')||'Chưa có dữ liệu')}<br>Ảnh và video thuộc chủ sở hữu tương ứng. Dữ liệu cập nhật từ JSON thư viện${c.fetchedAt?' · '+new Date(c.fetchedAt).toLocaleDateString('vi-VN'):''}.</p></div>`;$('#detail-cover').style.backgroundImage=`url(${JSON.stringify(safeUrl(cover))})`;imageFallbacks(dialog);dialog.scrollTop=0;const steamBtn=dialog.querySelector('a[href^="steam://"]');if(steamBtn&&document.body.classList.contains('gamepad-mode')){setTimeout(()=>{steamBtn.focus();document.querySelectorAll('.gamepad-focus').forEach(el=>el.classList.remove('gamepad-focus'));steamBtn.classList.add('gamepad-focus');},30);}}
 async function openSteamUrl(url,linkEl){if(linkEl){const orig=linkEl.dataset.origText||linkEl.textContent;linkEl.dataset.origText=orig;linkEl.classList.add('steam-launching');linkEl.textContent='Đang mở Steam…';setTimeout(()=>{linkEl.textContent=orig;linkEl.classList.remove('steam-launching');},1800);}try{const res=await fetch(`/api/open-steam?url=${encodeURIComponent(url)}`,{cache:'no-store'});if(res.ok){const data=await res.json();if(data?.ok)return;}}catch(_){}try{window.location.assign(url);}catch(_){try{window.location.href=url;}catch(_){}}}
 
 function openLightbox(images,index,triggerEl){
@@ -94,7 +94,11 @@ function openLightbox(images,index,triggerEl){
   updateLightboxImage();
   const lb=$('#lightbox');
   if(lb){
-    lb.hidden=false;
+    if(typeof lb.showModal==='function'&&!lb.open){
+      try{lb.showModal();}catch(_){lb.hidden=false;}
+    }else{
+      lb.hidden=false;
+    }
     const backBtn=lb.querySelector('.lightbox-back-btn')||lb.querySelector('#lightbox-next');
     if(backBtn&&document.body.classList.contains('gamepad-mode')){
       backBtn.focus();
@@ -114,7 +118,10 @@ function updateLightboxImage(){
 }
 function closeLightbox(){
   const lb=$('#lightbox');
-  if(!lb||lb.hidden)return;
+  if(!lb)return;
+  if(typeof lb.close==='function'&&lb.open){
+    try{lb.close();}catch(_){}
+  }
   lb.hidden=true;
   const img=$('#lightbox-img');if(img)img.src='';
   currentLightboxImages=[];
@@ -131,6 +138,11 @@ function prevLightboxImage(){
   updateLightboxImage();
 }
 window.__lightbox={close:closeLightbox,next:nextLightboxImage,prev:prevLightboxImage};
+const _lbDialog=$('#lightbox');
+if(_lbDialog){
+  _lbDialog.addEventListener('cancel',event=>{event.preventDefault();closeLightbox();});
+  _lbDialog.addEventListener('click',event=>{if(event.target===_lbDialog)closeLightbox();});
+}
 
 async function checkInstalledGames(){
   try{
@@ -163,12 +175,26 @@ document.addEventListener('click',event=>{
   if(lbPrev){event.preventDefault();prevLightboxImage();return;}
   const lbNext=event.target.closest('#lightbox-next');
   if(lbNext){event.preventDefault();nextLightboxImage();return;}
+  const openGallery=event.target.closest('[data-open-gallery]');
+  if(openGallery){
+    event.preventDefault();
+    const m=activeGame?.content?.media||{};
+    const shots=m.screenshots||[];
+    const cover=shots[0]?.url||m.images?.find(i=>i.role==='header')?.url||activeGame?.imageUrl;
+    const allShots=shots.length?shots:(cover?[{thumbnailUrl:cover,url:cover}]:[]);
+    const images=allShots.map((s,i)=>({url:s.url,alt:`${activeGame?.name||'Game'} — ảnh ${i+1}`}));
+    openLightbox(images,0,openGallery);
+    return;
+  }
   const shotBtn=event.target.closest('[data-view-shot]');
   if(shotBtn){
     event.preventDefault();
     const idx=Number(shotBtn.dataset.viewShot);
-    const shots=activeGame?.content?.media?.screenshots||[];
-    const images=shots.map((s,i)=>({url:s.url,alt:`${activeGame?.name||'Game'} — ảnh ${i+1}`}));
+    const m=activeGame?.content?.media||{};
+    const shots=m.screenshots||[];
+    const cover=shots[0]?.url||m.images?.find(i=>i.role==='header')?.url||activeGame?.imageUrl;
+    const allShots=shots.length?shots:(cover?[{thumbnailUrl:cover,url:cover}]:[]);
+    const images=allShots.map((s,i)=>({url:s.url,alt:`${activeGame?.name||'Game'} — ảnh ${i+1}`}));
     openLightbox(images,idx,shotBtn);
     return;
   }
@@ -236,7 +262,7 @@ dialog.addEventListener('cancel',event=>{event.preventDefault();closeDetail();})
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeDetail();}});
 document.addEventListener('keydown',event=>{
   const lb=$('#lightbox');
-  if(lb&&!lb.hidden){
+  if(lb&&(lb.open||!lb.hidden)){
     if(event.key==='Escape'||event.key==='Backspace'){event.preventDefault();closeLightbox();return;}
     if(event.key==='ArrowRight'||event.key==='d'||event.key==='D'){event.preventDefault();nextLightboxImage();return;}
     if(event.key==='ArrowLeft'||event.key==='a'||event.key==='A'){event.preventDefault();prevLightboxImage();return;}
