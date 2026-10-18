@@ -158,6 +158,7 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
             if keyword and search_url_template:
                 full_search_url = search_url_template + quote_plus(keyword)
                 try:
+                    import html
                     req = urllib.request.Request(
                         full_search_url,
                         headers={
@@ -165,11 +166,29 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
                             'Accept': 'application/json, text/plain, */*',
                         }
                     )
-                    with urllib.request.urlopen(req, timeout=8) as resp:
+                    with urllib.request.urlopen(req, timeout=10) as resp:
                         raw = resp.read().decode('utf-8-sig', errors='replace')
                         parsed_json = json.loads(raw)
                         if isinstance(parsed_json, list):
-                            results = parsed_json
+                            normalized = []
+                            for it in parsed_json:
+                                if not isinstance(it, dict):
+                                    continue
+                                t = it.get('name')
+                                if not t and 'title' in it:
+                                    t = it['title'].get('rendered') if isinstance(it['title'], dict) else it['title']
+                                t = html.unescape(t or '').strip()
+                                if not t:
+                                    continue
+                                link = it.get('link') or it.get('url') or ''
+                                img = it.get('img', '')
+                                if not img:
+                                    embedded = it.get('_embedded', {})
+                                    fm = embedded.get('wp:featuredmedia', [])
+                                    if fm and isinstance(fm, list) and isinstance(fm[0], dict):
+                                        img = fm[0].get('source_url', '')
+                                normalized.append({'name': t, 'link': link, 'img': img})
+                            results = normalized
                 except Exception as e:
                     error_msg = str(e)
 

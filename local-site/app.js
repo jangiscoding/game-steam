@@ -28,7 +28,9 @@ function renderCollections(){const groups=[['all','◈','Tất cả game'],['vie
 function genreName(id){return catalog.tabs.find(t=>t.id===id)?.name||id;}
 
 const DEFAULT_VIETHOA_SOURCES=[
-  {id:'theredteam',name:'The Red Team',searchUrl:'https://theredteam.vn/list-search.php?q=',baseUrl:'https://theredteam.vn/'}
+  {id:'theredteam',name:'The Red Team',searchUrl:'https://theredteam.vn/list-search.php?q=',baseUrl:'https://theredteam.vn/'},
+  {id:'canhcutteam',name:'Cánh Cụt Team',searchUrl:'https://canhcutteam.com/wp-json/wp/v2/product?_embed=1&search=',baseUrl:'https://canhcutteam.com/'},
+  {id:'gamethuanviet',name:'Game Thuần Việt',searchUrl:'https://gamethuanviet.com/wp-json/wp/v2/product?_embed=1&search=',baseUrl:'https://gamethuanviet.com/'}
 ];
 let viethoaSources=null,theredteamCache=null,viethoaAppIds=new Set(),viethoaMatchesMap={};
 
@@ -85,7 +87,17 @@ function getViethoaSources(){
   if(!viethoaSources){
     try{
       const raw=localStorage.getItem('jang_viethoa_sources');
-      if(raw)viethoaSources=JSON.parse(raw);
+      if(raw){
+        const list=JSON.parse(raw);
+        if(Array.isArray(list)){
+          DEFAULT_VIETHOA_SOURCES.forEach(def=>{
+            if(!list.some(s=>s.id===def.id)){
+              list.push(def);
+            }
+          });
+          viethoaSources=list;
+        }
+      }
     }catch(_){}
     if(!Array.isArray(viethoaSources)||!viethoaSources.length)viethoaSources=[...DEFAULT_VIETHOA_SOURCES];
   }
