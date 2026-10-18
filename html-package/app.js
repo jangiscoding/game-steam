@@ -95,9 +95,9 @@ function openLightbox(images,index,triggerEl){
   const lb=$('#lightbox');
   if(lb){
     if(typeof lb.showModal==='function'&&!lb.open){
-      try{lb.showModal();}catch(_){lb.hidden=false;}
-    }else{
-      lb.hidden=false;
+      try{lb.showModal();}catch(_){lb.setAttribute('open','');}
+    }else if(!lb.open){
+      lb.setAttribute('open','');
     }
     const backBtn=lb.querySelector('.lightbox-back-btn')||lb.querySelector('#lightbox-next');
     if(backBtn&&document.body.classList.contains('gamepad-mode')){
@@ -118,11 +118,11 @@ function updateLightboxImage(){
 }
 function closeLightbox(){
   const lb=$('#lightbox');
-  if(!lb)return;
+  if(!lb||!lb.open)return;
   if(typeof lb.close==='function'&&lb.open){
     try{lb.close();}catch(_){}
   }
-  lb.hidden=true;
+  lb.removeAttribute('open');
   const img=$('#lightbox-img');if(img)img.src='';
   currentLightboxImages=[];
   if(lightboxReturnFocus?.isConnected)lightboxReturnFocus.focus();
@@ -262,7 +262,7 @@ dialog.addEventListener('cancel',event=>{event.preventDefault();closeDetail();})
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeDetail();}});
 document.addEventListener('keydown',event=>{
   const lb=$('#lightbox');
-  if(lb&&(lb.open||!lb.hidden)){
+  if(lb&&lb.open){
     if(event.key==='Escape'||event.key==='Backspace'){event.preventDefault();closeLightbox();return;}
     if(event.key==='ArrowRight'||event.key==='d'||event.key==='D'){event.preventDefault();nextLightboxImage();return;}
     if(event.key==='ArrowLeft'||event.key==='a'||event.key==='A'){event.preventDefault();prevLightboxImage();return;}

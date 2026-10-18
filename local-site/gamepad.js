@@ -126,7 +126,7 @@
 
   function isLightboxOpen() {
     const lb = document.querySelector('#lightbox');
-    return Boolean(lb && (lb.open || !lb.hidden));
+    return Boolean(lb && lb.open);
   }
 
   function currentDialog() { return [...document.querySelectorAll('dialog[open]')].filter(d => d.id !== 'lightbox').at(-1); }

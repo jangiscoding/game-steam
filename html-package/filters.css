@@ -1112,13 +1112,11 @@ dialog#lightbox {
   box-shadow: none;
 }
 
-dialog#lightbox:not([open]),
-.lightbox[hidden] {
+dialog#lightbox:not([open]) {
   display: none !important;
 }
 
-dialog#lightbox[open],
-.lightbox:not([hidden]) {
+dialog#lightbox[open] {
   display: flex;
   align-items: center;
   justify-content: center;
