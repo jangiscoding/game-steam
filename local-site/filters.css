@@ -2358,3 +2358,12 @@ dialog#lightbox::backdrop {
 
 
 
+
+.selected-tags button[data-viethoa-source][aria-pressed="false"] {
+  background: transparent;
+  border-color: #50565d;
+  color: #929aa3;
+}
+.selected-tags button[data-viethoa-source][aria-pressed="false"] span {
+  color: #929aa3;
+}

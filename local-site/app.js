@@ -336,11 +336,7 @@ function renderChips(){
     const icon=genreIcons[t.id]||'●';
     return `<button class="chip ${sel?'selected':''}" data-filter-genre-button="${esc(t.id)}" aria-pressed="${sel}"><span>${icon}</span>${esc(t.name)} <small>${num(t.gameIds.length)}</small></button>`;
   }).join('');
-  const sourceButtons=isViethoaActive?`<div class="genre-chips-row viethoa-sources-row" role="group" aria-label="Nguồn Việt hóa">${catalog.tags.filter(tag=>tag.viethoaSource).map(tag=>{
-    const enabled=!disabledViethoaSources.has(tag.name);
-    return `<button type="button" class="chip chip-viethoa ${enabled?'selected':''}" data-viethoa-source="${esc(tag.name)}" aria-pressed="${enabled}"><span>${enabled?'✓':'○'}</span>${esc(tag.name)} <small>${num(tag.games)}</small></button>`;
-  }).join('')}</div>`:'';
-  $('#genre-chips').innerHTML=`<div class="genre-chips-row special-row">${languageChip}${viethoaChip}${installedChip}</div>${sourceButtons}<div class="genre-chips-row genres-row">${genreButtons}</div>`;
+  $('#genre-chips').innerHTML=`<div class="genre-chips-row special-row">${languageChip}${viethoaChip}${installedChip}</div><div class="genre-chips-row genres-row">${genreButtons}</div>`;
   renderSelectedFilters();
 }
 
@@ -373,7 +369,13 @@ function renderSidebarTags(query=''){
 }
 
 function filterChips(items,type,label){return items.length?items.map(([value,text])=>`<button type="button" data-remove-${type}="${esc(value)}" aria-label="Bỏ ${label} ${esc(text)}">${esc(text)}<span aria-hidden="true">×</span></button>`).join(''):'<em>Tất cả</em>';}
-function renderSelectedFilters(){const genreItems=[...selectedGenres].map(id=>[id,genreName(id)]),tagItems=[...selectedTags].map(name=>[name,tagLabel(name)]);const tc=$('#tag-count');if(tc){tc.hidden=!tagItems.length;tc.textContent=tagItems.length;}$('#selected-genres').innerHTML=filterChips(genreItems,'genre','thể loại');$('#selected-tags').innerHTML=filterChips(tagItems,'tag','tag');}
+function viethoaSourceFilterChips(){
+  return activeTab==='viethoa'?`${catalog.tags.filter(tag=>tag.viethoaSource).map(tag=>{
+    const enabled=!disabledViethoaSources.has(tag.name);
+    return `<button type="button" class="chip chip-viethoa ${enabled?'selected':''}" data-viethoa-source="${esc(tag.name)}" aria-pressed="${enabled}"><span>${enabled?'✓':'○'}</span>${esc(tag.name)} <small>${num(tag.games)}</small></button>`;
+  }).join('')}`:'';
+}
+function renderSelectedFilters(){const genreItems=[...selectedGenres].map(id=>[id,genreName(id)]),tagItems=[...selectedTags].map(name=>[name,tagLabel(name)]);const tc=$('#tag-count');if(tc){tc.hidden=!tagItems.length;tc.textContent=tagItems.length;}$('#selected-genres').innerHTML=filterChips(genreItems,'genre','thể loại');const sourceChips=viethoaSourceFilterChips();$('#selected-tags').innerHTML=sourceChips+(tagItems.length||!sourceChips?filterChips(tagItems,'tag','tag'):'');}
 function toggleTag(name,checked){if(checked)selectedTags.add(name);else selectedTags.delete(name);resetVirtual();renderSelectedFilters();renderSidebarTags($('#sidebar-tag-search')?.value||'');savePreferences();applyFilters();}
 function toggleGenre(id,checked){if(checked)selectedGenres.add(id);else selectedGenres.delete(id);resetVirtual();document.querySelectorAll('[data-filter-genre-button]').forEach(btn=>{const gid=btn.dataset.filterGenreButton,sel=selectedGenres.has(gid);btn.classList.toggle('selected',sel);btn.setAttribute('aria-pressed',sel);});renderSelectedFilters();savePreferences();applyFilters();}
 function activeTabName(){const personalNames={favorites:'Game Jang yêu thích',recent:'Đã xem gần đây',installed:'Đã cài trên máy',viethoa:'Game có bản dịch Việt Hóa'};return personalNames[activeTab]||catalog.tabs.find(t=>t.id===activeTab)?.name||'Tất cả game';}
