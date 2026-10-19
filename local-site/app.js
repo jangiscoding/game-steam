@@ -35,6 +35,12 @@ const DEFAULT_VIETHOA_SOURCES=[
 ];
 let viethoaSources=null,theredteamCache=null,viethoaAppIds=new Set(),viethoaMatchesMap={};
 
+const disabledViethoaSources=new Set();
+function matchesViethoaSources(game){
+  if(activeTab!=='viethoa'||!disabledViethoaSources.size)return true;
+  return viethoaSourceTags(game.id).some(tag=>!disabledViethoaSources.has(tag));
+}
+
 function viethoaSourceTags(gameId){
   const entry=viethoaMatchesMap[gameId];
   if(!entry)return [];
@@ -330,7 +336,11 @@ function renderChips(){
     const icon=genreIcons[t.id]||'●';
     return `<button class="chip ${sel?'selected':''}" data-filter-genre-button="${esc(t.id)}" aria-pressed="${sel}"><span>${icon}</span>${esc(t.name)} <small>${num(t.gameIds.length)}</small></button>`;
   }).join('');
-  $('#genre-chips').innerHTML=`<div class="genre-chips-row special-row">${languageChip}${viethoaChip}${installedChip}</div><div class="genre-chips-row genres-row">${genreButtons}</div>`;
+  const sourceButtons=isViethoaActive?`<div class="genre-chips-row viethoa-sources-row" role="group" aria-label="Nguồn Việt hóa">${catalog.tags.filter(tag=>tag.viethoaSource).map(tag=>{
+    const enabled=!disabledViethoaSources.has(tag.name);
+    return `<button type="button" class="chip chip-viethoa ${enabled?'selected':''}" data-viethoa-source="${esc(tag.name)}" aria-pressed="${enabled}"><span>${enabled?'✓':'○'}</span>${esc(tag.name)} <small>${num(tag.games)}</small></button>`;
+  }).join('')}</div>`:'';
+  $('#genre-chips').innerHTML=`<div class="genre-chips-row special-row">${languageChip}${viethoaChip}${installedChip}</div>${sourceButtons}<div class="genre-chips-row genres-row">${genreButtons}</div>`;
   renderSelectedFilters();
 }
 
@@ -367,7 +377,7 @@ function renderSelectedFilters(){const genreItems=[...selectedGenres].map(id=>[i
 function toggleTag(name,checked){if(checked)selectedTags.add(name);else selectedTags.delete(name);resetVirtual();renderSelectedFilters();renderSidebarTags($('#sidebar-tag-search')?.value||'');savePreferences();applyFilters();}
 function toggleGenre(id,checked){if(checked)selectedGenres.add(id);else selectedGenres.delete(id);resetVirtual();document.querySelectorAll('[data-filter-genre-button]').forEach(btn=>{const gid=btn.dataset.filterGenreButton,sel=selectedGenres.has(gid);btn.classList.toggle('selected',sel);btn.setAttribute('aria-pressed',sel);});renderSelectedFilters();savePreferences();applyFilters();}
 function activeTabName(){const personalNames={favorites:'Game Jang yêu thích',recent:'Đã xem gần đây',installed:'Đã cài trên máy',viethoa:'Game có bản dịch Việt Hóa'};return personalNames[activeTab]||catalog.tabs.find(t=>t.id===activeTab)?.name||'Tất cả game';}
-function applyFilters(){const query=norm($('#search').value.trim());const tags=[...selectedTags],genreSets=[...selectedGenres].map(id=>tabSets.get(id)).filter(Boolean);const allowed=allowedSet(activeTab)||tabSets.get('all');filtered=catalog.games.filter(g=>allowed.has(g.id)&&genreSets.every(set=>set.has(g.id))&&(!query||g.searchKey.includes(query))&&(!tags.length||tags.every(tag=>gameFilterTags(g).includes(tag))));const sort=$('#sort').value;filtered.sort((a,b)=>{if(sort==='featured'){const ar=featured.indexOf(a.steamAppId),br=featured.indexOf(b.steamAppId);if(ar!==br)return (ar<0?999:ar)-(br<0?999:br);}if(sort==='release-new'||sort==='release-old'){const ay=Number(a.releaseYear)||0,by=Number(b.releaseYear)||0;if(Boolean(ay)!==Boolean(by))return ay?-1:1;if(ay!==by)return sort==='release-new'?by-ay:ay-by;}return (sort==='za'?-1:1)*a.name.localeCompare(b.name,'vi');});$('#current-tab').textContent=activeTabName();$('#result-count').textContent=`${num(filtered.length)} game`;$('#notice').innerHTML=activeTab==='local-controller'?`<p class="language-note">Có hỗ trợ tay cầm và Local Co-op hoặc Shared/Split Screen. Dữ liệu Steam chưa xác nhận chính xác số tay cầm tối đa của từng game.</p>`:activeTab==='viethoa'?`<p class="language-note">Danh sách các trò chơi đã tìm thấy bản dịch Tiếng Việt (Việt Hóa). Bấm vào từng game để xem chi tiết và tải patch Việt Hóa.</p>`:'';resetVirtual();renderGames(true);}
+function applyFilters(){const query=norm($('#search').value.trim());const tags=[...selectedTags],genreSets=[...selectedGenres].map(id=>tabSets.get(id)).filter(Boolean);const allowed=allowedSet(activeTab)||tabSets.get('all');filtered=catalog.games.filter(g=>allowed.has(g.id)&&matchesViethoaSources(g)&&genreSets.every(set=>set.has(g.id))&&(!query||g.searchKey.includes(query))&&(!tags.length||tags.every(tag=>gameFilterTags(g).includes(tag))));const sort=$('#sort').value;filtered.sort((a,b)=>{if(sort==='featured'){const ar=featured.indexOf(a.steamAppId),br=featured.indexOf(b.steamAppId);if(ar!==br)return (ar<0?999:ar)-(br<0?999:br);}if(sort==='release-new'||sort==='release-old'){const ay=Number(a.releaseYear)||0,by=Number(b.releaseYear)||0;if(Boolean(ay)!==Boolean(by))return ay?-1:1;if(ay!==by)return sort==='release-new'?by-ay:ay-by;}return (sort==='za'?-1:1)*a.name.localeCompare(b.name,'vi');});$('#current-tab').textContent=activeTabName();$('#result-count').textContent=`${num(filtered.length)} game`;$('#notice').innerHTML=activeTab==='local-controller'?`<p class="language-note">Có hỗ trợ tay cầm và Local Co-op hoặc Shared/Split Screen. Dữ liệu Steam chưa xác nhận chính xác số tay cầm tối đa của từng game.</p>`:activeTab==='viethoa'?`<p class="language-note">Danh sách các trò chơi đã tìm thấy bản dịch Tiếng Việt (Việt Hóa). Bấm vào từng game để xem chi tiết và tải patch Việt Hóa.</p>`:'';resetVirtual();renderGames(true);}
 function resetVirtual(){virtual.cardHeight=0;virtual.columns=0;virtual.start=-1;virtual.end=-1;}
 function cardMarkup(g){const coop=g.playerModes?.localCoop||g.playerModes?.sharedOrSplitScreen;const year=g.releaseYear?`Phát hành ${g.releaseYear}`:'Chưa rõ năm phát hành';const favorite=favorites.has(g.id);const isInstalled=installedAppIds.has(String(g.steamAppId));const hasViethoa=viethoaAppIds.has(g.id)||viethoaAppIds.has(String(g.steamAppId));return `<article class="game-card ${isInstalled?'is-installed':''} ${hasViethoa?'has-viethoa':''}"><button class="game-open" data-game="${esc(g.id)}" aria-label="Xem chi tiết ${esc(g.name)}"><div class="card-art">${image(g.imageUrl,g.name,'loading="lazy" decoding="async"')}<span class="card-tag">${coop?'CHƠI CHUNG MÁY':esc(viGenres[g.genres?.[0]]||g.genres?.[0]||'KHÁM PHÁ')}</span><div class="card-badges">${hasViethoa?'<span class="badge-viethoa" title="Đã có bản dịch Tiếng Việt">🇻🇳 VIỆT HÓA</span>':''}${isInstalled?'<span class="badge-installed" title="Trò chơi đã cài đặt trên máy">✔ ĐÃ CÀI ĐẶT</span>':''}</div></div><div class="card-body"><h3 title="${esc(g.name)}${g.supportsVietnamese?' · Steam hỗ trợ tiếng Việt':''}">${esc(g.name)}</h3><div class="card-meta"><span>${esc((g.genres||[]).slice(0,2).map(t=>viGenres[t]||t).join(' · ')||'Chưa rõ thể loại')}</span><i>${esc(year)}</i></div></div></button><button class="favorite-button ${favorite?'selected':''}" data-favorite="${esc(g.id)}" aria-pressed="${favorite}" aria-label="${favorite?'Bỏ khỏi':'Thêm vào'} game Jang yêu thích">${favorite?'♥':'♡'}</button></article>`;}
 function renderGames(force=false){const grid=$('#game-grid');if(!filtered.length){grid.innerHTML='<div class="empty"><strong>Chưa tìm thấy trò chơi này.</strong>Thử tên khác hoặc xóa bộ lọc để xem thêm game.</div>';$('#pagination').innerHTML='';return;}const style=getComputedStyle(grid);const columns=Math.max(1,style.gridTemplateColumns.split(' ').filter(Boolean).length);const rowGap=parseFloat(style.rowGap)||23;if(virtual.columns&&virtual.columns!==columns)resetVirtual();virtual.columns=columns;if(!virtual.cardHeight){const end=Math.min(filtered.length,40);grid.innerHTML=filtered.slice(0,end).map(cardMarkup).join('');imageFallbacks(grid);$('#pagination').innerHTML=`<span>${num(filtered.length)} game · Đang tối ưu danh sách</span>`;requestAnimationFrame(()=>{const card=grid.querySelector('.game-card');if(!card)return;virtual.cardHeight=card.getBoundingClientRect().height;virtual.start=-1;renderGames(true);});return;}const rowStep=virtual.cardHeight+rowGap;const gridTop=grid.getBoundingClientRect().top+window.scrollY;const offset=Math.max(0,window.scrollY-gridTop);const totalRows=Math.ceil(filtered.length/columns);const firstRow=Math.max(0,Math.floor(offset/rowStep)-virtual.overscan);const desiredLastRow=Math.min(totalRows,Math.ceil((offset+window.innerHeight)/rowStep)+virtual.overscan);const lastRow=Math.min(desiredLastRow,firstRow+Math.max(1,Math.floor(100/columns)));const start=firstRow*columns,end=Math.min(filtered.length,lastRow*columns);if(!force&&start===virtual.start&&end===virtual.end)return;virtual.start=start;virtual.end=end;const topHeight=Math.max(0,firstRow*rowStep-rowGap);const bottomRows=Math.max(0,totalRows-lastRow);const bottomHeight=Math.max(0,bottomRows*rowStep-rowGap);grid.innerHTML=(topHeight?`<div class="virtual-spacer" style="height:${topHeight}px" aria-hidden="true"></div>`:'')+filtered.slice(start,end).map(cardMarkup).join('')+(bottomHeight?`<div class="virtual-spacer" style="height:${bottomHeight}px" aria-hidden="true"></div>`:'');imageFallbacks(grid);$('#pagination').innerHTML=`<span>Đang hiển thị ${num(start+1)}–${num(end)}/${num(filtered.length)} · Chỉ giữ ${num(end-start)} thẻ trên màn hình</span>`;document.dispatchEvent(new CustomEvent('archive:rendered',{detail:{start,end}}));}
@@ -588,6 +598,15 @@ document.addEventListener('click',event=>{
     resetVirtual();renderChips();savePreferences();applyFilters();
     return;
   }
+  const sourceButton=event.target.closest('[data-viethoa-source]');
+  if(sourceButton){
+    const name=sourceButton.dataset.viethoaSource;
+    if(disabledViethoaSources.has(name))disabledViethoaSources.delete(name);
+    else disabledViethoaSources.add(name);
+    renderChips();applyFilters();
+    document.querySelectorAll('[data-viethoa-source]').forEach(button=>{if(button.dataset.viethoaSource===name)button.focus();});
+    return;
+  }
   const genreButton=event.target.closest('[data-filter-genre-button]');
   if(genreButton){
     const id=genreButton.dataset.filterGenreButton;
@@ -654,6 +673,7 @@ $('#reset').addEventListener('click',()=>{
   $('#search').value='';
   selectedTags.clear();
   selectedGenres.clear();
+  disabledViethoaSources.clear();
   const st=$('#sidebar-tag-search');if(st)st.value='';
   
   $('#sort').value='featured';
