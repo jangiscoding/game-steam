@@ -1,0 +1,947 @@
+{
+  "checkedAt": "2026-10-19T02:40:01.875765+00:00",
+  "source": {
+    "id": "canhcutteam",
+    "name": "Cánh Cụt Team",
+    "searchUrl": "https://canhcutteam.com/wp-json/wp/v2/product?_embed=1&search=",
+    "baseUrl": "https://canhcutteam.com/"
+  },
+  "report": {
+    "id": "canhcutteam",
+    "name": "Cánh Cụt Team",
+    "status": "success",
+    "entries": 186
+  },
+  "items": [
+    {
+      "name": "Japanese Ramen Simulator",
+      "link": "https://canhcutteam.com/games/japanese-ramen-simulator/",
+      "img": ""
+    },
+    {
+      "name": "Castlevania: Belmont’s Curse",
+      "link": "https://canhcutteam.com/games/castlevania-belmonts-curse/",
+      "img": ""
+    },
+    {
+      "name": "Total War: SHOGUN 2",
+      "link": "https://canhcutteam.com/games/total-war-shogun-2/",
+      "img": ""
+    },
+    {
+      "name": "Eastern Exorcist",
+      "link": "https://canhcutteam.com/games/eastern-exorcist/",
+      "img": ""
+    },
+    {
+      "name": "Used Cars Simulator",
+      "link": "https://canhcutteam.com/games/used-cars-simulator/",
+      "img": ""
+    },
+    {
+      "name": "Clive Barker’s Hellraiser: Revival",
+      "link": "https://canhcutteam.com/games/clive-barkers-hellraiser-revival/",
+      "img": ""
+    },
+    {
+      "name": "The Last Spell",
+      "link": "https://canhcutteam.com/games/the-last-spell/",
+      "img": ""
+    },
+    {
+      "name": "Silver Pines",
+      "link": "https://canhcutteam.com/games/silver-pines/",
+      "img": ""
+    },
+    {
+      "name": "Toy Shire",
+      "link": "https://canhcutteam.com/games/toy-shire/",
+      "img": ""
+    },
+    {
+      "name": "ACE COMBAT 8: WINGS OF THEVE",
+      "link": "https://canhcutteam.com/games/ace-combat-8-wings-of-theve/",
+      "img": ""
+    },
+    {
+      "name": "追曙",
+      "link": "https://canhcutteam.com/games/%e8%bf%bd%e6%9b%99/",
+      "img": ""
+    },
+    {
+      "name": "CONTROL Resonant",
+      "link": "https://canhcutteam.com/games/control-resonant/",
+      "img": ""
+    },
+    {
+      "name": "lily’s world XD",
+      "link": "https://canhcutteam.com/games/lilys-world-xd/",
+      "img": ""
+    },
+    {
+      "name": "Realm of Ink",
+      "link": "https://canhcutteam.com/games/realm-of-ink/",
+      "img": ""
+    },
+    {
+      "name": "Silent Hill Townfall",
+      "link": "https://canhcutteam.com/games/silent-hill-townfall/",
+      "img": ""
+    },
+    {
+      "name": "Graveyard Keeper 2",
+      "link": "https://canhcutteam.com/games/graveyard-keeper-2/",
+      "img": ""
+    },
+    {
+      "name": "TCG Card Shop Simulator",
+      "link": "https://canhcutteam.com/games/tcg-card-shop-simulator/",
+      "img": ""
+    },
+    {
+      "name": "RACCOIN: Coin Pusher Roguelike",
+      "link": "https://canhcutteam.com/games/raccoin-coin-pusher-roguelike/",
+      "img": ""
+    },
+    {
+      "name": "The Blood of Dawnwalker",
+      "link": "https://canhcutteam.com/games/the-blood-of-dawnwalker/",
+      "img": ""
+    },
+    {
+      "name": "Onimusha: Way of the Sword",
+      "link": "https://canhcutteam.com/games/onimusha-way-of-the-sword/",
+      "img": ""
+    },
+    {
+      "name": "PARANORMASIGHT: The Mermaid’s Curse",
+      "link": "https://canhcutteam.com/games/paranormasight-the-mermaids-curse/",
+      "img": ""
+    },
+    {
+      "name": "Resonance: A Plague Tale Legacy",
+      "link": "https://canhcutteam.com/games/resonance-a-plague-tale-legacy/",
+      "img": ""
+    },
+    {
+      "name": "DIVE or DIE – Children of Rain",
+      "link": "https://canhcutteam.com/games/dive-or-die-children-of-rain/",
+      "img": ""
+    },
+    {
+      "name": "Mortal Shell II",
+      "link": "https://canhcutteam.com/games/mortal-shell-ii/",
+      "img": ""
+    },
+    {
+      "name": "The Sinking City 2",
+      "link": "https://canhcutteam.com/games/the-sinking-city-2/",
+      "img": ""
+    },
+    {
+      "name": "Yakuza Kiwami",
+      "link": "https://canhcutteam.com/games/yakuza-kiwami/",
+      "img": ""
+    },
+    {
+      "name": "Rubinite",
+      "link": "https://canhcutteam.com/games/rubinite/",
+      "img": ""
+    },
+    {
+      "name": "ReStory: Chill Electronics Repairs",
+      "link": "https://canhcutteam.com/games/restory-chill-electronics-repairs/",
+      "img": ""
+    },
+    {
+      "name": "The Alley",
+      "link": "https://canhcutteam.com/games/the-alley/",
+      "img": ""
+    },
+    {
+      "name": "Mistfall Hunter",
+      "link": "https://canhcutteam.com/games/mistfall-hunter/",
+      "img": ""
+    },
+    {
+      "name": "Beast of Reincarnation",
+      "link": "https://canhcutteam.com/games/beast-of-reincarnation/",
+      "img": ""
+    },
+    {
+      "name": "Shift At Midnight",
+      "link": "https://canhcutteam.com/games/shift-at-midnight/",
+      "img": ""
+    },
+    {
+      "name": "Halo: Campaign Evolved",
+      "link": "https://canhcutteam.com/games/halo-campaign-evolved/",
+      "img": ""
+    },
+    {
+      "name": "Photomaly",
+      "link": "https://canhcutteam.com/games/photomaly/",
+      "img": ""
+    },
+    {
+      "name": "Road to Empress Ⅱ",
+      "link": "https://canhcutteam.com/games/road-to-empress-%e2%85%b1/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Black Flag Resynced",
+      "link": "https://canhcutteam.com/games/assassins-creed-black-flag-resynced/",
+      "img": ""
+    },
+    {
+      "name": "STARDUST: Wish of Witch",
+      "link": "https://canhcutteam.com/games/stardust-wish-of-witch/",
+      "img": ""
+    },
+    {
+      "name": "Cairn",
+      "link": "https://canhcutteam.com/games/cairn/",
+      "img": ""
+    },
+    {
+      "name": "The Liar Princess and the Blind Prince",
+      "link": "https://canhcutteam.com/games/the-liar-princess-and-the-blind-prince/",
+      "img": ""
+    },
+    {
+      "name": "STAR WARS Jedi: Fallen Order™",
+      "link": "https://canhcutteam.com/games/star-wars-jedi-fallen-order/",
+      "img": ""
+    },
+    {
+      "name": "Fears to Fathom® – Scratch Creek",
+      "link": "https://canhcutteam.com/games/fears-to-fathom-scratch-creek/",
+      "img": ""
+    },
+    {
+      "name": "DAVE THE DIVER",
+      "link": "https://canhcutteam.com/games/dave-the-diver/",
+      "img": ""
+    },
+    {
+      "name": "MIO: Memories in Orbit",
+      "link": "https://canhcutteam.com/games/mio-memories-in-orbit/",
+      "img": ""
+    },
+    {
+      "name": "Mewgenics",
+      "link": "https://canhcutteam.com/games/mewgenics/",
+      "img": ""
+    },
+    {
+      "name": "Cheap Car Repair",
+      "link": "https://canhcutteam.com/games/cheap-car-repair/",
+      "img": ""
+    },
+    {
+      "name": "Forza Horizon 6",
+      "link": "https://canhcutteam.com/games/forza-horizon-6/",
+      "img": ""
+    },
+    {
+      "name": "Watch_Dogs® 2",
+      "link": "https://canhcutteam.com/games/watch_dogs-2/",
+      "img": ""
+    },
+    {
+      "name": "The Witcher 3: Wild Hunt",
+      "link": "https://canhcutteam.com/games/the-witcher-3-wild-hunt/",
+      "img": ""
+    },
+    {
+      "name": "NINJA GAIDEN 4",
+      "link": "https://canhcutteam.com/games/ninja-gaiden-4/",
+      "img": ""
+    },
+    {
+      "name": "Vampire Crawlers: The Turbo Wildcard from Vampire Survivors",
+      "link": "https://canhcutteam.com/games/vampire-crawlers-the-turbo-wildcard-from-vampire-survivors/",
+      "img": ""
+    },
+    {
+      "name": "Đại Hào Tam Quốc",
+      "link": "https://canhcutteam.com/games/dai-hao-tam-quoc/",
+      "img": ""
+    },
+    {
+      "name": "Heroes of Might and Magic: Olden Era",
+      "link": "https://canhcutteam.com/games/heroes-of-might-and-magic-olden-era/",
+      "img": ""
+    },
+    {
+      "name": "Windrose",
+      "link": "https://canhcutteam.com/games/windrose/",
+      "img": ""
+    },
+    {
+      "name": "REPLACED",
+      "link": "https://canhcutteam.com/games/replaced/",
+      "img": ""
+    },
+    {
+      "name": "PRAGMATA",
+      "link": "https://canhcutteam.com/games/pragmata/",
+      "img": ""
+    },
+    {
+      "name": "Subliminal",
+      "link": "https://canhcutteam.com/games/subliminal/",
+      "img": ""
+    },
+    {
+      "name": "Bí Ẩn Làng Phụng Khê",
+      "link": "https://canhcutteam.com/games/bi-an-lang-phung-khe/",
+      "img": ""
+    },
+    {
+      "name": "Retro Rewind – Video Store Simulator",
+      "link": "https://canhcutteam.com/games/retro-rewind-video-store-simulator/",
+      "img": ""
+    },
+    {
+      "name": "The Walking Trade",
+      "link": "https://canhcutteam.com/games/the-walking-trade/",
+      "img": ""
+    },
+    {
+      "name": "Crimson Desert",
+      "link": "https://canhcutteam.com/games/crimson-desert/",
+      "img": ""
+    },
+    {
+      "name": "Slay the Spire 2",
+      "link": "https://canhcutteam.com/games/slay-the-spire-2/",
+      "img": ""
+    },
+    {
+      "name": "Prey",
+      "link": "https://canhcutteam.com/games/prey/",
+      "img": ""
+    },
+    {
+      "name": "FATAL FRAME II: Crimson Butterfly REMAKE",
+      "link": "https://canhcutteam.com/games/fatal-frame-ii-crimson-butterfly-remake/",
+      "img": ""
+    },
+    {
+      "name": "Roadside Research",
+      "link": "https://canhcutteam.com/games/roadside-research/",
+      "img": ""
+    },
+    {
+      "name": "Tiền Truyện: Bí Ẩn Làng Phụng Khê",
+      "link": "https://canhcutteam.com/games/tien-truyen-bi-an-lang-phung-khe/",
+      "img": ""
+    },
+    {
+      "name": "Resident Evil Requiem",
+      "link": "https://canhcutteam.com/games/resident-evil-requiem/",
+      "img": ""
+    },
+    {
+      "name": "Nữ Nhi Quốc Tình Kiếp",
+      "link": "https://canhcutteam.com/games/nu-nhi-quoc-tinh-kiep/",
+      "img": ""
+    },
+    {
+      "name": "Kotama and Academy Citadel",
+      "link": "https://canhcutteam.com/games/kotama-and-academy-citadel/",
+      "img": ""
+    },
+    {
+      "name": "PARANORMASIGHT: The Seven Mysteries of Honjo",
+      "link": "https://canhcutteam.com/games/paranormasight-the-seven-mysteries-of-honjo/",
+      "img": ""
+    },
+    {
+      "name": "REANIMAL",
+      "link": "https://canhcutteam.com/games/reanimal/",
+      "img": ""
+    },
+    {
+      "name": "Poppy Playtime: Chapter 5",
+      "link": "https://canhcutteam.com/games/poppy-playtime-chapter-5/",
+      "img": ""
+    },
+    {
+      "name": "Anh Hùng Khó Qua Ải Mỹ Nhân",
+      "link": "https://canhcutteam.com/games/anh-hung-kho-qua-ai-my-nhan/",
+      "img": ""
+    },
+    {
+      "name": "Soul Touch",
+      "link": "https://canhcutteam.com/games/soul-touch/",
+      "img": ""
+    },
+    {
+      "name": "Nioh 3",
+      "link": "https://canhcutteam.com/games/nioh-3/",
+      "img": ""
+    },
+    {
+      "name": "The Invisible Us",
+      "link": "https://canhcutteam.com/games/%e7%9c%8b%e4%b8%8d%e8%a7%81%e7%9a%84%e6%88%91%e4%bb%ac-the-invisible-us/",
+      "img": ""
+    },
+    {
+      "name": "HELLMART",
+      "link": "https://canhcutteam.com/games/hellmart/",
+      "img": ""
+    },
+    {
+      "name": "Huyết Tân Ký: Khu Vườn Tội Ác",
+      "link": "https://canhcutteam.com/games/huyet-tan-ky-khu-vuon-toi-ac/",
+      "img": ""
+    },
+    {
+      "name": "Quarantine Zone: The Last Check",
+      "link": "https://canhcutteam.com/games/quarantine-zone-the-last-check/",
+      "img": ""
+    },
+    {
+      "name": "Giang Sơn Bắc Vọng",
+      "link": "https://canhcutteam.com/games/giang-son-bac-vong/",
+      "img": ""
+    },
+    {
+      "name": "Code Vein",
+      "link": "https://canhcutteam.com/games/code-vein/",
+      "img": ""
+    },
+    {
+      "name": "Chained Echoes",
+      "link": "https://canhcutteam.com/games/chained-echoes/",
+      "img": ""
+    },
+    {
+      "name": "PowerWash Simulator 2",
+      "link": "https://canhcutteam.com/games/powerwash-simulator-2/",
+      "img": ""
+    },
+    {
+      "name": "Yên Vân Thập Lục Thanh",
+      "link": "https://canhcutteam.com/games/yen-van-thap-luc-thanh/",
+      "img": ""
+    },
+    {
+      "name": "Road to Empress I",
+      "link": "https://canhcutteam.com/games/road-to-empress-i/",
+      "img": ""
+    },
+    {
+      "name": "Slime Rancher 2",
+      "link": "https://canhcutteam.com/games/slime-rancher-2/",
+      "img": ""
+    },
+    {
+      "name": "Escape From Duckov",
+      "link": "https://canhcutteam.com/games/escape-from-duckov/",
+      "img": ""
+    },
+    {
+      "name": "SUFFOCATE",
+      "link": "https://canhcutteam.com/games/suffocate/",
+      "img": ""
+    },
+    {
+      "name": "Hogwarts Legacy",
+      "link": "https://canhcutteam.com/games/hogwarts-legacy/",
+      "img": ""
+    },
+    {
+      "name": "Revenge on gold diggers",
+      "link": "https://canhcutteam.com/games/revenge-on-gold-diggers/",
+      "img": ""
+    },
+    {
+      "name": "BALL x PIT",
+      "link": "https://canhcutteam.com/games/ball-x-pit/",
+      "img": ""
+    },
+    {
+      "name": "Megabonk",
+      "link": "https://canhcutteam.com/games/megabonk/",
+      "img": ""
+    },
+    {
+      "name": "DRAGON QUEST III HD-2D Remake",
+      "link": "https://canhcutteam.com/games/dragon-quest-iii-hd-2d-remake/",
+      "img": ""
+    },
+    {
+      "name": "Onimusha Warlords",
+      "link": "https://canhcutteam.com/games/onimusha-warlords/",
+      "img": ""
+    },
+    {
+      "name": "NINJA GAIDEN 2 Black",
+      "link": "https://canhcutteam.com/games/ninja-gaiden-2-black/",
+      "img": ""
+    },
+    {
+      "name": "Horizon Forbidden West",
+      "link": "https://canhcutteam.com/games/horizon-forbidden-west/",
+      "img": ""
+    },
+    {
+      "name": "Resident Evil Revelations 2",
+      "link": "https://canhcutteam.com/games/resident-evil-revelations-2/",
+      "img": ""
+    },
+    {
+      "name": "Silent Hill f",
+      "link": "https://canhcutteam.com/games/silent-hill-f/",
+      "img": ""
+    },
+    {
+      "name": "Lost Soul Aside",
+      "link": "https://canhcutteam.com/games/lost-soul-aside/",
+      "img": ""
+    },
+    {
+      "name": "Firefighting Simulator: Ignite",
+      "link": "https://canhcutteam.com/games/firefighting-simulator-ignite/",
+      "img": ""
+    },
+    {
+      "name": "Metaphor: ReFantazio",
+      "link": "https://canhcutteam.com/games/metaphor-refantazio/",
+      "img": ""
+    },
+    {
+      "name": "Cronos: The New Dawn",
+      "link": "https://canhcutteam.com/games/cronos-the-new-dawn/",
+      "img": ""
+    },
+    {
+      "name": "Dead Reset",
+      "link": "https://canhcutteam.com/games/dead-reset/",
+      "img": ""
+    },
+    {
+      "name": "Hollow Knight: Silksong",
+      "link": "https://canhcutteam.com/games/hollow-knight-silksong/",
+      "img": ""
+    },
+    {
+      "name": "Hollow Knight",
+      "link": "https://canhcutteam.com/games/hollow-knight/",
+      "img": ""
+    },
+    {
+      "name": "METAL GEAR SOLID Δ: SNAKE EATER",
+      "link": "https://canhcutteam.com/games/metal-gear-solid-%ce%b4-snake-eater/",
+      "img": ""
+    },
+    {
+      "name": "Lords of the Fallen",
+      "link": "https://canhcutteam.com/games/lords-of-the-fallen/",
+      "img": ""
+    },
+    {
+      "name": "SHINOBI: Art of Vengeance",
+      "link": "https://canhcutteam.com/games/shinobi-art-of-vengeance/",
+      "img": ""
+    },
+    {
+      "name": "Static Dread: The Lighthouse",
+      "link": "https://canhcutteam.com/games/static-dread-the-lighthouse/",
+      "img": ""
+    },
+    {
+      "name": "Mafia: The Old Country",
+      "link": "https://canhcutteam.com/games/mafia-the-old-country/",
+      "img": ""
+    },
+    {
+      "name": "Guilty as Sock!",
+      "link": "https://canhcutteam.com/games/guilty-as-sock/",
+      "img": ""
+    },
+    {
+      "name": "NINJA GAIDEN: Ragebound",
+      "link": "https://canhcutteam.com/games/ninja-gaiden-ragebound/",
+      "img": ""
+    },
+    {
+      "name": "Love is All Around 2",
+      "link": "https://canhcutteam.com/games/love-is-all-around-2/",
+      "img": ""
+    },
+    {
+      "name": "WUCHANG: Fallen Feathers",
+      "link": "https://canhcutteam.com/games/wuchang-fallen-feathers/",
+      "img": ""
+    },
+    {
+      "name": "Saloon Simulator",
+      "link": "https://canhcutteam.com/games/saloon-simulator/",
+      "img": ""
+    },
+    {
+      "name": "Astral Ascent",
+      "link": "https://canhcutteam.com/games/astral-ascent/",
+      "img": ""
+    },
+    {
+      "name": "Mỹ Nhân, Đừng Cản Ta Tu Tiên",
+      "link": "https://canhcutteam.com/games/my-nhan-dung-can-ta-tu-tien/",
+      "img": ""
+    },
+    {
+      "name": "STORY OF SEASONS: Friends of Mineral Town",
+      "link": "https://canhcutteam.com/games/story-of-seasons-friends-of-mineral-town/",
+      "img": ""
+    },
+    {
+      "name": "Broken Arrow",
+      "link": "https://canhcutteam.com/games/broken-arrow/",
+      "img": ""
+    },
+    {
+      "name": "Lies of P: Overture",
+      "link": "https://canhcutteam.com/games/lies-of-p-overture/",
+      "img": ""
+    },
+    {
+      "name": "Five Nights at Freddy’s: Secret of the Mimic",
+      "link": "https://canhcutteam.com/games/five-nights-at-freddys-secret-of-the-mimic/",
+      "img": ""
+    },
+    {
+      "name": "Crime Simulator",
+      "link": "https://canhcutteam.com/games/crime-simulator/",
+      "img": ""
+    },
+    {
+      "name": "Stellar Blade",
+      "link": "https://canhcutteam.com/games/stellar-blade/",
+      "img": ""
+    },
+    {
+      "name": "Tails of Iron 2: Whiskers of Winter",
+      "link": "https://canhcutteam.com/games/tails-of-iron-2-whiskers-of-winter/",
+      "img": ""
+    },
+    {
+      "name": "ELDEN RING NIGHTREIGN",
+      "link": "https://canhcutteam.com/games/elden-ring-nightreign/",
+      "img": ""
+    },
+    {
+      "name": "Out of Sight",
+      "link": "https://canhcutteam.com/games/out-of-sight/",
+      "img": ""
+    },
+    {
+      "name": "Onimusha 2: Samurai’s Destiny",
+      "link": "https://canhcutteam.com/games/onimusha-2-samurais-destiny/",
+      "img": ""
+    },
+    {
+      "name": "Darkest Dungeon",
+      "link": "https://canhcutteam.com/games/darkest-dungeon/",
+      "img": ""
+    },
+    {
+      "name": "Ghost in the pool",
+      "link": "https://canhcutteam.com/games/ghost-in-the-pool/",
+      "img": ""
+    },
+    {
+      "name": "DOOM: The Dark Ages",
+      "link": "https://canhcutteam.com/games/doom-the-dark-ages/",
+      "img": ""
+    },
+    {
+      "name": "The Precinct",
+      "link": "https://canhcutteam.com/games/the-precinct/",
+      "img": ""
+    },
+    {
+      "name": "The Midnight Walk",
+      "link": "https://canhcutteam.com/games/the-midnight-walk/",
+      "img": ""
+    },
+    {
+      "name": "Dead Space 2",
+      "link": "https://canhcutteam.com/games/dead-space-2/",
+      "img": ""
+    },
+    {
+      "name": "Into the Dead: Our Darkest Days",
+      "link": "https://canhcutteam.com/games/into-the-dead-our-darkest-days/",
+      "img": ""
+    },
+    {
+      "name": "Do No Harm",
+      "link": "https://canhcutteam.com/games/do-no-harm/",
+      "img": ""
+    },
+    {
+      "name": "InZOI",
+      "link": "https://canhcutteam.com/games/inzoi/",
+      "img": ""
+    },
+    {
+      "name": "The First Berserker: Khazan",
+      "link": "https://canhcutteam.com/games/the-first-berserker-khazan/",
+      "img": ""
+    },
+    {
+      "name": "Clair Obscur: Expedition 33",
+      "link": "https://canhcutteam.com/games/clair-obscur-expedition-33/",
+      "img": ""
+    },
+    {
+      "name": "The Inn-Sanity",
+      "link": "https://canhcutteam.com/games/the-inn-sanity/",
+      "img": ""
+    },
+    {
+      "name": "Lies of P",
+      "link": "https://canhcutteam.com/games/lies-of-p/",
+      "img": ""
+    },
+    {
+      "name": "Sunset Motel",
+      "link": "https://canhcutteam.com/games/sunset-motel/",
+      "img": ""
+    },
+    {
+      "name": "Scarred",
+      "link": "https://canhcutteam.com/games/scarred/",
+      "img": ""
+    },
+    {
+      "name": "The Rewinder",
+      "link": "https://canhcutteam.com/games/the-rewinder/",
+      "img": ""
+    },
+    {
+      "name": "Baldur’s Gate 3",
+      "link": "https://canhcutteam.com/games/baldurs-gate-3/",
+      "img": ""
+    },
+    {
+      "name": "Nobody: The Turnaround",
+      "link": "https://canhcutteam.com/games/nobody-the-turnaround/",
+      "img": ""
+    },
+    {
+      "name": "The Last of Us II",
+      "link": "https://canhcutteam.com/games/the-last-of-us-ii/",
+      "img": ""
+    },
+    {
+      "name": "Dollmare",
+      "link": "https://canhcutteam.com/games/dollmare/",
+      "img": ""
+    },
+    {
+      "name": "Magicraft",
+      "link": "https://canhcutteam.com/games/magicraft/",
+      "img": ""
+    },
+    {
+      "name": "Split Fiction",
+      "link": "https://canhcutteam.com/games/split-fiction/",
+      "img": ""
+    },
+    {
+      "name": "ENDER MAGNOLIA: Bloom in the Mist",
+      "link": "https://canhcutteam.com/games/ender-magnolia-bloom-in-the-mist/",
+      "img": ""
+    },
+    {
+      "name": "Storage Hunter Simulator",
+      "link": "https://canhcutteam.com/games/storage-hunter-simulator/",
+      "img": ""
+    },
+    {
+      "name": "The Headliners",
+      "link": "https://canhcutteam.com/games/the-headliners/",
+      "img": ""
+    },
+    {
+      "name": "Game of Fate 2: A Century’s Promise",
+      "link": "https://canhcutteam.com/games/game-of-fate-2-a-centurys-promise/",
+      "img": ""
+    },
+    {
+      "name": "Poppy Playtime – Chapter 4",
+      "link": "https://canhcutteam.com/games/poppy-playtime-chapter-4/",
+      "img": ""
+    },
+    {
+      "name": "Punch Club 2",
+      "link": "https://canhcutteam.com/games/punch-club-2/",
+      "img": ""
+    },
+    {
+      "name": "CONSCRIPT",
+      "link": "https://canhcutteam.com/games/conscript/",
+      "img": ""
+    },
+    {
+      "name": "Incantation",
+      "link": "https://canhcutteam.com/games/incantation/",
+      "img": ""
+    },
+    {
+      "name": "Dungeon Clawler",
+      "link": "https://canhcutteam.com/games/dungeon-clawler/",
+      "img": ""
+    },
+    {
+      "name": "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
+      "link": "https://canhcutteam.com/games/stalker-2-heart-of-chornobyl/",
+      "img": ""
+    },
+    {
+      "name": "Red Dead Redemption",
+      "link": "https://canhcutteam.com/games/red-dead-redemption/",
+      "img": ""
+    },
+    {
+      "name": "喜丧 – Hỷ Tang",
+      "link": "https://canhcutteam.com/games/hy-tang/",
+      "img": ""
+    },
+    {
+      "name": "Guilty Crown: Lost Chrismast",
+      "link": "https://canhcutteam.com/games/guilty-crown-lost-chrismast/",
+      "img": ""
+    },
+    {
+      "name": "Final Fantasy XVI",
+      "link": "https://canhcutteam.com/games/final-fantasy-xvi/",
+      "img": ""
+    },
+    {
+      "name": "Fear & Hunger 2: Termina",
+      "link": "https://canhcutteam.com/games/fear-hunger-2-termina/",
+      "img": ""
+    },
+    {
+      "name": "Empire of the Ants",
+      "link": "https://canhcutteam.com/games/empire-of-the-ants/",
+      "img": ""
+    },
+    {
+      "name": "Crow Country",
+      "link": "https://canhcutteam.com/games/crow-country/",
+      "img": ""
+    },
+    {
+      "name": "Punch Club",
+      "link": "https://canhcutteam.com/games/punch-club/",
+      "img": ""
+    },
+    {
+      "name": "Darkest Dungeon 2",
+      "link": "https://canhcutteam.com/games/darkest-dungeon-2/",
+      "img": ""
+    },
+    {
+      "name": "Silent Hill 2",
+      "link": "https://canhcutteam.com/games/silenthill2/",
+      "img": ""
+    },
+    {
+      "name": "63 Days",
+      "link": "https://canhcutteam.com/games/63days/",
+      "img": ""
+    },
+    {
+      "name": "Dōkyūsei: Bangin’ Summer",
+      "link": "https://canhcutteam.com/games/dokyusei-bangin-summer/",
+      "img": ""
+    },
+    {
+      "name": "Crypt Custodian",
+      "link": "https://canhcutteam.com/games/crypt-custodian/",
+      "img": ""
+    },
+    {
+      "name": "Against The Storm",
+      "link": "https://canhcutteam.com/games/against-the-storm/",
+      "img": ""
+    },
+    {
+      "name": "Prince of Persia The Lost Crown",
+      "link": "https://canhcutteam.com/games/prince-of-persia-the-lost-crown/",
+      "img": ""
+    },
+    {
+      "name": "Black Myth: Wukong",
+      "link": "https://canhcutteam.com/games/black-myth-wukong/",
+      "img": ""
+    },
+    {
+      "name": "Crime Scene Cleaner Việt Hoá",
+      "link": "https://canhcutteam.com/games/crime-scene-cleaner-viet-hoa/",
+      "img": ""
+    },
+    {
+      "name": "Metal Gear Solid V: The phantom pain",
+      "link": "https://canhcutteam.com/games/metal-gear-solid-v-the-phantom-pain/",
+      "img": ""
+    },
+    {
+      "name": "Drug Dealer Simulator 2",
+      "link": "https://canhcutteam.com/games/drug-dealer-simulator-2/",
+      "img": ""
+    },
+    {
+      "name": "Ghostwire Tokyo",
+      "link": "https://canhcutteam.com/games/ghostwire-tokyo/",
+      "img": ""
+    },
+    {
+      "name": "ELDEN RING – Shadow of the Erdtree",
+      "link": "https://canhcutteam.com/games/elden-ring/",
+      "img": ""
+    },
+    {
+      "name": "Senua’s Saga: Hellblade II",
+      "link": "https://canhcutteam.com/games/senuas-saga-hellblade-ii/",
+      "img": ""
+    },
+    {
+      "name": "Zelda TOTK",
+      "link": "https://canhcutteam.com/games/zelda-totk/",
+      "img": ""
+    },
+    {
+      "name": "Nine Sols",
+      "link": "https://canhcutteam.com/games/nine-sols/",
+      "img": ""
+    },
+    {
+      "name": "Ghost of Tsushima",
+      "link": "https://canhcutteam.com/games/ghost-of-tsushima/",
+      "img": ""
+    },
+    {
+      "name": "Murders on the Yangtze River",
+      "link": "https://canhcutteam.com/games/murders-on-the-yangtze-river/",
+      "img": ""
+    },
+    {
+      "name": "ROGUE LEGACY 2",
+      "link": "https://canhcutteam.com/games/rouge-legacy-2/",
+      "img": ""
+    },
+    {
+      "name": "TAILS OF IRON",
+      "link": "https://canhcutteam.com/games/tails-of-iron/",
+      "img": ""
+    }
+  ]
+}

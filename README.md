@@ -174,3 +174,11 @@ Each game has a boolean `supportsVietnamese` and a `vietnameseSupportStatus`. `l
 This flag describes Steam's declared in-game language support. It is separate from Vietnamese catalog descriptions and community translation patches. Confirmed games appear in the **Ngôn ngữ tiếng Việt** collection, accessible by mouse and gamepad. Rebuild with `npm run site:local:build` and `npm run site:html:build` after attaching data. Builders use the current `local-site` interface so rebuilding does not restore older templates.
 
 Run `python scripts/test_steam_languages.py` for language parsing, collection membership, data preservation, and shard integrity tests.
+
+### Scan community Vietnamese patches
+
+Run `npm run viethoa:scan` to collect the four source catalogs configured in `local-site/app.js` and compare every library title. WordPress products and forum threads are paginated; The Red Team is searched by letters and digits. This avoids sending 5,000 searches to each source. To use custom browser settings, export the `jang_viethoa_sources` JSON array and pass `npm run viethoa:scan -- --sources sources.json`. Browser localStorage is not accessible to the CLI.
+
+Evidence is separated by source in `data/viethoa-scan/`, with coverage and errors in `index.json`. Exact normalized title matches retain sequel numbers and edition names; WIP/demo/in-progress titles are excluded. Unmatched titles can still have patches under different names. Previously discovered links are retained, so totals include historical discoveries. A source listing indicates an advertised patch, not a verified working download. The generated `local-site/data/viethoa_games.json` populates **Có Việt Hóa** and stores matching source links for game details. Official Steam language support remains separate.
+
+After scanning, run `npm run site:local:build` and `npm run site:html:build`. Run `python3 scripts/test_viethoa_scan.py` to verify matching rules.

@@ -1,0 +1,537 @@
+{
+  "checkedAt": "2026-10-19T02:40:01.875765+00:00",
+  "source": {
+    "id": "gamethuanviet",
+    "name": "Game Thuần Việt",
+    "searchUrl": "https://gamethuanviet.com/wp-json/wp/v2/product?_embed=1&search=",
+    "baseUrl": "https://gamethuanviet.com/"
+  },
+  "report": {
+    "id": "gamethuanviet",
+    "name": "Game Thuần Việt",
+    "status": "success",
+    "entries": 104
+  },
+  "items": [
+    {
+      "name": "Code Vein II",
+      "link": "https://gamethuanviet.com/game/code-vein-ii/",
+      "img": ""
+    },
+    {
+      "name": "Cyberpunk 2077",
+      "link": "https://gamethuanviet.com/game/cyberpunk-2077/",
+      "img": ""
+    },
+    {
+      "name": "The Witcher 3 Wild Hunt Remastered",
+      "link": "https://gamethuanviet.com/game/the-witcher-3-wild-hunt-remastered/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Black Flag Resynced",
+      "link": "https://gamethuanviet.com/game/assassins-creed-black-flag-resynced/",
+      "img": ""
+    },
+    {
+      "name": "Grand Theft Auto IV The Complete Edition",
+      "link": "https://gamethuanviet.com/game/grand-theft-auto-iv-the-complete-edition/",
+      "img": ""
+    },
+    {
+      "name": "Commandos Origins",
+      "link": "https://gamethuanviet.com/game/commandos-origins/",
+      "img": ""
+    },
+    {
+      "name": "Far Cry New Dawn",
+      "link": "https://gamethuanviet.com/game/far-cry-new-dawn-viet-hoa/",
+      "img": ""
+    },
+    {
+      "name": "Devil May Cry 5",
+      "link": "https://gamethuanviet.com/game/devil-may-cry-5/",
+      "img": ""
+    },
+    {
+      "name": "Pragmata",
+      "link": "https://gamethuanviet.com/game/pragmata/",
+      "img": ""
+    },
+    {
+      "name": "Revenge of the Savage Planet",
+      "link": "https://gamethuanviet.com/game/revenge-of-the-savage-planet/",
+      "img": ""
+    },
+    {
+      "name": "Resident Evil Requiem",
+      "link": "https://gamethuanviet.com/game/resident-evil-requiem/",
+      "img": ""
+    },
+    {
+      "name": "Need for Speed Most Wanted",
+      "link": "https://gamethuanviet.com/game/need-for-speed-most-wanted/",
+      "img": ""
+    },
+    {
+      "name": "Silent Hill f",
+      "link": "https://gamethuanviet.com/game/silent-hill-f/",
+      "img": ""
+    },
+    {
+      "name": "Resident Evil 7",
+      "link": "https://gamethuanviet.com/game/resident-evil-7/",
+      "img": ""
+    },
+    {
+      "name": "Far Cry 5",
+      "link": "https://gamethuanviet.com/game/far-cry-5/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Rogue",
+      "link": "https://gamethuanviet.com/game/assassins-creed-rogue/",
+      "img": ""
+    },
+    {
+      "name": "Resident Evil 3",
+      "link": "https://gamethuanviet.com/game/resident-evil-3/",
+      "img": ""
+    },
+    {
+      "name": "Mafia: The Old Country",
+      "link": "https://gamethuanviet.com/game/mafia-the-old-country/",
+      "img": ""
+    },
+    {
+      "name": "Resident Evil 2",
+      "link": "https://gamethuanviet.com/game/resident-evil-2-remake/",
+      "img": ""
+    },
+    {
+      "name": "Dishonored 2",
+      "link": "https://gamethuanviet.com/game/dishonored-2/",
+      "img": ""
+    },
+    {
+      "name": "Final Fantasy VII Rebirth",
+      "link": "https://gamethuanviet.com/game/final-fantasy-vii-rebirth/",
+      "img": ""
+    },
+    {
+      "name": "Sword and Fairy 7",
+      "link": "https://gamethuanviet.com/game/sword-and-fairy-7/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Odyssey",
+      "link": "https://gamethuanviet.com/game/assassins-creed-odyssey/",
+      "img": ""
+    },
+    {
+      "name": "Grand Theft Auto V",
+      "link": "https://gamethuanviet.com/game/grand-theft-auto-v/",
+      "img": ""
+    },
+    {
+      "name": "Wolfenstein The Old Blood",
+      "link": "https://gamethuanviet.com/game/wolfenstein-the-old-blood/",
+      "img": ""
+    },
+    {
+      "name": "Ghost of Tsushima",
+      "link": "https://gamethuanviet.com/game/ghost-of-tsushima/",
+      "img": ""
+    },
+    {
+      "name": "Godfall",
+      "link": "https://gamethuanviet.com/game/godfall/",
+      "img": ""
+    },
+    {
+      "name": "Mortal Kombat 1",
+      "link": "https://gamethuanviet.com/game/mortal-kombat-1/",
+      "img": ""
+    },
+    {
+      "name": "Nioh 2 Complete Edition",
+      "link": "https://gamethuanviet.com/game/nioh-2-complete-edition/",
+      "img": ""
+    },
+    {
+      "name": "Saints Row The Third Remastered",
+      "link": "https://gamethuanviet.com/game/saints-row-the-third-remastered/",
+      "img": ""
+    },
+    {
+      "name": "Dead Space Remake",
+      "link": "https://gamethuanviet.com/game/dead-space-remake/",
+      "img": ""
+    },
+    {
+      "name": "Tell Me Why",
+      "link": "https://gamethuanviet.com/game/tell-me-why/",
+      "img": ""
+    },
+    {
+      "name": "Hellblade  Senua’s Sacrifice",
+      "link": "https://gamethuanviet.com/game/hellblade-senuas-sacrifice/",
+      "img": ""
+    },
+    {
+      "name": "Manhunt 2",
+      "link": "https://gamethuanviet.com/game/manhunt-2/",
+      "img": ""
+    },
+    {
+      "name": "A Way Out",
+      "link": "https://gamethuanviet.com/game/a-way-out/",
+      "img": ""
+    },
+    {
+      "name": "It Takes Two",
+      "link": "https://gamethuanviet.com/game/it-takes-two/",
+      "img": ""
+    },
+    {
+      "name": "Middle Earth Shadow of War",
+      "link": "https://gamethuanviet.com/game/middle-earth-shadow-of-war/",
+      "img": ""
+    },
+    {
+      "name": "Syberia 2",
+      "link": "https://gamethuanviet.com/game/syberia-2/",
+      "img": ""
+    },
+    {
+      "name": "Syberia 3",
+      "link": "https://gamethuanviet.com/game/syberia-3/",
+      "img": ""
+    },
+    {
+      "name": "Stray",
+      "link": "https://gamethuanviet.com/game/stray/",
+      "img": ""
+    },
+    {
+      "name": "Sifu",
+      "link": "https://gamethuanviet.com/game/sifu/",
+      "img": ""
+    },
+    {
+      "name": "Syberia",
+      "link": "https://gamethuanviet.com/game/syberia/",
+      "img": ""
+    },
+    {
+      "name": "Heavy Rain",
+      "link": "https://gamethuanviet.com/game/heavy-rain/",
+      "img": ""
+    },
+    {
+      "name": "Wolfenstein The New Order",
+      "link": "https://gamethuanviet.com/game/wolfenstein-the-new-order/",
+      "img": ""
+    },
+    {
+      "name": "Final Fantasy XII The Zodiac Age",
+      "link": "https://gamethuanviet.com/game/final-fantasy-xii-the-zodiac-age/",
+      "img": ""
+    },
+    {
+      "name": "Crysis Warhead",
+      "link": "https://gamethuanviet.com/game/crysis-warhead/",
+      "img": ""
+    },
+    {
+      "name": "The Legend of Heroes: Trails in the Sky",
+      "link": "https://gamethuanviet.com/game/the-legend-of-heroes-trails-in-the-sky/",
+      "img": ""
+    },
+    {
+      "name": "Bully Scholarship Edition",
+      "link": "https://gamethuanviet.com/game/bully-scholarship-edition/",
+      "img": ""
+    },
+    {
+      "name": "Call of Duty 4 Modern Warfare",
+      "link": "https://gamethuanviet.com/game/call-of-duty-4-modern-warfare/",
+      "img": ""
+    },
+    {
+      "name": "Mafia II Definitive Edition",
+      "link": "https://gamethuanviet.com/game/mafia-ii-definitive-edition/",
+      "img": ""
+    },
+    {
+      "name": "Mafia II",
+      "link": "https://gamethuanviet.com/game/mafia-ii/",
+      "img": ""
+    },
+    {
+      "name": "Final Fantasy VII Remake Intergrade",
+      "link": "https://gamethuanviet.com/game/final-fantasy-vii-remake-intergrade/",
+      "img": ""
+    },
+    {
+      "name": "Hitman World of Assassination",
+      "link": "https://gamethuanviet.com/game/hitman-world-of-assassination/",
+      "img": ""
+    },
+    {
+      "name": "Metro 2033 Redux",
+      "link": "https://gamethuanviet.com/game/metro-2033-redux/",
+      "img": ""
+    },
+    {
+      "name": "Metro Last Light Redux",
+      "link": "https://gamethuanviet.com/game/metro-last-light-redux/",
+      "img": ""
+    },
+    {
+      "name": "Crysis",
+      "link": "https://gamethuanviet.com/game/crysis/",
+      "img": ""
+    },
+    {
+      "name": "Medal of Honor",
+      "link": "https://gamethuanviet.com/game/medal-of-honor/",
+      "img": ""
+    },
+    {
+      "name": "Sleeping Dogs Definitive Edition",
+      "link": "https://gamethuanviet.com/game/sleeping-dogs-definitive-edition/",
+      "img": ""
+    },
+    {
+      "name": "DRAGON QUEST The Adventure of Dai",
+      "link": "https://gamethuanviet.com/game/dragon-quest-the-adventure-of-dai/",
+      "img": ""
+    },
+    {
+      "name": "The Dark Pictures Anthology HoA",
+      "link": "https://gamethuanviet.com/game/the-dark-pictures-anthology-hoa/",
+      "img": ""
+    },
+    {
+      "name": "DmC Devil May Cry",
+      "link": "https://gamethuanviet.com/game/dmc-devil-may-cry/",
+      "img": ""
+    },
+    {
+      "name": "Planet Zoo",
+      "link": "https://gamethuanviet.com/game/planet-zoo/",
+      "img": ""
+    },
+    {
+      "name": "Beyond Two Souls",
+      "link": "https://gamethuanviet.com/game/beyond-two-souls/",
+      "img": ""
+    },
+    {
+      "name": "Final Fantasy IX",
+      "link": "https://gamethuanviet.com/game/final-fantasy-ix/",
+      "img": ""
+    },
+    {
+      "name": "Metro Exodus",
+      "link": "https://gamethuanviet.com/game/metro-exodus/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Revelations",
+      "link": "https://gamethuanviet.com/game/assassins-creed-revelations/",
+      "img": ""
+    },
+    {
+      "name": "Horizon Zero Dawn",
+      "link": "https://gamethuanviet.com/game/horizon-zero-dawn/",
+      "img": ""
+    },
+    {
+      "name": "DRAGON QUEST® XI S: Echoes of an Elusive Age",
+      "link": "https://gamethuanviet.com/game/dragon-quest-xi-s-echoes-of-an-elusive-age/",
+      "img": ""
+    },
+    {
+      "name": "A Plague Tale Innocence",
+      "link": "https://gamethuanviet.com/game/a-plague-tale-innocence/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed III Remastered",
+      "link": "https://gamethuanviet.com/game/assassins-creed-iii-remastered/",
+      "img": ""
+    },
+    {
+      "name": "Middle Earth Shadow of Mordor",
+      "link": "https://gamethuanviet.com/game/middle-earth-shadow-of-mordor/",
+      "img": ""
+    },
+    {
+      "name": "Life is Strange True Colors",
+      "link": "https://gamethuanviet.com/game/life-is-strange-true-colors/",
+      "img": ""
+    },
+    {
+      "name": "Nioh Complete Edition",
+      "link": "https://gamethuanviet.com/game/nioh-complete-edition/",
+      "img": ""
+    },
+    {
+      "name": "Company of Heroes Complete Edition",
+      "link": "https://gamethuanviet.com/game/company-of-heroes-complete-edition/",
+      "img": ""
+    },
+    {
+      "name": "Final Fantasy X",
+      "link": "https://gamethuanviet.com/game/final-fantasy-x/",
+      "img": ""
+    },
+    {
+      "name": "God of War Ragnarok",
+      "link": "https://gamethuanviet.com/game/god-of-war-ragnarok/",
+      "img": ""
+    },
+    {
+      "name": "God of War 4",
+      "link": "https://gamethuanviet.com/game/god-of-war-4/",
+      "img": ""
+    },
+    {
+      "name": "Batman Arkham Asylum",
+      "link": "https://gamethuanviet.com/game/batman-arkham-asylum/",
+      "img": ""
+    },
+    {
+      "name": "Batman Arkham City",
+      "link": "https://gamethuanviet.com/game/batman-arkham-city/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Unity",
+      "link": "https://gamethuanviet.com/game/assassins-creed-unity/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Brotherhood",
+      "link": "https://gamethuanviet.com/game/assassins-creed-brotherhood/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Valhalla",
+      "link": "https://gamethuanviet.com/game/assassins-creed-valhalla/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed IV Black Flag",
+      "link": "https://gamethuanviet.com/game/assassins-creed-iv-black-flag/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Syndicate",
+      "link": "https://gamethuanviet.com/game/assassins-creed-syndicate/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Mirage",
+      "link": "https://gamethuanviet.com/game/assassins-creed-mirage/",
+      "img": ""
+    },
+    {
+      "name": "Detroit Become Human",
+      "link": "https://gamethuanviet.com/game/detroit-become-human/",
+      "img": ""
+    },
+    {
+      "name": "Final Fantasy XV",
+      "link": "https://gamethuanviet.com/game/final-fantasy-xv/",
+      "img": ""
+    },
+    {
+      "name": "Mafia Definitive Edition",
+      "link": "https://gamethuanviet.com/game/mafia-definitive-edition/",
+      "img": ""
+    },
+    {
+      "name": "DRAGON BALL: Sparking! ZERO",
+      "link": "https://gamethuanviet.com/game/dragon-ball-sparking-zero/",
+      "img": ""
+    },
+    {
+      "name": "Wo Long Fallen Dynasty",
+      "link": "https://gamethuanviet.com/game/wo-long-fallen-dynasty/",
+      "img": ""
+    },
+    {
+      "name": "A Plague Tale Requiem",
+      "link": "https://gamethuanviet.com/game/a-plague-tale-requiem/",
+      "img": ""
+    },
+    {
+      "name": "Resident Evil 4",
+      "link": "https://gamethuanviet.com/game/resident-evil-4-remake/",
+      "img": ""
+    },
+    {
+      "name": "Batman Arkham Knight",
+      "link": "https://gamethuanviet.com/game/batman-arkham-knight/",
+      "img": ""
+    },
+    {
+      "name": "Watch Dogs 2",
+      "link": "https://gamethuanviet.com/game/watch-dogs-2/",
+      "img": ""
+    },
+    {
+      "name": "Death Stranding",
+      "link": "https://gamethuanviet.com/game/death-stranding/",
+      "img": ""
+    },
+    {
+      "name": "Red Dead Redemption 2",
+      "link": "https://gamethuanviet.com/game/red-dead-redemption-2/",
+      "img": ""
+    },
+    {
+      "name": "Spider-Man Remastered",
+      "link": "https://gamethuanviet.com/game/spider-man-remastered/",
+      "img": ""
+    },
+    {
+      "name": "Red Dead Redemption",
+      "link": "https://gamethuanviet.com/game/red-dead-redemption/",
+      "img": ""
+    },
+    {
+      "name": "The Quarry",
+      "link": "https://gamethuanviet.com/game/the-quarry/",
+      "img": ""
+    },
+    {
+      "name": "Dragon Ball Z Kakarot",
+      "link": "https://gamethuanviet.com/game/dragon-ball-z-kakarot/",
+      "img": ""
+    },
+    {
+      "name": "Mafia III Definitive Edition",
+      "link": "https://gamethuanviet.com/game/mafia-iii-definitive-edition/",
+      "img": ""
+    },
+    {
+      "name": "Far Cry Primal",
+      "link": "https://gamethuanviet.com/game/far-cry-primal/",
+      "img": ""
+    },
+    {
+      "name": "Resident Evil Village",
+      "link": "https://gamethuanviet.com/game/resident-evil-village/",
+      "img": ""
+    },
+    {
+      "name": "Assassin’s Creed Origins",
+      "link": "https://gamethuanviet.com/game/assassins-creed-origins/",
+      "img": ""
+    }
+  ]
+}

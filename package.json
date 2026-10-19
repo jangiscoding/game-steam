@@ -25,6 +25,7 @@
     "site:local:build": "python scripts/build_game_site.py --output local-site",
     "site:html:build": "python scripts/build_html_package.py",
     "languages:fetch": "python scripts/enrich_steam_languages.py",
-    "languages:attach": "python scripts/enrich_steam_languages.py --attach-only"
+    "languages:attach": "python scripts/enrich_steam_languages.py --attach-only",
+    "viethoa:scan": "python3 scripts/scan_viethoa.py"
   }
 }

@@ -1,0 +1,1362 @@
+{
+  "checkedAt": "2026-10-19T02:40:01.875765+00:00",
+  "source": {
+    "id": "theredteam",
+    "name": "The Red Team",
+    "searchUrl": "https://theredteam.vn/list-search.php?q=",
+    "baseUrl": "https://theredteam.vn/"
+  },
+  "report": {
+    "id": "theredteam",
+    "name": "The Red Team",
+    "status": "success",
+    "entries": 269
+  },
+  "items": [
+    {
+      "name": "Nobody - The Turnaround",
+      "img": "https://theredteam.vn/index_files/images/New_2023/nobody-the-turnaround-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/nobody-the-turnaround-viet-hoa"
+    },
+    {
+      "name": "Onimusha: Way of the Sword",
+      "img": "https://theredteam.vn/index_files/images/New_2023/onimusha-way-of-the-sword-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/onimusha-way-of-the-sword-viet-hoa"
+    },
+    {
+      "name": "SILENT HILL: Townfall",
+      "img": "https://theredteam.vn/index_files/images/New_2023/silent-hill-townfall-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/silent-hill-townfall-viet-hoa"
+    },
+    {
+      "name": "inKONBINI: One Store. Many Stories",
+      "img": "https://theredteam.vn/index_files/images/New_2023/inkonbini-one-store-many-stories-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/inkonbini-one-store-many-stories-viet-hoa"
+    },
+    {
+      "name": "Sea of Solitude",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sea-of-solitude-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/sea-of-solitude-viet-hoa"
+    },
+    {
+      "name": "Death and Taxes",
+      "img": "https://theredteam.vn/index_files/images/New_2023/death-and-taxes-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/death-and-taxes-viet-hoa"
+    },
+    {
+      "name": "Resonance: A Plague Tale Legacy",
+      "img": "https://theredteam.vn/index_files/images/New_2023/resonance-a-plague-tale-legacy-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/resonance-a-plague-tale-legacy-viet-hoa"
+    },
+    {
+      "name": "Mortal Shell II",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mortal-shell-ii-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/mortal-shell-ii-viet-hoa"
+    },
+    {
+      "name": "DragonSword : Awakening",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dragonsword-awakening-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/dragonsword-awakening-viet-hoa"
+    },
+    {
+      "name": "Alan Wake",
+      "img": "https://theredteam.vn/index_files/images/New_2023/alan-wake-viet-hoa_ava.png",
+      "link": "https://theredteam.vn/alan-wake-viet-hoa"
+    },
+    {
+      "name": "Gothic 1 Remake",
+      "img": "https://theredteam.vn/index_files/images/New_2023/gothic-1-remake-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/gothic-1-remake-viet-hoa"
+    },
+    {
+      "name": "Outlast Collection",
+      "img": "https://theredteam.vn/index_files/images/New_2023/oc_ava.png",
+      "link": "https://theredteam.vn/outlast-collection-viet-hoa"
+    },
+    {
+      "name": "Conan Exiles Enhanced",
+      "img": "https://theredteam.vn/index_files/images/New_2023/conan_ava.png",
+      "link": "https://theredteam.vn/conan-exiles-enhanced-viet-hoa"
+    },
+    {
+      "name": "Beast of Reincarnation",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bor_ava.png",
+      "link": "https://theredteam.vn/beast-of-reincarnation-viet-hoa"
+    },
+    {
+      "name": "Assassin's Creed Black Flag Resynced",
+      "img": "https://theredteam.vn/index_files/images/New_2023/acbfr_ava.png",
+      "link": "https://theredteam.vn/assassins-creed-black-flag-resynced-viet-hoa"
+    },
+    {
+      "name": "FATAL FRAME / PROJECT ZERO: Mask of the Lunar Eclipse",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ffiv_ava.png",
+      "link": "https://theredteam.vn/fatal-frame-project-zero-mask-of-the-lunar-eclipse-viet-hoa"
+    },
+    {
+      "name": "Raji: An Ancient Epic",
+      "img": "https://theredteam.vn/index_files/images/New_2023/raji_ava.png",
+      "link": "https://theredteam.vn/raji-an-ancient-epic-viet-hoa"
+    },
+    {
+      "name": "Blasphemous",
+      "img": "https://theredteam.vn/index_files/images/New_2023/b1_ava.png",
+      "link": "https://theredteam.vn/blasphemous-viet-hoa"
+    },
+    {
+      "name": "Neighbours Back From Hell",
+      "img": "https://theredteam.vn/index_files/images/New_2023/nbfh_ava.png",
+      "link": "https://theredteam.vn/neighbours-back-from-hell-viet-hoa"
+    },
+    {
+      "name": "A Plague Tale: Innocence",
+      "img": "https://theredteam.vn/index_files/images/New_2023/apti_ava.png",
+      "link": "https://theredteam.vn/a-plague-tale-innocence-viet-hoa"
+    },
+    {
+      "name": "EA SPORTS FC™ 26",
+      "img": "https://theredteam.vn/index_files/images/New_2023/fc26_ava.png",
+      "link": "https://theredteam.vn/ea-sports-fc-26-viet-hoa"
+    },
+    {
+      "name": "Stray",
+      "img": "https://theredteam.vn/index_files/images/New_2023/stray_ava.png",
+      "link": "https://theredteam.vn/stray-viet-hoa"
+    },
+    {
+      "name": "Detroit: Become Human",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dbh_ava.png",
+      "link": "https://theredteam.vn/detroit-become-human-viet-hoa"
+    },
+    {
+      "name": "Mixtape",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mixtape_ava.png",
+      "link": "https://theredteam.vn/mixtape-viet-hoa"
+    },
+    {
+      "name": "Devil May Cry 5",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dmc5_ava.png",
+      "link": "https://theredteam.vn/devil-may-cry-5-viet-hoa"
+    },
+    {
+      "name": "A Way Out",
+      "img": "https://theredteam.vn/index_files/images/New_2023/awo_ava.png",
+      "link": "https://theredteam.vn/a-way-out-viet-hoa"
+    },
+    {
+      "name": "Valiant Hearts: The Great War™",
+      "img": "https://theredteam.vn/index_files/images/New_2023/vhtgw_ava.png",
+      "link": "https://theredteam.vn/valiant-hearts-the-great-war-viet-hoa"
+    },
+    {
+      "name": "Subnautica 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sub2_ava.png",
+      "link": "https://theredteam.vn/subnautica-2-viet-hoa"
+    },
+    {
+      "name": "The Quarry",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tq_ava.png",
+      "link": "https://theredteam.vn/the-quarry-viet-hoa"
+    },
+    {
+      "name": "Pragmata",
+      "img": "https://theredteam.vn/index_files/images/New_2023/p_ava.png",
+      "link": "https://theredteam.vn/pragmata-viet-hoa"
+    },
+    {
+      "name": "Death Stranding 2: On The Beach",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ds2_ava.png",
+      "link": "https://theredteam.vn/death-stranding-2-on-the-beach-viet-hoa"
+    },
+    {
+      "name": "Replaced",
+      "img": "https://theredteam.vn/index_files/images/New_2023/r_ava.png",
+      "link": "https://theredteam.vn/replaced-viet-hoa"
+    },
+    {
+      "name": "The Berlin Apartment",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tba_ava.png",
+      "link": "https://theredteam.vn/the-berlin-apartment-viet-hoa"
+    },
+    {
+      "name": "It Takes Two",
+      "img": "https://theredteam.vn/index_files/images/New_2023/itt_ava.png",
+      "link": "https://theredteam.vn/it-takes-two-viet-hoa"
+    },
+    {
+      "name": "The Legend of Zelda Tears of The Kingdom",
+      "img": "https://theredteam.vn/index_files/images/New_2023/zelda_ava.png",
+      "link": "https://theredteam.vn/the-legend-of-zelda-tears-of-the-kingdom-viet-hoa"
+    },
+    {
+      "name": "Resident Evil Village",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re8_ava.png",
+      "link": "https://theredteam.vn/resident-evil-village-viet-hoa"
+    },
+    {
+      "name": "Resident Evil 7 Biohazard",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re7_ava.png",
+      "link": "https://theredteam.vn/resident-evil-7-biohazard-viet-hoa"
+    },
+    {
+      "name": "Resident Evil 4 Remake",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re4_ava.png",
+      "link": "https://theredteam.vn/resident-evil-4-remake-viet-hoa"
+    },
+    {
+      "name": "Resident Evil 3 Remake",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re3_ava.png",
+      "link": "https://theredteam.vn/resident-evil-3-remake-viet-hoa"
+    },
+    {
+      "name": "Resident Evil 2 Remake",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re2_ava.png",
+      "link": "https://theredteam.vn/resident-evil-2-remake-viet-hoa"
+    },
+    {
+      "name": "As Long As You're Here",
+      "img": "https://theredteam.vn/index_files/images/New_2023/alayah_ava.png",
+      "link": "https://theredteam.vn/as-long-as-youre-here-viet-hoa"
+    },
+    {
+      "name": "FATAL FRAME II: Crimson Butterfly REMAKE",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff2r_ava.png",
+      "link": "https://theredteam.vn/fatal-frame-ii-crimson-butterfly-remake-viet-hoa"
+    },
+    {
+      "name": "Assassin’s Creed® IV Black Flag™",
+      "img": "https://theredteam.vn/index_files/images/New_2023/acbf_ava.png",
+      "link": "https://theredteam.vn/assassins-creed-iv-black-flag-viet-hoa"
+    },
+    {
+      "name": "Tainted Grail: The Fall of Avalon",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tainted_ava.png",
+      "link": "https://theredteam.vn/tainted-grail-the-fall-of-avalon-viet-hoa"
+    },
+    {
+      "name": "Bye Sweet Carole",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bsc_ava.png",
+      "link": "https://theredteam.vn/bye-sweet-carole-viet-hoa"
+    },
+    {
+      "name": "Quarantine Zone: The Last Check",
+      "img": "https://theredteam.vn/index_files/images/New_2023/qzsim_ava.png",
+      "link": "https://theredteam.vn/quarantine-zone-the-last-check-viet-hoa"
+    },
+    {
+      "name": "The Alters",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ta_ava.png",
+      "link": "https://theredteam.vn/the-alters-viet-hoa"
+    },
+    {
+      "name": "Crisol: Theater of Idols",
+      "img": "https://theredteam.vn/index_files/images/New_2023/crisol_ava.png",
+      "link": "https://theredteam.vn/crisol-theater-of-idols-viet-hoa"
+    },
+    {
+      "name": "Hellmart",
+      "img": "https://theredteam.vn/index_files/images/New_2023/hellmart_ava.png",
+      "link": "https://theredteam.vn/hellmart-viet-hoa"
+    },
+    {
+      "name": "The Last Case of John Morley",
+      "img": "https://theredteam.vn/index_files/images/New_2023/morley_ava.png",
+      "link": "https://theredteam.vn/the-last-case-of-john-morley-viet-hoa"
+    },
+    {
+      "name": "Forgotton Anne",
+      "img": "https://theredteam.vn/index_files/images/New_2023/fa_ava.png",
+      "link": "https://theredteam.vn/forgotton-anne-viet-hoa"
+    },
+    {
+      "name": "Dispatch",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dp_ava.png",
+      "link": "https://theredteam.vn/dispatch-viet-hoa"
+    },
+    {
+      "name": "Dying Light: The Beast",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dltb_ava.png",
+      "link": "https://theredteam.vn/dying-light-the-beast-viet-hoa"
+    },
+    {
+      "name": "Junji Ito Maniac: An Infinite Gaol",
+      "img": "https://theredteam.vn/index_files/images/New_2023/junji_ava.png",
+      "link": "https://theredteam.vn/junji-ito-maniac-an-infinite-gaol-viet-hoa"
+    },
+    {
+      "name": "港詭實錄 Paranormal HK",
+      "img": "https://theredteam.vn/index_files/images/New_2023/paranormal_ava.png",
+      "link": "https://theredteam.vn/paranormalhk-viet-hoa"
+    },
+    {
+      "name": "Suffocate",
+      "img": "https://theredteam.vn/index_files/images/New_2023/s_ava.png",
+      "link": "https://theredteam.vn/suffocate-viet-hoa"
+    },
+    {
+      "name": "Anno 1800",
+      "img": "https://theredteam.vn/index_files/images/New_2023/anno1800_ava.png",
+      "link": "https://theredteam.vn/anno-1800-viet-hoa"
+    },
+    {
+      "name": "and Roger",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ar_ava.png",
+      "link": "https://theredteam.vn/and-roger-viet-hoa"
+    },
+    {
+      "name": "Mafia: The Old Country",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mafia_ava.png",
+      "link": "https://theredteam.vn/mafia-the-old-country-viet-hoa"
+    },
+    {
+      "name": "Granblue Fantasy: Relink",
+      "img": "https://theredteam.vn/index_files/images/New_2023/granblue_ava.png",
+      "link": "https://theredteam.vn/granblue-fantasy-relink-viet-hoa"
+    },
+    {
+      "name": "While We Wait Here",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wwwh_ava.png",
+      "link": "https://theredteam.vn/while-we-wait-here-viet-hoa"
+    },
+    {
+      "name": "The Elder Scrolls IV: Oblivion Remastered",
+      "img": "https://theredteam.vn/index_files/images/New_2023/or_ava.png",
+      "link": "https://theredteam.vn/the-elder-scrolls-iv-oblivion-remastered-viet-hoa"
+    },
+    {
+      "name": "WUCHANG: Fallen Feathers",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wc_ava.png",
+      "link": "https://theredteam.vn/wuchang-fallen-feathers-viet-hoa"
+    },
+    {
+      "name": "Eriksholm: The Stolen Dream",
+      "img": "https://theredteam.vn/index_files/images/New_2023/etsd_ava.png",
+      "link": "https://theredteam.vn/eriksholm-the-stolen-dream-viet-hoa"
+    },
+    {
+      "name": "Assassin’s Creed Shadows",
+      "img": "https://theredteam.vn/index_files/images/New_2023/acs_ava.png",
+      "link": "https://theredteam.vn/assassins-creed-shadows-viet-hoa"
+    },
+    {
+      "name": "Stellar Blade",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sb_ava.png",
+      "link": "https://theredteam.vn/stellar-blade-viet-hoa"
+    },
+    {
+      "name": "My Time At Sandrock",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sandrock_ava.png",
+      "link": "https://theredteam.vn/my-time-at-sand-rock-viet-hoa"
+    },
+    {
+      "name": "Creepy Tale Collection",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ct_ava.png",
+      "link": "https://theredteam.vn/creepy-tale-collection-viet-hoa"
+    },
+    {
+      "name": "Deliver At All Costs",
+      "img": "https://theredteam.vn/index_files/images/New_2023/deliver_ava.png",
+      "link": "https://theredteam.vn/deliver-at-all-costs-viet-hoa"
+    },
+    {
+      "name": "The First Berserker: Khazan",
+      "img": "https://theredteam.vn/index_files/images/New_2023/khazan_ava.png",
+      "link": "https://theredteam.vn/the-first-berserker-khazan-viet-hoa"
+    },
+    {
+      "name": "FNAF: Secret Of The Mimic",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mimic_ava.png",
+      "link": "https://theredteam.vn/fnaf-secret-of-the-mimic-viet-hoa"
+    },
+    {
+      "name": "The Last Of Us Part II",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tlou2_ava.png",
+      "link": "https://theredteam.vn/the-last-of-us-part-ii-viet-hoa"
+    },
+    {
+      "name": "A Space for the Unbound",
+      "img": "https://theredteam.vn/index_files/images/New_2023/aspace_ava.png",
+      "link": "https://theredteam.vn/a-space-for-the-unbound-viet-hoa"
+    },
+    {
+      "name": "Final Fantasy VII Rebirth",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff7r_ava.jpg",
+      "link": "https://theredteam.vn/final-fantasy-vii-rebirth-viet-hoa"
+    },
+    {
+      "name": "KARMA: The Dark World",
+      "img": "https://theredteam.vn/index_files/images/New_2023/karma_ava.png",
+      "link": "https://theredteam.vn/karma-the-dark-world-viet-hoa"
+    },
+    {
+      "name": "The Bad Kids",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tbk_ava.png",
+      "link": "https://theredteam.vn/the-bad-kids-viet-hoa"
+    },
+    {
+      "name": "Maneater",
+      "img": "https://theredteam.vn/index_files/images/New_2023/maneater_ava.png",
+      "link": "https://theredteam.vn/maneater-viet-hoa"
+    },
+    {
+      "name": "Streamer Life Simulator 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sls2_ava.png",
+      "link": "https://theredteam.vn/streamer-life-simulator-2-viet-hoa"
+    },
+    {
+      "name": "Luma Island",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lumaisland_ava.png",
+      "link": "https://theredteam.vn/luma-island-viet-hoa"
+    },
+    {
+      "name": "Carto",
+      "img": "https://theredteam.vn/index_files/images/New_2023/carto_ava.png",
+      "link": "https://theredteam.vn/carto-viet-hoa"
+    },
+    {
+      "name": "Bum Simulator",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bum_ava.png",
+      "link": "https://theredteam.vn/bum-simulator-viet-hoa"
+    },
+    {
+      "name": "Death In The Water 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ditw2_ava.png",
+      "link": "https://theredteam.vn/death-in-the-water-2-viet-hoa"
+    },
+    {
+      "name": "Bramble",
+      "img": "https://theredteam.vn/index_files/images/New_2023/b_ava.png",
+      "link": "https://theredteam.vn/bramble-viet-hoa"
+    },
+    {
+      "name": "Red Dead Redemption 1",
+      "img": "https://theredteam.vn/index_files/images/New_2023/rdr1_ava.png",
+      "link": "https://theredteam.vn/red-dead-redemption-1-viet-hoa"
+    },
+    {
+      "name": "Stalker 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/s2_ava.png",
+      "link": "https://theredteam.vn/stalker-2-viet-hoa"
+    },
+    {
+      "name": "Indiana Jones And The Great Circle",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ij_ava.png",
+      "link": "https://theredteam.vn/indiana-jones-and-the-great-circle-viet-hoa"
+    },
+    {
+      "name": "Violent Horror Stories: Anthology",
+      "img": "https://theredteam.vn/index_files/images/New_2023/vhs_ava.png",
+      "link": "https://theredteam.vn/violent-horror-stories-anthology-viet-hoa"
+    },
+    {
+      "name": "The Spirit Of The Samurai",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tsots_ava.png",
+      "link": "https://theredteam.vn/the-spirit-of-the-samurai-viet-hoa"
+    },
+    {
+      "name": "Home Safety Hotline",
+      "img": "https://theredteam.vn/index_files/images/New_2023/hsh_ava.png",
+      "link": "https://theredteam.vn/home-safety-hotline-viet-hoa"
+    },
+    {
+      "name": "Wo Long: Fallen Dynasty",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wolong_ava.jpg",
+      "link": "https://theredteam.vn/wo-long-viet-hoa"
+    },
+    {
+      "name": "Until Dawn",
+      "img": "https://theredteam.vn/index_files/images/New_2023/untildawn_ava.png",
+      "link": "https://theredteam.vn/until-dawn-viet-hoa"
+    },
+    {
+      "name": "The Casting Of Frank Stone",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tcofs_ava.png",
+      "link": "https://theredteam.vn/the-casting-of-frank-stone-viet-hoa"
+    },
+    {
+      "name": "God of War Ragnarök",
+      "img": "https://theredteam.vn/index_files/images/New_2023/gowr_ava.png",
+      "link": "https://theredteam.vn/god-of-war-ragnarok-viet-hoa"
+    },
+    {
+      "name": "Coral Island",
+      "img": "https://theredteam.vn/index_files/images/New_2023/coral_ava.png",
+      "link": "https://theredteam.vn/coral-island-viet-hoa"
+    },
+    {
+      "name": "Astroneer",
+      "img": "https://theredteam.vn/index_files/images/New_2023/astroneer_ava.png",
+      "link": "https://theredteam.vn/astroneer-viet-hoa"
+    },
+    {
+      "name": "This Bed We Made",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tbwm_ava.png",
+      "link": "https://theredteam.vn/this-bed-we-made-viet-hoa"
+    },
+    {
+      "name": "Madison",
+      "img": "https://theredteam.vn/index_files/images/New_2023/madison_ava.png",
+      "link": "https://theredteam.vn/madison-viet-hoa"
+    },
+    {
+      "name": "A Quiet Place: The Road Ahead",
+      "img": "https://theredteam.vn/index_files/images/New_2023/aqp_ava.png",
+      "link": "https://theredteam.vn/a-quiet-place-the-road-ahead-viet-hoa"
+    },
+    {
+      "name": "The Beast Inside",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tbi_ava.png",
+      "link": "https://theredteam.vn/the-beast-inside-viet-hoa"
+    },
+    {
+      "name": "Kingdoms And Castles",
+      "img": "https://theredteam.vn/index_files/images/New_2023/kas_ava.png",
+      "link": "https://theredteam.vn/kingdoms-and-castles-viet-hoa"
+    },
+    {
+      "name": "Dragons Dogma 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dd2_ava.png",
+      "link": "https://theredteam.vn/dragons-dogma-2-viet-hoa"
+    },
+    {
+      "name": "Final Fantasy V",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff5_ava.png",
+      "link": "https://theredteam.vn/final-fantasy-v-viet-hoa"
+    },
+    {
+      "name": "Black Myth: Wukong",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wukong_ava.png",
+      "link": "https://theredteam.vn/black-myth-wukong-viet-hoa"
+    },
+    {
+      "name": "Warhammer 40.000: Space Marine 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/40k_ava.png",
+      "link": "https://theredteam.vn/warhammer-40k-space-marine-2"
+    },
+    {
+      "name": "The Bridge Curse 2: The Extrication",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tbc2_ava.png",
+      "link": "https://theredteam.vn/the-bridge-curse-2-the-extrication"
+    },
+    {
+      "name": "Yakuza 0",
+      "img": "https://theredteam.vn/index_files/images/New_2023/yakuza0_ava.png",
+      "link": "https://theredteam.vn/yakuza-0-viet-hoa"
+    },
+    {
+      "name": "Rise Of The Tomb Raider",
+      "img": "https://theredteam.vn/index_files/images/New_2023/rottr_ava.jpg",
+      "link": "https://theredteam.vn/rise-of-the-tomb-raider-viet-hoa"
+    },
+    {
+      "name": "Still Wakes The Deep",
+      "img": "https://theredteam.vn/index_files/images/New_2023/swtd_ava.png",
+      "link": "https://theredteam.vn/still-wakes-the-deep-viet-hoa"
+    },
+    {
+      "name": "Fabledom",
+      "img": "https://theredteam.vn/index_files/images/New_2023/f_ava.png",
+      "link": "https://theredteam.vn/fabledom-viet-hoa"
+    },
+    {
+      "name": "Watch Dogs",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wd_ava.png",
+      "link": "https://theredteam.vn/watch-dogs-viet-hoa"
+    },
+    {
+      "name": "Fear And Hunger",
+      "img": "https://theredteam.vn/index_files/images/New_2023/fah_ava.png",
+      "link": "https://theredteam.vn/fear-and-hunger-viet-hoa"
+    },
+    {
+      "name": "Hades 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/hades2_ava.png",
+      "link": "https://theredteam.vn/hades-2-viet-hoa"
+    },
+    {
+      "name": "Minami Lane",
+      "img": "https://theredteam.vn/index_files/images/New_2023/minami_ava.png",
+      "link": "https://theredteam.vn/minami-lane-viet-hoa"
+    },
+    {
+      "name": "Tchia",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tchia_ava.png",
+      "link": "https://theredteam.vn/tchia-viet-hoa"
+    },
+    {
+      "name": "Manor Lords",
+      "img": "https://theredteam.vn/index_files/images/New_2023/manor_ava.png",
+      "link": "https://theredteam.vn/manor-lords-viet-hoa"
+    },
+    {
+      "name": "Kena: Bridge Of Spirits",
+      "img": "https://theredteam.vn/index_files/images/New_2023/kena_ava.png",
+      "link": "https://theredteam.vn/kena-bridge-of-spirits-viet-hoa"
+    },
+    {
+      "name": "A Short Hike",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ash_ava.png",
+      "link": "https://theredteam.vn/a-short-hike-viet-hoa"
+    },
+    {
+      "name": "The Wild At Heart",
+      "img": "https://theredteam.vn/index_files/images/New_2023/twah_ava.png",
+      "link": "https://theredteam.vn/the-wild-at-heart-viet-hoa"
+    },
+    {
+      "name": "Back 4 Blood",
+      "img": "https://theredteam.vn/index_files/images/New_2023/b4b_ava.png",
+      "link": "https://theredteam.vn/back-4-blood-viet-hoa"
+    },
+    {
+      "name": "Alone In The Dark",
+      "img": "https://theredteam.vn/index_files/images/New_2023/alone_ava.png",
+      "link": "https://theredteam.vn/alone-in-the-dark-viet-hoa"
+    },
+    {
+      "name": "Halo The Master Chief Collection",
+      "img": "https://theredteam.vn/index_files/images/New_2023/halo_ava.png",
+      "link": "https://theredteam.vn/halo-the-master-chief-collection-viet-hoa"
+    },
+    {
+      "name": "Valiant Hearts: Coming Home",
+      "img": "https://theredteam.vn/index_files/images/New_2023/valian_ava.png",
+      "link": "https://theredteam.vn/valiant-hearts-coming-home-viet-hoa"
+    },
+    {
+      "name": "Eastward",
+      "img": "https://theredteam.vn/index_files/images/New_2023/eastward_ava.png",
+      "link": "https://theredteam.vn/eastward-viet-hoa"
+    },
+    {
+      "name": "Spiritfarer",
+      "img": "https://theredteam.vn/index_files/images/New_2023/spiritfarer_ava.png",
+      "link": "https://theredteam.vn/spiritfarer-viet-hoa"
+    },
+    {
+      "name": "Pandemic Train",
+      "img": "https://theredteam.vn/index_files/images/New_2023/pandemic_ava.png",
+      "link": "https://theredteam.vn/pandemic-train-viet-hoa"
+    },
+    {
+      "name": "Sons Of Valhalla",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sov_ava.png",
+      "link": "https://theredteam.vn/sons-of-valhalla-viet-hoa"
+    },
+    {
+      "name": "Death Stranding",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ds_ava.png",
+      "link": "https://theredteam.vn/death-stranding-viet-hoa"
+    },
+    {
+      "name": "Ender Magnolia",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ender_ava.png",
+      "link": "https://theredteam.vn/ender-magnolia-viet-hoa"
+    },
+    {
+      "name": "Star Wars Jedi Survivor",
+      "img": "https://theredteam.vn/index_files/images/New_2023/survivor_ava.jpg",
+      "link": "https://theredteam.vn/star-wars-jedi-survivor-viet-hoa"
+    },
+    {
+      "name": "Ratchet & Clank Rip Apart",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ratchet_ava.jpg",
+      "link": "https://theredteam.vn/ratchet-&-clank-rip-apart-viet-hoa"
+    },
+    {
+      "name": "Octopath Traveler 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ot2_ava.png",
+      "link": "https://theredteam.vn/octopath-traveler-2-viet-hoa"
+    },
+    {
+      "name": "Momodora Moonlit Farewell",
+      "img": "https://theredteam.vn/index_files/images/New_2023/momodora_ava.png",
+      "link": "https://theredteam.vn/momodora-viet-hoa"
+    },
+    {
+      "name": "Avatar",
+      "img": "https://theredteam.vn/index_files/images/New_2023/avatar_ava.jpg",
+      "link": "https://theredteam.vn/avatar-viet-hoa"
+    },
+    {
+      "name": "The Mageseeker",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mageseeker_ava.jpg",
+      "link": "https://theredteam.vn/the-mageseeker-viet-hoa"
+    },
+    {
+      "name": "Palworld",
+      "img": "https://theredteam.vn/index_files/images/New_2023/palworld_ava.jpg",
+      "link": "https://theredteam.vn/palworld-viet-hoa"
+    },
+    {
+      "name": "Spiderman Collection",
+      "img": "https://theredteam.vn/index_files/images/New_2023/doden_ava.jpg",
+      "link": "https://theredteam.vn/spiderman-collection-viet-hoa"
+    },
+    {
+      "name": "Amnesia The Bunker",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bunker_ava.jpg",
+      "link": "https://theredteam.vn/amnesia-the-bunker-viet-hoa"
+    },
+    {
+      "name": "Prince Of Persia: The Lost Crown",
+      "img": "https://theredteam.vn/index_files/images/New_2023/hoangtu34_ava.jpg",
+      "link": "https://theredteam.vn/prince-of-persia-viet-hoa"
+    },
+    {
+      "name": "The Walking Dead Definitive Series",
+      "img": "https://theredteam.vn/index_files/images/New_2023/twdfull_ava.jpg",
+      "link": "https://theredteam.vn/twd-definitive-viet-hoa"
+    },
+    {
+      "name": "Lethal Company",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lethal_ava.jpg",
+      "link": "https://theredteam.vn/lethal-company-viet-hoa"
+    },
+    {
+      "name": "As Dusk Falls",
+      "img": "https://theredteam.vn/index_files/images/New_2023/asduskfalls_ava.png",
+      "link": "https://theredteam.vn/as-dusk-falls-viet-hoa"
+    },
+    {
+      "name": "Dead Island 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dead2_ava.jpg",
+      "link": "https://theredteam.vn/dead-island-2-viet-hoa"
+    },
+    {
+      "name": "Chained Echoes",
+      "img": "https://theredteam.vn/index_files/images/New_2023/chained_ava.jpg",
+      "link": "https://theredteam.vn/chained-echoes-viet-hoa"
+    },
+    {
+      "name": "The Last Faith",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lastfaith_ava.jpg",
+      "link": "https://theredteam.vn/the-last-faith-viet-hoa"
+    },
+    {
+      "name": "Alan Wake 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/alan_ava.jpg",
+      "link": "https://theredteam.vn/alan-wake-2-viet-hoa"
+    },
+    {
+      "name": "Anno Mutationem",
+      "img": "https://theredteam.vn/index_files/images/New_2023/anno_ava.jpg",
+      "link": "https://theredteam.vn/anno-mutationem-viet-hoa"
+    },
+    {
+      "name": "Armored Core VI",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ac6_ava.jpg",
+      "link": "https://theredteam.vn/armored-core-6-viet-hoa"
+    },
+    {
+      "name": "Thief Simulator 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/thief2_ava.png",
+      "link": "https://theredteam.vn/thief-simulator-2-viet-hoa"
+    },
+    {
+      "name": "Banchou Tactics",
+      "img": "https://theredteam.vn/index_files/images/New_2023/banchou_ava.png",
+      "link": "https://theredteam.vn/banchou-tactics-viet-hoa"
+    },
+    {
+      "name": "Among The Sleep",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Among_ava.jpg",
+      "link": "https://theredteam.vn/among-the-sleep-viet-hoa"
+    },
+    {
+      "name": "Coffee Talk Series",
+      "img": "https://theredteam.vn/index_files/images/New_2023/coffee_talk_series_ava.jpg",
+      "link": "https://theredteam.vn/coffee-talk-viet-hoa"
+    },
+    {
+      "name": "Assassin’s Creed Mirage",
+      "img": "https://theredteam.vn/index_files/images/New_2023/acm_ava.jpg",
+      "link": "https://theredteam.vn/ac-mirage-viet-hoa"
+    },
+    {
+      "name": "Sherlock Holmes The Awakened",
+      "img": "https://theredteam.vn/index_files/images/New_2023/awk_ava.jpg",
+      "link": "https://theredteam.vn/sherlock-holmes-the-awakened-viet-hoa"
+    },
+    {
+      "name": "Red Dead Redemption 2",
+      "img": "https://theredteam.vn/index_files/images/gallery/rdr2.png",
+      "link": "https://theredteam.vn/red-dead-redemption-2"
+    },
+    {
+      "name": "Hogwarts Legacy",
+      "img": "https://theredteam.vn/index_files/images/New_2023/HL_ava.jpg",
+      "link": "https://theredteam.vn/hogwarts-legacy-viet-hoa"
+    },
+    {
+      "name": "UNCHARTED: Legacy of Thieves",
+      "img": "https://theredteam.vn/index_files/images/gallery/uncharted-logo.jpg",
+      "link": "https://theredteam.vn/uncharted"
+    },
+    {
+      "name": "The Last Of Us Part I",
+      "img": "https://theredteam.vn/index_files/images/New_2023/TLOU_ava.jpg",
+      "link": "https://theredteam.vn/the-last-of-us-part-i-viet-hoa"
+    },
+    {
+      "name": "Far Cry 6",
+      "img": "https://theredteam.vn/index_files/images/New_2023/FC6_Ava.jpg",
+      "link": "https://theredteam.vn/far-cry-6-viet-hoa"
+    },
+    {
+      "name": "Dead Island",
+      "img": "https://theredteam.vn/index_files/images/gallery/di.jpg",
+      "link": "https://theredteam.vn/dead-island"
+    },
+    {
+      "name": "Life Is Strange: True Colors",
+      "img": "https://theredteam.vn/index_files/images/gallery/lis.png",
+      "link": "https://theredteam.vn/Life_Is_Strange_-_True_Colors"
+    },
+    {
+      "name": "Life Is Strange: Before The Storm",
+      "img": "https://theredteam.vn/index_files/images/gallery/LIS_BTS.jpg",
+      "link": "https://theredteam.vn/lis-before-the-storm"
+    },
+    {
+      "name": "Farthest Frontier",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff_ava.png",
+      "link": "https://theredteam.vn/ff"
+    },
+    {
+      "name": "Martha is Dead",
+      "img": "https://theredteam.vn/index_files/images/gallery/martha.jpg",
+      "link": "https://theredteam.vn/martha-is-dead"
+    },
+    {
+      "name": "Cult of the Lamb",
+      "img": "https://theredteam.vn/index_files/images/gallery/cotl.jpg",
+      "link": "https://theredteam.vn/cult-of-the-lamb"
+    },
+    {
+      "name": "Paper Doll",
+      "img": "https://theredteam.vn/index_files/images/gallery/paperdoll_ava.jpg",
+      "link": "https://theredteam.vn/paper-doll"
+    },
+    {
+      "name": "The Bridge Curse Road to Salvation",
+      "img": "https://theredteam.vn/index_files/images/gallery/TBC_ava.jpg",
+      "link": "https://theredteam.vn/bridge-curse-road-to-salvation"
+    },
+    {
+      "name": "Ravenous Devils",
+      "img": "https://theredteam.vn/index_files/images/gallery/ravenous_ava.jpg",
+      "link": "https://theredteam.vn/ravenous-devils"
+    },
+    {
+      "name": "Final Fantasy IV",
+      "img": "https://theredteam.vn/index_files/images/main-slider/FinalFantasyIVAva.jpg",
+      "link": "https://theredteam.vn/FinalFantasyIV"
+    },
+    {
+      "name": "Kingdom Come Deliverance",
+      "img": "https://theredteam.vn/index_files/images/gallery/kingdom.jpg",
+      "link": "https://theredteam.vn/kingdom-come-deliverance"
+    },
+    {
+      "name": "GTA 3 Defenitive",
+      "img": "https://theredteam.vn/index_files/images/main-slider/GTA3_ava.jpg",
+      "link": "https://theredteam.vn/Gta-3"
+    },
+    {
+      "name": "Final Fantasy 1 Pixel Remastered",
+      "img": "https://theredteam.vn/index_files/images/main-slider/AVA_FF1.jpg",
+      "link": "https://theredteam.vn/FFPixelRemastered"
+    },
+    {
+      "name": "Atomic Heart",
+      "img": "https://theredteam.vn/index_files/images/main-slider/atomic_ava.png",
+      "link": "https://theredteam.vn/atomic-heart-viet-hoa"
+    },
+    {
+      "name": "Contraband Police",
+      "img": "https://theredteam.vn/index_files/images/main-slider/ava_Police.jpg",
+      "link": "https://theredteam.vn/Contraband-Police-viet-hoa"
+    },
+    {
+      "name": "This War Of Mine",
+      "img": "https://theredteam.vn/index_files/images/New_2023/TWOM_ava.jpg",
+      "link": "https://theredteam.vn/this-war-of-mine-viet-hoa"
+    },
+    {
+      "name": "A Plague Tale Requiem",
+      "img": "https://theredteam.vn/index_files/images/gallery/A-Plague-Tale-Requiem-Viet-hoa-avatar.jpg",
+      "link": "https://theredteam.vn/A-Plague-Tale-Requiem-Viet-hoa"
+    },
+    {
+      "name": "Life Is Strange 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/LIS2_ava.jpg",
+      "link": "https://theredteam.vn/life-is-strange-2-viet-hoa"
+    },
+    {
+      "name": "Shadow Of The Tomb Raider",
+      "img": "https://theredteam.vn/index_files/images/New_2023/SOTR_ava.jpg",
+      "link": "https://theredteam.vn/shadow-of-the-tomb-raider-viet-hoa"
+    },
+    {
+      "name": "The Wandering Village",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Wandering_ava_2023.jpg",
+      "link": "https://theredteam.vn/wandering-village"
+    },
+    {
+      "name": "Final Fantasy II",
+      "img": "https://theredteam.vn/index_files/images/New_2023/FF2_Ava.jpg",
+      "link": "https://theredteam.vn/final-fantasy-ii"
+    },
+    {
+      "name": "Desperado III",
+      "img": "https://theredteam.vn/index_files/images/New_2023/DES_ava.jpg",
+      "link": "https://theredteam.vn/desperado-iii-viet-hoa"
+    },
+    {
+      "name": "Graveyard Keeper",
+      "img": "https://theredteam.vn/index_files/images/New_2023/GRAVE_ava.jpg",
+      "link": "https://theredteam.vn/Graveyard-keeper"
+    },
+    {
+      "name": "Outward Definitive",
+      "img": "https://theredteam.vn/index_files/images/New_2023/OW_ava.png",
+      "link": "https://theredteam.vn/outward"
+    },
+    {
+      "name": "Sherlock Holmes Chapter One",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Sherlock_C1_ava.jpg",
+      "link": "https://theredteam.vn/sherlock-holmes-chapter-one"
+    },
+    {
+      "name": "Dave The Diver",
+      "img": "https://theredteam.vn/index_files/images/New_2023/davenew_ava.png",
+      "link": "https://theredteam.vn/Dave-The-Diver-viet-hoa"
+    },
+    {
+      "name": "Days Gone",
+      "img": "https://theredteam.vn/index_files/images/New_2023/DG_ava.jpg",
+      "link": "https://theredteam.vn/Days-gone-viet-hoa"
+    },
+    {
+      "name": "Metal Gear Solid V",
+      "img": "https://theredteam.vn/index_files/images/New_2023/MGSV_Ava.jpg",
+      "link": "https://theredteam.vn/MGSV-viet-hoa"
+    },
+    {
+      "name": "Blasphemous 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/blas2_ava.jpg",
+      "link": "https://theredteam.vn/blasphemous-2-viet-hoa"
+    },
+    {
+      "name": "Travellers Rest",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Traveller_ava.png",
+      "link": "https://theredteam.vn/Travellers-Rest-viet-hoa"
+    },
+    {
+      "name": "Final Fantasy VII",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ff7_ava.jpg",
+      "link": "https://theredteam.vn/final-fantasy-VII-viet-hoa"
+    },
+    {
+      "name": "Visage",
+      "img": "https://theredteam.vn/index_files/images/New_2023/visage_ava.jpg",
+      "link": "https://theredteam.vn/visage-viet-hoa"
+    },
+    {
+      "name": "Star Wars Jedi Fallen Order",
+      "img": "https://theredteam.vn/index_files/images/New_2023/starwar_ava.jpg",
+      "link": "https://theredteam.vn/star-wars-jedi-fallen-order-viet-hoa"
+    },
+    {
+      "name": "The Dark Pictures Anthology",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Darkpicture_ava.jpg",
+      "link": "https://theredteam.vn/the-dark-pictures-anthology-viet-hoa"
+    },
+    {
+      "name": "Sea Of Stars",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sos_ava.jpg",
+      "link": "https://theredteam.vn/sea-of-stars-viet-hoa"
+    },
+    {
+      "name": "Daymare: 1994 Sandcastle",
+      "img": "https://theredteam.vn/index_files/images/New_2023/daymare_ava.jpg",
+      "link": "https://theredteam.vn/daymare-viet-hoa"
+    },
+    {
+      "name": "Skul The Hero Slayer",
+      "img": "https://theredteam.vn/index_files/images/New_2023/skul_ava.jpg",
+      "link": "https://theredteam.vn/skul-the-hero-slayer-viet-hoa"
+    },
+    {
+      "name": "Everdream Valley",
+      "img": "https://theredteam.vn/index_files/images/New_2023/everdream_ava.jpg",
+      "link": "https://theredteam.vn/everdream-valley-viet-hoa"
+    },
+    {
+      "name": "Beyond: Two Souls",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bts_ava.png",
+      "link": "https://theredteam.vn/beyond-two-souls-viet-hoa"
+    },
+    {
+      "name": "Winter Burrow",
+      "img": "https://theredteam.vn/index_files/images/New_2023/wb_ava.png",
+      "link": "https://theredteam.vn/winter-burrow-viet-hoa"
+    },
+    {
+      "name": "Before Your Eyes",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bfye_ava.png",
+      "link": "https://theredteam.vn/before-your-eyes-viet-hoa"
+    },
+    {
+      "name": "Beholder: Conductor",
+      "img": "https://theredteam.vn/index_files/images/New_2023/beholder_ava.png",
+      "link": "https://theredteam.vn/beholder-conductor-viet-hoa"
+    },
+    {
+      "name": "Robocop",
+      "img": "https://theredteam.vn/index_files/images/New_2023/robocop_ava.png",
+      "link": "https://theredteam.vn/robocop-viet-hoa"
+    },
+    {
+      "name": "Bellwright",
+      "img": "https://theredteam.vn/index_files/images/New_2023/bellwright2_ava.png",
+      "link": "https://theredteam.vn/bellwright-viet-hoa"
+    },
+    {
+      "name": "Cyberpunk 2077",
+      "img": "https://theredteam.vn/index_files/images/gallery/Cyberpunk_500x500.jpg",
+      "link": "https://theredteam.vn/cyberpunk-2077"
+    },
+    {
+      "name": "OwlBoy",
+      "img": "https://theredteam.vn/index_files/images/New_2023/owlboy_ava.png",
+      "link": "https://theredteam.vn/owlboy-viet-hoa"
+    },
+    {
+      "name": "The Sinking City 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/the-sinking-city-2-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/the-sinking-city-2-viet-hoa"
+    },
+    {
+      "name": "Murdered: Soul Suspect",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mss_ava.png",
+      "link": "https://theredteam.vn/murdered-soul-suspect-viet-hoa"
+    },
+    {
+      "name": "Witchfire",
+      "img": "https://theredteam.vn/index_files/images/New_2023/witch_ava.png",
+      "link": "https://theredteam.vn/witchfire-viet-hoa"
+    },
+    {
+      "name": "The Precinct",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tp_ava.png",
+      "link": "https://theredteam.vn/the-precinct-viet-hoa"
+    },
+    {
+      "name": "Children Of Silentown",
+      "img": "https://theredteam.vn/index_files/images/New_2023/cos_ava.png",
+      "link": "https://theredteam.vn/children-of-silentown-viet-hoa"
+    },
+    {
+      "name": "Split Fiction",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sf_ava.jpg",
+      "link": "https://theredteam.vn/split-fiction-viet-hoa"
+    },
+    {
+      "name": "Sherlock Holmes: Crimes & Punishments",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sh_ava.png",
+      "link": "https://theredteam.vn/sherlock-holmes-crimes-and-punishments-viet-hoa"
+    },
+    {
+      "name": "The Sinking City",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sinking_ava.png",
+      "link": "https://theredteam.vn/the-sinking-city-viet-hoa"
+    },
+    {
+      "name": "Let’s School",
+      "img": "https://theredteam.vn/index_files/images/New_2023/school_ava.png",
+      "link": "https://theredteam.vn/lets-school-viet-hoa"
+    },
+    {
+      "name": "Core Keeper",
+      "img": "https://theredteam.vn/index_files/images/New_2023/keeper_ava.jpg",
+      "link": "https://theredteam.vn/core-keeper-viet-hoa"
+    },
+    {
+      "name": "Crimson Snow",
+      "img": "https://theredteam.vn/index_files/images/New_2023/crimson_ava.png",
+      "link": "https://theredteam.vn/crimson-snow-viet-hoa"
+    },
+    {
+      "name": "Underdog Detective",
+      "img": "https://theredteam.vn/index_files/images/gallery/underdog.jpg",
+      "link": "https://theredteam.vn/underdog-detective"
+    },
+    {
+      "name": "Close To The Sun",
+      "img": "https://theredteam.vn/index_files/images/main-slider/ctts_ava.jpg",
+      "link": "https://theredteam.vn/Ctts"
+    },
+    {
+      "name": "Pocky & Rocky Reshrined",
+      "img": "https://theredteam.vn/index_files/images/New_2023/POCKY_ava.jpg",
+      "link": "https://theredteam.vn/pocky-rocky-viet-hoa"
+    },
+    {
+      "name": "Judgment",
+      "img": "https://theredteam.vn/index_files/images/New_2023/judgment-viet-hoa_ava.jpg",
+      "link": "https://theredteam.vn/judgment-viet-hoa"
+    },
+    {
+      "name": "Dishonored",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dvh_ava.png",
+      "link": "https://theredteam.vn/dishonored-viet-hoa"
+    },
+    {
+      "name": "Dordogne",
+      "img": "https://theredteam.vn/index_files/images/New_2023/d_ava.png",
+      "link": "https://theredteam.vn/dordogne-viet-hoa"
+    },
+    {
+      "name": "Windrose",
+      "img": "https://theredteam.vn/index_files/images/New_2023/windrose_ava.png",
+      "link": "https://theredteam.vn/windrose-viet-hoa"
+    },
+    {
+      "name": "Resident Evil 6",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re6_ava.png",
+      "link": "https://theredteam.vn/resident-evil-6-viet-hoa"
+    },
+    {
+      "name": "Resident Evil 5",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re5_ava.png",
+      "link": "https://theredteam.vn/resident-evil-5-viet-hoa"
+    },
+    {
+      "name": "Lost Judgment",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lj_ava.png",
+      "link": "https://theredteam.vn/lost-judgment-viet-hoa"
+    },
+    {
+      "name": "Resident Evil Requiem",
+      "img": "https://theredteam.vn/index_files/images/New_2023/re9_ava.png",
+      "link": "https://theredteam.vn/resident-evil-requiem-viet-hoa"
+    },
+    {
+      "name": "Elden Ring: Nightreign",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ern_ava.png",
+      "link": "https://theredteam.vn/elden-ring-nightreign-viet-hoa"
+    },
+    {
+      "name": "Monster Hunter Wilds",
+      "img": "https://theredteam.vn/index_files/images/New_2023/mhw_ava.jpg",
+      "link": "https://theredteam.vn/monster-hunter-wilds-viet-hoa"
+    },
+    {
+      "name": "Dying Light 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dyinglight2_ava.png",
+      "link": "https://theredteam.vn/dying-light-2-viet-hoa"
+    },
+    {
+      "name": "World Of Horror",
+      "img": "https://theredteam.vn/index_files/images/New_2023/woh_ava.png",
+      "link": "https://theredteam.vn/world-of-horror-viet-hoa"
+    },
+    {
+      "name": "Undermine",
+      "img": "https://theredteam.vn/index_files/images/New_2023/undermine_ava.png",
+      "link": "https://theredteam.vn/undermine-viet-hoa"
+    },
+    {
+      "name": "Dredge",
+      "img": "https://theredteam.vn/index_files/images/New_2023/dredge_ava.png",
+      "link": "https://theredteam.vn/Dredge-viet-hoa"
+    },
+    {
+      "name": "Elden Ring",
+      "img": "https://theredteam.vn/index_files/images/gallery/er.jpg",
+      "link": "https://theredteam.vn/elden-ring"
+    },
+    {
+      "name": "The Medium",
+      "img": "https://theredteam.vn/index_files/images/gallery/500x500_medium.jpg",
+      "link": "https://theredteam.vn/the-medium"
+    },
+    {
+      "name": "Grounded",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Grounded_ava.jpg",
+      "link": "https://theredteam.vn/Grounded-viet-hoa"
+    },
+    {
+      "name": "Gord",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Gord_ava.jpg",
+      "link": "https://theredteam.vn/gord-viet-hoa"
+    },
+    {
+      "name": "MOUSE: P.I. For Hire",
+      "img": "https://theredteam.vn/index_files/images/New_2023/chuotloz_ava.png",
+      "link": "https://theredteam.vn/mouse-pi-for-hire-viet-hoa"
+    },
+    {
+      "name": "The Evil Within 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tew2_ava.png",
+      "link": "https://theredteam.vn/the-evil-within-2-viet-hoa"
+    },
+    {
+      "name": "The Evil Within",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tew_ava.png",
+      "link": "https://theredteam.vn/the-evil-within-viet-hoa"
+    },
+    {
+      "name": "1998: The Toll Keeper Story",
+      "img": "https://theredteam.vn/index_files/images/New_2023/1998_ava.png",
+      "link": "https://theredteam.vn/1998-the-toll-keeper-story-viet-hoa"
+    },
+    {
+      "name": "Silent Hill F",
+      "img": "https://theredteam.vn/index_files/images/New_2023/shf_ava.png",
+      "link": "https://theredteam.vn/silent-hill-f-viet-hoa"
+    },
+    {
+      "name": "Whisper Of The House",
+      "img": "https://theredteam.vn/index_files/images/New_2023/woth_ava.png",
+      "link": "https://theredteam.vn/whisper-of-the-house-viet-hoa"
+    },
+    {
+      "name": "Firework",
+      "img": "https://theredteam.vn/index_files/images/New_2023/firework_ava.png",
+      "link": "https://theredteam.vn/firework-viet-hoa"
+    },
+    {
+      "name": "Ghost In The Pool",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ghostinthepool_ava.png",
+      "link": "https://theredteam.vn/ghost-in-the-pool-viet-hoa"
+    },
+    {
+      "name": "Rise Of The Ronin",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ronin_ava.png",
+      "link": "https://theredteam.vn/rise-of-the-ronin-viet-hoa"
+    },
+    {
+      "name": "Trek To Yomi",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tty_ava.png",
+      "link": "https://theredteam.vn/trek-to-yomi-viet-hoa"
+    },
+    {
+      "name": "Silent Hill 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/sh2_ava.png",
+      "link": "https://theredteam.vn/silent-hill-2-viet-hoa"
+    },
+    {
+      "name": "Potion Permit",
+      "img": "https://theredteam.vn/index_files/images/New_2023/pp_ava.png",
+      "link": "https://theredteam.vn/potion-permit-viet-hoa"
+    },
+    {
+      "name": "Nine Sols",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ninesols_ava.png",
+      "link": "https://theredteam.vn/nine-sols-viet-hoa"
+    },
+    {
+      "name": "Ghostrunner 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/ghostrunner2_ava.jpg",
+      "link": "https://theredteam.vn/ghostrunner-2-viet-hoa"
+    },
+    {
+      "name": "Home Sweet Home",
+      "img": "https://theredteam.vn/index_files/images/New_2023/hsw_ava.jpg",
+      "link": "https://theredteam.vn/home-sweet-home-viet-hoa"
+    },
+    {
+      "name": "Evil West",
+      "img": "https://theredteam.vn/index_files/images/gallery/evil-west-viet-hoa-1.png",
+      "link": "https://theredteam.vn/evil-west-viet-hoa"
+    },
+    {
+      "name": "Sons Of The Forest",
+      "img": "https://theredteam.vn/index_files/images/main-slider/ava_SOTF.jpg",
+      "link": "https://theredteam.vn/Son-Of-The-Forest"
+    },
+    {
+      "name": "High On Life",
+      "img": "https://theredteam.vn/index_files/images/main-slider/High_On_life_Ava.jpg",
+      "link": "https://theredteam.vn/HighOnLife"
+    },
+    {
+      "name": "Little Misfortune",
+      "img": "https://theredteam.vn/index_files/images/New_2023/misfortune_ava.jpg",
+      "link": "https://theredteam.vn/little-misfortune-viet-hoa"
+    },
+    {
+      "name": "Summer Of 58",
+      "img": "https://theredteam.vn/index_files/images/New_2023/summer_ava.jpg",
+      "link": "https://theredteam.vn/summer-of-58-viet-hoa"
+    },
+    {
+      "name": "Lies Of P",
+      "img": "https://theredteam.vn/index_files/images/New_2023/lop_ava.jpg",
+      "link": "https://theredteam.vn/lies-of-p-viet-hoa"
+    },
+    {
+      "name": "007 First Light",
+      "img": "https://theredteam.vn/index_files/images/New_2023/007_ava.png",
+      "link": "https://theredteam.vn/007-first-light-viet-hoa"
+    },
+    {
+      "name": "Out Of Sight",
+      "img": "https://theredteam.vn/index_files/images/New_2023/oos_ava.png",
+      "link": "https://theredteam.vn/out-of-sight-viet-hoa"
+    },
+    {
+      "name": "Song Of Horror",
+      "img": "https://theredteam.vn/index_files/images/New_2023/soh_ava.png",
+      "link": "https://theredteam.vn/song-of-horror-viet-hoa"
+    },
+    {
+      "name": "Frostpunk 2",
+      "img": "https://theredteam.vn/index_files/images/New_2023/fp2_ava.png",
+      "link": "https://theredteam.vn/frost-punk-2-viet-hoa"
+    },
+    {
+      "name": "Frostpunk",
+      "img": "https://theredteam.vn/index_files/images/gallery/fp.png",
+      "link": "https://theredteam.vn/frost-punk"
+    },
+    {
+      "name": "灵童 - Linh Đồng",
+      "img": "https://theredteam.vn/index_files/images/New_2023/灵童_ava.png",
+      "link": "https://theredteam.vn/ling-tong-viet-hoa"
+    },
+    {
+      "name": "V Rising",
+      "img": "https://theredteam.vn/index_files/images/New_2023/vrising_ava.png",
+      "link": "https://theredteam.vn/v-rising-viet-hoa"
+    },
+    {
+      "name": "Gylt",
+      "img": "https://theredteam.vn/index_files/images/New_2023/GYLT_ava.jpg",
+      "link": "https://theredteam.vn/gylt-viet-hoa"
+    },
+    {
+      "name": "Rhythm Sprout",
+      "img": "https://theredteam.vn/index_files/images/New_2023/rhythm_ava.jpg",
+      "link": "https://theredteam.vn/rhythm-sprout-viet-hoa"
+    },
+    {
+      "name": "Unholy",
+      "img": "https://theredteam.vn/index_files/images/New_2023/Unholy Avatar.png",
+      "link": "https://theredteam.vn/unholy-viet-hoa"
+    },
+    {
+      "name": "inZOI",
+      "img": "https://theredteam.vn/index_files/images/New_2023/inzoi_ava.png",
+      "link": "https://theredteam.vn/inZOI-viet-hoa"
+    },
+    {
+      "name": "Twin Mirror",
+      "img": "https://theredteam.vn/index_files/images/New_2023/tm_ava.png",
+      "link": "https://theredteam.vn/twin-mirror-viet-hoa"
+    }
+  ]
+}

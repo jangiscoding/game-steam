@@ -173,7 +173,14 @@ async function runViethoaSearch(keyword){
   const searchPromises=sources.map(async source=>{
     let sourceResults=[];
     let sourceError=null;
-    if(source.id==='theredteam'&&Array.isArray(theredteamCache)){
+    const saved=activeGame&&viethoaMatchesMap[activeGame.id];
+    if(saved&&norm(q)===norm(cleanTitleForSearch(activeGame.name))){
+      sourceResults=(saved.matches||[]).filter(r=>r.sourceId===source.id).map(r=>({...r}));
+      if(!sourceResults.length&&saved.source===source.name&&saved.link){
+        sourceResults=[{name:saved.trName||saved.gameName,link:saved.link,img:saved.img||''}];
+      }
+    }
+    if(!sourceResults.length&&source.id==='theredteam'&&Array.isArray(theredteamCache)){
       const nq=norm(q);
       const matches=theredteamCache.filter(item=>norm(item.name).includes(nq)||norm(item.link).includes(nq));
       if(matches.length)sourceResults=matches;

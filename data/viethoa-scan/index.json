@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-19T02:40:01.875765+00:00",
+  "totalGames": 5262,
+  "previousTotal": 191,
+  "total": 347,
+  "added": 156,
+  "sources": [
+    {
+      "id": "theredteam",
+      "name": "The Red Team",
+      "status": "success",
+      "entries": 269,
+      "matchedGames": 152
+    },
+    {
+      "id": "canhcutteam",
+      "name": "Cánh Cụt Team",
+      "status": "success",
+      "entries": 186,
+      "matchedGames": 87
+    },
+    {
+      "id": "gamethuanviet",
+      "name": "Game Thuần Việt",
+      "status": "success",
+      "entries": 104,
+      "matchedGames": 64
+    },
+    {
+      "id": "viethoagame",
+      "name": "Việt Hóa Game",
+      "status": "success",
+      "entries": 198,
+      "matchedGames": 66
+    }
+  ],
+  "matching": "Exact normalized titles; excludes WIP, demo and in-progress titles. Existing discoveries retained; missing matches do not prove absence of a patch."
+}
