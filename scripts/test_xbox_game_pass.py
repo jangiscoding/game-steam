@@ -29,6 +29,20 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertEqual(metadata["pcGames"], sum("pc" in game["platforms"] for game in games))
         self.assertEqual(metadata["consoleGames"], sum("console" in game["platforms"] for game in games))
 
+    def test_page_uses_expanded_filters_and_xbox_app_deep_link(self):
+        html = (ROOT / "web-game-library/xbox/index.html").read_text(encoding="utf-8")
+        app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")
+        self.assertNotIn("<select", html)
+        self.assertIn('id="collections"', html)
+        self.assertIn('id="genre-chips"', html)
+        self.assertIn('id="feature-chips"', html)
+        self.assertIn("msxbox://game/?productId=", app)
+
+    def test_every_catalog_genre_has_a_vietnamese_label(self):
+        app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")
+        genres = {genre for game in self.data["games"] for genre in game["genres"]}
+        self.assertTrue(all(f"'{genre}'" in app or f"{genre}:" in app for genre in genres))
+
 
 if __name__ == "__main__":
     unittest.main()

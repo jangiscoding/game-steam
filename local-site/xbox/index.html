@@ -6,14 +6,14 @@
   <meta name="theme-color" content="#107c10">
   <meta name="description" content="Danh mục trò chơi Xbox Game Pass hiện có trên Xbox Store.">
   <title>Jang Play — Xbox Game Pass</title>
-  <link rel="stylesheet" href="./styles.css?v=1">
+  <link rel="stylesheet" href="./styles.css?v=2">
   <script src="./data/catalog.js" defer></script>
-  <script src="./app.js?v=1" defer></script>
+  <script src="./app.js?v=2" defer></script>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="../"><span class="brand-mark">J</span><span>JANG <b>PLAY</b></span></a>
-    <nav><a href="../">Steam Library</a><a class="active" href="./">Xbox Game Pass</a></nav>
+    <nav><a href="../">Thư viện Steam</a><a class="active" href="./">Xbox Game Pass</a></nav>
   </header>
 
   <main>
@@ -22,27 +22,53 @@
       <div class="hero-content">
         <div class="eyebrow"><span></span> DANH MỤC ĐỘC LẬP · XBOX STORE</div>
         <h1>Xbox<br><em>Game Pass.</em></h1>
-        <p>Khám phá danh sách Game Pass hiện hành, tách biệt hoàn toàn khỏi thư viện Steam.</p>
+        <p>Khám phá danh sách Game Pass hiện hành, phân loại theo nền tảng, thể loại và cách chơi.</p>
         <div class="stats">
           <div><strong id="total-games">—</strong><span>TỔNG SỐ GAME</span></div>
           <div><strong id="pc-games">—</strong><span>PC GAME PASS</span></div>
           <div><strong id="console-games">—</strong><span>XBOX CONSOLE</span></div>
         </div>
       </div>
-      <div class="xbox-orb" aria-hidden="true"><i></i></div>
+      <div class="xbox-orb" aria-hidden="true"></div>
     </section>
 
     <section class="catalog-section">
-      <div class="section-heading"><div><span class="kicker">CHỌN TRÒ CHƠI TIẾP THEO</span><h2>Thư viện Game Pass<span>.</span></h2></div><p id="updated-at">Đang tải dữ liệu Microsoft…</p></div>
-      <div class="toolbar">
-        <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Tìm tên game, nhà phát triển, thể loại…"></label>
-        <select id="platform"><option value="all">Mọi nền tảng</option><option value="pc">PC Game Pass</option><option value="console">Xbox Console</option></select>
-        <select id="genre"><option value="all">Mọi thể loại</option></select>
-        <select id="sort"><option value="az">Tên A–Z</option><option value="newest">Mới phát hành</option><option value="za">Tên Z–A</option></select>
+      <div class="section-heading">
+        <div><span class="kicker">CHỌN TRÒ CHƠI TIẾP THEO</span><h2>Thư viện Game Pass<span>.</span></h2></div>
+        <p id="updated-at">Đang tải dữ liệu Microsoft…</p>
       </div>
-      <div class="result-line"><strong id="result-title">Tất cả Game Pass</strong><span id="result-count">—</span></div>
-      <div class="game-grid" id="game-grid"></div>
-      <div class="pagination" id="pagination"></div>
+
+      <section class="filter-section" aria-labelledby="genre-heading">
+        <div class="filter-heading"><strong id="genre-heading">THỂ LOẠI</strong><span>Chọn nhanh theo sở thích</span></div>
+        <div class="filter-chips genre-chips" id="genre-chips"></div>
+      </section>
+
+      <div class="catalog-layout">
+        <aside>
+          <div class="aside-label">DANH MỤC</div>
+          <div class="collections" id="collections"></div>
+          <div class="aside-note"><span>⊕</span><strong>Chơi theo cách của bạn.</strong><p>Lọc theo nền tảng, co-op, multiplayer và các tính năng Xbox.</p></div>
+        </aside>
+
+        <div class="catalog-main">
+          <div class="toolbar">
+            <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Tên game, nhà phát triển, thể loại…"><kbd>/</kbd></label>
+            <div class="sort-buttons" id="sort-buttons" aria-label="Sắp xếp">
+              <button class="active" data-sort="az">A–Z</button><button data-sort="newest">Mới nhất</button><button data-sort="za">Z–A</button>
+            </div>
+          </div>
+
+          <section class="filter-section compact" aria-labelledby="feature-heading">
+            <div class="filter-heading"><strong id="feature-heading">TÍNH NĂNG NỔI BẬT</strong></div>
+            <div class="filter-chips" id="feature-chips"></div>
+          </section>
+
+          <div class="active-filters" id="active-filters"></div>
+          <div class="result-line"><strong id="result-title">Tất cả Game Pass</strong><span id="result-count">—</span></div>
+          <div class="game-grid" id="game-grid"></div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
     </section>
   </main>
 
