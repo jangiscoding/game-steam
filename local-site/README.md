@@ -8,7 +8,7 @@ Không dùng file `Jang Play.lnk` được sao chép từ máy khác vì shortcu
 
 1. Tại thư mục gốc project, chạy `create-shortcut.bat` một lần.
 2. Script sẽ tạo hoặc ghi đè shortcut `Jang Play` trên Desktop bằng đúng đường dẫn hiện tại.
-3. Sau đó mở shortcut Desktop. Trang Steam ở `/`, trang Xbox Game Pass ở `/xbox/`.
+3. Sau đó mở shortcut Desktop. Trang Steam ở `/`, trang PC Game Pass ở `/xbox/`.
 
 Máy cần Python 3 và lệnh `py` hoặc `python` trong PATH. Nếu muốn xem lỗi trực tiếp, chạy `local-site\start.bat` thay vì shortcut chạy ẩn.
 

@@ -3,7 +3,9 @@
 
 import argparse
 import json
+import re
 import time
+import unicodedata
 import urllib.parse
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -13,7 +15,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SIGLS = {
     "pc": "fdd9e2a7-0fee-49f6-ad69-4354098401ff",
-    "console": "29a81209-df6f-41fd-a528-2ae6b91f719c",
 }
 USER_AGENT = "Jang-Play-Xbox-Game-Pass-Sync/1.0"
 
@@ -84,7 +85,58 @@ def rating(market_properties):
     return selected.get("RatingId") if selected else None
 
 
-def normalize_product(product, platforms):
+def supported_languages(product):
+    """Return game languages declared by Microsoft for any currently offered SKU."""
+    languages = set()
+    for availability in product.get("DisplaySkuAvailabilities") or []:
+        sku = availability.get("Sku") or {}
+        for market_properties in sku.get("MarketProperties") or []:
+            languages.update(
+                value.strip().lower()
+                for value in market_properties.get("SupportedLanguages") or []
+                if isinstance(value, str) and value.strip()
+            )
+    return sorted(languages)
+
+
+def normalize_title(value):
+    decomposed = unicodedata.normalize("NFKD", value or "")
+    plain = "".join(char for char in decomposed if not unicodedata.combining(char))
+    return " ".join(re.findall(r"[a-z0-9]+", plain.casefold()))
+
+
+def load_vietnamese_patches(path):
+    """Index community patches by exact normalized title; never fuzzy-match editions."""
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    index = {}
+    for item in (payload.get("items") or {}).values():
+        patches = item.get("matches") or [{
+            "name": item.get("trName") or item.get("gameName"),
+            "source": item.get("source"),
+            "link": item.get("link"),
+        }]
+        names = {item.get("gameName"), item.get("trName")}
+        names.update(patch.get("name") for patch in patches)
+        normalized_names = {normalize_title(name) for name in names if name}
+        for normalized_name in normalized_names - {""}:
+            bucket = index.setdefault(normalized_name, [])
+            for patch in patches:
+                if not patch.get("link"):
+                    continue
+                record = {
+                    "name": patch.get("name") or item.get("trName") or item.get("gameName"),
+                    "source": patch.get("source") or item.get("source"),
+                    "sourceId": patch.get("sourceId"),
+                    "link": patch["link"],
+                }
+                if record not in bucket:
+                    bucket.append(record)
+    return index
+
+
+def normalize_product(product, platforms, patch_index):
     localized = (product.get("LocalizedProperties") or [{}])[0]
     properties = product.get("Properties") or {}
     market_properties = (product.get("MarketProperties") or [{}])[0]
@@ -92,6 +144,8 @@ def normalize_product(product, platforms):
     product_id = product["ProductId"]
     clean = lambda value: value.strip() if isinstance(value, str) and value.strip() else None
     name = clean(localized.get("ProductTitle")) or clean(localized.get("ShortTitle")) or product_id
+    languages = supported_languages(product)
+    vietnamese_patches = patch_index.get(normalize_title(name), [])
     return {
         "id": product_id,
         "name": name,
@@ -104,6 +158,10 @@ def normalize_product(product, platforms):
         "genres": properties.get("Categories") or ([properties["Category"]] if properties.get("Category") else []),
         "platforms": sorted(platforms),
         "features": attributes,
+        "supportedLanguages": languages,
+        "supportsVietnamese": any(value == "vi" or value.startswith("vi-") for value in languages),
+        "hasVietnamesePatch": bool(vietnamese_patches),
+        "vietnamesePatches": vietnamese_patches,
         "releaseDate": market_properties.get("OriginalReleaseDate"),
         "ageRating": rating(market_properties),
         "storeUrl": f"https://www.xbox.com/en-US/games/store/-/{product_id}",
@@ -111,8 +169,9 @@ def normalize_product(product, platforms):
     }
 
 
-def build_catalog(market="US", language="vi-vn", workers=6):
+def build_catalog(market="US", language="vi-vn", workers=6, patch_file=None):
     memberships, sources = fetch_memberships(market, language)
+    patch_index = load_vietnamese_patches(patch_file or ROOT / "local-site/data/viethoa_games.json")
     product_ids = sorted(memberships)
     products = {}
     batches = list(chunks(product_ids, 20))
@@ -127,7 +186,7 @@ def build_catalog(market="US", language="vi-vn", workers=6):
             print(f"Xbox product metadata: {completed}/{len(batches)} batches", flush=True)
 
     games = [
-        normalize_product(products[product_id], memberships[product_id])
+        normalize_product(products[product_id], memberships[product_id], patch_index)
         for product_id in product_ids
         if product_id in products
     ]
@@ -135,16 +194,18 @@ def build_catalog(market="US", language="vi-vn", workers=6):
     missing = sorted(set(product_ids) - set(products))
     return {
         "metadata": {
-            "schemaVersion": 1,
+            "schemaVersion": 2,
             "updatedAt": datetime.now(timezone.utc).isoformat(),
             "market": market,
             "language": language,
             "totalGames": len(games),
             "pcGames": sum("pc" in item["platforms"] for item in games),
-            "consoleGames": sum("console" in item["platforms"] for item in games),
+            "vietnameseLanguageGames": sum(item["supportsVietnamese"] for item in games),
+            "vietnamesePatchGames": sum(item["hasVietnamesePatch"] for item in games),
+            "languageDataAvailableGames": sum(bool(item["supportedLanguages"]) for item in games),
             "missingProductIds": missing,
             "sources": sources,
-            "note": "Game Pass membership and product metadata come from official Microsoft catalog services.",
+            "note": "PC Game Pass membership, product metadata and supported languages come from official Microsoft catalog services. Vietnamese patches are exact-title matches from the project's community patch catalog.",
         },
         "games": games,
     }
@@ -156,8 +217,9 @@ def main():
     parser.add_argument("--language", default="vi-vn")
     parser.add_argument("--workers", type=int, default=6)
     parser.add_argument("--output", type=Path, default=ROOT / "data/xbox-game-pass.json")
+    parser.add_argument("--patch-file", type=Path, default=ROOT / "local-site/data/viethoa_games.json")
     args = parser.parse_args()
-    catalog = build_catalog(args.market, args.language, args.workers)
+    catalog = build_catalog(args.market, args.language, args.workers, args.patch_file)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Saved {len(catalog['games'])} Xbox Game Pass games to {args.output}")

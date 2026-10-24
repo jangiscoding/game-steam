@@ -16,7 +16,7 @@ def javascript_json(value):
 
 def build_target(catalog, output):
     output.mkdir(parents=True, exist_ok=True)
-    for name in ("index.html", "styles.css", "app.js"):
+    for name in ("index.html", "styles.css", "app.js", "gamepad.js"):
         shutil.copy2(SOURCE / name, output / name)
     data_dir = output / "data"
     data_dir.mkdir(parents=True, exist_ok=True)

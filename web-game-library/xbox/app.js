@@ -10,18 +10,18 @@ const genreLabels={
   'Action & adventure':'Hành động & phiêu lưu','Card & board':'Bài & bàn cờ',Classics:'Kinh điển','Family & kids':'Gia đình & trẻ em',Fighting:'Đối kháng','Multi-player Online Battle Arena':'Đấu trường trực tuyến',Music:'Âm nhạc',Other:'Khác',Platformer:'Đi cảnh', 'Puzzle & trivia':'Giải đố & đố vui','Racing & flying':'Đua xe & bay lượn','Role playing':'Nhập vai',Shooter:'Bắn súng',Simulation:'Mô phỏng',Sports:'Thể thao',Strategy:'Chiến thuật'
 };
 const featureLabels={
-  SinglePlayer:'Một người chơi',XblOnlineMultiPlayer:'Nhiều người trực tuyến',OnlineMultiplayer:'Nhiều người trực tuyến',XblLocalMultiPlayer:'Nhiều người cùng máy',LocalMultiplayer:'Nhiều người cùng máy',SharedSplitScreen:'Chia đôi màn hình',XblOnlineCoop:'Co-op trực tuyến',CoopSupportOnline:'Co-op trực tuyến',XblLocalCoop:'Co-op cùng máy',CoopSupportLocal:'Co-op cùng máy',XblCrossPlatformMultiPlayer:'Chơi chéo nền tảng',XblCrossPlatformCoop:'Co-op chéo nền tảng',Capability4k:'4K Ultra HD',CapabilityHDR:'HDR',ConsoleGen9Optimized:'Tối ưu Series X|S',XPA:'Xbox Play Anywhere',PcGamePad:'Tay cầm PC','60fps':'60 FPS','120fps':'120 FPS',RayTracing:'Ray Tracing',CapabilityVRR:'Tần số quét biến thiên',DolbyAtmos:'Dolby Atmos',XboxLive:'Xbox Network'
+  SinglePlayer:'Một người chơi',XblOnlineMultiPlayer:'Nhiều người trực tuyến',OnlineMultiplayer:'Nhiều người trực tuyến',XblLocalMultiPlayer:'Nhiều người cùng máy',LocalMultiplayer:'Nhiều người cùng máy',SharedSplitScreen:'Chia đôi màn hình',XblOnlineCoop:'Co-op trực tuyến',CoopSupportOnline:'Co-op trực tuyến',XblLocalCoop:'Co-op cùng máy',CoopSupportLocal:'Co-op cùng máy',XblCrossPlatformMultiPlayer:'Chơi chéo nền tảng',XblCrossPlatformCoop:'Co-op chéo nền tảng',Capability4k:'4K Ultra HD',CapabilityHDR:'HDR',XPA:'Xbox Play Anywhere',PcGamePad:'Tay cầm PC','60fps':'60 FPS','120fps':'120 FPS',RayTracing:'Ray Tracing',CapabilityVRR:'Tần số quét biến thiên',DolbyAtmos:'Dolby Atmos',XboxLive:'Xbox Network'
 };
 const collections=[
-  {id:'all',icon:'◈',label:'Tất cả Game Pass',test:()=>true},
-  {id:'pc',icon:'▣',label:'PC Game Pass',test:g=>g.platforms.includes('pc')},
-  {id:'console',icon:'⊕',label:'Xbox Console',test:g=>g.platforms.includes('console')},
+  {id:'all',icon:'◈',label:'Tất cả PC Game Pass',test:()=>true},
+  {id:'vietnamese',icon:'VI',label:'Ngôn ngữ tiếng Việt',test:g=>g.supportsVietnamese===true},
+  {id:'viethoa',icon:'VH',label:'Có hỗ trợ Việt hóa',test:g=>g.hasVietnamesePatch===true},
   {id:'single',icon:'●',label:'Một người chơi',test:g=>hasAny(g,['SinglePlayer'])},
   {id:'online-coop',icon:'◎',label:'Co-op trực tuyến',test:g=>hasAny(g,['XblOnlineCoop','CoopSupportOnline','XblCrossPlatformCoop'])},
   {id:'local-coop',icon:'♧',label:'Co-op cùng máy',test:g=>hasAny(g,['XblLocalCoop','CoopSupportLocal','SharedSplitScreen'])},
   {id:'multiplayer',icon:'◉',label:'Multiplayer',test:g=>hasAny(g,['XblOnlineMultiPlayer','OnlineMultiplayer','XblLocalMultiPlayer','LocalMultiplayer'])},
-  {id:'xpa',icon:'↔',label:'Xbox Play Anywhere',test:g=>hasAny(g,['XPA'])},
-  {id:'series',icon:'X|S',label:'Tối ưu Series X|S',test:g=>hasAny(g,['ConsoleGen9Optimized'])}
+  {id:'gamepad',icon:'🎮',label:'Hỗ trợ tay cầm PC',test:g=>hasAny(g,['PcGamePad'])},
+  {id:'xpa',icon:'↔',label:'Xbox Play Anywhere',test:g=>hasAny(g,['XPA'])}
 ];
 const featureFilters=[
   {id:'all',label:'Tất cả tính năng',test:()=>true},{id:'4k',label:'4K',test:g=>hasAny(g,['Capability4k'])},{id:'hdr',label:'HDR',test:g=>hasAny(g,['CapabilityHDR'])},{id:'60fps',label:'60 FPS',test:g=>hasAny(g,['60fps'])},{id:'120fps',label:'120 FPS',test:g=>hasAny(g,['120fps'])},{id:'crossplay',label:'Chơi chéo',test:g=>hasAny(g,['XblCrossPlatformMultiPlayer','CrossPlatformMultiPlayer'])},{id:'gamepad',label:'Tay cầm PC',test:g=>hasAny(g,['PcGamePad'])},{id:'raytracing',label:'Ray Tracing',test:g=>hasAny(g,['RayTracing'])}
@@ -38,15 +38,20 @@ function hasAny(game,names){return names.some(name=>(game.features||[]).includes
 function genreLabel(value){return genreLabels[value]||value;}
 function safeImage(url){return /^https:\/\//i.test(url||'')?url:'';}
 function dateLabel(value){if(!value)return 'Chưa rõ ngày';const date=new Date(value);return Number.isNaN(date.valueOf())?'Chưa rõ ngày':date.toLocaleDateString('vi-VN',{year:'numeric',month:'short',day:'numeric'});}
-function platformBadges(game){return game.platforms.map(item=>`<span class="platform ${item}">${item==='pc'?'PC':'XBOX'}</span>`).join('');}
+function platformBadges(game){
+  const badges=['<span class="platform pc">PC</span>'];
+  if(game.supportsVietnamese)badges.push('<span class="platform vietnamese">VI</span>');
+  if(game.hasVietnamesePatch)badges.push('<span class="platform viethoa">VIỆT HÓA</span>');
+  return badges.join('');
+}
 function xboxAppUrl(game){return `msxbox://game/?productId=${encodeURIComponent(game.id)}`;}
 
 function initialize(){
   if(!catalog?.games?.length){$('#game-grid').innerHTML='<div class="empty">Không có dữ liệu Xbox Game Pass.</div>';return;}
   const meta=catalog.metadata;
   $('#total-games').textContent=number(meta.totalGames);
-  $('#pc-games').textContent=number(meta.pcGames);
-  $('#console-games').textContent=number(meta.consoleGames);
+  $('#vietnamese-games').textContent=number(meta.vietnameseLanguageGames||0);
+  $('#viethoa-games').textContent=number(meta.vietnamesePatchGames||0);
   $('#updated-at').textContent=`Cập nhật ${new Date(meta.updatedAt).toLocaleString('vi-VN')} · Microsoft Catalog (${meta.market})`;
   renderCollections();
   renderGenreChips();
@@ -61,6 +66,15 @@ function initialize(){
   $('#game-grid').addEventListener('click',event=>{const button=event.target.closest('[data-game]');if(button)openDetail(button.dataset.game);});
   $('#detail').addEventListener('click',event=>{if(event.target.closest('[data-close]')||event.target===$('#detail'))closeDetail();});
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&$('#detail').open)closeDetail();if(event.key==='/'&&document.activeElement!==$('#search')){event.preventDefault();$('#search').focus();}});
+  document.addEventListener('xbox:gamepad-category',event=>{
+    const current=Math.max(0,collections.findIndex(item=>item.id===activeCollection));
+    activeCollection=collections[(current+event.detail.direction+collections.length)%collections.length].id;
+    page=1;renderCollections();applyFilters();
+  });
+  document.addEventListener('xbox:gamepad-reset',()=>{
+    activeCollection='all';activeGenre='all';activeFeature='all';$('#search').value='';
+    page=1;renderCollections();renderGenreChips();renderFeatureChips();applyFilters();
+  });
   applyFilters();
 }
 
@@ -81,7 +95,9 @@ function applyFilters(){
   const feature=featureFilters.find(item=>item.id===activeFeature)||featureFilters[0];
   filtered=catalog.games.filter(game=>{
     const translatedGenres=(game.genres||[]).map(genreLabel);
-    const haystack=[game.name,game.developer,game.publisher,...(game.genres||[]),...translatedGenres].join(' ').toLocaleLowerCase('vi');
+    const languageTerms=game.supportsVietnamese?['tiếng Việt','Vietnamese']:[];
+    const patchTerms=game.hasVietnamesePatch?['Việt hóa',...(game.vietnamesePatches||[]).flatMap(item=>[item.source,item.name])]:[];
+    const haystack=[game.name,game.developer,game.publisher,...(game.genres||[]),...translatedGenres,...languageTerms,...patchTerms].join(' ').toLocaleLowerCase('vi');
     return (!query||haystack.includes(query))&&collection.test(game)&&feature.test(game)&&(activeGenre==='all'||game.genres.includes(activeGenre));
   });
   filtered.sort((a,b)=>activeSort==='newest'?(Date.parse(b.releaseDate)||0)-(Date.parse(a.releaseDate)||0):(activeSort==='za'?-1:1)*a.name.localeCompare(b.name,'vi'));
@@ -105,13 +121,17 @@ function render(){
   if(page<pages)controls+=`<button data-page="${page+1}">→</button>`;
   $('#pagination').innerHTML=pages>1?controls:'';
   document.querySelectorAll('.art img').forEach(image=>image.addEventListener('error',()=>{image.closest('.art')?.classList.add('no-image');image.remove();},{once:true}));
+  document.dispatchEvent(new CustomEvent('xbox:navigation-updated'));
 }
 
 function openDetail(id){
   const game=catalog.games.find(item=>item.id===id);if(!game)return;
   const features=[...new Set((game.features||[]).map(item=>featureLabels[item]).filter(Boolean))].slice(0,12);
-  $('#detail-inner').innerHTML=`<button class="close" data-close aria-label="Đóng">×</button><div class="detail-hero" style="background-image:linear-gradient(90deg,#07120b 0%,rgba(7,18,11,.82) 45%,rgba(7,18,11,.15)),url('${esc(safeImage(game.heroImageUrl||game.imageUrl))}')"><div><span class="detail-kicker">XBOX GAME PASS · ${esc(game.id)}</span><h2>${esc(game.name)}</h2><div class="detail-badges">${platformBadges(game)}</div></div></div><div class="detail-body"><p class="description">${esc(game.shortDescription||'Microsoft chưa cung cấp mô tả ngắn cho trò chơi này.')}</p><div class="facts"><div><label>PHÁT HÀNH</label><strong>${esc(dateLabel(game.releaseDate))}</strong></div><div><label>NHÀ PHÁT TRIỂN</label><strong>${esc(game.developer||'Chưa xác định')}</strong></div><div><label>NHÀ PHÁT HÀNH</label><strong>${esc(game.publisher||'Chưa xác định')}</strong></div><div><label>PHÂN LOẠI</label><strong>${esc(game.ageRating||'Chưa xác định')}</strong></div></div>${features.length?`<h3>Tính năng</h3><div class="feature-list">${features.map(item=>`<span>${esc(item)}</span>`).join('')}</div>`:''}<h3>Thể loại</h3><div class="feature-list">${(game.genres||[]).map(item=>`<span>${esc(genreLabel(item))}</span>`).join('')}</div><div class="detail-actions"><a class="store-button" href="${esc(xboxAppUrl(game))}">MỞ TRONG ỨNG DỤNG XBOX</a><a class="web-button" href="${esc(game.storeUrl)}" target="_blank" rel="noopener">Xem trên web ↗</a></div><p class="source-note">Nếu ứng dụng Xbox chưa được cài, dùng liên kết web dự phòng. Game Pass thay đổi theo thời gian và khu vực; dữ liệu lấy từ Microsoft Catalog lúc ${esc(new Date(catalog.metadata.updatedAt).toLocaleString('vi-VN'))}.</p></div>`;
+  const patches=game.vietnamesePatches||[];
+  const languageStatus=game.supportsVietnamese?'Có tiếng Việt chính thức (Microsoft Store)':'Microsoft Store chưa ghi nhận tiếng Việt';
+  $('#detail-inner').innerHTML=`<button class="close" data-close aria-label="Đóng">×</button><div class="detail-hero" style="background-image:linear-gradient(90deg,#07120b 0%,rgba(7,18,11,.82) 45%,rgba(7,18,11,.15)),url('${esc(safeImage(game.heroImageUrl||game.imageUrl))}')"><div><span class="detail-kicker">PC GAME PASS · ${esc(game.id)}</span><h2>${esc(game.name)}</h2><div class="detail-badges">${platformBadges(game)}</div></div></div><div class="detail-body"><p class="description">${esc(game.shortDescription||'Microsoft chưa cung cấp mô tả ngắn cho trò chơi này.')}</p><div class="facts"><div><label>PHÁT HÀNH</label><strong>${esc(dateLabel(game.releaseDate))}</strong></div><div><label>NHÀ PHÁT TRIỂN</label><strong>${esc(game.developer||'Chưa xác định')}</strong></div><div><label>NHÀ PHÁT HÀNH</label><strong>${esc(game.publisher||'Chưa xác định')}</strong></div><div><label>NGÔN NGỮ</label><strong>${esc(languageStatus)}</strong></div></div>${patches.length?`<h3>Bản Việt hóa cộng đồng</h3><div class="patch-list">${patches.map(patch=>`<a href="${esc(patch.link)}" target="_blank" rel="noopener"><b>${esc(patch.source||'Nguồn Việt hóa')}</b><span>${esc(patch.name||game.name)} ↗</span></a>`).join('')}</div>`:''}${features.length?`<h3>Tính năng</h3><div class="feature-list">${features.map(item=>`<span>${esc(item)}</span>`).join('')}</div>`:''}<h3>Thể loại</h3><div class="feature-list">${(game.genres||[]).map(item=>`<span>${esc(genreLabel(item))}</span>`).join('')}</div><div class="detail-actions"><a class="store-button" href="${esc(xboxAppUrl(game))}">MỞ TRONG ỨNG DỤNG XBOX</a><a class="web-button" href="${esc(game.storeUrl)}" target="_blank" rel="noopener">Xem trên web ↗</a></div><p class="source-note">Ngôn ngữ được đọc từ SupportedLanguages của Microsoft Catalog. Việt hóa là nguồn cộng đồng được ghép theo tên chính xác. Game Pass thay đổi theo thời gian và khu vực; dữ liệu cập nhật ${esc(new Date(catalog.metadata.updatedAt).toLocaleString('vi-VN'))}.</p></div>`;
   $('#detail').showModal();document.body.classList.add('dialog-open');
+  document.dispatchEvent(new CustomEvent('xbox:navigation-updated'));
 }
 function closeDetail(){$('#detail').close();document.body.classList.remove('dialog-open');}
 

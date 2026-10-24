@@ -4,29 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#107c10">
-  <meta name="description" content="Danh mục trò chơi Xbox Game Pass hiện có trên Xbox Store.">
-  <title>Jang Play — Xbox Game Pass</title>
-  <link rel="stylesheet" href="./styles.css?v=2">
+  <meta name="description" content="Danh mục trò chơi PC Game Pass, tiếng Việt và Việt hóa.">
+  <title>Jang Play — PC Game Pass</title>
+  <link rel="stylesheet" href="./styles.css?v=3">
   <script src="./data/catalog.js" defer></script>
-  <script src="./app.js?v=2" defer></script>
+  <script src="./app.js?v=3" defer></script>
+  <script src="./gamepad.js?v=1" defer></script>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="../"><span class="brand-mark">J</span><span>JANG <b>PLAY</b></span></a>
-    <nav><a href="../">Thư viện Steam</a><a class="active" href="./">Xbox Game Pass</a></nav>
+    <nav><a href="../">Thư viện Steam</a><a class="active" href="./">PC Game Pass</a></nav>
   </header>
 
   <main>
     <section class="hero">
       <div class="hero-grid"></div><div class="hero-glow"></div>
       <div class="hero-content">
-        <div class="eyebrow"><span></span> DANH MỤC ĐỘC LẬP · XBOX STORE</div>
-        <h1>Xbox<br><em>Game Pass.</em></h1>
-        <p>Khám phá danh sách Game Pass hiện hành, phân loại theo nền tảng, thể loại và cách chơi.</p>
+        <div class="eyebrow"><span></span> DANH MỤC PC · MICROSOFT STORE</div>
+        <h1>PC<br><em>Game Pass.</em></h1>
+        <p>Khám phá game PC Game Pass theo thể loại, cách chơi, ngôn ngữ tiếng Việt và bản Việt hóa cộng đồng.</p>
         <div class="stats">
-          <div><strong id="total-games">—</strong><span>TỔNG SỐ GAME</span></div>
-          <div><strong id="pc-games">—</strong><span>PC GAME PASS</span></div>
-          <div><strong id="console-games">—</strong><span>XBOX CONSOLE</span></div>
+          <div><strong id="total-games">—</strong><span>PC GAME PASS</span></div>
+          <div><strong id="vietnamese-games">—</strong><span>TIẾNG VIỆT CHÍNH THỨC</span></div>
+          <div><strong id="viethoa-games">—</strong><span>CÓ BẢN VIỆT HÓA</span></div>
         </div>
       </div>
       <div class="xbox-orb" aria-hidden="true"></div>
@@ -47,7 +48,7 @@
         <aside>
           <div class="aside-label">DANH MỤC</div>
           <div class="collections" id="collections"></div>
-          <div class="aside-note"><span>⊕</span><strong>Chơi theo cách của bạn.</strong><p>Lọc theo nền tảng, co-op, multiplayer và các tính năng Xbox.</p></div>
+          <div class="aside-note"><span>⊕</span><strong>Chơi theo cách của bạn.</strong><p>Lọc theo tiếng Việt, Việt hóa, co-op, multiplayer và tính năng PC.</p></div>
         </aside>
 
         <div class="catalog-main">
@@ -65,6 +66,7 @@
 
           <div class="active-filters" id="active-filters"></div>
           <div class="result-line"><strong id="result-title">Tất cả Game Pass</strong><span id="result-count">—</span></div>
+          <div class="gamepad-help" aria-live="polite"><span>🎮 Đã nhận tay cầm</span><b>D-pad</b> Di chuyển <b>A</b> Chọn <b>B</b> Đóng <b>LB/RB</b> Đổi danh mục <b>Y</b> Tìm kiếm <b>X</b> Xóa lọc</div>
           <div class="game-grid" id="game-grid"></div>
           <div class="pagination" id="pagination"></div>
         </div>
@@ -72,7 +74,7 @@
     </section>
   </main>
 
-  <footer><a href="../">J · JANG PLAY</a><span>Dữ liệu Game Pass và hình ảnh từ Microsoft/Xbox Store.</span></footer>
+  <footer><a href="../">J · JANG PLAY</a><span>Dữ liệu PC Game Pass, ngôn ngữ và hình ảnh từ Microsoft Store.</span></footer>
   <dialog id="detail"><div id="detail-inner"></div></dialog>
 </body>
 </html>
