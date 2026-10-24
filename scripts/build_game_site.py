@@ -2,6 +2,7 @@
 """Build the static site with a compact, lazy-loaded public data projection."""
 
 from library_data import load_library
+from build_xbox_game_pass import build_target as build_xbox_target
 
 import argparse
 import json
@@ -138,6 +139,9 @@ def main():
         f"Built {len(summaries)} compact game detail records and "
         f'{len(source["tabs"])} tabs → {output}'
     )
+    xbox_catalog = ROOT / "data/xbox-game-pass.json"
+    if xbox_catalog.exists():
+        build_xbox_target(json.loads(xbox_catalog.read_text(encoding="utf-8")), output / "xbox")
 
 
 if __name__ == "__main__":

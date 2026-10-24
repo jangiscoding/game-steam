@@ -26,6 +26,8 @@
     "site:html:build": "python scripts/build_html_package.py",
     "languages:fetch": "python scripts/enrich_steam_languages.py",
     "languages:attach": "python scripts/enrich_steam_languages.py --attach-only",
+    "xbox:sync": "python scripts/sync_xbox_game_pass.py",
+    "xbox:build": "python scripts/build_xbox_game_pass.py",
     "viethoa:scan": "python3 scripts/scan_viethoa.py"
   }
 }

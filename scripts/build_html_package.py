@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Package the catalog as classic local scripts: double-click HTML, no HTTP server."""
 from library_data import load_library
+from build_xbox_game_pass import build_target as build_xbox_target
 
 import argparse
 import json
@@ -72,6 +73,9 @@ def main():
         'games': games,
     }
     (data / 'catalog.js').write_text('window.GameArchiveFiles.catalog=' + javascript_json(catalog) + ';\n', encoding='utf-8')
+    xbox_catalog = ROOT / 'data/xbox-game-pass.json'
+    if xbox_catalog.exists():
+        build_xbox_target(json.loads(xbox_catalog.read_text(encoding='utf-8')), out / 'xbox')
     (out / 'README.md').write_text('''# Game Archive — bản mở trực tiếp bằng HTML
 
 1. Giải nén toàn bộ thư mục nếu tải bản ZIP.
