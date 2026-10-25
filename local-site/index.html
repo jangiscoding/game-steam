@@ -1,34 +1,5 @@
 <!doctype html>
-<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="Thư viện hơn 5.000 trò chơi của Jang. Tìm kiếm, lọc thể loại, tay cầm và co-op, xem mô tả, ảnh gameplay và trailer."><title>Jang Play — Thư viện trò chơi của Jang</title><link rel="icon" type="image/x-icon" href="./ps-neon.ico"><script>
-(function(){
-  const DUOS = [
-    { name: 'Cyberpunk Amber', primary: '#f59e0b', secondary: '#06b6d4', glowP: 'rgba(245,158,11,0.40)', glowS: 'rgba(6,182,212,0.40)', textP: '#0d0f10' },
-    { name: 'Synthwave Velvet', primary: '#e11d48', secondary: '#0ea5e9', glowP: 'rgba(225,29,72,0.38)', glowS: 'rgba(14,165,233,0.38)', textP: '#ffffff' },
-    { name: 'Neo Tokyo Jade', primary: '#10b981', secondary: '#a855f7', glowP: 'rgba(16,185,129,0.38)', glowS: 'rgba(168,85,247,0.38)', textP: '#ffffff' },
-    { name: 'Blade Runner Teal', primary: '#ea580c', secondary: '#14b8a6', glowP: 'rgba(234,88,12,0.40)', glowS: 'rgba(20,184,166,0.38)', textP: '#ffffff' },
-    { name: 'Akira Crimson', primary: '#e11d48', secondary: '#38bdf8', glowP: 'rgba(225,29,72,0.38)', glowS: 'rgba(56,189,248,0.38)', textP: '#ffffff' },
-    { name: 'Matrix Forest', primary: '#22c55e', secondary: '#0ea5e9', glowP: 'rgba(34,197,94,0.38)', glowS: 'rgba(14,165,233,0.38)', textP: '#0d0f10' },
-    { name: 'Hotline Sunset', primary: '#f43f5e', secondary: '#f59e0b', glowP: 'rgba(244,63,94,0.38)', glowS: 'rgba(245,158,11,0.38)', textP: '#ffffff' },
-    { name: 'Quantum Violet', primary: '#9333ea', secondary: '#0284c7', glowP: 'rgba(147,51,234,0.38)', glowS: 'rgba(2,132,199,0.38)', textP: '#ffffff' }
-  ];
-  try {
-    const prev = sessionStorage.getItem('jang_neon_theme');
-    let pool = DUOS;
-    if (prev && DUOS.length > 1) {
-      pool = DUOS.filter(d => d.name !== prev);
-    }
-    const chosen = pool[Math.floor(Math.random() * pool.length)];
-    sessionStorage.setItem('jang_neon_theme', chosen.name);
-    const root = document.documentElement;
-    root.style.setProperty('--neon-primary', chosen.primary);
-    root.style.setProperty('--neon-secondary', chosen.secondary);
-    root.style.setProperty('--neon-primary-glow', chosen.glowP);
-    root.style.setProperty('--neon-secondary-glow', chosen.glowS);
-    root.style.setProperty('--neon-primary-text', chosen.textP);
-    root.style.setProperty('--orange', chosen.primary);
-  } catch(e) {}
-})();
-</script><link rel="stylesheet" href="./styles.css?v=30"><link rel="stylesheet" href="./filters.css?v=32"><script src="./hls.min.js" defer></script><script src="./app.js?v=32" defer></script><script src="./gamepad.js?v=29" defer></script></head>
+<html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101112"><meta name="description" content="Thư viện hơn 5.000 trò chơi của Jang. Tìm kiếm, lọc thể loại, tay cầm và co-op, xem mô tả, ảnh gameplay và trailer."><title>Jang Play — Thư viện trò chơi của Jang</title><link rel="icon" type="image/x-icon" href="./ps-neon.ico"><script src="./theme.js?v=1"></script><link rel="stylesheet" href="./styles.css?v=30"><link rel="stylesheet" href="./filters.css?v=32"><script src="./hls.min.js" defer></script><script src="./app.js?v=33" defer></script><script src="./gamepad.js?v=30" defer></script></head>
 <body>
 <div class="welcome-screen" id="welcome-screen" role="dialog" aria-modal="true" aria-label="Chào mừng đến Jang Play"><div class="welcome-grid" aria-hidden="true"></div><div class="welcome-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="welcome-stage"><div class="welcome-mark" aria-hidden="true"><span class="welcome-orbit"></span><span class="welcome-orbit secondary"></span><strong>J</strong></div><div class="welcome-copy"><span>JANG PLAY</span><h1>Xin chào, Jang.</h1><p class="welcome-slogan" id="welcome-slogan">Mỗi ngày một thế giới mới.</p></div><div class="welcome-loader" aria-hidden="true"><span></span></div><button class="welcome-skip" id="welcome-skip" type="button">Nhấn Enter hoặc A để vào ngay</button></div></div>
 <header class="topbar"><a class="brand" href="#" aria-label="Jang Play trang chủ"><span class="brand-icon">J</span><span>JANG <span class="brand-light">PLAY</span><small>CHỌN GAME. BẮT ĐẦU TRÒ CHƠI.</small></span></a><a class="xbox-page-link" href="./xbox/"><span>⊕</span> PC GAME PASS</a></header>

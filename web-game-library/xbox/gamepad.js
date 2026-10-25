@@ -14,7 +14,7 @@
   const bar = document.createElement('div');
   bar.className = 'gamepad-bar';
   bar.hidden = true;
-  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>⧉</b> Steam</span>';
+  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>LT / RT</b> Lật trang</span><span><b>LT+RT</b> Lên đầu</span><span><b>⧉</b> Steam</span>';
   document.body.append(bar);
 
   function buildKeyboard() {
@@ -141,7 +141,20 @@
 
   function switchToSteam() {
     stopHaptics();
-    window.location.href = '../';
+    window.location.href = '../?from=xbox';
+  }
+
+  function pageScroll(direction) {
+    if (keyboard?.open) return;
+    const target = document.querySelector('#detail[open]');
+    if (direction === 0) {
+      if (target) target.scrollTo({top: 0, behavior: 'smooth'});
+      else window.scrollTo({top: 0, behavior: 'smooth'});
+      return;
+    }
+    const amount = direction * (target?.clientHeight || window.innerHeight) * .82;
+    if (target) target.scrollBy({top: amount, behavior: 'smooth'});
+    else window.scrollBy({top: amount, behavior: 'smooth'});
   }
 
   function tick(now) {
@@ -196,6 +209,10 @@
           document.dispatchEvent(new CustomEvent('xbox:gamepad-reset'));
         }
       }
+      const ltDown=edge(gamepad,6),rtDown=edge(gamepad,7);
+      if(pressed(gamepad,6)&&pressed(gamepad,7)&&(ltDown||rtDown))pageScroll(0);
+      else if(ltDown)pageScroll(-1);
+      else if(rtDown)pageScroll(1);
 
       const left = pressed(gamepad, 14) || gamepad.axes[0] < -THRESHOLD;
       const right = pressed(gamepad, 15) || gamepad.axes[0] > THRESHOLD;

@@ -116,6 +116,10 @@ def pc_package_family_names(product):
     return sorted(names)
 
 
+def pc_package_identity_names(product):
+    return sorted({name.rsplit("_", 1)[0] for name in pc_package_family_names(product)})
+
+
 def normalize_title(value):
     decomposed = unicodedata.normalize("NFKD", value or "")
     plain = "".join(char for char in decomposed if not unicodedata.combining(char))
@@ -176,6 +180,7 @@ def normalize_product(product, platforms, patch_index):
         "platforms": sorted(platforms),
         "features": attributes,
         "packageFamilyNames": pc_package_family_names(product),
+        "packageIdentityNames": pc_package_identity_names(product),
         "supportedLanguages": languages,
         "supportsVietnamese": any(value == "vi" or value.startswith("vi-") for value in languages),
         "hasVietnamesePatch": bool(vietnamese_patches),
@@ -212,7 +217,7 @@ def build_catalog(market="US", language="vi-vn", workers=6, patch_file=None):
     missing = sorted(set(product_ids) - set(products))
     return {
         "metadata": {
-            "schemaVersion": 3,
+            "schemaVersion": 4,
             "updatedAt": datetime.now(timezone.utc).isoformat(),
             "market": market,
             "language": language,

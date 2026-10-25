@@ -39,7 +39,7 @@ Tìm kiếm/phân loại và dữ liệu JSON hoạt động khi không có Inte
 
 ## Tay cầm
 
-Kết nối tay cầm Xbox bằng USB/Bluetooth, mở trang rồi nhấn một nút để trình duyệt nhận thiết bị. D-pad/cần trái di chuyển; A chọn; B quay lại; X yêu thích; LB/RB đổi nhóm; Y mở bàn phím tìm kiếm; Menu xóa bộ lọc; cần phải cuộn; nút View (⧉) chuyển nhanh giữa Steam và PC Game Pass. Khả năng hoạt động phụ thuộc trình duyệt và thiết bị.
+Kết nối tay cầm Xbox bằng USB/Bluetooth, mở trang rồi nhấn một nút để trình duyệt nhận thiết bị. D-pad/cần trái di chuyển; A chọn; B quay lại; X yêu thích; LB/RB đổi nhóm; Y mở bàn phím tìm kiếm; Menu xóa bộ lọc; cần phải cuộn; LT/RT lật nhanh từng trang; LT+RT về đầu trang; nút View (⧉) chuyển nhanh giữa Steam và PC Game Pass. Khả năng hoạt động phụ thuộc trình duyệt và thiết bị.
 
 Trang PC Game Pass có danh mục yêu thích và đã cài riêng. Khi chạy bằng launcher Windows, máy chủ local tự đối chiếu package Microsoft Store/Xbox đã cài; những game không nhận diện được vẫn có thể đánh dấu thủ công trong chi tiết. Bản HTML mở trực tiếp không có quyền đọc ứng dụng trên máy nên chỉ dùng trạng thái thủ công lưu trong trình duyệt.
 

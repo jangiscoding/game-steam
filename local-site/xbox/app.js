@@ -117,11 +117,14 @@ async function detectInstalledGames(){
     const response=await fetch('/api/installed-xbox-games',{cache:'no-store'});
     if(!response.ok)return;
     const payload=await response.json();
-    const packages=new Set((payload.packageFamilyNames||[]).map(value=>String(value).toLowerCase()));
-    if(!payload.ok||!packages.size)return;
+    const families=new Set((payload.packageFamilyNames||[]).map(value=>String(value).toLowerCase()));
+    const identities=new Set((payload.packageIdentityNames||[]).map(value=>String(value).toLowerCase()));
+    if(!payload.ok||(!families.size&&!identities.size))return;
     detectedInstalled.clear();
     for(const game of catalog.games){
-      if((game.packageFamilyNames||[]).some(value=>packages.has(String(value).toLowerCase())))detectedInstalled.add(game.id);
+      const familyMatch=(game.packageFamilyNames||[]).some(value=>families.has(String(value).toLowerCase()));
+      const identityMatch=(game.packageIdentityNames||[]).some(value=>identities.has(String(value).toLowerCase()));
+      if(familyMatch||identityMatch)detectedInstalled.add(game.id);
     }
     renderCollections();applyFilters();
   }catch{}

@@ -85,14 +85,16 @@ def get_installed_steam_app_ids():
     return sorted(list(installed_ids))
 
 
-def get_installed_xbox_package_families():
-    """Read installed Microsoft Store package identities on Windows."""
+def get_installed_xbox_packages():
+    """Read Appx and Xbox Gaming Services identities installed on Windows."""
     if sys.platform != 'win32':
-        return []
+        return {'packageFamilyNames': [], 'packageIdentityNames': []}
     import subprocess
+    import string
+    import xml.etree.ElementTree as ET
     command = [
         'powershell.exe', '-NoProfile', '-NonInteractive', '-Command',
-        'Get-AppxPackage | ForEach-Object { $_.PackageFamilyName }'
+        "Get-AppxPackage | ForEach-Object { if ($_.PackageFamilyName) { 'PFN|' + $_.PackageFamilyName }; if ($_.Name) { 'ID|' + $_.Name } }"
     ]
     kwargs = {
         'capture_output': True,
@@ -103,9 +105,59 @@ def get_installed_xbox_package_families():
     if hasattr(subprocess, 'CREATE_NO_WINDOW'):
         kwargs['creationflags'] = subprocess.CREATE_NO_WINDOW
     result = subprocess.run(command, **kwargs)
-    if result.returncode != 0:
-        return []
-    return sorted({line.strip() for line in result.stdout.splitlines() if line.strip()})
+    families = set()
+    identities = set()
+    if result.returncode == 0:
+        for line in result.stdout.splitlines():
+            kind, separator, value = line.strip().partition('|')
+            if not separator or not value:
+                continue
+            if kind == 'PFN':
+                families.add(value)
+            elif kind == 'ID':
+                identities.add(value)
+
+    # Win32/MSIXVC games installed by the Xbox app expose MicrosoftGame.config
+    # even when Get-AppxPackage does not list the game as a normal Appx package.
+    gaming_roots = set()
+    for letter in string.ascii_uppercase:
+        drive = Path(f'{letter}:\\')
+        default_root = drive / 'XboxGames'
+        if default_root.is_dir():
+            gaming_roots.add(default_root)
+        legacy_root = drive / 'Program Files' / 'ModifiableWindowsApps'
+        if legacy_root.is_dir():
+            gaming_roots.add(legacy_root)
+        marker = drive / '.GamingRoot'
+        if marker.is_file():
+            try:
+                relative = marker.read_bytes()[8:].decode('utf-16-le', errors='ignore').strip('\x00').strip()
+                configured_root = drive / relative
+                if relative and configured_root.is_dir():
+                    gaming_roots.add(configured_root)
+            except Exception:
+                pass
+    for xbox_root in gaming_roots:
+        configs = list(xbox_root.glob('*/Content/MicrosoftGame.config'))
+        configs += list(xbox_root.glob('*/MicrosoftGame.config'))
+        configs += list(xbox_root.glob('*/*/MicrosoftGame.config'))
+        for config in configs:
+            try:
+                root = ET.parse(config).getroot()
+                identity = next((node for node in root.iter() if node.tag.rsplit('}', 1)[-1] == 'Identity'), None)
+                name = identity.get('Name') if identity is not None else None
+                if name:
+                    identities.add(name)
+            except Exception:
+                pass
+    return {
+        'packageFamilyNames': sorted(families),
+        'packageIdentityNames': sorted(identities),
+    }
+
+
+def get_installed_xbox_package_families():
+    return get_installed_xbox_packages()['packageFamilyNames']
 
 
 def check_for_steam_updates(catalog_path):
@@ -511,10 +563,10 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
         if self.path.startswith('/api/installed-xbox-games'):
             import json
             try:
-                packages = get_installed_xbox_package_families()
-                payload = json.dumps({'ok': True, 'packageFamilyNames': packages, 'count': len(packages)}).encode('utf-8')
+                packages = get_installed_xbox_packages()
+                payload = json.dumps({'ok': True, **packages, 'count': len(packages['packageFamilyNames']) + len(packages['packageIdentityNames'])}).encode('utf-8')
             except Exception as e:
-                payload = json.dumps({'ok': False, 'error': str(e), 'packageFamilyNames': []}).encode('utf-8')
+                payload = json.dumps({'ok': False, 'error': str(e), 'packageFamilyNames': [], 'packageIdentityNames': []}).encode('utf-8')
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.send_header('Access-Control-Allow-Origin', '*')

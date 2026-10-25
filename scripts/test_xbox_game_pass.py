@@ -67,11 +67,17 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("gamepad.axes[3]", gamepad)
         self.assertIn("xbox:gamepad-favorite", gamepad)
         self.assertIn("xbox:focus-primary", app)
+        self.assertIn("pageScroll", gamepad)
+        self.assertIn("LT+RT", gamepad)
+        self.assertIn("pageScroll", steam_gamepad)
 
     def test_personal_xbox_collections_and_steam_theme(self):
         app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")
         styles = (ROOT / "web-game-library/xbox/styles.css").read_text(encoding="utf-8")
         server = (ROOT / "local-site/serve.py").read_text(encoding="utf-8")
+        steam_app = (ROOT / "local-site/app.js").read_text(encoding="utf-8")
+        theme = (ROOT / "local-site/theme.js").read_text(encoding="utf-8")
+        xbox_html = (ROOT / "web-game-library/xbox/index.html").read_text(encoding="utf-8")
         self.assertIn("Game yêu thích", app)
         self.assertIn("Đã cài trên máy", app)
         self.assertIn("jang-xbox-personal-v1", app)
@@ -80,8 +86,14 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("gamepad-bar", styles)
         self.assertIn("/api/installed-xbox-games", server)
         self.assertIn("detectInstalledGames", app)
+        self.assertIn("packageIdentityNames", server)
+        self.assertIn("jang_welcome_seen_v1", steam_app)
+        self.assertIn("--green", theme)
+        self.assertIn("--neon-primary", theme)
+        self.assertIn("../theme.js", xbox_html)
         games_with_packages = [game for game in self.data["games"] if game["packageFamilyNames"]]
         self.assertGreater(len(games_with_packages), 300)
+        self.assertTrue(all(isinstance(game["packageIdentityNames"], list) for game in self.data["games"]))
 
     def test_every_catalog_genre_has_a_vietnamese_label(self):
         app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")

@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "schemaVersion": 3,
-    "updatedAt": "2026-10-25T05:48:13.658682+00:00",
+    "schemaVersion": 4,
+    "updatedAt": "2026-10-25T05:58:59.849584+00:00",
     "market": "US",
     "language": "vi-vn",
     "totalGames": 516,
@@ -50,6 +50,9 @@
       ],
       "packageFamilyNames": [
         "SurpriseAttackPtyLtd.1000xResist_8k24hnfn3vvj0"
+      ],
+      "packageIdentityNames": [
+        "SurpriseAttackPtyLtd.1000xResist"
       ],
       "supportedLanguages": [
         "ar",
@@ -108,6 +111,9 @@
       "packageFamilyNames": [
         "44905ThunderLotusGames.33Immortals_hbhkcnqstm4gr"
       ],
+      "packageIdentityNames": [
+        "44905ThunderLotusGames.33Immortals"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -159,6 +165,9 @@
       ],
       "packageFamilyNames": [
         "HoodedHorse.9Kings_znaey1dw2bdpr"
+      ],
+      "packageIdentityNames": [
+        "HoodedHorse.9Kings"
       ],
       "supportedLanguages": [
         "bg",
@@ -229,6 +238,9 @@
       "packageFamilyNames": [
         "rokapublish.AGameAboutDiggingAHole_6q4vfhsywtz4j"
       ],
+      "packageIdentityNames": [
+        "rokapublish.AGameAboutDiggingAHole"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -290,6 +302,9 @@
       ],
       "packageFamilyNames": [
         "PlayStack.AbioticFactor_3wcqaesafpzfy"
+      ],
+      "packageIdentityNames": [
+        "PlayStack.AbioticFactor"
       ],
       "supportedLanguages": [
         "ar",
@@ -353,6 +368,9 @@
       "packageFamilyNames": [
         "DotEmu.Absolum_map6zyh9ym1xy"
       ],
+      "packageIdentityNames": [
+        "DotEmu.Absolum"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -412,6 +430,9 @@
       ],
       "packageFamilyNames": [
         "DotEmu.Abyssus_map6zyh9ym1xy"
+      ],
+      "packageIdentityNames": [
+        "DotEmu.Abyssus"
       ],
       "supportedLanguages": [
         "ar",
@@ -475,6 +496,9 @@
       "packageFamilyNames": [
         "AerialKnightGames.56686A744F1D6_jfrsg1rpqcyk0"
       ],
+      "packageIdentityNames": [
+        "AerialKnightGames.56686A744F1D6"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -518,6 +542,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -568,6 +593,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -638,6 +664,9 @@
       "packageFamilyNames": [
         "Microsoft.Cardinal_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Cardinal"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -704,6 +733,9 @@
       "packageFamilyNames": [
         "Microsoft.Darwin_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Darwin"
+      ],
       "supportedLanguages": [
         "cs",
         "da",
@@ -764,6 +796,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.AthensStandardEdition_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.AthensStandardEdition"
       ],
       "supportedLanguages": [
         "ar",
@@ -837,6 +872,9 @@
       "packageFamilyNames": [
         "SandboxInteractiveGmbH.AlbionOnline_e3zzwx3b3stpa"
       ],
+      "packageIdentityNames": [
+        "SandboxInteractiveGmbH.AlbionOnline"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -888,6 +926,9 @@
       ],
       "packageFamilyNames": [
         "FocusHomeInteractiveSA.AliensDarkDescent-Windows_4hny5m903y3g0"
+      ],
+      "packageIdentityNames": [
+        "FocusHomeInteractiveSA.AliensDarkDescent-Windows"
       ],
       "supportedLanguages": [
         "ar",
@@ -953,6 +994,9 @@
       "packageFamilyNames": [
         "Innersloth.AmongUs_fw5x688tam7rm"
       ],
+      "packageIdentityNames": [
+        "Innersloth.AmongUs"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -1008,6 +1052,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.AnElderScrollsLegendBattlespire_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.AnElderScrollsLegendBattlespire"
       ],
       "supportedLanguages": [
         "ar",
@@ -1075,6 +1122,9 @@
       "packageFamilyNames": [
         "KingsgloryGames.AniimoLegend_9d08hqzdedf04"
       ],
+      "packageIdentityNames": [
+        "KingsgloryGames.AniimoLegend"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -1128,6 +1178,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -1190,6 +1241,9 @@
       "packageFamilyNames": [
         "LightningGamesLeitingInfo.ANNOMutationem_51g74d9m9qf8m"
       ],
+      "packageIdentityNames": [
+        "LightningGamesLeitingInfo.ANNOMutationem"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -1244,6 +1298,9 @@
       ],
       "packageFamilyNames": [
         "DONTNODEntertainment.Pioneer-P10_1t8sv8k1cftdw"
+      ],
+      "packageIdentityNames": [
+        "DONTNODEntertainment.Pioneer-P10"
       ],
       "supportedLanguages": [
         "ar",
@@ -1300,6 +1357,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.Indus_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.Indus"
       ],
       "supportedLanguages": [
         "cs",
@@ -1378,6 +1438,9 @@
       "packageFamilyNames": [
         "StudioWildcard.ARKSurvivalAscended_1w2mm55455e38"
       ],
+      "packageIdentityNames": [
+        "StudioWildcard.ARKSurvivalAscended"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -1435,6 +1498,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -1480,6 +1544,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.ArxFatalis_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ArxFatalis"
       ],
       "supportedLanguages": [
         "ar",
@@ -1552,6 +1619,9 @@
       "packageFamilyNames": [
         "Microsoft.3020BF20E956_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.3020BF20E956"
+      ],
       "supportedLanguages": [
         "cs-cz",
         "da",
@@ -1620,6 +1690,9 @@
       ],
       "packageFamilyNames": [
         "FlywayGames.AscendtoZERO_sey8peye7nc36"
+      ],
+      "packageIdentityNames": [
+        "FlywayGames.AscendtoZERO"
       ],
       "supportedLanguages": [
         "bg",
@@ -1698,6 +1771,9 @@
       "packageFamilyNames": [
         "A278AB0D.Asphalt9_h6adky7gbf63m"
       ],
+      "packageIdentityNames": [
+        "A278AB0D.Asphalt9"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -1746,6 +1822,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -1798,6 +1875,7 @@
         "SinglePlayer"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -1848,6 +1926,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -1897,6 +1976,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -1947,6 +2027,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -1998,6 +2079,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2048,6 +2130,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2098,6 +2181,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2147,6 +2231,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2195,6 +2280,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2244,6 +2330,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -2296,6 +2383,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2345,6 +2433,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2393,6 +2482,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2442,6 +2532,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2505,6 +2596,9 @@
       "packageFamilyNames": [
         "SystemEraSoftworks.29415440E1269_ftk5pbg2rayv2"
       ],
+      "packageIdentityNames": [
+        "SystemEraSoftworks.29415440E1269"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -2557,6 +2651,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -2610,6 +2705,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "de",
@@ -2664,6 +2760,9 @@
       ],
       "packageFamilyNames": [
         "PlayStack.Balatro_3wcqaesafpzfy"
+      ],
+      "packageIdentityNames": [
+        "PlayStack.Balatro"
       ],
       "supportedLanguages": [
         "ar",
@@ -2722,6 +2821,9 @@
       "packageFamilyNames": [
         "Beamdog.BaldursGateTheCompleteSaga_p0m6mzmtzz774"
       ],
+      "packageIdentityNames": [
+        "Beamdog.BaldursGateTheCompleteSaga"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -2767,6 +2869,9 @@
       ],
       "packageFamilyNames": [
         "DevolverDigital.BallxPit_6kzv4j18v0c96"
+      ],
+      "packageIdentityNames": [
+        "DevolverDigital.BallxPit"
       ],
       "supportedLanguages": [
         "ar",
@@ -2838,6 +2943,9 @@
       "packageFamilyNames": [
         "FocusHomeInteractiveSA.NewWorldBanishers_4hny5m903y3g0"
       ],
+      "packageIdentityNames": [
+        "FocusHomeInteractiveSA.NewWorldBanishers"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -2898,6 +3006,9 @@
       ],
       "packageFamilyNames": [
         "OutrightGames.ProjectCowgirlWorkingTitle_bnrbc155f0j86"
+      ],
+      "packageIdentityNames": [
+        "OutrightGames.ProjectCowgirlWorkingTitle"
       ],
       "supportedLanguages": [
         "ar",
@@ -2965,6 +3076,9 @@
       "packageFamilyNames": [
         "Microsoft.TheBardsTaleTrilogy_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.TheBardsTaleTrilogy"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -3014,6 +3128,9 @@
       "packageFamilyNames": [
         "181CBCCD.TheBardsTaleIV_9y3t8zad226mc"
       ],
+      "packageIdentityNames": [
+        "181CBCCD.TheBardsTaleIV"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -3055,6 +3172,9 @@
       ],
       "packageFamilyNames": [
         "WarnerBros.Interactive.7b0450f1-4a73-4eb9-b96a-e8f_ktmk1xygcecda"
+      ],
+      "packageIdentityNames": [
+        "WarnerBros.Interactive.7b0450f1-4a73-4eb9-b96a-e8f"
       ],
       "supportedLanguages": [
         "da",
@@ -3125,6 +3245,9 @@
       "packageFamilyNames": [
         "ParadoxInteractive.Battletech-MainGame_zfnrdv2de78ny"
       ],
+      "packageIdentityNames": [
+        "ParadoxInteractive.Battletech-MainGame"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -3186,6 +3309,9 @@
       "packageFamilyNames": [
         "Microsoft.Frogspawn_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Frogspawn"
+      ],
       "supportedLanguages": [
         "de",
         "de-de",
@@ -3244,6 +3370,9 @@
       ],
       "packageFamilyNames": [
         "Fictions.ProjectAibou_qj8vnfjar8dk2"
+      ],
+      "packageIdentityNames": [
+        "Fictions.ProjectAibou"
       ],
       "supportedLanguages": [
         "da",
@@ -3315,6 +3444,9 @@
       "packageFamilyNames": [
         "TimberlineStudio.Spinel_gcb665yvbtwv6"
       ],
+      "packageIdentityNames": [
+        "TimberlineStudio.Spinel"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -3379,6 +3511,9 @@
       "packageFamilyNames": [
         "OutrightGames.Ben10-2_bnrbc155f0j86"
       ],
+      "packageIdentityNames": [
+        "OutrightGames.Ben10-2"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -3442,6 +3577,9 @@
       "packageFamilyNames": [
         "HoodedHorse.BeyondTheseStars_znaey1dw2bdpr"
       ],
+      "packageIdentityNames": [
+        "HoodedHorse.BeyondTheseStars"
+      ],
       "supportedLanguages": [
         "cs",
         "de",
@@ -3498,6 +3636,9 @@
       ],
       "packageFamilyNames": [
         "SkystoneGames.BlackJacket_0jsrjq5sfw73t"
+      ],
+      "packageIdentityNames": [
+        "SkystoneGames.BlackJacket"
       ],
       "supportedLanguages": [
         "ar",
@@ -3556,6 +3697,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.BleedingEdge_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.BleedingEdge"
       ],
       "supportedLanguages": [
         "cs",
@@ -3617,6 +3761,9 @@
       "packageFamilyNames": [
         "Xbox360BackwardCompatibil.PrimaryBLiNXTheTimeSweep_ksqcvrsvwz2jp"
       ],
+      "packageIdentityNames": [
+        "Xbox360BackwardCompatibil.PrimaryBLiNXTheTimeSweep"
+      ],
       "supportedLanguages": [
         "de",
         "de-de",
@@ -3669,6 +3816,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -3727,6 +3875,9 @@
       ],
       "packageFamilyNames": [
         "59831MesshofLLC.BloodDungeon_qar5mgcjpahcy"
+      ],
+      "packageIdentityNames": [
+        "59831MesshofLLC.BloodDungeon"
       ],
       "supportedLanguages": [
         "ar",
@@ -3788,6 +3939,9 @@
       ],
       "packageFamilyNames": [
         "RawFury.BluePrince_9s0pnehqffj7t"
+      ],
+      "packageIdentityNames": [
+        "RawFury.BluePrince"
       ],
       "supportedLanguages": [
         "ar",
@@ -3855,6 +4009,9 @@
       "packageFamilyNames": [
         "A278AB0D.TheBlueyCamera_h6adky7gbf63m"
       ],
+      "packageIdentityNames": [
+        "A278AB0D.TheBlueyCamera"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -3905,6 +4062,9 @@
       ],
       "packageFamilyNames": [
         "OutrightGames.BlueyGame_bnrbc155f0j86"
+      ],
+      "packageIdentityNames": [
+        "OutrightGames.BlueyGame"
       ],
       "supportedLanguages": [
         "ar",
@@ -3969,6 +4129,9 @@
       "packageFamilyNames": [
         "AnnapurnaInteractive.BountyStar_c96c51jf6wkvm"
       ],
+      "packageIdentityNames": [
+        "AnnapurnaInteractive.BountyStar"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -4021,6 +4184,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -4081,6 +4245,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -4143,6 +4308,9 @@
       "packageFamilyNames": [
         "MuneStudio.BrewsBastards_p66528fa8c5dw"
       ],
+      "packageIdentityNames": [
+        "MuneStudio.BrewsBastards"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -4180,6 +4348,9 @@
       ],
       "packageFamilyNames": [
         "DoubleFineProductionsInc.BrokenAge_s9zt93y1rpe5a"
+      ],
+      "packageIdentityNames": [
+        "DoubleFineProductionsInc.BrokenAge"
       ],
       "supportedLanguages": [
         "de-de",
@@ -4230,6 +4401,9 @@
       ],
       "packageFamilyNames": [
         "19886SeavenStudio.Brotato_fahzzgrzfd3xc"
+      ],
+      "packageIdentityNames": [
+        "19886SeavenStudio.Brotato"
       ],
       "supportedLanguages": [
         "ar",
@@ -4294,6 +4468,9 @@
       "packageFamilyNames": [
         "CRITICALREFLEX.BuckshotRoulette_20ymd9g5r2c54"
       ],
+      "packageIdentityNames": [
+        "CRITICALREFLEX.BuckshotRoulette"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -4348,6 +4525,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -4417,6 +4595,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -4472,6 +4651,9 @@
       ],
       "packageFamilyNames": [
         "38985CA0.CODCWGame_5bkah9njm3e9g"
+      ],
+      "packageIdentityNames": [
+        "38985CA0.CODCWGame"
       ],
       "supportedLanguages": [
         "ar",
@@ -4540,6 +4722,9 @@
       "packageFamilyNames": [
         "38985CA0.CODMW2019PCMSGame_5bkah9njm3e9g"
       ],
+      "packageIdentityNames": [
+        "38985CA0.CODMW2019PCMSGame"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -4602,6 +4787,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -4662,6 +4848,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -4715,6 +4902,9 @@
       ],
       "packageFamilyNames": [
         "38985CA0.CODVGamePCMS_5bkah9njm3e9g"
+      ],
+      "packageIdentityNames": [
+        "38985CA0.CODVGamePCMS"
       ],
       "supportedLanguages": [
         "ar",
@@ -4778,6 +4968,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -4835,6 +5026,9 @@
       ],
       "packageFamilyNames": [
         "38985CA0.CallofDutyWWIIPCMS_5bkah9njm3e9g"
+      ],
+      "packageIdentityNames": [
+        "38985CA0.CallofDutyWWIIPCMS"
       ],
       "supportedLanguages": [
         "ar",
@@ -4899,6 +5093,9 @@
       "packageFamilyNames": [
         "Kwalee.CalloftheElderGods_bm08s5vda6r86"
       ],
+      "packageIdentityNames": [
+        "Kwalee.CalloftheElderGods"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -4960,6 +5157,9 @@
       "packageFamilyNames": [
         "AvalancheStudios.Tortoise_m0byj0nmrybdr"
       ],
+      "packageIdentityNames": [
+        "AvalancheStudios.Tortoise"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -5020,6 +5220,9 @@
       "packageFamilyNames": [
         "5901F20F.CarMechanicSimulator2021_t06nbjdc8fw86"
       ],
+      "packageIdentityNames": [
+        "5901F20F.CarMechanicSimulator2021"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -5070,6 +5273,9 @@
       "packageFamilyNames": [
         "FEATHERWEIGHTGAMESPTYLIMI.ChainedBeasts_ad46npcgb9ttj"
       ],
+      "packageIdentityNames": [
+        "FEATHERWEIGHTGAMESPTYLIMI.ChainedBeasts"
+      ],
       "supportedLanguages": [
         "de",
         "en-us",
@@ -5113,6 +5319,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -5180,6 +5387,9 @@
       "packageFamilyNames": [
         "TripwireInteractiveLLC.Chivalry2_237dqjpew1r3m"
       ],
+      "packageIdentityNames": [
+        "TripwireInteractiveLLC.Chivalry2"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -5224,6 +5434,9 @@
       "packageFamilyNames": [
         "ParadoxInteractive.81845321AE_zfnrdv2de78ny"
       ],
+      "packageIdentityNames": [
+        "ParadoxInteractive.81845321AE"
+      ],
       "supportedLanguages": [
         "de",
         "en-us",
@@ -5267,6 +5480,9 @@
       ],
       "packageFamilyNames": [
         "ParadoxInteractive.CitiesSkylinesII-PCEdition_zfnrdv2de78ny"
+      ],
+      "packageIdentityNames": [
+        "ParadoxInteractive.CitiesSkylinesII-PCEdition"
       ],
       "supportedLanguages": [
         "ar",
@@ -5334,6 +5550,9 @@
       "packageFamilyNames": [
         "NuchallengerLLC.203282BAF8B26_37yyt105ky0x2"
       ],
+      "packageIdentityNames": [
+        "NuchallengerLLC.203282BAF8B26"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -5388,6 +5607,9 @@
       ],
       "packageFamilyNames": [
         "DoborogGames.CloneDroneintheDangerZone_w6hf08ggk4es4"
+      ],
+      "packageIdentityNames": [
+        "DoborogGames.CloneDroneintheDangerZone"
       ],
       "supportedLanguages": [
         "ar",
@@ -5450,6 +5672,9 @@
       "packageFamilyNames": [
         "FutureFriendsGames.CloverPit_2whsqx9fyfsdj"
       ],
+      "packageIdentityNames": [
+        "FutureFriendsGames.CloverPit"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -5500,6 +5725,9 @@
       ],
       "packageFamilyNames": [
         "astragonSoftwareGmbH.ConstructionSimulator21_gq6wh0enzmg8j"
+      ],
+      "packageIdentityNames": [
+        "astragonSoftwareGmbH.ConstructionSimulator21"
       ],
       "supportedLanguages": [
         "ar",
@@ -5554,6 +5782,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -5617,6 +5846,9 @@
       "packageFamilyNames": [
         "BigCheeseStudio.CookingSimulatorWindows_j479vfd09vc9j"
       ],
+      "packageIdentityNames": [
+        "BigCheeseStudio.CookingSimulatorWindows"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -5663,6 +5895,9 @@
       ],
       "packageFamilyNames": [
         "HoodedHorse.CorsairCove_znaey1dw2bdpr"
+      ],
+      "packageIdentityNames": [
+        "HoodedHorse.CorsairCove"
       ],
       "supportedLanguages": [
         "cs",
@@ -5726,6 +5961,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -5779,6 +6015,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -5838,6 +6075,9 @@
       ],
       "packageFamilyNames": [
         "38985CA0.CBTPCMS_5bkah9njm3e9g"
+      ],
+      "packageIdentityNames": [
+        "38985CA0.CBTPCMS"
       ],
       "supportedLanguages": [
         "ar",
@@ -5902,6 +6142,9 @@
       "packageFamilyNames": [
         "AggroCrabGames.CrashoutCrew_9gz8j9vzxkwqt"
       ],
+      "packageIdentityNames": [
+        "AggroCrabGames.CrashoutCrew"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -5961,6 +6204,9 @@
       ],
       "packageFamilyNames": [
         "BigbenInteractiveSA.3997493E05F07_tqjv3vrxr8ppw"
+      ],
+      "packageIdentityNames": [
+        "BigbenInteractiveSA.3997493E05F07"
       ],
       "supportedLanguages": [
         "ar",
@@ -6027,6 +6273,9 @@
       ],
       "packageFamilyNames": [
         "Xbox360BackwardCompatibil.PrimaryCrimsonSkiesHighR_ksqcvrsvwz2jp"
+      ],
+      "packageIdentityNames": [
+        "Xbox360BackwardCompatibil.PrimaryCrimsonSkiesHighR"
       ],
       "supportedLanguages": [
         "da",
@@ -6121,6 +6370,9 @@
       "packageFamilyNames": [
         "Team17DigitalLimited.61478DF7F562F_j5x4vj4y67jhc"
       ],
+      "packageIdentityNames": [
+        "Team17DigitalLimited.61478DF7F562F"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -6181,6 +6433,9 @@
       "packageFamilyNames": [
         "Microsoft.DayoftheTentacleRemastered_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.DayoftheTentacleRemastered"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -6229,6 +6484,9 @@
       ],
       "packageFamilyNames": [
         "BohemiaInteractivea.s.64c65697-cc6b-45a2-b1a5-1c03_ezkh2j9f9meea"
+      ],
+      "packageIdentityNames": [
+        "BohemiaInteractivea.s.64c65697-cc6b-45a2-b1a5-1c03"
       ],
       "supportedLanguages": [
         "cs",
@@ -6288,6 +6546,9 @@
       ],
       "packageFamilyNames": [
         "BehaviourInteractive.DeadbyDaylightWindows_b1gz2xhdanwfm"
+      ],
+      "packageIdentityNames": [
+        "BehaviourInteractive.DeadbyDaylightWindows"
       ],
       "supportedLanguages": [
         "da",
@@ -6368,6 +6629,9 @@
       "packageFamilyNames": [
         "DeepSilver.578840CD64788_hmv7qcest37me"
       ],
+      "packageIdentityNames": [
+        "DeepSilver.578840CD64788"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -6432,6 +6696,9 @@
       "packageFamilyNames": [
         "TeamFanclub.DeadStaticDrive_n72e9asz2a6mp"
       ],
+      "packageIdentityNames": [
+        "TeamFanclub.DeadStaticDrive"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -6477,6 +6744,9 @@
       ],
       "packageFamilyNames": [
         "4063811bitstudios.DeathHowl_gwy9gn5q9j1y6"
+      ],
+      "packageIdentityNames": [
+        "4063811bitstudios.DeathHowl"
       ],
       "supportedLanguages": [
         "da",
@@ -6531,6 +6801,9 @@
       ],
       "packageFamilyNames": [
         "KOJIMAPRODUCTIONSCo.Ltd.DSDC_98qq2hk7wynyj"
+      ],
+      "packageIdentityNames": [
+        "KOJIMAPRODUCTIONSCo.Ltd.DSDC"
       ],
       "supportedLanguages": [
         "ar",
@@ -6603,6 +6876,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.ProjectPrism_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ProjectPrism"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -6669,6 +6945,9 @@
       "packageFamilyNames": [
         "CoffeeStainStudios.DeepRockGalactic_496a1srhmar9w"
       ],
+      "packageIdentityNames": [
+        "CoffeeStainStudios.DeepRockGalactic"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -6723,6 +7002,9 @@
       ],
       "packageFamilyNames": [
         "Xbox360BackwardCompatibil.PrimaryConkerLiveReloade_ksqcvrsvwz2jp"
+      ],
+      "packageIdentityNames": [
+        "Xbox360BackwardCompatibil.PrimaryConkerLiveReloade"
       ],
       "supportedLanguages": [
         "de",
@@ -6779,6 +7061,9 @@
       ],
       "packageFamilyNames": [
         "SoldOutSalesMarketing.Denshattack_7sns490bw3vda"
+      ],
+      "packageIdentityNames": [
+        "SoldOutSalesMarketing.Denshattack"
       ],
       "supportedLanguages": [
         "ar",
@@ -6850,6 +7135,9 @@
       "packageFamilyNames": [
         "NoMoreRobots.GamePreviewDescenders_671zbmwb2bw9p"
       ],
+      "packageIdentityNames": [
+        "NoMoreRobots.GamePreviewDescenders"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -6900,6 +7188,9 @@
       ],
       "packageFamilyNames": [
         "NoMoreRobots.DescendersNext_671zbmwb2bw9p"
+      ],
+      "packageIdentityNames": [
+        "NoMoreRobots.DescendersNext"
       ],
       "supportedLanguages": [
         "da-dk",
@@ -6953,6 +7244,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -6999,6 +7291,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -7052,6 +7345,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -7102,6 +7396,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -7160,6 +7455,9 @@
       ],
       "packageFamilyNames": [
         "2LeftThumbs.DiceAMillion_cg1wqfa88cyve"
+      ],
+      "packageIdentityNames": [
+        "2LeftThumbs.DiceAMillion"
       ],
       "supportedLanguages": [
         "de",
@@ -7222,6 +7520,9 @@
       "packageFamilyNames": [
         "CodemastersSoftwareCompan.DiRT5_4cfye3zbe1gaw"
       ],
+      "packageIdentityNames": [
+        "CodemastersSoftwareCompan.DiRT5"
+      ],
       "supportedLanguages": [
         "da",
         "de",
@@ -7279,6 +7580,9 @@
       "packageFamilyNames": [
         "ZAUMStudioDiscoElysiumUKL.DiscoElysium-TheFinalCut_21p7s56brwa2g"
       ],
+      "packageIdentityNames": [
+        "ZAUMStudioDiscoElysiumUKL.DiscoElysium-TheFinalCut"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -7332,6 +7636,9 @@
       "packageFamilyNames": [
         "RawFury.DeepDishDungeon_9s0pnehqffj7t"
       ],
+      "packageIdentityNames": [
+        "RawFury.DeepDishDungeon"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -7379,6 +7686,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.Dishonored2-PC_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Dishonored2-PC"
       ],
       "supportedLanguages": [
         "da",
@@ -7441,6 +7751,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.DishonoredDE-PC_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.DishonoredDE-PC"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -7495,6 +7808,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.DishonoredDeathoftheOutsiderPC_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.DishonoredDeathoftheOutsiderPC"
       ],
       "supportedLanguages": [
         "da",
@@ -7559,6 +7875,9 @@
       "packageFamilyNames": [
         "A278AB0D.DisneyDreamlightValley_h6adky7gbf63m"
       ],
+      "packageIdentityNames": [
+        "A278AB0D.DisneyDreamlightValley"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -7621,6 +7940,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.DisneylandAdventures_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.DisneylandAdventures"
       ],
       "supportedLanguages": [
         "da",
@@ -7685,6 +8007,9 @@
       ],
       "packageFamilyNames": [
         "RawFury.DomeKeeper_9s0pnehqffj7t"
+      ],
+      "packageIdentityNames": [
+        "RawFury.DomeKeeper"
       ],
       "supportedLanguages": [
         "ar",
@@ -7760,6 +8085,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.Osiris2.0_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Osiris2.0"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -7819,6 +8147,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.Doom32004_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Doom32004"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -7874,6 +8205,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.Doom641997_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Doom641997"
       ],
       "supportedLanguages": [
         "ar",
@@ -7931,6 +8265,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -7996,6 +8331,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.ProjectTitan_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ProjectTitan"
       ],
       "supportedLanguages": [
         "ar",
@@ -8070,6 +8408,9 @@
       "packageFamilyNames": [
         "NAMCOBANDAIGamesInc.DBXV2BaseGame_gdy2aq6ez762w"
       ],
+      "packageIdentityNames": [
+        "NAMCOBANDAIGamesInc.DBXV2BaseGame"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -8140,6 +8481,9 @@
       "packageFamilyNames": [
         "OutrightGames.GabbysDollHouse_bnrbc155f0j86"
       ],
+      "packageIdentityNames": [
+        "OutrightGames.GabbysDollHouse"
+      ],
       "supportedLanguages": [
         "ar",
         "ca",
@@ -8201,6 +8545,9 @@
       ],
       "packageFamilyNames": [
         "Team17DigitalLimited.ProjectShoal_j5x4vj4y67jhc"
+      ],
+      "packageIdentityNames": [
+        "Team17DigitalLimited.ProjectShoal"
       ],
       "supportedLanguages": [
         "ar",
@@ -8268,6 +8615,9 @@
       "packageFamilyNames": [
         "DotEmu.DropDuchy_map6zyh9ym1xy"
       ],
+      "packageIdentityNames": [
+        "DotEmu.DropDuchy"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -8327,6 +8677,9 @@
       "packageFamilyNames": [
         "BornMonkie.376379CE2BBEF_dnc8gw876zn82"
       ],
+      "packageIdentityNames": [
+        "BornMonkie.376379CE2BBEF"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -8376,6 +8729,9 @@
       ],
       "packageFamilyNames": [
         "FuncomOsloAS.ProjectSeabass_pkaskhy6cdq4g"
+      ],
+      "packageIdentityNames": [
+        "FuncomOsloAS.ProjectSeabass"
       ],
       "supportedLanguages": [
         "ar",
@@ -8437,6 +8793,9 @@
       "packageFamilyNames": [
         "OroInteractive.20054D907281A_z7bgc74zqm87r"
       ],
+      "packageIdentityNames": [
+        "OroInteractive.20054D907281A"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -8493,6 +8852,9 @@
       "packageFamilyNames": [
         "8785CococucumberInc.EchoGeneration2_8prdp5qgeq7we"
       ],
+      "packageIdentityNames": [
+        "8785CococucumberInc.EchoGeneration2"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -8545,6 +8907,9 @@
       "packageFamilyNames": [
         "49827AkuparaGames.EchoWeaver_mfvawhmf9sssr"
       ],
+      "packageIdentityNames": [
+        "49827AkuparaGames.EchoWeaver"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -8592,6 +8957,9 @@
       ],
       "packageFamilyNames": [
         "AlibiGames.EggingOn_a9nsst86041dr"
+      ],
+      "packageIdentityNames": [
+        "AlibiGames.EggingOn"
       ],
       "supportedLanguages": [
         "ar",
@@ -8661,6 +9029,9 @@
       "packageFamilyNames": [
         "GaijinDistributionKft.Enlisted_b4dq0bbj0gjtp"
       ],
+      "packageIdentityNames": [
+        "GaijinDistributionKft.Enlisted"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -8724,6 +9095,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -8779,6 +9151,9 @@
       "packageFamilyNames": [
         "PINESTUDIOd.o.o.EscapeSimulator_kscra663syn50"
       ],
+      "packageIdentityNames": [
+        "PINESTUDIOd.o.o.EscapeSimulator"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -8833,6 +9208,9 @@
       ],
       "packageFamilyNames": [
         "SecretMode.EscapetheBackrooms_w0mtarpevwbkm"
+      ],
+      "packageIdentityNames": [
+        "SecretMode.EscapetheBackrooms"
       ],
       "supportedLanguages": [
         "ar",
@@ -8894,6 +9272,9 @@
       "packageFamilyNames": [
         "DivertissementsYellowBric.EternalStrands_q812rx0f9vwt8"
       ],
+      "packageIdentityNames": [
+        "DivertissementsYellowBric.EternalStrands"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -8945,6 +9326,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.Fallout1_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Fallout1"
       ],
       "supportedLanguages": [
         "ar",
@@ -8998,6 +9382,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.Fallout2_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Fallout2"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9049,6 +9436,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.Fallout3_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Fallout3"
       ],
       "supportedLanguages": [
         "ar",
@@ -9113,6 +9503,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.Fallout4-CoreGame_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Fallout4-CoreGame"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9168,6 +9561,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.Fallout76-PC_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Fallout76-PC"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9219,6 +9615,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.FalloutNewVegas_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.FalloutNewVegas"
       ],
       "supportedLanguages": [
         "ar",
@@ -9272,6 +9671,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.FalloutTactics_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.FalloutTactics"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9322,6 +9724,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9370,6 +9773,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9421,6 +9825,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9471,6 +9876,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9520,6 +9926,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9571,6 +9978,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9623,6 +10031,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -9684,6 +10093,9 @@
       ],
       "packageFamilyNames": [
         "GIANTSSoftware.FarmingSimulator25PC_fa8jxm5fj0esw"
+      ],
+      "packageIdentityNames": [
+        "GIANTSSoftware.FarmingSimulator25PC"
       ],
       "supportedLanguages": [
         "ar",
@@ -9757,6 +10169,9 @@
       "packageFamilyNames": [
         "Remedy.184765F694B43_a0f1gph4eb81p"
       ],
+      "packageIdentityNames": [
+        "Remedy.184765F694B43"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -9815,6 +10230,9 @@
       "packageFamilyNames": [
         "astragonSoftwareGmbH.FirefightingSimulator-TheSqua_gq6wh0enzmg8j"
       ],
+      "packageIdentityNames": [
+        "astragonSoftwareGmbH.FirefightingSimulator-TheSqua"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -9872,6 +10290,9 @@
       "packageFamilyNames": [
         "39EA002F.FF1DF_n746a19ndrrjg"
       ],
+      "packageIdentityNames": [
+        "39EA002F.FF1DF"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -9920,6 +10341,9 @@
       ],
       "packageFamilyNames": [
         "39EA002F.FF2DF_n746a19ndrrjg"
+      ],
+      "packageIdentityNames": [
+        "39EA002F.FF2DF"
       ],
       "supportedLanguages": [
         "de",
@@ -9977,6 +10401,9 @@
       "packageFamilyNames": [
         "39EA002F.FF3DF_n746a19ndrrjg"
       ],
+      "packageIdentityNames": [
+        "39EA002F.FF3DF"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -10025,6 +10452,9 @@
       ],
       "packageFamilyNames": [
         "39EA002F.FF4DF_n746a19ndrrjg"
+      ],
+      "packageIdentityNames": [
+        "39EA002F.FF4DF"
       ],
       "supportedLanguages": [
         "de",
@@ -10094,6 +10524,9 @@
       "packageFamilyNames": [
         "39EA002F.FF5DF_n746a19ndrrjg"
       ],
+      "packageIdentityNames": [
+        "39EA002F.FF5DF"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -10149,6 +10582,9 @@
       ],
       "packageFamilyNames": [
         "39EA002F.FF6DF_n746a19ndrrjg"
+      ],
+      "packageIdentityNames": [
+        "39EA002F.FF6DF"
       ],
       "supportedLanguages": [
         "de",
@@ -10209,6 +10645,9 @@
       ],
       "packageFamilyNames": [
         "Embark.THEFINALS_kd876xf6dde24"
+      ],
+      "packageIdentityNames": [
+        "Embark.THEFINALS"
       ],
       "supportedLanguages": [
         "ar",
@@ -10276,6 +10715,9 @@
       "packageFamilyNames": [
         "SurgentStudios.FixForce_mm2dcwa91ebjr"
       ],
+      "packageIdentityNames": [
+        "SurgentStudios.FixForce"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -10325,6 +10767,9 @@
       ],
       "packageFamilyNames": [
         "HoodedHorse.Fogpiercer_znaey1dw2bdpr"
+      ],
+      "packageIdentityNames": [
+        "HoodedHorse.Fogpiercer"
       ],
       "supportedLanguages": [
         "cs",
@@ -10379,6 +10824,9 @@
       ],
       "packageFamilyNames": [
         "SportsInteractive.FootballManager26_5w3tn6tb6stnm"
+      ],
+      "packageIdentityNames": [
+        "SportsInteractive.FootballManager26"
       ],
       "supportedLanguages": [
         "ar",
@@ -10449,6 +10897,9 @@
       "packageFamilyNames": [
         "SportsInteractive.FootballManager26Console_5w3tn6tb6stnm"
       ],
+      "packageIdentityNames": [
+        "SportsInteractive.FootballManager26Console"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -10504,6 +10955,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -10567,6 +11019,9 @@
       ],
       "packageFamilyNames": [
         "57209AnnapurnaInteractive.ForeverAgo_c96c51jf6wkvm"
+      ],
+      "packageIdentityNames": [
+        "57209AnnapurnaInteractive.ForeverAgo"
       ],
       "supportedLanguages": [
         "ar",
@@ -10634,6 +11089,9 @@
       "packageFamilyNames": [
         "436609B6.FortniteClient_9ncxwbgmmv7m8"
       ],
+      "packageIdentityNames": [
+        "436609B6.FortniteClient"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -10689,6 +11147,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -10753,6 +11212,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -10825,6 +11285,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -10893,6 +11354,9 @@
       "packageFamilyNames": [
         "NetEaseGamesGlobal.FRAGPUNK_hfc15bhpepnfj"
       ],
+      "packageIdentityNames": [
+        "NetEaseGamesGlobal.FRAGPUNK"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -10959,6 +11423,9 @@
       "packageFamilyNames": [
         "PanicStationsLtd.FrogSqwad_56xjbc6r8v5cr"
       ],
+      "packageIdentityNames": [
+        "PanicStationsLtd.FrogSqwad"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -11022,6 +11489,9 @@
       "packageFamilyNames": [
         "CurveDigital.ForTheKingII_1ezqdnbhnc70m"
       ],
+      "packageIdentityNames": [
+        "CurveDigital.ForTheKingII"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -11079,6 +11549,9 @@
       "packageFamilyNames": [
         "Microsoft.FullThrottleRemastered_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.FullThrottleRemastered"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -11124,6 +11597,9 @@
       ],
       "packageFamilyNames": [
         "Xbox360BackwardCompatibil.PrimaryFuzionFrenzyFuzio_ksqcvrsvwz2jp"
+      ],
+      "packageIdentityNames": [
+        "Xbox360BackwardCompatibil.PrimaryFuzionFrenzyFuzio"
       ],
       "supportedLanguages": [
         "da",
@@ -11223,6 +11699,9 @@
       "packageFamilyNames": [
         "DoubleFineProductionsInc.GangBeasts_s9zt93y1rpe5a"
       ],
+      "packageIdentityNames": [
+        "DoubleFineProductionsInc.GangBeasts"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -11297,6 +11776,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -11377,6 +11857,9 @@
       "packageFamilyNames": [
         "Microsoft.Fairlightbasegame_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Fairlightbasegame"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -11455,6 +11938,9 @@
       "packageFamilyNames": [
         "Microsoft.Pender_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Pender"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -11515,6 +12001,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.SpartaUWP_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.SpartaUWP"
       ],
       "supportedLanguages": [
         "da",
@@ -11580,6 +12069,9 @@
       "packageFamilyNames": [
         "Microsoft.DeltaPC_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.DeltaPC"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -11635,6 +12127,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -11710,6 +12203,9 @@
       "packageFamilyNames": [
         "AvalancheStudios.GenerationZero_m0byj0nmrybdr"
       ],
+      "packageIdentityNames": [
+        "AvalancheStudios.GenerationZero"
+      ],
       "supportedLanguages": [
         "cs",
         "da",
@@ -11760,6 +12256,9 @@
       "packageFamilyNames": [
         "SurpriseAttackPtyLtd.GenesisNoirforWindows_8k24hnfn3vvj0"
       ],
+      "packageIdentityNames": [
+        "SurpriseAttackPtyLtd.GenesisNoirforWindows"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -11807,6 +12306,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en-us",
@@ -11867,6 +12367,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.ProjectSnowfall_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ProjectSnowfall"
       ],
       "supportedLanguages": [
         "ar",
@@ -11938,6 +12441,9 @@
       "packageFamilyNames": [
         "GOALS.GOALS_h042pmsq4z2gc"
       ],
+      "packageIdentityNames": [
+        "GOALS.GOALS"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -11989,6 +12495,9 @@
       ],
       "packageFamilyNames": [
         "CoffeeStainStudios.GoatSimulator3PC_496a1srhmar9w"
+      ],
+      "packageIdentityNames": [
+        "CoffeeStainStudios.GoatSimulator3PC"
       ],
       "supportedLanguages": [
         "ar",
@@ -12049,6 +12558,9 @@
       "packageFamilyNames": [
         "SurpriseAttackPtyLtd.GreatGodGrove_8k24hnfn3vvj0"
       ],
+      "packageIdentityNames": [
+        "SurpriseAttackPtyLtd.GreatGodGrove"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -12093,6 +12605,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.GrimFandangoRemastered_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.GrimFandangoRemastered"
       ],
       "supportedLanguages": [
         "de",
@@ -12151,6 +12666,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.Maine_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.Maine"
       ],
       "supportedLanguages": [
         "da",
@@ -12216,6 +12734,9 @@
       "packageFamilyNames": [
         "Microsoft.OE-Augusta_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.OE-Augusta"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -12263,6 +12784,9 @@
       ],
       "packageFamilyNames": [
         "SupergiantGamesLLC.Hades_q53c1yqmx7pha"
+      ],
+      "packageIdentityNames": [
+        "SupergiantGamesLLC.Hades"
       ],
       "supportedLanguages": [
         "de",
@@ -12314,6 +12838,9 @@
       ],
       "packageFamilyNames": [
         "SupergiantGamesLLC.HadesII_q53c1yqmx7pha"
+      ],
+      "packageIdentityNames": [
+        "SupergiantGamesLLC.HadesII"
       ],
       "supportedLanguages": [
         "de",
@@ -12367,6 +12894,9 @@
       ],
       "packageFamilyNames": [
         "11443ChasingCarrotsGmbHCo.HallsofTorment_xfxtxadz31m7r"
+      ],
+      "packageIdentityNames": [
+        "11443ChasingCarrotsGmbHCo.HallsofTorment"
       ],
       "supportedLanguages": [
         "cs",
@@ -12424,6 +12954,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -12487,6 +13018,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -12541,6 +13073,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.BulldogThreshold_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.BulldogThreshold"
       ],
       "supportedLanguages": [
         "da",
@@ -12608,6 +13143,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "bg",
@@ -12669,6 +13205,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de-de",
         "en-us",
@@ -12712,6 +13249,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de-de",
         "en-us",
@@ -12752,6 +13290,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "da-dk",
@@ -12852,6 +13391,9 @@
       "packageFamilyNames": [
         "BigbenInteractiveSA.HellisUs_tqjv3vrxr8ppw"
       ],
+      "packageIdentityNames": [
+        "BigbenInteractiveSA.HellisUs"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -12915,6 +13457,9 @@
       "packageFamilyNames": [
         "Microsoft.Superb_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Superb"
+      ],
       "supportedLanguages": [
         "ar-sa",
         "cs-cz",
@@ -12976,6 +13521,9 @@
       ],
       "packageFamilyNames": [
         "NinjaTheoryLtd.HellbladeSenuasSacrifice_nkbnxvch6z38g"
+      ],
+      "packageIdentityNames": [
+        "NinjaTheoryLtd.HellbladeSenuasSacrifice"
       ],
       "supportedLanguages": [
         "ar",
@@ -13043,6 +13591,9 @@
       ],
       "packageFamilyNames": [
         "Panic.Herdling_cxbsh0mxg8ggc"
+      ],
+      "packageIdentityNames": [
+        "Panic.Herdling"
       ],
       "supportedLanguages": [
         "ar",
@@ -13120,6 +13671,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.Medusa_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Medusa"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -13170,6 +13724,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -13219,6 +13774,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -13280,6 +13836,9 @@
       "packageFamilyNames": [
         "HoodedHorse.HeroesofMightandMagicOldenEra_znaey1dw2bdpr"
       ],
+      "packageIdentityNames": [
+        "HoodedHorse.HeroesofMightandMagicOldenEra"
+      ],
       "supportedLanguages": [
         "cs",
         "de",
@@ -13328,6 +13887,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -13382,6 +13942,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.Hibiki_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Hibiki"
       ],
       "supportedLanguages": [
         "ar",
@@ -13447,6 +14010,9 @@
       ],
       "packageFamilyNames": [
         "2637SquanchGamesInc.HighonLife_mh7dg3tfmz2cj"
+      ],
+      "packageIdentityNames": [
+        "2637SquanchGamesInc.HighonLife"
       ],
       "supportedLanguages": [
         "ar",
@@ -13527,6 +14093,9 @@
       "packageFamilyNames": [
         "2637SquanchGamesInc.HighOnLife2_mh7dg3tfmz2cj"
       ],
+      "packageIdentityNames": [
+        "2637SquanchGamesInc.HighOnLife2"
+      ],
       "supportedLanguages": [
         "ar",
         "bg",
@@ -13597,6 +14166,9 @@
       ],
       "packageFamilyNames": [
         "WarnerBros.Interactive.PHX_ktmk1xygcecda"
+      ],
+      "packageIdentityNames": [
+        "WarnerBros.Interactive.PHX"
       ],
       "supportedLanguages": [
         "ar",
@@ -13679,6 +14251,9 @@
       "packageFamilyNames": [
         "TeamCherry.15373CD61C66B_y4jvztpgccj42"
       ],
+      "packageIdentityNames": [
+        "TeamCherry.15373CD61C66B"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -13739,6 +14314,9 @@
       "packageFamilyNames": [
         "TeamCherry.HollowKnightSilksong_y4jvztpgccj42"
       ],
+      "packageIdentityNames": [
+        "TeamCherry.HollowKnightSilksong"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -13794,6 +14372,9 @@
       ],
       "packageFamilyNames": [
         "FrozenDistrict.31484101F30E0_qxpxnk1sq3ram"
+      ],
+      "packageIdentityNames": [
+        "FrozenDistrict.31484101F30E0"
       ],
       "supportedLanguages": [
         "cs",
@@ -13864,6 +14445,9 @@
       "packageFamilyNames": [
         "CurveDigital.HumanFallFlat_1ezqdnbhnc70m"
       ],
+      "packageIdentityNames": [
+        "CurveDigital.HumanFallFlat"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -13914,6 +14498,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -13964,6 +14549,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -14033,6 +14619,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.ProjectRelic_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ProjectRelic"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -14099,6 +14688,9 @@
       "packageFamilyNames": [
         "4063811bitstudios.INDIKA_gwy9gn5q9j1y6"
       ],
+      "packageIdentityNames": [
+        "4063811bitstudios.INDIKA"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -14150,6 +14742,9 @@
       "packageFamilyNames": [
         "BeepJapan.inKONBINI_h2va14as5wpxj"
       ],
+      "packageIdentityNames": [
+        "BeepJapan.inKONBINI"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -14199,6 +14794,9 @@
       ],
       "packageFamilyNames": [
         "DevolverDigital.Inscryption_6kzv4j18v0c96"
+      ],
+      "packageIdentityNames": [
+        "DevolverDigital.Inscryption"
       ],
       "supportedLanguages": [
         "ar",
@@ -14257,6 +14855,9 @@
       "packageFamilyNames": [
         "PlaydeadAPS.abc59746-ec6a-44fc-b549-4fce193ec549_2m6wzp0cmt084"
       ],
+      "packageIdentityNames": [
+        "PlaydeadAPS.abc59746-ec6a-44fc-b549-4fce193ec549"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -14311,6 +14912,9 @@
       "packageFamilyNames": [
         "Microsoft.MicrosoftJewel_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.MicrosoftJewel"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -14357,6 +14961,9 @@
       ],
       "packageFamilyNames": [
         "StormcloudGames.Junkster_g2vkrq1hag3ve"
+      ],
+      "packageIdentityNames": [
+        "StormcloudGames.Junkster"
       ],
       "supportedLanguages": [
         "de",
@@ -14411,6 +15018,9 @@
       ],
       "packageFamilyNames": [
         "FrontierDevelopmentsPlc.1986275F2F4D_ft442cafaz8hg"
+      ],
+      "packageIdentityNames": [
+        "FrontierDevelopmentsPlc.1986275F2F4D"
       ],
       "supportedLanguages": [
         "ar",
@@ -14477,6 +15087,9 @@
       "packageFamilyNames": [
         "19886SeavenStudio.KabutoPark_fahzzgrzfd3xc"
       ],
+      "packageIdentityNames": [
+        "19886SeavenStudio.KabutoPark"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -14529,6 +15142,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.PaganIdol_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.PaganIdol"
       ],
       "supportedLanguages": [
         "ar",
@@ -14606,6 +15222,9 @@
       "packageFamilyNames": [
         "WhitethornDigital.KernelHearts_wm90jk67xa6wg"
       ],
+      "packageIdentityNames": [
+        "WhitethornDigital.KernelHearts"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -14655,6 +15274,9 @@
       ],
       "packageFamilyNames": [
         "tinyBuildGames.KillItWithFire2_3sz1pp2ynv2xe"
+      ],
+      "packageIdentityNames": [
+        "tinyBuildGames.KillItWithFire2"
       ],
       "supportedLanguages": [
         "ar",
@@ -14707,6 +15329,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -14766,6 +15389,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.HawaiiWest_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.HawaiiWest"
       ],
       "supportedLanguages": [
         "ar",
@@ -14832,6 +15458,9 @@
       ],
       "packageFamilyNames": [
         "DeepSilver.KingdomComeDeliverance_hmv7qcest37me"
+      ],
+      "packageIdentityNames": [
+        "DeepSilver.KingdomComeDeliverance"
       ],
       "supportedLanguages": [
         "ar",
@@ -14908,6 +15537,9 @@
       ],
       "packageFamilyNames": [
         "DeepSilver.77536C3FE941_hmv7qcest37me"
+      ],
+      "packageIdentityNames": [
+        "DeepSilver.77536C3FE941"
       ],
       "supportedLanguages": [
         "ar",
@@ -14986,6 +15618,9 @@
       "packageFamilyNames": [
         "RawFury.0a615e32-96fb-4bd7-a194-f1dc1fdb4f1f_9s0pnehqffj7t"
       ],
+      "packageIdentityNames": [
+        "RawFury.0a615e32-96fb-4bd7-a194-f1dc1fdb4f1f"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -15045,6 +15680,9 @@
       "packageFamilyNames": [
         "39C668CD.LaraCroftToOBaseGame_r7bfsmp40f67j"
       ],
+      "packageIdentityNames": [
+        "39C668CD.LaraCroftToOBaseGame"
+      ],
       "supportedLanguages": [
         "da",
         "de",
@@ -15090,6 +15728,7 @@
         "ConsoleKeyboardMouse"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -15145,6 +15784,9 @@
       "packageFamilyNames": [
         "39EA002F.LOMDF_n746a19ndrrjg"
       ],
+      "packageIdentityNames": [
+        "39EA002F.LOMDF"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -15195,6 +15837,7 @@
         "OnlineMultiplayerWithGold"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -15249,6 +15892,9 @@
       ],
       "packageFamilyNames": [
         "WarnerBros.Interactive.LEGOStarWarsTheSkywalkerSag_ktmk1xygcecda"
+      ],
+      "packageIdentityNames": [
+        "WarnerBros.Interactive.LEGOStarWarsTheSkywalkerSag"
       ],
       "supportedLanguages": [
         "ar",
@@ -15319,6 +15965,9 @@
       "packageFamilyNames": [
         "SEGAofAmericaInc.ProjectElvis_s751p9cej88mt"
       ],
+      "packageIdentityNames": [
+        "SEGAofAmericaInc.ProjectElvis"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -15382,6 +16031,9 @@
       "packageFamilyNames": [
         "SEGAofAmericaInc.s1b05f489rw_s751p9cej88mt"
       ],
+      "packageIdentityNames": [
+        "SEGAofAmericaInc.s1b05f489rw"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -15442,6 +16094,9 @@
       "packageFamilyNames": [
         "16902PlaydeadAPS.PlaydeadsLIMBO_2m6wzp0cmt084"
       ],
+      "packageIdentityNames": [
+        "16902PlaydeadAPS.PlaydeadsLIMBO"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -15495,6 +16150,9 @@
       ],
       "packageFamilyNames": [
         "DoubleDaggerStudio.33389DEE9C2FF_gnfvbrdh3f00m"
+      ],
+      "packageIdentityNames": [
+        "DoubleDaggerStudio.33389DEE9C2FF"
       ],
       "supportedLanguages": [
         "de",
@@ -15550,6 +16208,9 @@
       ],
       "packageFamilyNames": [
         "NAMCOBANDAIGamesInc.LittleNightmaresEnhancedEditio_gdy2aq6ez762w"
+      ],
+      "packageIdentityNames": [
+        "NAMCOBANDAIGamesInc.LittleNightmaresEnhancedEditio"
       ],
       "supportedLanguages": [
         "ar",
@@ -15621,6 +16282,9 @@
       "packageFamilyNames": [
         "DONTNODEntertainment.ReunionUNI_1t8sv8k1cftdw"
       ],
+      "packageIdentityNames": [
+        "DONTNODEntertainment.ReunionUNI"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -15680,6 +16344,9 @@
       ],
       "packageFamilyNames": [
         "Kwalee.LunaAbyss_bm08s5vda6r86"
+      ],
+      "packageIdentityNames": [
+        "Kwalee.LunaAbyss"
       ],
       "supportedLanguages": [
         "ar",
@@ -15742,6 +16409,9 @@
       "packageFamilyNames": [
         "19886SeavenStudio.MinishootAdventures_fahzzgrzfd3xc"
       ],
+      "packageIdentityNames": [
+        "19886SeavenStudio.MinishootAdventures"
+      ],
       "supportedLanguages": [
         "cs",
         "da",
@@ -15802,6 +16472,9 @@
       "packageFamilyNames": [
         "SecretMissionGames.MadKingRedemption_saae0tx556fm8"
       ],
+      "packageIdentityNames": [
+        "SecretMissionGames.MadKingRedemption"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -15851,6 +16524,9 @@
       ],
       "packageFamilyNames": [
         "HoodedHorse.ManorLords_znaey1dw2bdpr"
+      ],
+      "packageIdentityNames": [
+        "HoodedHorse.ManorLords"
       ],
       "supportedLanguages": [
         "cs",
@@ -15916,6 +16592,9 @@
       "packageFamilyNames": [
         "DotEmu.Poutine_map6zyh9ym1xy"
       ],
+      "packageIdentityNames": [
+        "DotEmu.Poutine"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -15978,6 +16657,9 @@
       "packageFamilyNames": [
         "CascadeInteractive.MAVRIX_amdnfty3c9vb6"
       ],
+      "packageIdentityNames": [
+        "CascadeInteractive.MAVRIX"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -16025,6 +16707,9 @@
       ],
       "packageFamilyNames": [
         "PiranhaGamesInc.MechWarrior5Clans_skpx0jhaqqap2"
+      ],
+      "packageIdentityNames": [
+        "PiranhaGamesInc.MechWarrior5Clans"
       ],
       "supportedLanguages": [
         "de",
@@ -16077,6 +16762,9 @@
       "packageFamilyNames": [
         "PiranhaGamesInc.MechWarrior5Mercenaries_skpx0jhaqqap2"
       ],
+      "packageIdentityNames": [
+        "PiranhaGamesInc.MechWarrior5Mercenaries"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -16128,6 +16816,9 @@
       ],
       "packageFamilyNames": [
         "ToplitzProductionsGmbH.MedievalDynasty_xk3erba5yp89y"
+      ],
+      "packageIdentityNames": [
+        "ToplitzProductionsGmbH.MedievalDynasty"
       ],
       "supportedLanguages": [
         "ar",
@@ -16190,6 +16881,9 @@
       "packageFamilyNames": [
         "FocusHomeInteractiveSA.MioMemoriesinOrbit_4hny5m903y3g0"
       ],
+      "packageIdentityNames": [
+        "FocusHomeInteractiveSA.MioMemoriesinOrbit"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -16245,6 +16939,9 @@
       "packageFamilyNames": [
         "Microsoft.MicrosoftBubble_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.MicrosoftBubble"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -16292,6 +16989,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "de-de",
@@ -16362,6 +17060,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar-eg",
         "ar-ma",
@@ -16434,6 +17133,9 @@
       "packageFamilyNames": [
         "Microsoft.MicrosoftMahjong_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.MicrosoftMahjong"
+      ],
       "supportedLanguages": [
         "da-dk",
         "de-de",
@@ -16494,6 +17196,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.MicrosoftSolitaireCollection_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.MicrosoftSolitaireCollection"
       ],
       "supportedLanguages": [
         "af-za",
@@ -16595,6 +17300,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "de-de",
@@ -16659,6 +17365,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -16716,6 +17423,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "bg",
         "cs",
@@ -16781,6 +17489,9 @@
       "packageFamilyNames": [
         "Microsoft.MinecraftWindowsBeta_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.MinecraftWindowsBeta"
+      ],
       "supportedLanguages": [
         "bg",
         "cs",
@@ -16842,6 +17553,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "bg",
         "cs",
@@ -16921,6 +17633,9 @@
       "packageFamilyNames": [
         "SkystoneGamesPte.Ltd.ProjectST_yfeknztbva99g"
       ],
+      "packageIdentityNames": [
+        "SkystoneGamesPte.Ltd.ProjectST"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -16972,6 +17687,9 @@
       "packageFamilyNames": [
         "AnnapurnaInteractive.BlueMoonLagoon_c96c51jf6wkvm"
       ],
+      "packageIdentityNames": [
+        "AnnapurnaInteractive.BlueMoonLagoon"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -17022,6 +17740,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -17083,6 +17802,9 @@
       "packageFamilyNames": [
         "Team17DigitalLimited.MonsterSanctuaryWin10_j5x4vj4y67jhc"
       ],
+      "packageIdentityNames": [
+        "Team17DigitalLimited.MonsterSanctuaryWin10"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -17138,6 +17860,9 @@
       ],
       "packageFamilyNames": [
         "69C22BB6.Project-TITAN_8ekbzbj4dakee"
+      ],
+      "packageIdentityNames": [
+        "69C22BB6.Project-TITAN"
       ],
       "supportedLanguages": [
         "ar",
@@ -17197,6 +17922,9 @@
       ],
       "packageFamilyNames": [
         "RawFury.MonstersareComingRockRoad_9s0pnehqffj7t"
+      ],
+      "packageIdentityNames": [
+        "RawFury.MonstersareComingRockRoad"
       ],
       "supportedLanguages": [
         "da",
@@ -17265,6 +17993,9 @@
       "packageFamilyNames": [
         "WarnerBros.Interactive.K1Codename_ktmk1xygcecda"
       ],
+      "packageIdentityNames": [
+        "WarnerBros.Interactive.K1Codename"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -17328,6 +18059,9 @@
       "packageFamilyNames": [
         "TopHatStudiosInc.MOTORSLICE_93vj94f8vfryy"
       ],
+      "packageIdentityNames": [
+        "TopHatStudiosInc.MOTORSLICE"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -17385,6 +18119,9 @@
       ],
       "packageFamilyNames": [
         "Team17DigitalLimited.ProjectJourney_j5x4vj4y67jhc"
+      ],
+      "packageIdentityNames": [
+        "Team17DigitalLimited.ProjectJourney"
       ],
       "supportedLanguages": [
         "ar",
@@ -17449,6 +18186,9 @@
       "packageFamilyNames": [
         "4063811bitstudios.Moonlighter2_gwy9gn5q9j1y6"
       ],
+      "packageIdentityNames": [
+        "4063811bitstudios.Moonlighter2"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -17498,6 +18238,9 @@
       ],
       "packageFamilyNames": [
         "11bitstudios.20925BA3921E0_gwy9gn5q9j1y6"
+      ],
+      "packageIdentityNames": [
+        "11bitstudios.20925BA3921E0"
       ],
       "supportedLanguages": [
         "da",
@@ -17566,6 +18309,9 @@
       "packageFamilyNames": [
         "NetEaseGamesGlobal.NARAKABLADEPOINT_hfc15bhpepnfj"
       ],
+      "packageIdentityNames": [
+        "NetEaseGamesGlobal.NARAKABLADEPOINT"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -17622,6 +18368,9 @@
       "packageFamilyNames": [
         "KeplerInteractive.NeonAbyss3_ymj30pw7xe604"
       ],
+      "packageIdentityNames": [
+        "KeplerInteractive.NeonAbyss3"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -17674,6 +18423,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -17732,6 +18482,9 @@
       "packageFamilyNames": [
         "PlayfulCorp.49013BFBD8849_7n7np5b8s1z70"
       ],
+      "packageIdentityNames": [
+        "PlayfulCorp.49013BFBD8849"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -17782,6 +18535,9 @@
       ],
       "packageFamilyNames": [
         "LEVEL-5Inc.NinoKuniIIRevenantKingdom_dwd6sh9x0mt8j"
+      ],
+      "packageIdentityNames": [
+        "LEVEL-5Inc.NinoKuniIIRevenantKingdom"
       ],
       "supportedLanguages": [
         "ar",
@@ -17851,6 +18607,9 @@
       ],
       "packageFamilyNames": [
         "LEVEL-5Inc.NinoKuniWrathoftheWhiteWitchRemastered_dwd6sh9x0mt8j"
+      ],
+      "packageIdentityNames": [
+        "LEVEL-5Inc.NinoKuniWrathoftheWhiteWitchRemastered"
       ],
       "supportedLanguages": [
         "ar",
@@ -17923,6 +18682,9 @@
       "packageFamilyNames": [
         "GameMillEntertainment.NickelodeonAll-StarBrawl2_2wr6d09xrf0qt"
       ],
+      "packageIdentityNames": [
+        "GameMillEntertainment.NickelodeonAll-StarBrawl2"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -17989,6 +18751,9 @@
       ],
       "packageFamilyNames": [
         "RedCandleGames.NineSols_10t6522ex6jht"
+      ],
+      "packageIdentityNames": [
+        "RedCandleGames.NineSols"
       ],
       "supportedLanguages": [
         "de",
@@ -18062,6 +18827,9 @@
       "packageFamilyNames": [
         "946B6A6E.NINJAGAIDEN2Black_dkffhzhmh6pmy"
       ],
+      "packageIdentityNames": [
+        "946B6A6E.NINJAGAIDEN2Black"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -18121,6 +18889,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -18186,6 +18955,9 @@
       ],
       "packageFamilyNames": [
         "DotEmu.NINJAGAIDENRagebound_map6zyh9ym1xy"
+      ],
+      "packageIdentityNames": [
+        "DotEmu.NINJAGAIDENRagebound"
       ],
       "supportedLanguages": [
         "da",
@@ -18258,6 +19030,9 @@
       "packageFamilyNames": [
         "HelloGames.NoMansSky_bs190hzg1sesy"
       ],
+      "packageIdentityNames": [
+        "HelloGames.NoMansSky"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -18307,6 +19082,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -18369,6 +19145,9 @@
       "packageFamilyNames": [
         "NetEaseGamesGlobal.OnceHuman_hfc15bhpepnfj"
       ],
+      "packageIdentityNames": [
+        "NetEaseGamesGlobal.OnceHuman"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -18425,6 +19204,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.OriandtheBlindForestDefinitiveEdition_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.OriandtheBlindForestDefinitiveEdition"
       ],
       "supportedLanguages": [
         "de-de",
@@ -18483,6 +19265,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.Patagonia_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.Patagonia"
       ],
       "supportedLanguages": [
         "cs",
@@ -18550,6 +19335,9 @@
       "packageFamilyNames": [
         "SquareGladeGamesPublishin.Outbound_nznfhvp4bzmv2"
       ],
+      "packageIdentityNames": [
+        "SquareGladeGamesPublishin.Outbound"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -18604,6 +19392,9 @@
       ],
       "packageFamilyNames": [
         "Team17DigitalLimited.Overcooked2Win10_j5x4vj4y67jhc"
+      ],
+      "packageIdentityNames": [
+        "Team17DigitalLimited.Overcooked2Win10"
       ],
       "supportedLanguages": [
         "ar",
@@ -18666,6 +19457,9 @@
       "packageFamilyNames": [
         "MaximumGames.Overthrown_m3ge13txchggy"
       ],
+      "packageIdentityNames": [
+        "MaximumGames.Overthrown"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -18721,6 +19515,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -18787,6 +19582,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -18853,6 +19649,9 @@
       ],
       "packageFamilyNames": [
         "SEGAofAmericaInc.F0cb6b3aer_s751p9cej88mt"
+      ],
+      "packageIdentityNames": [
+        "SEGAofAmericaInc.F0cb6b3aer"
       ],
       "supportedLanguages": [
         "ar",
@@ -18932,6 +19731,9 @@
       "packageFamilyNames": [
         "PocketpairInc.Palworld_ad4psfrxyesvt"
       ],
+      "packageIdentityNames": [
+        "PocketpairInc.Palworld"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -18992,6 +19794,9 @@
       "packageFamilyNames": [
         "MainframeIndustries.PaxDei_3e7sahakjh4ry"
       ],
+      "packageIdentityNames": [
+        "MainframeIndustries.PaxDei"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -19044,6 +19849,9 @@
       ],
       "packageFamilyNames": [
         "FarSightStudios.269678C2D14DD_350f9h8cddftt"
+      ],
+      "packageIdentityNames": [
+        "FarSightStudios.269678C2D14DD"
       ],
       "supportedLanguages": [
         "ar",
@@ -19103,6 +19911,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.OE-Missouri_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.OE-Missouri"
       ],
       "supportedLanguages": [
         "da",
@@ -19171,6 +19982,9 @@
       "packageFamilyNames": [
         "OutrightGames.MyFriendPeppaPig_bnrbc155f0j86"
       ],
+      "packageIdentityNames": [
+        "OutrightGames.MyFriendPeppaPig"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -19237,6 +20051,9 @@
       "packageFamilyNames": [
         "SnapshotGames.PhoenixPoint_xxvrk32m0sthm"
       ],
+      "packageIdentityNames": [
+        "SnapshotGames.PhoenixPoint"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -19291,6 +20108,9 @@
       "packageFamilyNames": [
         "tinyBuildGames.PigeonSimulator_3sz1pp2ynv2xe"
       ],
+      "packageIdentityNames": [
+        "tinyBuildGames.PigeonSimulator"
+      ],
       "supportedLanguages": [
         "en"
       ],
@@ -19328,6 +20148,9 @@
       ],
       "packageFamilyNames": [
         "VersusEvil.PillarsofEternity2-PC_xa16sj1v690xg"
+      ],
+      "packageIdentityNames": [
+        "VersusEvil.PillarsofEternity2-PC"
       ],
       "supportedLanguages": [
         "de",
@@ -19369,6 +20192,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -19419,6 +20243,9 @@
       ],
       "packageFamilyNames": [
         "FrontierDevelopmentsPlc.FDNewton_ft442cafaz8hg"
+      ],
+      "packageIdentityNames": [
+        "FrontierDevelopmentsPlc.FDNewton"
       ],
       "supportedLanguages": [
         "ar",
@@ -19482,6 +20309,9 @@
       ],
       "packageFamilyNames": [
         "Thunderful.4612712B15870_8j53pwgd019sy"
+      ],
+      "packageIdentityNames": [
+        "Thunderful.4612712B15870"
       ],
       "supportedLanguages": [
         "ar",
@@ -19549,6 +20379,9 @@
       "packageFamilyNames": [
         "YogscastGames.PlateUp_68gs7gbvws9cw"
       ],
+      "packageIdentityNames": [
+        "YogscastGames.PlateUp"
+      ],
       "supportedLanguages": [
         "da",
         "de",
@@ -19610,6 +20443,9 @@
       ],
       "packageFamilyNames": [
         "astragonSoftwareGmbH.PoliceSimulator21_gq6wh0enzmg8j"
+      ],
+      "packageIdentityNames": [
+        "astragonSoftwareGmbH.PoliceSimulator21"
       ],
       "supportedLanguages": [
         "ar",
@@ -19675,6 +20511,9 @@
       "packageFamilyNames": [
         "FuturLabLtd.PowerWashSimulator2_2xkwfxww5pj0p"
       ],
+      "packageIdentityNames": [
+        "FuturLabLtd.PowerWashSimulator2"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -19733,6 +20572,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.LiluDallas-Multipass_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.LiluDallas-Multipass"
+      ],
       "supportedLanguages": [
         "da",
         "de",
@@ -19789,6 +20631,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -19845,6 +20688,9 @@
       "packageFamilyNames": [
         "Microsoft.PsychonautsforWindows10_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.PsychonautsforWindows10"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -19894,6 +20740,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.Psychonauts2_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.Psychonauts2"
       ],
       "supportedLanguages": [
         "ar",
@@ -19969,6 +20818,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.ProjectSilver_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ProjectSilver"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -20021,6 +20873,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.Quake4_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Quake4"
       ],
       "supportedLanguages": [
         "ar",
@@ -20089,6 +20944,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.ProjAthena_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ProjAthena"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -20142,6 +21000,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.Quake3_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Quake3"
       ],
       "supportedLanguages": [
         "ar",
@@ -20198,6 +21059,9 @@
       "packageFamilyNames": [
         "Microsoft.QuantumBreak_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.QuantumBreak"
+      ],
       "supportedLanguages": [
         "de-de",
         "en-us",
@@ -20247,6 +21111,9 @@
       ],
       "packageFamilyNames": [
         "DevolverDigital.QuarantineZoneTheLastCheck_6kzv4j18v0c96"
+      ],
+      "packageIdentityNames": [
+        "DevolverDigital.QuarantineZoneTheLastCheck"
       ],
       "supportedLanguages": [
         "de",
@@ -20304,6 +21171,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "de",
@@ -20362,6 +21230,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.RAGE2-PC_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.RAGE2-PC"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -20412,6 +21283,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -20470,6 +21342,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.ReCore_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.ReCore"
       ],
       "supportedLanguages": [
         "da",
@@ -20538,6 +21413,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.Redfall_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Redfall"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -20603,6 +21481,9 @@
       "packageFamilyNames": [
         "RogueSnail.RelicHuntersLegend_dggt205vb1at6"
       ],
+      "packageIdentityNames": [
+        "RogueSnail.RelicHuntersLegend"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -20657,6 +21538,9 @@
       "packageFamilyNames": [
         "Nyamakop.Relooted_ct7da1sa19tgr"
       ],
+      "packageIdentityNames": [
+        "Nyamakop.Relooted"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -20706,6 +21590,9 @@
       ],
       "packageFamilyNames": [
         "SLOCLAP.ProjectRuntime_cse8z5zpmcvkt"
+      ],
+      "packageIdentityNames": [
+        "SLOCLAP.ProjectRuntime"
       ],
       "supportedLanguages": [
         "ar",
@@ -20767,6 +21654,9 @@
       "packageFamilyNames": [
         "PerfectWorldEntertainment.GFREMP2_jrajkyc4tsa6w"
       ],
+      "packageIdentityNames": [
+        "PerfectWorldEntertainment.GFREMP2"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -20817,6 +21707,9 @@
       ],
       "packageFamilyNames": [
         "Thunderful.REPLACED-Game_8j53pwgd019sy"
+      ],
+      "packageIdentityNames": [
+        "Thunderful.REPLACED-Game"
       ],
       "supportedLanguages": [
         "ar",
@@ -20896,6 +21789,9 @@
       "packageFamilyNames": [
         "F024294D.GAMEResidentEvil2biohazard2_8fty0by30jkny"
       ],
+      "packageIdentityNames": [
+        "F024294D.GAMEResidentEvil2biohazard2"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -20973,6 +21869,9 @@
       "packageFamilyNames": [
         "F024294D.1052923506B93_8fty0by30jkny"
       ],
+      "packageIdentityNames": [
+        "F024294D.1052923506B93"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -21028,6 +21927,9 @@
       ],
       "packageFamilyNames": [
         "F024294D.RESIDENTEVIL7biohazard_8fty0by30jkny"
+      ],
+      "packageIdentityNames": [
+        "F024294D.RESIDENTEVIL7biohazard"
       ],
       "supportedLanguages": [
         "ar",
@@ -21092,6 +21994,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -21168,6 +22071,9 @@
       ],
       "packageFamilyNames": [
         "FocusHomeInteractiveSA.APlagueTaleFelons_4hny5m903y3g0"
+      ],
+      "packageIdentityNames": [
+        "FocusHomeInteractiveSA.APlagueTaleFelons"
       ],
       "supportedLanguages": [
         "ar",
@@ -21247,6 +22153,9 @@
       "packageFamilyNames": [
         "Microsoft.Pleasantville_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Pleasantville"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -21288,6 +22197,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.ReturntoCastleWolfenstein_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ReturntoCastleWolfenstein"
       ],
       "supportedLanguages": [
         "ar",
@@ -21339,6 +22251,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -21395,6 +22308,9 @@
       "packageFamilyNames": [
         "Microsoft.MSOrtus_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.MSOrtus"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -21445,6 +22361,9 @@
       ],
       "packageFamilyNames": [
         "FocusHomeInteractiveSA.Roadbuilder_4hny5m903y3g0"
+      ],
+      "packageIdentityNames": [
+        "FocusHomeInteractiveSA.Roadbuilder"
       ],
       "supportedLanguages": [
         "ar",
@@ -21506,6 +22425,9 @@
       ],
       "packageFamilyNames": [
         "OroInteractive.RoadsideResearch_z7bgc74zqm87r"
+      ],
+      "packageIdentityNames": [
+        "OroInteractive.RoadsideResearch"
       ],
       "supportedLanguages": [
         "da-dk",
@@ -21604,6 +22526,9 @@
       "packageFamilyNames": [
         "BigbenInteractiveSA.RoboCopRogueCity_tqjv3vrxr8ppw"
       ],
+      "packageIdentityNames": [
+        "BigbenInteractiveSA.RoboCopRogueCity"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -21676,6 +22601,9 @@
       "packageFamilyNames": [
         "RyseupStudios.Roboquest_gdfnzxafmssey"
       ],
+      "packageIdentityNames": [
+        "RyseupStudios.Roboquest"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -21734,6 +22662,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -21793,6 +22722,9 @@
       ],
       "packageFamilyNames": [
         "RawFury.ROUTINE_9s0pnehqffj7t"
+      ],
+      "packageIdentityNames": [
+        "RawFury.ROUTINE"
       ],
       "supportedLanguages": [
         "ar",
@@ -21866,6 +22798,9 @@
       "packageFamilyNames": [
         "JagexLimited.Dominion_srxstwq7wczqa"
       ],
+      "packageIdentityNames": [
+        "JagexLimited.Dominion"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -21918,6 +22853,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.RushHD_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.RushHD"
       ],
       "supportedLanguages": [
         "cs",
@@ -21983,6 +22921,9 @@
       "packageFamilyNames": [
         "NuggetsEntertainmentAB.RVThereYet_4kh8ecef8wxy6"
       ],
+      "packageIdentityNames": [
+        "NuggetsEntertainmentAB.RVThereYet"
+      ],
       "supportedLanguages": [
         "cs",
         "de",
@@ -22036,6 +22977,9 @@
       ],
       "packageFamilyNames": [
         "HoodedHorse.Sandustry_znaey1dw2bdpr"
+      ],
+      "packageIdentityNames": [
+        "HoodedHorse.Sandustry"
       ],
       "supportedLanguages": [
         "cs",
@@ -22110,6 +23054,9 @@
       "packageFamilyNames": [
         "Microsoft.SeaofThieves_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.SeaofThieves"
+      ],
       "supportedLanguages": [
         "de",
         "de-de",
@@ -22177,6 +23124,9 @@
       "packageFamilyNames": [
         "ParadoxInteractive.ProjectChicagoPC_zfnrdv2de78ny"
       ],
+      "packageIdentityNames": [
+        "ParadoxInteractive.ProjectChicagoPC"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -22235,6 +23185,9 @@
       "packageFamilyNames": [
         "ParadoxInteractive.5456591216EE3_zfnrdv2de78ny"
       ],
+      "packageIdentityNames": [
+        "ParadoxInteractive.5456591216EE3"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -22292,6 +23245,9 @@
       ],
       "packageFamilyNames": [
         "ParadoxInteractive.619109D7ECF6C_zfnrdv2de78ny"
+      ],
+      "packageIdentityNames": [
+        "ParadoxInteractive.619109D7ECF6C"
       ],
       "supportedLanguages": [
         "ar",
@@ -22360,6 +23316,9 @@
       "packageFamilyNames": [
         "Neowiz.ShapeofDreams_r4z3116tdh636"
       ],
+      "packageIdentityNames": [
+        "Neowiz.ShapeofDreams"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -22417,6 +23376,9 @@
       "packageFamilyNames": [
         "GagonfeGames.Shelldiver_aggwv88gz6xky"
       ],
+      "packageIdentityNames": [
+        "GagonfeGames.Shelldiver"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -22469,6 +23431,9 @@
       "packageFamilyNames": [
         "Kwalee.ShiftAtMidnight_bm08s5vda6r86"
       ],
+      "packageIdentityNames": [
+        "Kwalee.ShiftAtMidnight"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -22519,6 +23484,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -22586,6 +23552,9 @@
       "packageFamilyNames": [
         "TheSleddingCorporation.SleddingGame_g4nyq0pha60n2"
       ],
+      "packageIdentityNames": [
+        "TheSleddingCorporation.SleddingGame"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -22640,6 +23609,9 @@
       ],
       "packageFamilyNames": [
         "Hi-RezStudios.SMITE2_p28r5ym6szaxr"
+      ],
+      "packageIdentityNames": [
+        "Hi-RezStudios.SMITE2"
       ],
       "supportedLanguages": [
         "ar",
@@ -22697,6 +23669,9 @@
       ],
       "packageFamilyNames": [
         "FocusHomeInteractiveSA.SnowRunnerWindows10_4hny5m903y3g0"
+      ],
+      "packageIdentityNames": [
+        "FocusHomeInteractiveSA.SnowRunnerWindows10"
       ],
       "supportedLanguages": [
         "ar",
@@ -22763,6 +23738,9 @@
       "packageFamilyNames": [
         "rokapublish.Solarpunk_6q4vfhsywtz4j"
       ],
+      "packageIdentityNames": [
+        "rokapublish.Solarpunk"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -22828,6 +23806,9 @@
       "packageFamilyNames": [
         "Microsoft.XGSMidnight_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.XGSMidnight"
+      ],
       "supportedLanguages": [
         "cs",
         "da",
@@ -22881,6 +23862,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -22929,6 +23911,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -22996,6 +23979,9 @@
       ],
       "packageFamilyNames": [
         "FocusHomeInteractiveSA.Magnus_4hny5m903y3g0"
+      ],
+      "packageIdentityNames": [
+        "FocusHomeInteractiveSA.Magnus"
       ],
       "supportedLanguages": [
         "ar",
@@ -23069,6 +24055,9 @@
       "packageFamilyNames": [
         "tinyBuildGames.Speedrunners2KingofSpeed_3sz1pp2ynv2xe"
       ],
+      "packageIdentityNames": [
+        "tinyBuildGames.Speedrunners2KingofSpeed"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -23124,6 +24113,9 @@
       ],
       "packageFamilyNames": [
         "38985CA0.SpyroReignitedTrilogyGamePC_5bkah9njm3e9g"
+      ],
+      "packageIdentityNames": [
+        "38985CA0.SpyroReignitedTrilogyGamePC"
       ],
       "supportedLanguages": [
         "ar",
@@ -23188,6 +24180,9 @@
       "packageFamilyNames": [
         "18814NAISU.SupermarketSimulator_79azw0v9jg4wg"
       ],
+      "packageIdentityNames": [
+        "18814NAISU.SupermarketSimulator"
+      ],
       "supportedLanguages": [
         "cs",
         "da",
@@ -23245,6 +24240,9 @@
       ],
       "packageFamilyNames": [
         "RawFury.StarTrucker_9s0pnehqffj7t"
+      ],
+      "packageIdentityNames": [
+        "RawFury.StarTrucker"
       ],
       "supportedLanguages": [
         "bg",
@@ -23305,6 +24303,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -23358,6 +24357,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -23403,6 +24403,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -23457,6 +24458,9 @@
       ],
       "packageFamilyNames": [
         "ConcernedApe.StardewValleyPC_0c8vynj4cqe4e"
+      ],
+      "packageIdentityNames": [
+        "ConcernedApe.StardewValleyPC"
       ],
       "supportedLanguages": [
         "da",
@@ -23516,6 +24520,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.ProjectGold_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ProjectGold"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -23566,6 +24573,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -23634,6 +24642,9 @@
       "packageFamilyNames": [
         "Seasun.StarsandIsland_9hmq81wk0e54r"
       ],
+      "packageIdentityNames": [
+        "Seasun.StarsandIsland"
+      ],
       "supportedLanguages": [
         "en",
         "ja",
@@ -23682,6 +24693,9 @@
       ],
       "packageFamilyNames": [
         "DevolverDigital.Starseeker_6kzv4j18v0c96"
+      ],
+      "packageIdentityNames": [
+        "DevolverDigital.Starseeker"
       ],
       "supportedLanguages": [
         "ar",
@@ -23752,6 +24766,9 @@
       "packageFamilyNames": [
         "Microsoft.Dayton_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Dayton"
+      ],
       "supportedLanguages": [
         "da",
         "de-de",
@@ -23801,6 +24818,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -23862,6 +24880,9 @@
       "packageFamilyNames": [
         "UnknownWorldsEntertainmen.Subnautica2_bh1f6rvenfkm2"
       ],
+      "packageIdentityNames": [
+        "UnknownWorldsEntertainmen.Subnautica2"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -23910,6 +24931,9 @@
       ],
       "packageFamilyNames": [
         "Microsoft.Sunflower_8wekyb3d8bbwe"
+      ],
+      "packageIdentityNames": [
+        "Microsoft.Sunflower"
       ],
       "supportedLanguages": [
         "de",
@@ -23976,6 +25000,9 @@
       "packageFamilyNames": [
         "Microsoft.AcornUWP_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.AcornUWP"
+      ],
       "supportedLanguages": [
         "cs",
         "da",
@@ -24037,6 +25064,9 @@
       ],
       "packageFamilyNames": [
         "HeadupGames.SuperMeatBoy3D_zedvb25zy7eke"
+      ],
+      "packageIdentityNames": [
+        "HeadupGames.SuperMeatBoy3D"
       ],
       "supportedLanguages": [
         "ar",
@@ -24104,6 +25134,9 @@
       "packageFamilyNames": [
         "SUPERHOTTeam.533673F36228B_hj98apedv0ctt"
       ],
+      "packageIdentityNames": [
+        "SUPERHOTTeam.533673F36228B"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -24160,6 +25193,9 @@
       ],
       "packageFamilyNames": [
         "HeadupGames.Symphonia_zedvb25zy7eke"
+      ],
+      "packageIdentityNames": [
+        "HeadupGames.Symphonia"
       ],
       "supportedLanguages": [
         "ar",
@@ -24219,6 +25255,9 @@
       "packageFamilyNames": [
         "EDGLRD.Tamashika_12f8dba3xwvyj"
       ],
+      "packageIdentityNames": [
+        "EDGLRD.Tamashika"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -24263,6 +25302,9 @@
       ],
       "packageFamilyNames": [
         "OPNEONGAMES.TCGCardShopSimulator_19j6by82ahhzr"
+      ],
+      "packageIdentityNames": [
+        "OPNEONGAMES.TCGCardShopSimulator"
       ],
       "supportedLanguages": [
         "de",
@@ -24313,6 +25355,7 @@
         "CrossPlatformMultiPlayer"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -24357,6 +25400,9 @@
       ],
       "packageFamilyNames": [
         "PaperCult.TearsofMetalNew_wbq91hcmtb512"
+      ],
+      "packageIdentityNames": [
+        "PaperCult.TearsofMetalNew"
       ],
       "supportedLanguages": [
         "da",
@@ -24410,6 +25456,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -24461,6 +25508,9 @@
       ],
       "packageFamilyNames": [
         "TheCultGamesLtd.Tempopo_vnassb3anythc"
+      ],
+      "packageIdentityNames": [
+        "TheCultGamesLtd.Tempopo"
       ],
       "supportedLanguages": [
         "de",
@@ -24515,6 +25565,9 @@
       "packageFamilyNames": [
         "Mythwright.TerraTechLegion_9b483820r0x2c"
       ],
+      "packageIdentityNames": [
+        "Mythwright.TerraTechLegion"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -24567,6 +25620,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.ProjectAltar_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.ProjectAltar"
       ],
       "supportedLanguages": [
         "ar",
@@ -24636,6 +25692,9 @@
       "packageFamilyNames": [
         "4063811bitstudios.TheAlters_gwy9gn5q9j1y6"
       ],
+      "packageIdentityNames": [
+        "4063811bitstudios.TheAlters"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -24698,6 +25757,9 @@
       "packageFamilyNames": [
         "Microsoft.TheBardsTaleARPGRR_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.TheBardsTaleARPGRR"
+      ],
       "supportedLanguages": [
         "de-de",
         "en",
@@ -24735,6 +25797,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -24784,6 +25847,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -24834,6 +25898,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -24884,6 +25949,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.TheElderScrollsAdventuresRedguar_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.TheElderScrollsAdventuresRedguar"
       ],
       "supportedLanguages": [
         "ar",
@@ -24937,6 +26005,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.TESMorrowind-PC_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.TESMorrowind-PC"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -24988,6 +26059,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.TESOblivion-PC_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.TESOblivion-PC"
       ],
       "supportedLanguages": [
         "ar",
@@ -25042,6 +26116,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.SkyrimSE-PC_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.SkyrimSE-PC"
       ],
       "supportedLanguages": [
         "ar",
@@ -25104,6 +26181,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -25160,6 +26238,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.TheEvilWithin-PC_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.TheEvilWithin-PC"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -25214,6 +26295,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.TheEvilWithin2PC_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.TheEvilWithin2PC"
       ],
       "supportedLanguages": [
         "da",
@@ -25284,6 +26368,9 @@
       "packageFamilyNames": [
         "NEXONCompany.20328041E3F1E_vyb81zsg65wm6"
       ],
+      "packageIdentityNames": [
+        "NEXONCompany.20328041E3F1E"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -25337,6 +26424,9 @@
       "packageFamilyNames": [
         "Thunderful.TheGunk_8j53pwgd019sy"
       ],
+      "packageIdentityNames": [
+        "Thunderful.TheGunk"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -25385,6 +26475,9 @@
       ],
       "packageFamilyNames": [
         "27620HinterlandStudio.30233944AADE4_y1bt56c4151zw"
+      ],
+      "packageIdentityNames": [
+        "27620HinterlandStudio.30233944AADE4"
       ],
       "supportedLanguages": [
         "da",
@@ -25440,6 +26533,9 @@
       "packageFamilyNames": [
         "Microsoft.OE-Arkansas_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.OE-Arkansas"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -25493,6 +26589,9 @@
       "packageFamilyNames": [
         "PrivateDivision.64850D0BF098F_hv3d7yfbgr2rp"
       ],
+      "packageIdentityNames": [
+        "PrivateDivision.64850D0BF098F"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -25545,6 +26644,9 @@
       ],
       "packageFamilyNames": [
         "OutrightGames.PatrickSimulator_bnrbc155f0j86"
+      ],
+      "packageIdentityNames": [
+        "OutrightGames.PatrickSimulator"
       ],
       "supportedLanguages": [
         "ar",
@@ -25601,6 +26703,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -25661,6 +26764,9 @@
       "packageFamilyNames": [
         "YogscastGames.TheRoyalWrit_68gs7gbvws9cw"
       ],
+      "packageIdentityNames": [
+        "YogscastGames.TheRoyalWrit"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -25708,6 +26814,7 @@
         "CrossPlatformCoOp"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -25768,6 +26875,9 @@
       "packageFamilyNames": [
         "DevolverDigital.TheTalosPrinciple2_6kzv4j18v0c96"
       ],
+      "packageIdentityNames": [
+        "DevolverDigital.TheTalosPrinciple2"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -25825,6 +26935,9 @@
       "packageFamilyNames": [
         "4063811bitstudios.TheThaumaturge_gwy9gn5q9j1y6"
       ],
+      "packageIdentityNames": [
+        "4063811bitstudios.TheThaumaturge"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -25878,6 +26991,9 @@
       ],
       "packageFamilyNames": [
         "AvalancheStudios.theHunterCalloftheWild-Windows10_m0byj0nmrybdr"
+      ],
+      "packageIdentityNames": [
+        "AvalancheStudios.theHunterCalloftheWild-Windows10"
       ],
       "supportedLanguages": [
         "ar",
@@ -25938,6 +27054,9 @@
       "packageFamilyNames": [
         "SkystoneGames.TinyBookshop_0jsrjq5sfw73t"
       ],
+      "packageIdentityNames": [
+        "SkystoneGames.TinyBookshop"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -25993,6 +27112,9 @@
       "packageFamilyNames": [
         "AnnapurnaInteractive.ToAT_c96c51jf6wkvm"
       ],
+      "packageIdentityNames": [
+        "AnnapurnaInteractive.ToAT"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26046,6 +27168,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26096,6 +27219,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26145,6 +27269,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26193,6 +27318,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26242,6 +27368,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26296,6 +27423,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26351,6 +27479,9 @@
       "packageFamilyNames": [
         "Microsoft.Torment_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Torment"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -26397,6 +27528,9 @@
       ],
       "packageFamilyNames": [
         "Atari.TotalChaos_xka83p2csqhz2"
+      ],
+      "packageIdentityNames": [
+        "Atari.TotalChaos"
       ],
       "supportedLanguages": [
         "ar",
@@ -26462,6 +27596,9 @@
       "packageFamilyNames": [
         "LandfallGames.TotallyAccurateBattleSimulator_r2vq7k2y0v9ct"
       ],
+      "packageIdentityNames": [
+        "LandfallGames.TotallyAccurateBattleSimulator"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -26522,6 +27659,9 @@
       ],
       "packageFamilyNames": [
         "tinyBuildGames.TotallyReliableDeliveryService_3sz1pp2ynv2xe"
+      ],
+      "packageIdentityNames": [
+        "tinyBuildGames.TotallyReliableDeliveryService"
       ],
       "supportedLanguages": [
         "ar",
@@ -26589,6 +27729,9 @@
       "packageFamilyNames": [
         "Microsoft.Belfry_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Belfry"
+      ],
       "supportedLanguages": [
         "cs",
         "da",
@@ -26653,6 +27796,9 @@
       "packageFamilyNames": [
         "MijuGames.ThePlanetCrafter_ta6nvwnbx9v7t"
       ],
+      "packageIdentityNames": [
+        "MijuGames.ThePlanetCrafter"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -26697,6 +27843,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26764,6 +27911,9 @@
       "packageFamilyNames": [
         "Flashbulb.Trailmakers_8a41h19xsg1bm"
       ],
+      "packageIdentityNames": [
+        "Flashbulb.Trailmakers"
+      ],
       "supportedLanguages": [
         "da",
         "de",
@@ -26806,6 +27956,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26867,6 +28018,9 @@
       "packageFamilyNames": [
         "Team17DigitalLimited.Trepang2_j5x4vj4y67jhc"
       ],
+      "packageIdentityNames": [
+        "Team17DigitalLimited.Trepang2"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26916,6 +28070,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -26972,6 +28127,9 @@
       ],
       "packageFamilyNames": [
         "39EA002F.TOMDF_n746a19ndrrjg"
+      ],
+      "packageIdentityNames": [
+        "39EA002F.TOMDF"
       ],
       "supportedLanguages": [
         "ar",
@@ -27030,6 +28188,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -27090,6 +28249,9 @@
       ],
       "packageFamilyNames": [
         "Finji.TUNIC_tys0ffscxatjj"
+      ],
+      "packageIdentityNames": [
+        "Finji.TUNIC"
       ],
       "supportedLanguages": [
         "ar",
@@ -27164,6 +28326,9 @@
       "packageFamilyNames": [
         "CleverEndeavourGames.UltimateSheepRaccoon_ac6mpv00qcagt"
       ],
+      "packageIdentityNames": [
+        "CleverEndeavourGames.UltimateSheepRaccoon"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -27213,6 +28378,9 @@
       ],
       "packageFamilyNames": [
         "DeepSilver.Undisputed_hmv7qcest37me"
+      ],
+      "packageIdentityNames": [
+        "DeepSilver.Undisputed"
       ],
       "supportedLanguages": [
         "ar",
@@ -27272,6 +28440,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -27322,6 +28491,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -27384,6 +28554,9 @@
       "packageFamilyNames": [
         "LyricalGamesLLC.ValorMortis_72fag5ekhk96y"
       ],
+      "packageIdentityNames": [
+        "LyricalGamesLLC.ValorMortis"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -27429,6 +28602,7 @@
         "ConsoleKeyboardMouse"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -27492,6 +28666,9 @@
       "packageFamilyNames": [
         "poncle.VampireCrawlers_9pv5cyp4vwdsr"
       ],
+      "packageIdentityNames": [
+        "poncle.VampireCrawlers"
+      ],
       "supportedLanguages": [
         "ar",
         "de",
@@ -27552,6 +28729,9 @@
       "packageFamilyNames": [
         "poncle.VampireSurvivors_9pv5cyp4vwdsr"
       ],
+      "packageIdentityNames": [
+        "poncle.VampireSurvivors"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -27604,6 +28784,9 @@
       ],
       "packageFamilyNames": [
         "ALIVEInc.VaporWorldOverTheMind-Demo_z4w5acc1gyaka"
+      ],
+      "packageIdentityNames": [
+        "ALIVEInc.VaporWorldOverTheMind-Demo"
       ],
       "supportedLanguages": [
         "da",
@@ -27668,6 +28851,9 @@
       "packageFamilyNames": [
         "SEGAofAmericaInc.a9115ca5cs_s751p9cej88mt"
       ],
+      "packageIdentityNames": [
+        "SEGAofAmericaInc.a9115ca5cs"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -27731,6 +28917,9 @@
       "packageFamilyNames": [
         "39EA002F.VSIONSofMANA_n746a19ndrrjg"
       ],
+      "packageIdentityNames": [
+        "39EA002F.VSIONSofMANA"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -27787,6 +28976,9 @@
       ],
       "packageFamilyNames": [
         "PlayStack.ProjectLima_3wcqaesafpzfy"
+      ],
+      "packageIdentityNames": [
+        "PlayStack.ProjectLima"
       ],
       "supportedLanguages": [
         "ar",
@@ -27900,6 +29092,9 @@
       "packageFamilyNames": [
         "HypeTrainDigital.VoidTrain_7t701d8q7nf00"
       ],
+      "packageIdentityNames": [
+        "HypeTrainDigital.VoidTrain"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -27961,6 +29156,9 @@
       "packageFamilyNames": [
         "GaijinDistributionKft.61164cd5-5ded-41a2-9410-6bd1_b4dq0bbj0gjtp"
       ],
+      "packageIdentityNames": [
+        "GaijinDistributionKft.61164cd5-5ded-41a2-9410-6bd1"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -28010,6 +29208,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -28054,6 +29253,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -28098,6 +29298,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "de",
         "en",
@@ -28152,6 +29353,9 @@
       ],
       "packageFamilyNames": [
         "OwlcatGames.3387926822CE4_197r75gc6ce9t"
+      ],
+      "packageIdentityNames": [
+        "OwlcatGames.3387926822CE4"
       ],
       "supportedLanguages": [
         "ar",
@@ -28220,6 +29424,9 @@
       "packageFamilyNames": [
         "FatsharkAB.Warhammer40000DarktideNew_hwm6pnepa3ng2"
       ],
+      "packageIdentityNames": [
+        "FatsharkAB.Warhammer40000DarktideNew"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -28275,6 +29482,9 @@
       "packageFamilyNames": [
         "7286ShiroGamesSAS.Wartales_esjzrp5ntrs52"
       ],
+      "packageIdentityNames": [
+        "7286ShiroGamesSAS.Wartales"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -28320,6 +29530,9 @@
       ],
       "packageFamilyNames": [
         "181CBCCD.8e9b6fe9-66b3-4704-815d-44ada631592c_9y3t8zad226mc"
+      ],
+      "packageIdentityNames": [
+        "181CBCCD.8e9b6fe9-66b3-4704-815d-44ada631592c"
       ],
       "supportedLanguages": [
         "da",
@@ -28372,6 +29585,9 @@
       ],
       "packageFamilyNames": [
         "DeepSilver.56575194F7E04_hmv7qcest37me"
+      ],
+      "packageIdentityNames": [
+        "DeepSilver.56575194F7E04"
       ],
       "supportedLanguages": [
         "ar",
@@ -28437,6 +29653,9 @@
       "packageFamilyNames": [
         "Microsoft.Wasteland30thAnniversaryEdition_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.Wasteland30thAnniversaryEdition"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -28475,6 +29694,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -28522,6 +29742,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -28572,6 +29793,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -28631,6 +29853,9 @@
       "packageFamilyNames": [
         "CompulsionGamesInc.WeHappyFew_eae46zy90r9xg"
       ],
+      "packageIdentityNames": [
+        "CompulsionGamesInc.WeHappyFew"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -28680,6 +29905,9 @@
       ],
       "packageFamilyNames": [
         "TopHatStudiosInc.WellDweller_93vj94f8vfryy"
+      ],
+      "packageIdentityNames": [
+        "TopHatStudiosInc.WellDweller"
       ],
       "supportedLanguages": [
         "de",
@@ -28731,6 +29959,9 @@
       ],
       "packageFamilyNames": [
         "AnnapurnaInteractive.GhostBike_c96c51jf6wkvm"
+      ],
+      "packageIdentityNames": [
+        "AnnapurnaInteractive.GhostBike"
       ],
       "supportedLanguages": [
         "ar",
@@ -28799,6 +30030,9 @@
       "packageFamilyNames": [
         "NetEaseGamesGlobal.13848790BE962_hfc15bhpepnfj"
       ],
+      "packageIdentityNames": [
+        "NetEaseGamesGlobal.13848790BE962"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -28851,6 +30085,9 @@
       ],
       "packageFamilyNames": [
         "Dreamhaven.Wildgate_m8w6t6f19hwf6"
+      ],
+      "packageIdentityNames": [
+        "Dreamhaven.Wildgate"
       ],
       "supportedLanguages": [
         "de",
@@ -28905,6 +30142,9 @@
       "packageFamilyNames": [
         "BrewedGames.26149D18637A3_29qjhmh3g39tm"
       ],
+      "packageIdentityNames": [
+        "BrewedGames.26149D18637A3"
+      ],
       "supportedLanguages": [
         "de-de",
         "en",
@@ -28957,6 +30197,9 @@
       ],
       "packageFamilyNames": [
         "Noodlecake.WinterBurrow_rj4z83atavd30"
+      ],
+      "packageIdentityNames": [
+        "Noodlecake.WinterBurrow"
       ],
       "supportedLanguages": [
         "da",
@@ -29020,6 +30263,9 @@
       ],
       "packageFamilyNames": [
         "946B6A6E.WoLongFallenDynasty_dkffhzhmh6pmy"
+      ],
+      "packageIdentityNames": [
+        "946B6A6E.WoLongFallenDynasty"
       ],
       "supportedLanguages": [
         "ar",
@@ -29119,6 +30365,9 @@
       "packageFamilyNames": [
         "10192RubberBandGames.WobblyLife_cy31b6rjjkmkj"
       ],
+      "packageIdentityNames": [
+        "10192RubberBandGames.WobblyLife"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -29169,6 +30418,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.Wolfenstein3D_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.Wolfenstein3D"
       ],
       "supportedLanguages": [
         "ar",
@@ -29221,6 +30473,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "da",
         "de",
@@ -29276,6 +30529,9 @@
       "packageFamilyNames": [
         "BethesdaSoftworks.WolfensteinTNO-PC_3275kfvn8vcwc"
       ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.WolfensteinTNO-PC"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -29330,6 +30586,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.WolfensteinTOB-PC_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.WolfensteinTOB-PC"
       ],
       "supportedLanguages": [
         "ar",
@@ -29387,6 +30646,9 @@
       ],
       "packageFamilyNames": [
         "BethesdaSoftworks.WolfensteinYoungblood-PC_3275kfvn8vcwc"
+      ],
+      "packageIdentityNames": [
+        "BethesdaSoftworks.WolfensteinYoungblood-PC"
       ],
       "supportedLanguages": [
         "ar",
@@ -29452,6 +30714,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -29515,6 +30778,9 @@
       "packageFamilyNames": [
         "7458BE2C.ProjectCWCoreGame_x4tje2y229k00"
       ],
+      "packageIdentityNames": [
+        "7458BE2C.ProjectCWCoreGame"
+      ],
       "supportedLanguages": [
         "ar",
         "cs",
@@ -29575,6 +30841,9 @@
       ],
       "packageFamilyNames": [
         "7458BE2C.WorldofWarships_x4tje2y229k00"
+      ],
+      "packageIdentityNames": [
+        "7458BE2C.WorldofWarships"
       ],
       "supportedLanguages": [
         "cs",
@@ -29641,6 +30910,9 @@
       "packageFamilyNames": [
         "7458BE2C.WorldofWarshipsLegendsGamePreview_x4tje2y229k00"
       ],
+      "packageIdentityNames": [
+        "7458BE2C.WorldofWarshipsLegendsGamePreview"
+      ],
       "supportedLanguages": [
         "ar",
         "da",
@@ -29698,6 +30970,7 @@
         "XboxLive"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -29752,6 +31025,9 @@
       ],
       "packageFamilyNames": [
         "NordicGames.631082A550AE7_46xc33nm0q0f8"
+      ],
+      "packageIdentityNames": [
+        "NordicGames.631082A550AE7"
       ],
       "supportedLanguages": [
         "ar",
@@ -29811,6 +31087,9 @@
       ],
       "packageFamilyNames": [
         "505GAMESS.P.A.WuchangPCGP_tefn33qh9azfc"
+      ],
+      "packageIdentityNames": [
+        "505GAMESS.P.A.WuchangPCGP"
       ],
       "supportedLanguages": [
         "ar",
@@ -29886,6 +31165,9 @@
       "packageFamilyNames": [
         "17045KUROGAMES.WutheringWaves_g5ym1msx0mqfp"
       ],
+      "packageIdentityNames": [
+        "17045KUROGAMES.WutheringWaves"
+      ],
       "supportedLanguages": [
         "de-de",
         "en",
@@ -29942,6 +31224,9 @@
       "packageFamilyNames": [
         "46318KOOP.YoungSunsNew_m7rkgz9fttrq6"
       ],
+      "packageIdentityNames": [
+        "46318KOOP.YoungSunsNew"
+      ],
       "supportedLanguages": [
         "da",
         "de",
@@ -29993,6 +31278,7 @@
         "BroadcastSupport"
       ],
       "packageFamilyNames": [],
+      "packageIdentityNames": [],
       "supportedLanguages": [
         "ar",
         "da",
@@ -30061,6 +31347,9 @@
       "packageFamilyNames": [
         "Rebellion.ZombieArmy4-DeadWar_2vbwqmt31j4mr"
       ],
+      "packageIdentityNames": [
+        "Rebellion.ZombieArmy4-DeadWar"
+      ],
       "supportedLanguages": [
         "da",
         "de",
@@ -30124,6 +31413,9 @@
       "packageFamilyNames": [
         "Microsoft.ZooTycoon_8wekyb3d8bbwe"
       ],
+      "packageIdentityNames": [
+        "Microsoft.ZooTycoon"
+      ],
       "supportedLanguages": [
         "da",
         "de",
@@ -30184,6 +31476,9 @@
       "packageFamilyNames": [
         "miHoYo.ZenlessZoneZero_43wdbdsrrv52a"
       ],
+      "packageIdentityNames": [
+        "miHoYo.ZenlessZoneZero"
+      ],
       "supportedLanguages": [
         "de",
         "en",
@@ -30242,6 +31537,9 @@
       ],
       "packageFamilyNames": [
         "91Act.BlazBlueEntropyEffect_yf95sp2eb03xr"
+      ],
+      "packageIdentityNames": [
+        "91Act.BlazBlueEntropyEffect"
       ],
       "supportedLanguages": [
         "de",

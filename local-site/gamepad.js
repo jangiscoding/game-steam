@@ -140,7 +140,7 @@
   bar.className = 'gamepad-bar';
   bar.hidden = true;
   bar.setAttribute('aria-label', 'Hướng dẫn điều khiển tay cầm');
-  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>⧉</b> PC Game Pass</span>';
+  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>LT / RT</b> Lật trang</span><span><b>LT+RT</b> Lên đầu</span><span><b>⧉</b> PC Game Pass</span>';
   document.body.append(bar);
 
   const status = document.createElement('div');
@@ -1105,7 +1105,21 @@
 
   function switchToPcGamePass() {
     stopHaptics();
+    try { sessionStorage.setItem('jang_welcome_seen_v1', '1'); } catch {}
     window.location.href = './xbox/';
+  }
+
+  function pageScroll(direction) {
+    if (welcomeScreen() || keyboard?.open) return;
+    const target = currentDialog();
+    if (direction === 0) {
+      if (target) target.scrollTo({top: 0, behavior: 'smooth'});
+      else window.scrollTo({top: 0, behavior: 'smooth'});
+      return;
+    }
+    const amount = direction * (target?.clientHeight || window.innerHeight) * .82;
+    if (target) target.scrollBy({top: amount, behavior: 'smooth'});
+    else window.scrollBy({top: amount, behavior: 'smooth'});
   }
 
   function press(pad, index) {
@@ -1155,7 +1169,7 @@
       }
       heldDirection = direction;
 
-      if ([0, 1, 2, 3, 4, 5, 8, 9, 10].some(down)) {
+      if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].some(down)) {
         if (!gamepadMode) enableMode();
         if (down(8)) {
           switchToPcGamePass();
@@ -1170,6 +1184,10 @@
         if (down(4)) changeCollection(-1);
         if (down(5)) changeCollection(1);
         if ((down(9) || down(10)) && !document.querySelector('#detail[open]') && !welcomeScreen() && !isLightboxOpen()) resetFilters();
+        const ltDown=down(6),rtDown=down(7);
+        if(press(pad,6)&&press(pad,7)&&(ltDown||rtDown))pageScroll(0);
+        else if(ltDown)pageScroll(-1);
+        else if(rtDown)pageScroll(1);
       }
 
       const scroll = pad.axes[3] || 0;
@@ -1189,24 +1207,6 @@
         }
       }
 
-      // LT (button 6) and RT (button 7) page up/down when focusing sidebar tags
-      if (document.activeElement?.classList.contains('sidebar-tag-item')) {
-        const tags = [...document.querySelectorAll('.sidebar-tag-item')];
-        const curIdx = tags.indexOf(document.activeElement);
-        if (down(7) && curIdx !== -1) { // RT: page down 8 tags
-          const nextIdx = Math.min(tags.length - 1, curIdx + 8);
-          focus(tags[nextIdx]);
-          tags[nextIdx].scrollIntoView({block: 'nearest', behavior: 'smooth'});
-          playSound('move');
-          playHaptic('light');
-        } else if (down(6) && curIdx !== -1) { // LT: page up 8 tags
-          const prevIdx = Math.max(0, curIdx - 8);
-          focus(tags[prevIdx]);
-          tags[prevIdx].scrollIntoView({block: 'nearest', behavior: 'smooth'});
-          playSound('move');
-          playHaptic('light');
-        }
-      }
       previousButtons = pad.buttons.map(b => b.pressed || b.value > 0.5);
     }
     frame = requestAnimationFrame(poll);
