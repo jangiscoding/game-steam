@@ -73,6 +73,8 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("xbox:focus-primary", app)
         self.assertIn("pageScroll", gamepad)
         self.assertIn("LT+RT", gamepad)
+        self.assertIn("LT+RT</b> Bộ lọc", gamepad)
+        self.assertIn("select(filter, false)", gamepad)
         self.assertIn("pageScroll", steam_gamepad)
         self.assertIn("triggerChordStarted", gamepad)
         self.assertIn("triggerChordStarted", steam_gamepad)

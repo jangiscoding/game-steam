@@ -10,11 +10,12 @@
   let controllerIndex = null;
   let returnGameId = null;
   let keyboard = null;
+  let filterFocusTimer = null;
 
   const bar = document.createElement('div');
   bar.className = 'gamepad-bar';
   bar.hidden = true;
-  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>LT / RT</b> Cuộn trang</span><span><b>LT+RT</b> Lên đầu</span><span><b>⧉</b> Steam</span>';
+  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>LT / RT</b> Cuộn trang</span><span><b>LT+RT</b> Bộ lọc</span><span><b>⧉</b> Steam</span>';
   document.body.append(bar);
 
   function buildKeyboard() {
@@ -150,11 +151,13 @@
     if (direction === 0) {
       if (target) {
         target.scrollTop = 0;
-        target.scrollTo({top: 0, behavior: 'auto'});
+        target.scrollTo({top: 0, behavior: 'smooth'});
       } else {
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-        window.scrollTo({top: 0, behavior: 'auto'});
+        const filter = document.querySelector('#search');
+        const top = filter ? Math.max(0, filter.getBoundingClientRect().top + window.scrollY - 140) : 0;
+        window.scrollTo({top, behavior: 'smooth'});
+        clearTimeout(filterFocusTimer);
+        filterFocusTimer = setTimeout(() => select(filter, false), 700);
       }
       return;
     }
