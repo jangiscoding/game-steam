@@ -8,11 +8,7 @@ const PERSONAL_KEY='jang-xbox-personal-v1';
 const readPersonal=()=>{try{return JSON.parse(localStorage.getItem(PERSONAL_KEY))||{};}catch{return {};}};
 const savedPersonal=readPersonal();
 const favorites=new Set(savedPersonal.favorites||[]);
-const manualInstalled=new Set(savedPersonal.installed||[]);
-const detectedInstalled=new Set();
-const isInstalled=id=>manualInstalled.has(id)||detectedInstalled.has(id);
-const savePersonal=()=>{try{localStorage.setItem(PERSONAL_KEY,JSON.stringify({favorites:[...favorites],installed:[...manualInstalled]}));}catch{}};
-const normalizeInstalledName=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+const savePersonal=()=>{try{localStorage.setItem(PERSONAL_KEY,JSON.stringify({favorites:[...favorites]}));}catch{}};
 
 const genreLabels={
   'Action & adventure':'Hành động & phiêu lưu','Card & board':'Bài & bàn cờ',Classics:'Kinh điển','Family & kids':'Gia đình & trẻ em',Fighting:'Đối kháng','Multi-player Online Battle Arena':'Đấu trường trực tuyến',Music:'Âm nhạc',Other:'Khác',Platformer:'Đi cảnh', 'Puzzle & trivia':'Giải đố & đố vui','Racing & flying':'Đua xe & bay lượn','Role playing':'Nhập vai',Shooter:'Bắn súng',Simulation:'Mô phỏng',Sports:'Thể thao',Strategy:'Chiến thuật'
@@ -23,7 +19,6 @@ const featureLabels={
 const collections=[
   {id:'all',icon:'◈',label:'Tất cả PC Game Pass',test:()=>true},
   {id:'favorites',icon:'♥',label:'Game yêu thích',test:g=>favorites.has(g.id)},
-  {id:'installed',icon:'✔',label:'Đã cài trên máy',test:g=>isInstalled(g.id)},
   {id:'vietnamese',icon:'VI',label:'Ngôn ngữ tiếng Việt',test:g=>g.supportsVietnamese===true},
   {id:'viethoa',icon:'VH',label:'Có hỗ trợ Việt hóa',test:g=>g.hasVietnamesePatch===true},
   {id:'single',icon:'●',label:'Một người chơi',test:g=>hasAny(g,['SinglePlayer'])},
@@ -49,7 +44,6 @@ function safeImage(url){return /^https:\/\//i.test(url||'')?url:'';}
 function dateLabel(value){if(!value)return 'Chưa rõ ngày';const date=new Date(value);return Number.isNaN(date.valueOf())?'Chưa rõ ngày':date.toLocaleDateString('vi-VN',{year:'numeric',month:'short',day:'numeric'});}
 function platformBadges(game){
   const badges=['<span class="platform pc">PC</span>'];
-  if(isInstalled(game.id))badges.push('<span class="platform installed">ĐÃ CÀI</span>');
   if(game.supportsVietnamese)badges.push('<span class="platform vietnamese">VI</span>');
   if(game.hasVietnamesePatch)badges.push('<span class="platform viethoa">VIỆT HÓA</span>');
   return badges.join('');
@@ -77,7 +71,6 @@ function initialize(){
   $('#detail').addEventListener('click',event=>{
     if(event.target.closest('[data-close]')||event.target===$('#detail')){closeDetail();return;}
     const favorite=event.target.closest('[data-detail-favorite]');if(favorite){toggleFavorite(favorite.dataset.detailFavorite,true);return;}
-    const installed=event.target.closest('[data-toggle-installed]');if(installed){toggleInstalled(installed.dataset.toggleInstalled);return;}
   });
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&$('#detail').open)closeDetail();if(event.key==='/'&&document.activeElement!==$('#search')){event.preventDefault();$('#search').focus();}});
   document.addEventListener('xbox:gamepad-category',event=>{
@@ -93,7 +86,6 @@ function initialize(){
   });
   document.addEventListener('xbox:gamepad-favorite',event=>toggleFavorite(event.detail.id,Boolean($('#detail').open)));
   applyFilters();
-  detectInstalledGames();
 }
 
 function renderCollections(){
@@ -104,47 +96,6 @@ function toggleFavorite(id,reopen=false){
   savePersonal();renderCollections();applyFilters();
   if(reopen&&$('#detail').open)openDetail(id);
   else setTimeout(()=>document.dispatchEvent(new CustomEvent('xbox:focus-game',{detail:{id}})),0);
-}
-function toggleInstalled(id){
-  if(detectedInstalled.has(id))return;
-  if(manualInstalled.has(id))manualInstalled.delete(id);else manualInstalled.add(id);
-  savePersonal();renderCollections();applyFilters();openDetail(id);
-}
-async function detectInstalledGames(){
-  const status=$('#installed-detection');
-  try{
-    const urls=['/api/installed-xbox-games'];
-    if(!['127.0.0.1','localhost'].includes(location.hostname)){
-      for(const port of [8000,8001,8002,8080])urls.push(`http://127.0.0.1:${port}/api/installed-xbox-games`);
-    }
-    let payload=null;
-    for(const url of urls){
-      const controller=new AbortController();
-      const timer=setTimeout(()=>controller.abort(),2500);
-      try{
-        const response=await fetch(url,{cache:'no-store',signal:controller.signal});
-        if(response.ok){const candidate=await response.json();if(candidate?.ok){payload=candidate;break;}}
-      }catch{}finally{clearTimeout(timer);}
-    }
-    if(!payload){if(status)status.textContent='Hãy chạy start.bat trên Windows để trang web đọc được game Xbox đã cài.';return;}
-    const families=new Set((payload.packageFamilyNames||[]).map(value=>String(value).toLowerCase()));
-    const identities=new Set((payload.packageIdentityNames||[]).map(value=>String(value).toLowerCase()));
-    const productIds=new Set((payload.productIds||[]).map(value=>String(value).toUpperCase()));
-    const names=new Set((payload.gameNames||[]).map(normalizeInstalledName).filter(Boolean));
-    detectedInstalled.clear();
-    for(const game of catalog.games){
-      const familyMatch=(game.packageFamilyNames||[]).some(value=>families.has(String(value).toLowerCase()));
-      const identityMatch=(game.packageIdentityNames||[]).some(value=>identities.has(String(value).toLowerCase()));
-      const productMatch=productIds.has(String(game.id).toUpperCase());
-      const nameMatch=names.has(normalizeInstalledName(game.name));
-      if(familyMatch||identityMatch||productMatch||nameMatch)detectedInstalled.add(game.id);
-    }
-    const manifests=Number(payload.scan?.manifests)||0;
-    const roots=Number(payload.scan?.roots)||0;
-    const appxPackages=Number(payload.scan?.appxPackages)||0;
-    if(status)status.textContent=detectedInstalled.size?`Đã nhận diện ${detectedInstalled.size} game cài trên máy.`:(roots||families.size||identities.size?`Đã đọc ${appxPackages} package và ${manifests} manifest nhưng chưa khớp game PC Game Pass.`:'Chưa tìm thấy thư mục/package Xbox; bạn vẫn có thể đánh dấu thủ công.');
-    renderCollections();applyFilters();
-  }catch{if(status)status.textContent='Tự nhận diện cần launcher Windows; có thể đánh dấu thủ công.';}
 }
 function renderGenreChips(){
   const genres=[...new Set(catalog.games.flatMap(game=>game.genres||[]))].sort((a,b)=>genreLabel(a).localeCompare(genreLabel(b),'vi'));
@@ -177,7 +128,7 @@ function applyFilters(){
 }
 
 function render(){
-  $('#game-grid').innerHTML=filtered.length?filtered.map(game=>`<article class="game-card ${isInstalled(game.id)?'is-installed':''}"><button data-game="${esc(game.id)}"><div class="art"><img src="${esc(safeImage(game.imageUrl))}" alt="${esc(game.name)}" loading="lazy" decoding="async"><div class="badges">${platformBadges(game)}</div></div><div class="card-body"><div class="genre">${esc(genreLabel(game.genres?.[0]||'PC Game Pass'))}</div><h3>${esc(game.name)}</h3><p>${esc(game.publisher||game.developer||'Microsoft Store')}</p></div></button><button class="favorite-button ${favorites.has(game.id)?'selected':''}" data-favorite="${esc(game.id)}" aria-label="${favorites.has(game.id)?'Bỏ khỏi':'Thêm vào'} game yêu thích">${favorites.has(game.id)?'♥':'♡'}</button></article>`).join(''):'<div class="empty">Không tìm thấy game phù hợp.</div>';
+  $('#game-grid').innerHTML=filtered.length?filtered.map(game=>`<article class="game-card"><button data-game="${esc(game.id)}"><div class="art"><img src="${esc(safeImage(game.imageUrl))}" alt="${esc(game.name)}" loading="lazy" decoding="async"><div class="badges">${platformBadges(game)}</div></div><div class="card-body"><div class="genre">${esc(genreLabel(game.genres?.[0]||'PC Game Pass'))}</div><h3>${esc(game.name)}</h3><p>${esc(game.publisher||game.developer||'Microsoft Store')}</p></div></button><button class="favorite-button ${favorites.has(game.id)?'selected':''}" data-favorite="${esc(game.id)}" aria-label="${favorites.has(game.id)?'Bỏ khỏi':'Thêm vào'} game yêu thích">${favorites.has(game.id)?'♥':'♡'}</button></article>`).join(''):'<div class="empty">Không tìm thấy game phù hợp.</div>';
   document.querySelectorAll('.art img').forEach(image=>image.addEventListener('error',()=>{image.closest('.art')?.classList.add('no-image');image.remove();},{once:true}));
   document.dispatchEvent(new CustomEvent('xbox:navigation-updated'));
 }
@@ -187,8 +138,8 @@ function openDetail(id){
   const features=[...new Set((game.features||[]).map(item=>featureLabels[item]).filter(Boolean))].slice(0,12);
   const patches=game.vietnamesePatches||[];
   const languageStatus=game.supportsVietnamese?'Có tiếng Việt chính thức (Microsoft Store)':'Microsoft Store chưa ghi nhận tiếng Việt';
-  const installed=isInstalled(game.id),detected=detectedInstalled.has(game.id),isFavorite=favorites.has(game.id);
-  $('#detail-inner').innerHTML=`<button class="close" data-close aria-label="Đóng">×</button><div class="detail-hero" style="background-image:linear-gradient(90deg,#101112 0%,rgba(16,17,18,.82) 45%,rgba(16,17,18,.15)),url('${esc(safeImage(game.heroImageUrl||game.imageUrl))}')"><div><span class="detail-kicker">PC GAME PASS · ${esc(game.id)}</span><h2>${esc(game.name)}</h2><div class="detail-badges">${platformBadges(game)}</div></div></div><div class="detail-body"><p class="description">${esc(game.shortDescription||'Microsoft chưa cung cấp mô tả ngắn cho trò chơi này.')}</p>${installed?`<div class="installed-banner">✔ ${detected?'Đã phát hiện game được cài từ Microsoft Store/Xbox.':'Game đã được bạn đánh dấu là cài trên máy này.'}</div>`:''}<div class="facts"><div><label>PHÁT HÀNH</label><strong>${esc(dateLabel(game.releaseDate))}</strong></div><div><label>NHÀ PHÁT TRIỂN</label><strong>${esc(game.developer||'Chưa xác định')}</strong></div><div><label>NHÀ PHÁT HÀNH</label><strong>${esc(game.publisher||'Chưa xác định')}</strong></div><div><label>NGÔN NGỮ</label><strong>${esc(languageStatus)}</strong></div></div>${patches.length?`<h3>Bản Việt hóa cộng đồng</h3><div class="patch-list">${patches.map(patch=>`<a href="${esc(patch.link)}" target="_blank" rel="noopener"><b>${esc(patch.source||'Nguồn Việt hóa')}</b><span>${esc(patch.name||game.name)} ↗</span></a>`).join('')}</div>`:''}${features.length?`<h3>Tính năng</h3><div class="feature-list">${features.map(item=>`<span>${esc(item)}</span>`).join('')}</div>`:''}<h3>Thể loại</h3><div class="feature-list">${(game.genres||[]).map(item=>`<span>${esc(genreLabel(item))}</span>`).join('')}</div><div class="detail-actions"><a class="store-button" href="${esc(xboxAppUrl(game))}">${installed?'CHƠI NGAY TRONG XBOX':'MỞ TRONG ỨNG DỤNG XBOX'}</a><a class="web-button" href="${esc(game.storeUrl)}" target="_blank" rel="noopener">Xem trên web ↗</a><button class="web-button" data-detail-favorite="${esc(game.id)}">${isFavorite?'♥ BỎ YÊU THÍCH':'♡ YÊU THÍCH'}</button>${detected?'<button class="web-button" disabled>ĐÃ PHÁT HIỆN TRÊN WINDOWS</button>':`<button class="web-button" data-toggle-installed="${esc(game.id)}">${installed?'BỎ ĐÁNH DẤU ĐÃ CÀI':'ĐÁNH DẤU ĐÃ CÀI'}</button>`}</div><p class="source-note">Khi chạy launcher trên Windows, danh sách đã cài được đối chiếu bằng package Microsoft Store; game chưa nhận diện được vẫn có thể đánh dấu thủ công. Ngôn ngữ lấy từ SupportedLanguages của Microsoft Catalog; Việt hóa được ghép theo tên chính xác và cần kiểm tra tương thích bản Microsoft Store tại nguồn. Dữ liệu cập nhật ${esc(new Date(catalog.metadata.updatedAt).toLocaleString('vi-VN'))}.</p></div>`;
+  const isFavorite=favorites.has(game.id);
+  $('#detail-inner').innerHTML=`<button class="close" data-close aria-label="Đóng">×</button><div class="detail-hero" style="background-image:linear-gradient(90deg,#101112 0%,rgba(16,17,18,.82) 45%,rgba(16,17,18,.15)),url('${esc(safeImage(game.heroImageUrl||game.imageUrl))}')"><div><span class="detail-kicker">PC GAME PASS · ${esc(game.id)}</span><h2>${esc(game.name)}</h2><div class="detail-badges">${platformBadges(game)}</div></div></div><div class="detail-body"><p class="description">${esc(game.shortDescription||'Microsoft chưa cung cấp mô tả ngắn cho trò chơi này.')}</p><div class="facts"><div><label>PHÁT HÀNH</label><strong>${esc(dateLabel(game.releaseDate))}</strong></div><div><label>NHÀ PHÁT TRIỂN</label><strong>${esc(game.developer||'Chưa xác định')}</strong></div><div><label>NHÀ PHÁT HÀNH</label><strong>${esc(game.publisher||'Chưa xác định')}</strong></div><div><label>NGÔN NGỮ</label><strong>${esc(languageStatus)}</strong></div></div>${patches.length?`<h3>Bản Việt hóa cộng đồng</h3><div class="patch-list">${patches.map(patch=>`<a href="${esc(patch.link)}" target="_blank" rel="noopener"><b>${esc(patch.source||'Nguồn Việt hóa')}</b><span>${esc(patch.name||game.name)} ↗</span></a>`).join('')}</div>`:''}${features.length?`<h3>Tính năng</h3><div class="feature-list">${features.map(item=>`<span>${esc(item)}</span>`).join('')}</div>`:''}<h3>Thể loại</h3><div class="feature-list">${(game.genres||[]).map(item=>`<span>${esc(genreLabel(item))}</span>`).join('')}</div><div class="detail-actions"><a class="store-button" href="${esc(xboxAppUrl(game))}">MỞ TRONG ỨNG DỤNG XBOX</a><a class="web-button" href="${esc(game.storeUrl)}" target="_blank" rel="noopener">Xem trên web ↗</a><button class="web-button" data-detail-favorite="${esc(game.id)}">${isFavorite?'♥ BỎ YÊU THÍCH':'♡ YÊU THÍCH'}</button></div><p class="source-note">Ngôn ngữ lấy từ SupportedLanguages của Microsoft Catalog; Việt hóa được ghép theo tên chính xác và cần kiểm tra tương thích bản Microsoft Store tại nguồn. Dữ liệu cập nhật ${esc(new Date(catalog.metadata.updatedAt).toLocaleString('vi-VN'))}.</p></div>`;
   if(!$('#detail').open)$('#detail').showModal();document.body.classList.add('dialog-open');
   document.dispatchEvent(new CustomEvent('xbox:navigation-updated'));
   document.dispatchEvent(new CustomEvent('xbox:focus-primary'));
