@@ -8,6 +8,6 @@
 
 Tìm kiếm, lọc và nội dung đã có chạy offline. Ảnh, trailer và font web vẫn lấy qua Internet; thiếu mạng sẽ dùng font mặc định và có thể không hiện media. Một số trailer có thể bị nguồn chặn khi mở từ file://; liên kết Steam vẫn được giữ. Mô tả chưa dịch/thu thập giữ đúng trạng thái, không tự điền dữ liệu giả.
 
-Hỗ trợ tay cầm tùy trình duyệt và quyền của Gamepad API trên file://. Nếu trình duyệt cho phép, nhấn một nút để nhận thiết bị; D-pad/cần trái di chuyển, A chọn, B quay lại, LB/RB đổi nhóm, Y tìm kiếm, X xóa. Bản localhost vẫn có trong thư mục local-site của repository để dùng khi trình duyệt hạn chế tay cầm hoặc media trên file://.
+Hỗ trợ tay cầm tùy trình duyệt và quyền của Gamepad API trên file://. Nếu trình duyệt cho phép, nhấn một nút để nhận thiết bị; D-pad/cần trái di chuyển, A chọn, B quay lại, X yêu thích, LB/RB đổi nhóm, Y tìm kiếm, Menu xóa bộ lọc, cần phải cuộn và View (⧉) chuyển Steam/PC Game Pass. Bản localhost vẫn có trong thư mục local-site của repository để dùng khi trình duyệt hạn chế tay cầm hoặc media trên file://.
 
 Dữ liệu là bản chụp tại lúc đóng gói. Để cập nhật từ thư mục gốc repository: `python scripts/build_html_package.py`. Việc tạo lại gói cần Python; người mở gói đã tạo thì không cần cài Python.

@@ -2,29 +2,72 @@
 
 (() => {
   const FOCUSABLE = 'button:not([disabled]),a[href],input:not([disabled])';
+  const THRESHOLD = .55;
   let current = null;
   let previousButtons = [];
   let lastMove = 0;
   let active = false;
+  let controllerIndex = null;
+  let returnGameId = null;
+  let keyboard = null;
+
+  const bar = document.createElement('div');
+  bar.className = 'gamepad-bar';
+  bar.hidden = true;
+  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>⧉</b> Steam</span>';
+  document.body.append(bar);
+
+  function buildKeyboard() {
+    if (keyboard) return keyboard;
+    keyboard = document.createElement('dialog');
+    keyboard.className = 'gamepad-keyboard';
+    const keys = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 'Ă', 'Â', 'Đ', 'Ê', 'Ô', 'Ơ', 'Ư'];
+    keyboard.innerHTML = `<div class="keyboard-head"><strong>TÌM KIẾM GAME</strong><button data-close aria-label="Đóng">×</button></div><div class="keyboard-value">Nhập tên game…</div><div class="keyboard-keys">${keys.map(key => `<button data-key="${key}">${key}</button>`).join('')}</div><div class="keyboard-actions"><button data-key=" ">DẤU CÁCH</button><button data-keyboard-action="backspace">⌫ XÓA</button><button data-keyboard-action="clear">XÓA HẾT</button><button class="keyboard-done" data-keyboard-action="done">XONG</button></div>`;
+    keyboard.addEventListener('click', event => {
+      if (event.target.closest('[data-close]')) { closeKeyboard(); return; }
+      const key = event.target.closest('[data-key]');
+      const action = event.target.closest('[data-keyboard-action]')?.dataset.keyboardAction;
+      const search = document.querySelector('#search');
+      if (!search) return;
+      if (key) search.value += key.dataset.key;
+      else if (action === 'backspace') search.value = search.value.slice(0, -1);
+      else if (action === 'clear') search.value = '';
+      else if (action === 'done') { closeKeyboard(); return; }
+      search.dispatchEvent(new Event('input', {bubbles: true}));
+      keyboard.querySelector('.keyboard-value').textContent = search.value || 'Nhập tên game…';
+    });
+    document.body.append(keyboard);
+    return keyboard;
+  }
+
+  function openKeyboard() {
+    if (document.querySelector('#detail[open]')) return;
+    const dialog = buildKeyboard();
+    dialog.querySelector('.keyboard-value').textContent = document.querySelector('#search')?.value || 'Nhập tên game…';
+    if (!dialog.open) dialog.showModal();
+    setTimeout(() => select(dialog.querySelector('[data-key]')), 0);
+  }
+
+  function closeKeyboard() {
+    if (!keyboard?.open) return;
+    keyboard.close();
+    setTimeout(() => select(document.querySelector('#search')), 0);
+  }
 
   function stopHaptics() {
     try {
       [...(navigator.getGamepads?.() || [])].filter(Boolean).forEach(gamepad => {
         const actuator = gamepad.vibrationActuator;
-        if (actuator?.reset) actuator.reset().catch(() => {});
+        if (actuator?.reset) Promise.resolve(actuator.reset()).catch(() => {});
         else if (actuator?.playEffect) {
-          actuator.playEffect('dual-rumble', {
-            startDelay: 0,
-            duration: 1,
-            weakMagnitude: 0,
-            strongMagnitude: 0
-          }).catch(() => {});
+          Promise.resolve(actuator.playEffect('dual-rumble', {startDelay: 0, duration: 1, weakMagnitude: 0, strongMagnitude: 0})).catch(() => {});
         }
       });
     } catch {}
   }
 
   function visible(element) {
+    if (!element || element.closest('[hidden],[inert],.gamepad-bar')) return false;
     const style = getComputedStyle(element);
     const rect = element.getBoundingClientRect();
     return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
@@ -32,7 +75,8 @@
 
   function candidates() {
     const dialog = document.querySelector('dialog[open]');
-    return [...(dialog || document).querySelectorAll(FOCUSABLE)].filter(visible);
+    return [...(dialog || document).querySelectorAll(FOCUSABLE)]
+      .filter(element => visible(element) && !element.classList.contains('favorite-button'));
   }
 
   function select(element, scroll = true) {
@@ -45,9 +89,11 @@
   }
 
   function ensureSelection() {
+    if (!active) return;
     const items = candidates();
     if (!current || !items.includes(current)) {
-      select(document.querySelector('.collection.active') || items[0], false);
+      const dialog = document.querySelector('dialog[open]');
+      select(dialog?.querySelector('.store-button') || (!dialog ? document.querySelector('.collection.active') : null) || items[0], false);
     }
   }
 
@@ -74,66 +120,123 @@
   }
 
   function pressed(gamepad, index) {
-    return Boolean(gamepad.buttons[index]?.pressed);
+    return Boolean(gamepad.buttons[index]?.pressed || gamepad.buttons[index]?.value > .5);
   }
 
   function edge(gamepad, index) {
     return pressed(gamepad, index) && !previousButtons[index];
   }
 
-  function activate() {
+  function activateMode() {
     if (active) return;
     active = true;
     document.body.classList.add('gamepad-mode');
     ensureSelection();
   }
 
+  function focusedGameId() {
+    return current?.closest('[data-game]')?.dataset.game ||
+      document.querySelector('dialog[open] [data-detail-favorite]')?.dataset.detailFavorite || null;
+  }
+
+  function switchToSteam() {
+    stopHaptics();
+    window.location.href = '../';
+  }
+
   function tick(now) {
-    const gamepad = [...(navigator.getGamepads?.() || [])].find(Boolean);
+    const pads = [...(navigator.getGamepads?.() || [])];
+    const gamepad = pads.find(item => item?.connected && item.index === controllerIndex) || pads.find(item => item?.connected);
     if (!gamepad) {
+      controllerIndex = null;
       previousButtons = [];
+      bar.hidden = true;
+      document.body.classList.remove('gamepad-connected');
       requestAnimationFrame(tick);
       return;
     }
-    const anyInput = gamepad.buttons.some(button => button.pressed) || gamepad.axes.some(axis => Math.abs(axis) > .55);
-    if (anyInput) activate();
+    bar.hidden = false;
+    document.body.classList.add('gamepad-connected');
+    if (controllerIndex !== gamepad.index) {
+      controllerIndex = gamepad.index;
+      previousButtons = gamepad.buttons.map(button => button.pressed || button.value > .5);
+      requestAnimationFrame(tick);
+      return;
+    }
+
+    const anyInput = gamepad.buttons.some(button => button.pressed) || gamepad.axes.some(axis => Math.abs(axis) > THRESHOLD);
+    if (anyInput) activateMode();
     if (active) {
-      if (edge(gamepad, 0)) current?.click();
-      if (edge(gamepad, 1)) {
-        const close = document.querySelector('dialog[open] [data-close]');
-        if (close) close.click();
+      if (edge(gamepad, 8)) { switchToSteam(); return; }
+      if (edge(gamepad, 0)) {
+        const id = current?.dataset.game;
+        if (id) returnGameId = id;
+        current?.click();
       }
-      if (edge(gamepad, 2)) document.dispatchEvent(new CustomEvent('xbox:gamepad-reset'));
-      if (edge(gamepad, 3)) select(document.querySelector('#search'));
+      if (edge(gamepad, 1)) {
+        if (keyboard?.open) { closeKeyboard(); }
+        else {
+        const close = document.querySelector('dialog[open] [data-close]');
+        if (close) {
+          close.click();
+          setTimeout(() => select(document.querySelector(`[data-game="${returnGameId}"]`) || document.querySelector('[data-game]')), 30);
+        }
+        }
+      }
+      if (edge(gamepad, 2)) {
+        const id = focusedGameId();
+        if (id) document.dispatchEvent(new CustomEvent('xbox:gamepad-favorite', {detail: {id}}));
+      }
+      if (edge(gamepad, 3)) openKeyboard();
       if (edge(gamepad, 4)) document.dispatchEvent(new CustomEvent('xbox:gamepad-category', {detail: {direction: -1}}));
       if (edge(gamepad, 5)) document.dispatchEvent(new CustomEvent('xbox:gamepad-category', {detail: {direction: 1}}));
+      if (edge(gamepad, 9) || edge(gamepad, 10)) {
+        if (!document.querySelector('#detail[open]')) {
+          if (keyboard?.open) closeKeyboard();
+          document.dispatchEvent(new CustomEvent('xbox:gamepad-reset'));
+        }
+      }
 
-      const left = pressed(gamepad, 14) || gamepad.axes[0] < -.55;
-      const right = pressed(gamepad, 15) || gamepad.axes[0] > .55;
-      const up = pressed(gamepad, 12) || gamepad.axes[1] < -.55;
-      const down = pressed(gamepad, 13) || gamepad.axes[1] > .55;
-      if (now - lastMove > 230 && (left || right || up || down)) {
+      const left = pressed(gamepad, 14) || gamepad.axes[0] < -THRESHOLD;
+      const right = pressed(gamepad, 15) || gamepad.axes[0] > THRESHOLD;
+      const up = pressed(gamepad, 12) || gamepad.axes[1] < -THRESHOLD;
+      const down = pressed(gamepad, 13) || gamepad.axes[1] > THRESHOLD;
+      if (now - lastMove > 180 && (left || right || up || down)) {
         if (left) move(-1, 0);
         else if (right) move(1, 0);
         else if (up) move(0, -1);
         else move(0, 1);
         lastMove = now;
       }
+
+      const scroll = gamepad.axes[3] || 0;
+      if (Math.abs(scroll) > .2) {
+        const amount = Math.sign(scroll) * ((Math.abs(scroll) - .2) / .8) * 16;
+        const dialog = document.querySelector('dialog[open]');
+        if (dialog) dialog.scrollBy(0, amount); else window.scrollBy(0, amount);
+      }
     }
-    previousButtons = gamepad.buttons.map(button => button.pressed);
+    previousButtons = gamepad.buttons.map(button => button.pressed || button.value > .5);
     requestAnimationFrame(tick);
   }
 
   document.addEventListener('xbox:navigation-updated', ensureSelection);
+  document.addEventListener('xbox:focus-primary', () => {
+    if (active) select(document.querySelector('dialog[open] .store-button'));
+  });
+  document.addEventListener('xbox:focus-game', event => {
+    if (active) select(document.querySelector(`[data-game="${event.detail.id}"]`));
+  });
   document.addEventListener('focusin', event => {
     if (active && event.target.matches?.(FOCUSABLE)) select(event.target, false);
   });
   window.addEventListener('gamepaddisconnected', () => {
-    if (![...(navigator.getGamepads?.() || [])].some(Boolean)) {
+    if (![...(navigator.getGamepads?.() || [])].some(gamepad => gamepad?.connected)) {
       active = false;
       current?.classList.remove('gamepad-focus');
       current = null;
-      document.body.classList.remove('gamepad-mode');
+      bar.hidden = true;
+      document.body.classList.remove('gamepad-mode', 'gamepad-connected');
     }
   });
   window.addEventListener('pagehide', stopHaptics);

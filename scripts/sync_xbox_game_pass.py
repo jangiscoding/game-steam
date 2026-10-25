@@ -62,6 +62,7 @@ def fetch_product_batch(product_ids, market, language):
         "bigIds": ",".join(product_ids),
         "market": market,
         "languages": language,
+        "fieldsTemplate": "details",
         "MS-CV": "JangPlayXboxCatalog",
     })
     url = f"https://displaycatalog.mp.microsoft.com/v7.0/products?{query}"
@@ -97,6 +98,22 @@ def supported_languages(product):
                 if isinstance(value, str) and value.strip()
             )
     return sorted(languages)
+
+
+def pc_package_family_names(product):
+    """Return Windows package identities used to detect locally installed Store games."""
+    names = set()
+    for availability in product.get("DisplaySkuAvailabilities") or []:
+        properties = (availability.get("Sku") or {}).get("Properties") or {}
+        for package in properties.get("Packages") or []:
+            platforms = {
+                item.get("PlatformName")
+                for item in package.get("PlatformDependencies") or []
+            }
+            name = package.get("PackageFamilyName")
+            if name and "Windows.Desktop" in platforms:
+                names.add(name)
+    return sorted(names)
 
 
 def normalize_title(value):
@@ -158,6 +175,7 @@ def normalize_product(product, platforms, patch_index):
         "genres": properties.get("Categories") or ([properties["Category"]] if properties.get("Category") else []),
         "platforms": sorted(platforms),
         "features": attributes,
+        "packageFamilyNames": pc_package_family_names(product),
         "supportedLanguages": languages,
         "supportsVietnamese": any(value == "vi" or value.startswith("vi-") for value in languages),
         "hasVietnamesePatch": bool(vietnamese_patches),
@@ -194,7 +212,7 @@ def build_catalog(market="US", language="vi-vn", workers=6, patch_file=None):
     missing = sorted(set(product_ids) - set(products))
     return {
         "metadata": {
-            "schemaVersion": 2,
+            "schemaVersion": 3,
             "updatedAt": datetime.now(timezone.utc).isoformat(),
             "market": market,
             "language": language,

@@ -85,6 +85,29 @@ def get_installed_steam_app_ids():
     return sorted(list(installed_ids))
 
 
+def get_installed_xbox_package_families():
+    """Read installed Microsoft Store package identities on Windows."""
+    if sys.platform != 'win32':
+        return []
+    import subprocess
+    command = [
+        'powershell.exe', '-NoProfile', '-NonInteractive', '-Command',
+        'Get-AppxPackage | ForEach-Object { $_.PackageFamilyName }'
+    ]
+    kwargs = {
+        'capture_output': True,
+        'text': True,
+        'timeout': 20,
+        'check': False,
+    }
+    if hasattr(subprocess, 'CREATE_NO_WINDOW'):
+        kwargs['creationflags'] = subprocess.CREATE_NO_WINDOW
+    result = subprocess.run(command, **kwargs)
+    if result.returncode != 0:
+        return []
+    return sorted({line.strip() for line in result.stdout.splitlines() if line.strip()})
+
+
 def check_for_steam_updates(catalog_path):
     import urllib.request, json, re
     req = urllib.request.Request(
@@ -485,6 +508,21 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
     }
 
     def do_GET(self):
+        if self.path.startswith('/api/installed-xbox-games'):
+            import json
+            try:
+                packages = get_installed_xbox_package_families()
+                payload = json.dumps({'ok': True, 'packageFamilyNames': packages, 'count': len(packages)}).encode('utf-8')
+            except Exception as e:
+                payload = json.dumps({'ok': False, 'error': str(e), 'packageFamilyNames': []}).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json; charset=utf-8')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Cache-Control', 'no-cache, no-store')
+            self.end_headers()
+            self.wfile.write(payload)
+            return
+
         if self.path.startswith('/api/installed-games'):
             import json
             try:
