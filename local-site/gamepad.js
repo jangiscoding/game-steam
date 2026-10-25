@@ -1130,12 +1130,12 @@
         });
       });
       if (direction === 0) {
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-        window.scrollTo({top: 0, behavior: 'auto'});
+        if (window.__archive?.controllerPageScroll) window.__archive.controllerPageScroll(0);
+        else window.scrollTo(0, 0);
         announce('Đã cuộn lên đầu trang.');
       } else {
-        window.scrollBy({top: direction * window.innerHeight * .82, behavior: 'auto'});
+        if (window.__archive?.controllerPageScroll) window.__archive.controllerPageScroll(direction);
+        else window.scrollBy(0, direction * window.innerHeight * .82);
       }
       settleFocus();
       return;
