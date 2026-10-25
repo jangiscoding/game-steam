@@ -141,7 +141,7 @@
   bar.className = 'gamepad-bar';
   bar.hidden = true;
   bar.setAttribute('aria-label', 'Hướng dẫn điều khiển tay cầm');
-  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>LT / RT</b> Lật trang</span><span><b>LT+RT</b> Lên đầu</span><span><b>⧉</b> PC Game Pass</span>';
+  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>LT / RT</b> Lật trang</span><span><b>LT+RT</b> Bộ lọc</span><span><b>⧉</b> PC Game Pass</span>';
   document.body.append(bar);
 
   const status = document.createElement('div');
@@ -1123,21 +1123,23 @@
         requestAnimationFrame(() => {
           if (token !== pageScrollToken) return;
           const best = direction === 0
-            ? document.querySelector('.topbar a[href], .hero a[href], .hero button')
+            ? document.querySelector('#search')
             : getBestVisibleGameCard();
           if (best) focus(best, false);
           pageScrollFocusLocked = false;
         });
       });
+      let scrollResult;
       if (direction === 0) {
-        if (window.__archive?.controllerPageScroll) window.__archive.controllerPageScroll(0);
-        else window.scrollTo(0, 0);
-        announce('Đã cuộn lên đầu trang.');
+        if (window.__archive?.controllerPageScroll) scrollResult = window.__archive.controllerPageScroll(0);
+        else document.querySelector('#search')?.scrollIntoView({behavior: 'smooth', block: 'center'});
+        announce('Đã chuyển đến bộ lọc.');
       } else {
-        if (window.__archive?.controllerPageScroll) window.__archive.controllerPageScroll(direction);
+        if (window.__archive?.controllerPageScroll) scrollResult = window.__archive.controllerPageScroll(direction);
         else window.scrollBy(0, direction * window.innerHeight * .82);
       }
-      settleFocus();
+      if (scrollResult?.then) scrollResult.then(settleFocus);
+      else settleFocus();
       return;
     }
     if (direction === 0) {

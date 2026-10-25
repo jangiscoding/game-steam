@@ -76,10 +76,12 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("pageScroll", steam_gamepad)
         self.assertIn("triggerChordStarted", gamepad)
         self.assertIn("triggerChordStarted", steam_gamepad)
-        self.assertIn("window.scrollTo(0,target)", steam_app)
+        self.assertIn("window.scrollTo({top:target", steam_app)
         self.assertIn("pageScrollFocusLocked", steam_gamepad)
         self.assertIn("focus(best, false)", steam_gamepad)
         self.assertIn("controllerPageScroll", steam_app)
+        self.assertIn("behavior:'smooth'", steam_app)
+        self.assertIn("document.querySelector('#search')", steam_app)
         self.assertIn("window.__archive.controllerPageScroll", steam_gamepad)
 
     def test_personal_xbox_collections_and_steam_theme(self):
