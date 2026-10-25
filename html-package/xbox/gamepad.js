@@ -148,8 +148,14 @@
     if (keyboard?.open) return;
     const target = document.querySelector('#detail[open]');
     if (direction === 0) {
-      if (target) target.scrollTo({top: 0, behavior: 'smooth'});
-      else window.scrollTo({top: 0, behavior: 'smooth'});
+      if (target) {
+        target.scrollTop = 0;
+        target.scrollTo({top: 0, behavior: 'auto'});
+      } else {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo({top: 0, behavior: 'auto'});
+      }
       return;
     }
     const amount = direction * (target?.clientHeight || window.innerHeight) * .82;
@@ -180,6 +186,9 @@
     const anyInput = gamepad.buttons.some(button => button.pressed) || gamepad.axes.some(axis => Math.abs(axis) > THRESHOLD);
     if (anyInput) activateMode();
     if (active) {
+      const triggerChord = pressed(gamepad, 6) && pressed(gamepad, 7);
+      const triggerChordStarted = triggerChord && !(previousButtons[6] && previousButtons[7]);
+      if (triggerChordStarted) pageScroll(0);
       if (edge(gamepad, 8)) { switchToSteam(); return; }
       if (edge(gamepad, 0)) {
         const id = current?.dataset.game;
@@ -209,10 +218,9 @@
           document.dispatchEvent(new CustomEvent('xbox:gamepad-reset'));
         }
       }
-      const ltDown=edge(gamepad,6),rtDown=edge(gamepad,7);
-      if(pressed(gamepad,6)&&pressed(gamepad,7)&&(ltDown||rtDown))pageScroll(0);
-      else if(ltDown)pageScroll(-1);
-      else if(rtDown)pageScroll(1);
+      const ltDown = edge(gamepad, 6), rtDown = edge(gamepad, 7);
+      if (!triggerChord && ltDown) pageScroll(-1);
+      else if (!triggerChord && rtDown) pageScroll(1);
 
       const left = pressed(gamepad, 14) || gamepad.axes[0] < -THRESHOLD;
       const right = pressed(gamepad, 15) || gamepad.axes[0] > THRESHOLD;
@@ -227,7 +235,7 @@
       }
 
       const scroll = gamepad.axes[3] || 0;
-      if (Math.abs(scroll) > .2) {
+      if (Math.abs(scroll) > .2 && !triggerChord) {
         const amount = Math.sign(scroll) * ((Math.abs(scroll) - .2) / .8) * 16;
         const dialog = document.querySelector('dialog[open]');
         if (dialog) dialog.scrollBy(0, amount); else window.scrollBy(0, amount);

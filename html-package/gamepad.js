@@ -1113,8 +1113,15 @@
     if (welcomeScreen() || keyboard?.open) return;
     const target = currentDialog();
     if (direction === 0) {
-      if (target) target.scrollTo({top: 0, behavior: 'smooth'});
-      else window.scrollTo({top: 0, behavior: 'smooth'});
+      if (target) {
+        target.scrollTop = 0;
+        target.scrollTo({top: 0, behavior: 'auto'});
+      } else {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        window.scrollTo({top: 0, behavior: 'auto'});
+      }
+      announce('Đã cuộn lên đầu trang.');
       return;
     }
     const amount = direction * (target?.clientHeight || window.innerHeight) * .82;
@@ -1159,6 +1166,8 @@
       else if (press(pad, 15) || pad.axes[0] > AXIS_THRESHOLD) direction = 'right';
 
       const down = index => press(pad, index) && !previousButtons[index];
+      const triggerChord = press(pad, 6) && press(pad, 7);
+      const triggerChordStarted = triggerChord && !(previousButtons[6] && previousButtons[7]);
 
       if (direction) {
         if (!gamepadMode) enableMode();
@@ -1168,6 +1177,11 @@
         }
       }
       heldDirection = direction;
+
+      if (triggerChordStarted) {
+        if (!gamepadMode) enableMode();
+        pageScroll(0);
+      }
 
       if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].some(down)) {
         if (!gamepadMode) enableMode();
@@ -1184,14 +1198,13 @@
         if (down(4)) changeCollection(-1);
         if (down(5)) changeCollection(1);
         if ((down(9) || down(10)) && !document.querySelector('#detail[open]') && !welcomeScreen() && !isLightboxOpen()) resetFilters();
-        const ltDown=down(6),rtDown=down(7);
-        if(press(pad,6)&&press(pad,7)&&(ltDown||rtDown))pageScroll(0);
-        else if(ltDown)pageScroll(-1);
-        else if(rtDown)pageScroll(1);
+        const ltDown = down(6), rtDown = down(7);
+        if (!triggerChord && ltDown) pageScroll(-1);
+        else if (!triggerChord && rtDown) pageScroll(1);
       }
 
       const scroll = pad.axes[3] || 0;
-      if (Math.abs(scroll) > 0.2 && !welcomeScreen()) {
+      if (Math.abs(scroll) > 0.2 && !welcomeScreen() && !triggerChord) {
         const amount = Math.sign(scroll) * ((Math.abs(scroll) - 0.2) / 0.8) * 16;
         const description = document.querySelector('#detail[open] .description-text');
         const sidebarBox = document.querySelector('#sidebar-tags');

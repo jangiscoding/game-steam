@@ -70,6 +70,9 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("pageScroll", gamepad)
         self.assertIn("LT+RT", gamepad)
         self.assertIn("pageScroll", steam_gamepad)
+        self.assertIn("triggerChordStarted", gamepad)
+        self.assertIn("triggerChordStarted", steam_gamepad)
+        self.assertIn("document.documentElement.scrollTop = 0", steam_gamepad)
 
     def test_personal_xbox_collections_and_steam_theme(self):
         app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")
