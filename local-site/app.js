@@ -678,7 +678,7 @@ $('#reset').addEventListener('click',()=>{
   }
   selectTab('all');
 });
-$('#back-to-top').addEventListener('click',()=>$('#library').scrollIntoView({behavior:'smooth'}));
+$('#back-to-top').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 window.addEventListener('scroll',()=>{
   const btn=$('#back-to-top');if(btn)btn.hidden=window.scrollY<500;
   scheduleVirtualRender();clearTimeout(scrollSaveTimer);scrollSaveTimer=setTimeout(()=>writeStorage(storageKeys.scroll,window.scrollY),150);

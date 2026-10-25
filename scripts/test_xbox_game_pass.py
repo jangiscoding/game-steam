@@ -57,6 +57,7 @@ class XboxGamePassTests(unittest.TestCase):
         app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")
         gamepad = (ROOT / "web-game-library/xbox/gamepad.js").read_text(encoding="utf-8")
         steam_gamepad = (ROOT / "local-site/gamepad.js").read_text(encoding="utf-8")
+        steam_app = (ROOT / "local-site/app.js").read_text(encoding="utf-8")
         self.assertIn("gamepad.js", html)
         self.assertIn("navigator.getGamepads", gamepad)
         self.assertIn("xbox:gamepad-category", gamepad)
@@ -78,6 +79,7 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("document.documentElement.scrollTop = 0", steam_gamepad)
         self.assertIn("pageScrollFocusLocked", steam_gamepad)
         self.assertIn("focus(best, false)", steam_gamepad)
+        self.assertIn("window.scrollTo({top:0,behavior:'smooth'})", steam_app)
 
     def test_personal_xbox_collections_and_steam_theme(self):
         app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")
@@ -98,6 +100,8 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("productIds", server)
         self.assertIn("gameNames", server)
         self.assertIn("installed-detection", app)
+        self.assertIn("127.0.0.1", app)
+        self.assertIn("Access-Control-Allow-Private-Network", server)
         self.assertIn("jang_welcome_seen_v1", steam_app)
         self.assertIn("--green", theme)
         self.assertIn("--neon-primary", theme)

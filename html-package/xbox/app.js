@@ -113,14 +113,24 @@ function toggleInstalled(id){
 async function detectInstalledGames(){
   const status=$('#installed-detection');
   try{
-    const response=await fetch('/api/installed-xbox-games',{cache:'no-store'});
-    if(!response.ok){if(status)status.textContent='Tự nhận diện cần chạy bằng launcher Windows.';return;}
-    const payload=await response.json();
+    const urls=['/api/installed-xbox-games'];
+    if(!['127.0.0.1','localhost'].includes(location.hostname)){
+      for(const port of [8000,8001,8002,8080])urls.push(`http://127.0.0.1:${port}/api/installed-xbox-games`);
+    }
+    let payload=null;
+    for(const url of urls){
+      const controller=new AbortController();
+      const timer=setTimeout(()=>controller.abort(),2500);
+      try{
+        const response=await fetch(url,{cache:'no-store',signal:controller.signal});
+        if(response.ok){const candidate=await response.json();if(candidate?.ok){payload=candidate;break;}}
+      }catch{}finally{clearTimeout(timer);}
+    }
+    if(!payload){if(status)status.textContent='Hãy chạy start.bat trên Windows để trang web đọc được game Xbox đã cài.';return;}
     const families=new Set((payload.packageFamilyNames||[]).map(value=>String(value).toLowerCase()));
     const identities=new Set((payload.packageIdentityNames||[]).map(value=>String(value).toLowerCase()));
     const productIds=new Set((payload.productIds||[]).map(value=>String(value).toUpperCase()));
     const names=new Set((payload.gameNames||[]).map(normalizeInstalledName).filter(Boolean));
-    if(!payload.ok){if(status)status.textContent='Không thể đọc danh sách game Xbox trên máy.';return;}
     detectedInstalled.clear();
     for(const game of catalog.games){
       const familyMatch=(game.packageFamilyNames||[]).some(value=>families.has(String(value).toLowerCase()));
@@ -131,7 +141,8 @@ async function detectInstalledGames(){
     }
     const manifests=Number(payload.scan?.manifests)||0;
     const roots=Number(payload.scan?.roots)||0;
-    if(status)status.textContent=detectedInstalled.size?`Đã nhận diện ${detectedInstalled.size} game cài trên máy.`:(roots||families.size||identities.size?`Đã quét ${manifests} manifest nhưng chưa khớp game trong PC Game Pass.`:'Chưa tìm thấy thư mục/package Xbox; bạn vẫn có thể đánh dấu thủ công.');
+    const appxPackages=Number(payload.scan?.appxPackages)||0;
+    if(status)status.textContent=detectedInstalled.size?`Đã nhận diện ${detectedInstalled.size} game cài trên máy.`:(roots||families.size||identities.size?`Đã đọc ${appxPackages} package và ${manifests} manifest nhưng chưa khớp game PC Game Pass.`:'Chưa tìm thấy thư mục/package Xbox; bạn vẫn có thể đánh dấu thủ công.');
     renderCollections();applyFilters();
   }catch{if(status)status.textContent='Tự nhận diện cần launcher Windows; có thể đánh dấu thủ công.';}
 }

@@ -1122,7 +1122,9 @@
         window.__archive?.renderGames?.(true);
         requestAnimationFrame(() => {
           if (token !== pageScrollToken) return;
-          const best = getBestVisibleGameCard();
+          const best = direction === 0
+            ? document.querySelector('.topbar a[href], .hero a[href], .hero button')
+            : getBestVisibleGameCard();
           if (best) focus(best, false);
           pageScrollFocusLocked = false;
         });
@@ -1303,6 +1305,7 @@
   /* Listen for virtual grid renders to restore focus safely without jumping to top */
   document.addEventListener('archive:rendered', () => {
     if (!gamepadMode || currentDialog() || keyboard?.open || pageScrollFocusLocked) return;
+    if (document.activeElement && candidates().includes(document.activeElement) && isElementVisible(document.activeElement)) return;
     if (lastFocusedGameId) {
       const match = document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`);
       if (match && isCardInViewport(match)) {

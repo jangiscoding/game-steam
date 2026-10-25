@@ -88,14 +88,14 @@ def get_installed_steam_app_ids():
 def get_installed_xbox_packages():
     """Read Appx and Xbox Gaming Services identities installed on Windows."""
     if sys.platform != 'win32':
-        return {'packageFamilyNames': [], 'packageIdentityNames': [], 'productIds': [], 'gameNames': [], 'scan': {'roots': 0, 'manifests': 0}}
+        return {'packageFamilyNames': [], 'packageIdentityNames': [], 'productIds': [], 'gameNames': [], 'scan': {'roots': 0, 'manifests': 0, 'appxPackages': 0}}
     import subprocess
     import string
     import re
     import xml.etree.ElementTree as ET
     command = [
         'powershell.exe', '-NoProfile', '-NonInteractive', '-Command',
-        "Get-AppxPackage | ForEach-Object { if ($_.PackageFamilyName) { 'PFN|' + $_.PackageFamilyName }; if ($_.Name) { 'ID|' + $_.Name } }"
+        "Get-AppxPackage | ForEach-Object { if ($_.PackageFamilyName) { 'PFN|' + $_.PackageFamilyName }; if ($_.Name) { 'ID|' + $_.Name }; if ($_.InstallLocation) { 'LOC|' + $_.InstallLocation } }"
     ]
     kwargs = {
         'capture_output': True,
@@ -110,6 +110,7 @@ def get_installed_xbox_packages():
     identities = set()
     product_ids = set()
     game_names = set()
+    install_locations = set()
     if result.returncode == 0:
         for line in result.stdout.splitlines():
             kind, separator, value = line.strip().partition('|')
@@ -119,6 +120,8 @@ def get_installed_xbox_packages():
                 families.add(value)
             elif kind == 'ID':
                 identities.add(value)
+            elif kind == 'LOC':
+                install_locations.add(Path(value))
 
     # Win32/MSIXVC games installed by the Xbox app expose MicrosoftGame.config
     # even when Get-AppxPackage does not list the game as a normal Appx package.
@@ -141,22 +144,39 @@ def get_installed_xbox_packages():
             except Exception:
                 pass
     configs = set()
+    for location in install_locations:
+        config = location / 'MicrosoftGame.config'
+        if config.is_file():
+            configs.add(config)
     for xbox_root in gaming_roots:
         try:
-            configs.update(xbox_root.rglob('MicrosoftGame.config'))
+            children = [item for item in xbox_root.iterdir() if item.is_dir()]
         except Exception:
-            pass
+            children = []
+        for child in children[:1000]:
+            # Xbox normally uses the product title as this directory name, so
+            # it remains useful even when Gaming Services protects the manifest.
+            game_names.add(child.name)
+            for candidate in (child / 'MicrosoftGame.config', child / 'Content' / 'MicrosoftGame.config'):
+                if candidate.is_file():
+                    configs.add(candidate)
+            try:
+                configs.update(list(child.rglob('MicrosoftGame.config'))[:20])
+            except Exception:
+                pass
     for config in list(configs)[:1000]:
         try:
             parent = config.parent.parent if config.parent.name.lower() == 'content' else config.parent
             if parent.name:
                 game_names.add(parent.name)
-            raw_text = config.read_text(encoding='utf-8-sig', errors='ignore')
+            raw_bytes = config.read_bytes()
+            encoding = 'utf-16' if raw_bytes[:2] in (b'\xff\xfe', b'\xfe\xff') or raw_bytes.count(b'\x00') > len(raw_bytes) // 8 else 'utf-8-sig'
+            raw_text = raw_bytes.decode(encoding, errors='ignore')
             product_ids.update(re.findall(r'(?<![A-Z0-9])[A-Z0-9]{12}(?![A-Z0-9])', raw_text.upper()))
         except Exception:
             raw_text = ''
         try:
-            root = ET.parse(config).getroot()
+            root = ET.fromstring(raw_text)
             identity = next((node for node in root.iter() if node.tag.rsplit('}', 1)[-1] == 'Identity'), None)
             name = identity.get('Name') if identity is not None else None
             if name:
@@ -168,7 +188,7 @@ def get_installed_xbox_packages():
         'packageIdentityNames': sorted(identities),
         'productIds': sorted(product_ids),
         'gameNames': sorted(game_names),
-        'scan': {'roots': len(gaming_roots), 'manifests': len(configs)},
+        'scan': {'roots': len(gaming_roots), 'manifests': len(configs), 'appxPackages': len(install_locations)},
     }
 
 
@@ -583,10 +603,11 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
                 count = sum(len(packages[key]) for key in ('packageFamilyNames', 'packageIdentityNames', 'productIds', 'gameNames'))
                 payload = json.dumps({'ok': True, **packages, 'count': count}).encode('utf-8')
             except Exception as e:
-                payload = json.dumps({'ok': False, 'error': str(e), 'packageFamilyNames': [], 'packageIdentityNames': [], 'productIds': [], 'gameNames': [], 'scan': {'roots': 0, 'manifests': 0}}).encode('utf-8')
+                payload = json.dumps({'ok': False, 'error': str(e), 'packageFamilyNames': [], 'packageIdentityNames': [], 'productIds': [], 'gameNames': [], 'scan': {'roots': 0, 'manifests': 0, 'appxPackages': 0}}).encode('utf-8')
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header('Access-Control-Allow-Private-Network', 'true')
             self.send_header('Cache-Control', 'no-cache, no-store')
             self.end_headers()
             self.wfile.write(payload)
@@ -805,10 +826,12 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
         super().do_GET()
 
     def do_OPTIONS(self):
-        self.send_response(200)
+        self.send_response(204)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.send_header('Access-Control-Allow-Headers', '*')
+        self.send_header('Access-Control-Allow-Private-Network', 'true')
+        self.send_header('Cache-Control', 'no-cache, no-store')
         self.end_headers()
 
     def do_POST(self):
