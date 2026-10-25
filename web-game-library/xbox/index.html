@@ -7,11 +7,11 @@
   <meta name="description" content="Danh mục trò chơi PC Game Pass, tiếng Việt và Việt hóa.">
   <title>Jang Play — PC Game Pass</title>
   <script src="../theme.js?v=1"></script>
-  <link rel="stylesheet" href="./styles.css?v=7">
+  <link rel="stylesheet" href="./styles.css?v=8">
   <script src="./data/catalog.js" defer></script>
   <script src="../hls.min.js" defer></script>
-  <script src="./app.js?v=10" defer></script>
-  <script src="./gamepad.js?v=5" defer></script>
+  <script src="./app.js?v=11" defer></script>
+  <script src="./gamepad.js?v=6" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -76,5 +76,24 @@
 
   <footer><a href="../">J · JANG PLAY</a><span>Dữ liệu PC Game Pass, ngôn ngữ và hình ảnh từ Microsoft Store.</span></footer>
   <dialog id="detail"><div id="detail-inner"></div></dialog>
+  <dialog id="xbox-lightbox" class="xbox-lightbox" aria-label="Xem ảnh chụp màn hình">
+    <div class="lightbox-backdrop" data-lightbox-close></div>
+    <div class="lightbox-container">
+      <div class="lightbox-toolbar">
+        <button type="button" class="lightbox-back-btn" data-lightbox-close title="Quay lại hồ sơ game (Esc hoặc B)"><span>←</span> Quay lại</button>
+        <span class="lightbox-counter" id="lightbox-counter">1 / 1</span>
+        <div class="lightbox-actions">
+          <a class="lightbox-external-btn" id="lightbox-full-link" href="" target="_blank" rel="noopener" title="Mở ảnh gốc trong thẻ mới">⤢ Ảnh gốc</a>
+          <button type="button" class="lightbox-close-btn" data-lightbox-close aria-label="Đóng ảnh (Esc)">✕</button>
+        </div>
+      </div>
+      <div class="lightbox-stage">
+        <button type="button" class="lightbox-nav-btn" id="lightbox-prev" aria-label="Ảnh trước (Mũi tên trái / LB)">‹</button>
+        <div class="lightbox-image-wrap"><img id="lightbox-img" src="" alt="Ảnh gameplay"></div>
+        <button type="button" class="lightbox-nav-btn" id="lightbox-next" aria-label="Ảnh tiếp theo (Mũi tên phải / RB)">›</button>
+      </div>
+      <div class="lightbox-footer-tip"><span><b>← / →</b> Đổi ảnh</span><span>·</span><span><b>Esc / B</b> Quay lại hồ sơ</span><span>·</span><span><b>LB / RB</b> Đổi ảnh bằng tay cầm</span></div>
+    </div>
+  </dialog>
 </body>
 </html>

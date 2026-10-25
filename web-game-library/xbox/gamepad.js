@@ -75,7 +75,7 @@
   }
 
   function candidates() {
-    const dialog = document.querySelector('dialog[open]');
+    const dialog = document.querySelector('#xbox-lightbox[open]') || document.querySelector('dialog[open]');
     return [...(dialog || document).querySelectorAll(FOCUSABLE)]
       .filter(element => visible(element) && !element.classList.contains('favorite-button'));
   }
@@ -93,8 +93,8 @@
     if (!active) return;
     const items = candidates();
     if (!current || !items.includes(current)) {
-      const dialog = document.querySelector('dialog[open]');
-      select(dialog?.querySelector('.store-button') || (!dialog ? document.querySelector('.collection.active') : null) || items[0], false);
+      const dialog = document.querySelector('#xbox-lightbox[open]') || document.querySelector('dialog[open]');
+      select(dialog?.querySelector('.lightbox-back-btn') || dialog?.querySelector('.store-button') || (!dialog ? document.querySelector('.collection.active') : null) || items[0], false);
     }
   }
 
@@ -189,6 +189,7 @@
     const anyInput = gamepad.buttons.some(button => button.pressed) || gamepad.axes.some(axis => Math.abs(axis) > THRESHOLD);
     if (anyInput) activateMode();
     if (active) {
+      const lightbox = document.querySelector('#xbox-lightbox[open]');
       const triggerChord = pressed(gamepad, 6) && pressed(gamepad, 7);
       const triggerChordStarted = triggerChord && !(previousButtons[6] && previousButtons[7]);
       if (triggerChordStarted) pageScroll(0);
@@ -200,6 +201,7 @@
       }
       if (edge(gamepad, 1)) {
         if (keyboard?.open) { closeKeyboard(); }
+        else if (lightbox) { window.__xboxLightbox?.close(); }
         else {
         const close = document.querySelector('dialog[open] [data-close]');
         if (close) {
@@ -213,8 +215,8 @@
         if (id) document.dispatchEvent(new CustomEvent('xbox:gamepad-favorite', {detail: {id}}));
       }
       if (edge(gamepad, 3)) openKeyboard();
-      if (edge(gamepad, 4)) document.dispatchEvent(new CustomEvent('xbox:gamepad-category', {detail: {direction: -1}}));
-      if (edge(gamepad, 5)) document.dispatchEvent(new CustomEvent('xbox:gamepad-category', {detail: {direction: 1}}));
+      if (edge(gamepad, 4)) {if(lightbox)window.__xboxLightbox?.previous();else document.dispatchEvent(new CustomEvent('xbox:gamepad-category', {detail: {direction: -1}}));}
+      if (edge(gamepad, 5)) {if(lightbox)window.__xboxLightbox?.next();else document.dispatchEvent(new CustomEvent('xbox:gamepad-category', {detail: {direction: 1}}));}
       if (edge(gamepad, 9) || edge(gamepad, 10)) {
         if (!document.querySelector('#detail[open]')) {
           if (keyboard?.open) closeKeyboard();
@@ -240,7 +242,7 @@
       const scroll = gamepad.axes[3] || 0;
       if (Math.abs(scroll) > .2 && !triggerChord) {
         const amount = Math.sign(scroll) * ((Math.abs(scroll) - .2) / .8) * 16;
-        const dialog = document.querySelector('dialog[open]');
+        const dialog = document.querySelector('#xbox-lightbox[open]') || document.querySelector('dialog[open]');
         if (dialog) dialog.scrollBy(0, amount); else window.scrollBy(0, amount);
       }
     }
