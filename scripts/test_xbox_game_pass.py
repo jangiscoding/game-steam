@@ -52,9 +52,14 @@ class XboxGamePassTests(unittest.TestCase):
     def test_page_has_gamepad_navigation(self):
         html = (ROOT / "web-game-library/xbox/index.html").read_text(encoding="utf-8")
         gamepad = (ROOT / "web-game-library/xbox/gamepad.js").read_text(encoding="utf-8")
+        steam_gamepad = (ROOT / "local-site/gamepad.js").read_text(encoding="utf-8")
         self.assertIn("gamepad.js", html)
         self.assertIn("navigator.getGamepads", gamepad)
         self.assertIn("xbox:gamepad-category", gamepad)
+        self.assertIn("stopHaptics", gamepad)
+        self.assertIn("pagehide", gamepad)
+        self.assertIn("stopHaptics", steam_gamepad)
+        self.assertIn("beforeunload", steam_gamepad)
 
     def test_every_catalog_genre_has_a_vietnamese_label(self):
         app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")

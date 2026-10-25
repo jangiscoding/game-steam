@@ -7,6 +7,23 @@
   let lastMove = 0;
   let active = false;
 
+  function stopHaptics() {
+    try {
+      [...(navigator.getGamepads?.() || [])].filter(Boolean).forEach(gamepad => {
+        const actuator = gamepad.vibrationActuator;
+        if (actuator?.reset) actuator.reset().catch(() => {});
+        else if (actuator?.playEffect) {
+          actuator.playEffect('dual-rumble', {
+            startDelay: 0,
+            duration: 1,
+            weakMagnitude: 0,
+            strongMagnitude: 0
+          }).catch(() => {});
+        }
+      });
+    } catch {}
+  }
+
   function visible(element) {
     const style = getComputedStyle(element);
     const rect = element.getBoundingClientRect();
@@ -119,5 +136,8 @@
       document.body.classList.remove('gamepad-mode');
     }
   });
+  window.addEventListener('pagehide', stopHaptics);
+  window.addEventListener('beforeunload', stopHaptics);
+  stopHaptics();
   requestAnimationFrame(tick);
 })();

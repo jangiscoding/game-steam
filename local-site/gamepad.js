@@ -10,7 +10,7 @@
   let nextMoveAt = 0, gamepadMode = false, lastFocused = null, lastFocusedGameId = null;
   let returnFocus = null;
   let keyboard = null, keyboardTarget = null, selectedBeforeKeyboard = null;
-  let audioCtx = null;
+  let audioCtx = null, hapticStopTimer = null;
 
   /* --- Web Audio API Synthesizer (Instant, 0 assets) --- */
   function getAudio() {
@@ -80,33 +80,58 @@
   }
 
   /* --- Gamepad Dual-Rumble Haptics --- */
+  function stopHaptics() {
+    clearTimeout(hapticStopTimer);
+    hapticStopTimer = null;
+    try {
+      const pads = navigator.getGamepads ? [...navigator.getGamepads()] : [];
+      pads.filter(Boolean).forEach(pad => {
+        const actuator = pad.vibrationActuator;
+        if (actuator?.reset) actuator.reset().catch(() => {});
+        else if (actuator?.playEffect) {
+          actuator.playEffect('dual-rumble', {
+            startDelay: 0,
+            duration: 1,
+            weakMagnitude: 0,
+            strongMagnitude: 0
+          }).catch(() => {});
+        }
+      });
+    } catch {}
+  }
+
   function playHaptic(type = 'light') {
     try {
       const pads = navigator.getGamepads ? [...navigator.getGamepads()] : [];
       const pad = pads.find(p => p?.connected && p.mapping === 'standard' && p.index === controllerIndex) || pads.find(p => p?.connected && p.mapping === 'standard');
       if (!pad?.vibrationActuator?.playEffect) return;
+      let duration = 22;
       if (type === 'light') {
         pad.vibrationActuator.playEffect('dual-rumble', {
           startDelay: 0,
-          duration: 22,
+          duration,
           weakMagnitude: 0.22,
           strongMagnitude: 0.06
         }).catch(() => {});
       } else if (type === 'medium') {
+        duration = 45;
         pad.vibrationActuator.playEffect('dual-rumble', {
           startDelay: 0,
-          duration: 45,
+          duration,
           weakMagnitude: 0.45,
           strongMagnitude: 0.18
         }).catch(() => {});
       } else if (type === 'boundary') {
+        duration = 32;
         pad.vibrationActuator.playEffect('dual-rumble', {
           startDelay: 0,
-          duration: 32,
+          duration,
           weakMagnitude: 0.1,
           strongMagnitude: 0.35
         }).catch(() => {});
       }
+      clearTimeout(hapticStopTimer);
+      hapticStopTimer = setTimeout(stopHaptics, duration + 50);
     } catch {}
   }
 
@@ -1199,6 +1224,8 @@
 
   window.addEventListener('gamepadconnected', start);
   window.addEventListener('gamepaddisconnected', start);
+  window.addEventListener('pagehide', stopHaptics);
+  window.addEventListener('beforeunload', stopHaptics);
   window.addEventListener('focus', () => {
     if (gamepadMode) {
       const target = (lastFocused && lastFocused.isConnected && isElementVisible(lastFocused)) ? lastFocused : (document.querySelector('.gamepad-focus') || document.querySelector('#detail[open] .button.primary') || getBestVisibleGameCard() || candidates()[0]);
@@ -1208,6 +1235,7 @@
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden && frame !== null) {
+      stopHaptics();
       cancelAnimationFrame(frame);
       frame = null;
       previousButtons = [];
