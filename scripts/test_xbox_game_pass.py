@@ -37,6 +37,20 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertTrue(all(game["hasVietnamesePatch"] == bool(game["vietnamesePatches"]) for game in games))
         self.assertTrue(all(patch.get("link", "").startswith("https://") for game in games for patch in game["vietnamesePatches"]))
 
+    def test_official_media_and_release_years_are_available(self):
+        games = self.data["games"]
+        self.assertEqual(self.data["metadata"]["schemaVersion"], 5)
+        self.assertTrue(all(game.get("releaseDate") for game in games))
+        self.assertGreater(sum(bool(game.get("screenshots")) for game in games), 500)
+        self.assertGreater(sum(bool(game.get("trailers")) for game in games), 300)
+        self.assertTrue(all(len(game["screenshots"]) <= 12 for game in games))
+        self.assertTrue(all(len(game["trailers"]) <= 6 for game in games))
+        self.assertTrue(all(item["url"].startswith("https://") for game in games for item in game["screenshots"]))
+        self.assertTrue(all(item["hlsUrl"].startswith("https://") for game in games for item in game["trailers"]))
+        self.assertTrue(all(game.get("descriptionVi") for game in games))
+        self.assertEqual(self.data["metadata"]["vietnameseDescriptionGames"], len(games))
+        self.assertGreater(sum(bool(game.get("storageBytes")) for game in games), 350)
+
     def test_page_uses_expanded_filters_and_xbox_app_deep_link(self):
         html = (ROOT / "web-game-library/xbox/index.html").read_text(encoding="utf-8")
         app = (ROOT / "web-game-library/xbox/app.js").read_text(encoding="utf-8")
@@ -51,6 +65,12 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("Ngôn ngữ tiếng Việt", app)
         self.assertIn("Có hỗ trợ Việt hóa", app)
         self.assertNotIn("Xbox Console", html + app)
+        self.assertIn("yearNumber", app)
+        self.assertIn("xbox-gallery", app)
+        self.assertIn("xbox-video-player", app)
+        self.assertIn("../hls.min.js", html)
+        self.assertIn("activeSort='newest'", app)
+        self.assertIn("size-large", app + html)
 
     def test_page_has_gamepad_navigation(self):
         html = (ROOT / "web-game-library/xbox/index.html").read_text(encoding="utf-8")
@@ -102,6 +122,9 @@ class XboxGamePassTests(unittest.TestCase):
         self.assertIn("--xbox:#06b6d4", styles)
         self.assertIn("gamepad-bar", styles)
         self.assertIn("jang_welcome_seen_v1", steam_app)
+        self.assertIn("sort:'release-new'", steam_app)
+        self.assertIn("size-large", steam_app)
+        self.assertIn("windowsMinimumDisplay", steam_app)
         self.assertIn("--green", theme)
         self.assertIn("--neon-primary", theme)
         self.assertIn("../theme.js", xbox_html)

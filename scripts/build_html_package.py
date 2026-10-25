@@ -12,7 +12,7 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SUMMARY_FIELDS = ('id', 'steamAppId', 'name', 'imageUrl', 'genres', 'controllerSupport', 'platforms', 'playerModes', 'verificationStatus', 'supportsVietnamese', 'vietnameseSupportStatus')
+SUMMARY_FIELDS = ('id', 'steamAppId', 'name', 'imageUrl', 'genres', 'controllerSupport', 'platforms', 'playerModes', 'storage', 'verificationStatus', 'supportsVietnamese', 'vietnameseSupportStatus')
 
 
 def javascript_json(value):

@@ -27,6 +27,7 @@
     "languages:fetch": "python scripts/enrich_steam_languages.py",
     "languages:attach": "python scripts/enrich_steam_languages.py --attach-only",
     "xbox:sync": "python scripts/sync_xbox_game_pass.py",
+    "xbox:translate": "python scripts/translate_xbox_content.py --model-dir exports/translation-models/en-vi",
     "xbox:build": "python scripts/build_xbox_game_pass.py",
     "viethoa:scan": "python3 scripts/scan_viethoa.py"
   }

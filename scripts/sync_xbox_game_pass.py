@@ -2,6 +2,7 @@
 """Synchronize the current Xbox Game Pass catalog from official Microsoft APIs."""
 
 import argparse
+import hashlib
 import json
 import re
 import time
@@ -79,6 +80,59 @@ def image_url(localized, purposes):
     return None
 
 
+def absolute_media_url(value):
+    if not isinstance(value, str) or not value.strip():
+        return None
+    value = value.strip()
+    return f"https:{value}" if value.startswith("//") else value
+
+
+def screenshots(localized, limit=12):
+    """Keep distinct official Microsoft Store gameplay screenshots."""
+    results = []
+    seen = set()
+    for image in localized.get("Images") or []:
+        if image.get("ImagePurpose") != "Screenshot":
+            continue
+        url = absolute_media_url(image.get("Uri"))
+        if not url or url in seen:
+            continue
+        seen.add(url)
+        results.append({
+            "url": url,
+            "caption": image.get("Caption"),
+            "width": image.get("Width"),
+            "height": image.get("Height"),
+        })
+        if len(results) >= limit:
+            break
+    return results
+
+
+def trailers(localized, limit=6):
+    """Return official HLS trailers and their Microsoft preview images."""
+    results = []
+    seen = set()
+    videos = sorted(localized.get("CMSVideos") or [], key=lambda item: item.get("SortOrder") or 999)
+    for video in videos:
+        hls_url = absolute_media_url(video.get("HLS"))
+        if not hls_url or hls_url in seen:
+            continue
+        seen.add(hls_url)
+        preview = video.get("PreviewImage") or {}
+        results.append({
+            "id": video.get("TrailerId"),
+            "title": video.get("Caption") or preview.get("Caption") or "Xbox trailer",
+            "hlsUrl": hls_url,
+            "previewImageUrl": absolute_media_url(preview.get("Uri")),
+            "width": video.get("Width"),
+            "height": video.get("Height"),
+        })
+        if len(results) >= limit:
+            break
+    return results
+
+
 def rating(market_properties):
     ratings = market_properties.get("ContentRatings") or []
     preferred = next((item for item in ratings if item.get("RatingSystem") == "ESRB"), None)
@@ -118,6 +172,25 @@ def pc_package_family_names(product):
 
 def pc_package_identity_names(product):
     return sorted({name.rsplit("_", 1)[0] for name in pc_package_family_names(product)})
+
+
+def pc_storage(product):
+    """Return the largest declared Windows Desktop package size."""
+    sizes = []
+    for availability in product.get("DisplaySkuAvailabilities") or []:
+        properties = (availability.get("Sku") or {}).get("Properties") or {}
+        for package in properties.get("Packages") or []:
+            platforms = {item.get("PlatformName") for item in package.get("PlatformDependencies") or []}
+            if "Windows.Desktop" not in platforms:
+                continue
+            install_size = package.get("MaxInstallSizeInBytes") or 0
+            download_size = package.get("MaxDownloadSizeInBytes") or 0
+            sizes.append(max(install_size, download_size))
+    size = max(sizes, default=0)
+    if not size:
+        return {"bytes": None, "display": None}
+    gigabytes = size / 1_000_000_000
+    return {"bytes": size, "display": f"{gigabytes:.1f} GB"}
 
 
 def normalize_title(value):
@@ -167,15 +240,26 @@ def normalize_product(product, platforms, patch_index):
     name = clean(localized.get("ProductTitle")) or clean(localized.get("ShortTitle")) or product_id
     languages = supported_languages(product)
     vietnamese_patches = patch_index.get(normalize_title(name), [])
+    storage = pc_storage(product)
+    franchises = [value for value in localized.get("Franchises") or [] if isinstance(value, str) and value.strip()]
     return {
         "id": product_id,
         "name": name,
         "sortName": clean(localized.get("SortTitle")) or name,
         "shortDescription": clean(localized.get("ShortDescription")),
+        "description": clean(localized.get("ProductDescription")),
+        "descriptionLanguage": clean(localized.get("Language")),
         "developer": clean(localized.get("DeveloperName")),
         "publisher": clean(localized.get("PublisherName")),
+        "publisherWebsiteUrl": clean(localized.get("PublisherWebsiteUri")),
+        "supportUrl": clean(localized.get("SupportUri")),
+        "franchises": franchises,
         "imageUrl": image_url(localized, ("Poster", "BoxArt", "BrandedKeyArt")),
         "heroImageUrl": image_url(localized, ("SuperHeroArt", "Hero", "BrandedKeyArt", "Poster")),
+        "screenshots": screenshots(localized),
+        "trailers": trailers(localized),
+        "storageBytes": storage["bytes"],
+        "storageDisplay": storage["display"],
         "genres": properties.get("Categories") or ([properties["Category"]] if properties.get("Category") else []),
         "platforms": sorted(platforms),
         "features": attributes,
@@ -217,7 +301,7 @@ def build_catalog(market="US", language="vi-vn", workers=6, patch_file=None):
     missing = sorted(set(product_ids) - set(products))
     return {
         "metadata": {
-            "schemaVersion": 4,
+            "schemaVersion": 5,
             "updatedAt": datetime.now(timezone.utc).isoformat(),
             "market": market,
             "language": language,
@@ -242,7 +326,19 @@ def main():
     parser.add_argument("--output", type=Path, default=ROOT / "data/xbox-game-pass.json")
     parser.add_argument("--patch-file", type=Path, default=ROOT / "local-site/data/viethoa_games.json")
     args = parser.parse_args()
+    previous = {}
+    if args.output.exists():
+        previous = {game["id"]: game for game in json.loads(args.output.read_text(encoding="utf-8")).get("games", [])}
     catalog = build_catalog(args.market, args.language, args.workers, args.patch_file)
+    for game in catalog["games"]:
+        old = previous.get(game["id"]) or {}
+        source = {"shortDescription": game.get("shortDescription"), "description": game.get("description")}
+        digest = hashlib.sha256(json.dumps(source, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+        if (old.get("translation") or {}).get("sourceHash") == digest:
+            for field in ("shortDescriptionVi", "descriptionVi", "translation"):
+                if old.get(field) is not None:
+                    game[field] = old[field]
+    catalog["metadata"]["vietnameseDescriptionGames"] = sum(bool(game.get("descriptionVi")) for game in catalog["games"])
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Saved {len(catalog['games'])} Xbox Game Pass games to {args.output}")

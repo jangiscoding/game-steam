@@ -7,9 +7,10 @@
   <meta name="description" content="Danh mục trò chơi PC Game Pass, tiếng Việt và Việt hóa.">
   <title>Jang Play — PC Game Pass</title>
   <script src="../theme.js?v=1"></script>
-  <link rel="stylesheet" href="./styles.css?v=6">
+  <link rel="stylesheet" href="./styles.css?v=7">
   <script src="./data/catalog.js" defer></script>
-  <script src="./app.js?v=9" defer></script>
+  <script src="../hls.min.js" defer></script>
+  <script src="./app.js?v=10" defer></script>
   <script src="./gamepad.js?v=5" defer></script>
 </head>
 <body>
@@ -56,7 +57,7 @@
           <div class="toolbar">
             <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Tên game, nhà phát triển, thể loại…"><kbd>/</kbd></label>
             <div class="sort-buttons" id="sort-buttons" aria-label="Sắp xếp">
-              <button class="active" data-sort="az">A–Z</button><button data-sort="newest">Mới nhất</button><button data-sort="za">Z–A</button>
+              <button data-sort="az">A–Z</button><button class="active" data-sort="newest">Mới nhất</button><button data-sort="za">Z–A</button><button data-sort="size-large">GB ↓</button><button data-sort="size-small">GB ↑</button>
             </div>
           </div>
 

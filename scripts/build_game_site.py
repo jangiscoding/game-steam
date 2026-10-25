@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 STATIC_FILES = ("index.html", "styles.css", "filters.css", "app.js", "hls.min.js", "gamepad.js", "theme.js")
 SUMMARY_FIELDS = (
     "id", "steamAppId", "name", "imageUrl", "genres", "controllerSupport",
-    "platforms", "playerModes", "verificationStatus", "supportsVietnamese", "vietnameseSupportStatus",
+    "platforms", "playerModes", "storage", "verificationStatus", "supportsVietnamese", "vietnameseSupportStatus",
 )
 DETAIL_FIELDS = (
     "id", "steamAppId", "name", "imageUrl", "steamUrl", "genres", "platforms",
