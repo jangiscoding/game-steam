@@ -13,6 +13,7 @@ const manualInstalled=new Set(savedPersonal.installed||[]);
 const detectedInstalled=new Set();
 const isInstalled=id=>manualInstalled.has(id)||detectedInstalled.has(id);
 const savePersonal=()=>{try{localStorage.setItem(PERSONAL_KEY,JSON.stringify({favorites:[...favorites],installed:[...manualInstalled]}));}catch{}};
+const normalizeInstalledName=value=>String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 
 const genreLabels={
   'Action & adventure':'Hành động & phiêu lưu','Card & board':'Bài & bàn cờ',Classics:'Kinh điển','Family & kids':'Gia đình & trẻ em',Fighting:'Đối kháng','Multi-player Online Battle Arena':'Đấu trường trực tuyến',Music:'Âm nhạc',Other:'Khác',Platformer:'Đi cảnh', 'Puzzle & trivia':'Giải đố & đố vui','Racing & flying':'Đua xe & bay lượn','Role playing':'Nhập vai',Shooter:'Bắn súng',Simulation:'Mô phỏng',Sports:'Thể thao',Strategy:'Chiến thuật'
@@ -113,21 +114,29 @@ function toggleInstalled(id){
   savePersonal();renderCollections();applyFilters();openDetail(id);
 }
 async function detectInstalledGames(){
+  const status=$('#installed-detection');
   try{
     const response=await fetch('/api/installed-xbox-games',{cache:'no-store'});
-    if(!response.ok)return;
+    if(!response.ok){if(status)status.textContent='Tự nhận diện cần chạy bằng launcher Windows.';return;}
     const payload=await response.json();
     const families=new Set((payload.packageFamilyNames||[]).map(value=>String(value).toLowerCase()));
     const identities=new Set((payload.packageIdentityNames||[]).map(value=>String(value).toLowerCase()));
-    if(!payload.ok||(!families.size&&!identities.size))return;
+    const productIds=new Set((payload.productIds||[]).map(value=>String(value).toUpperCase()));
+    const names=new Set((payload.gameNames||[]).map(normalizeInstalledName).filter(Boolean));
+    if(!payload.ok){if(status)status.textContent='Không thể đọc danh sách game Xbox trên máy.';return;}
     detectedInstalled.clear();
     for(const game of catalog.games){
       const familyMatch=(game.packageFamilyNames||[]).some(value=>families.has(String(value).toLowerCase()));
       const identityMatch=(game.packageIdentityNames||[]).some(value=>identities.has(String(value).toLowerCase()));
-      if(familyMatch||identityMatch)detectedInstalled.add(game.id);
+      const productMatch=productIds.has(String(game.id).toUpperCase());
+      const nameMatch=names.has(normalizeInstalledName(game.name));
+      if(familyMatch||identityMatch||productMatch||nameMatch)detectedInstalled.add(game.id);
     }
+    const manifests=Number(payload.scan?.manifests)||0;
+    const roots=Number(payload.scan?.roots)||0;
+    if(status)status.textContent=detectedInstalled.size?`Đã nhận diện ${detectedInstalled.size} game cài trên máy.`:(roots||families.size||identities.size?`Đã quét ${manifests} manifest nhưng chưa khớp game trong PC Game Pass.`:'Chưa tìm thấy thư mục/package Xbox; bạn vẫn có thể đánh dấu thủ công.');
     renderCollections();applyFilters();
-  }catch{}
+  }catch{if(status)status.textContent='Tự nhận diện cần launcher Windows; có thể đánh dấu thủ công.';}
 }
 function renderGenreChips(){
   const genres=[...new Set(catalog.games.flatMap(game=>game.genres||[]))].sort((a,b)=>genreLabel(a).localeCompare(genreLabel(b),'vi'));

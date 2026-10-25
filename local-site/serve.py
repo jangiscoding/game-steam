@@ -88,9 +88,10 @@ def get_installed_steam_app_ids():
 def get_installed_xbox_packages():
     """Read Appx and Xbox Gaming Services identities installed on Windows."""
     if sys.platform != 'win32':
-        return {'packageFamilyNames': [], 'packageIdentityNames': []}
+        return {'packageFamilyNames': [], 'packageIdentityNames': [], 'productIds': [], 'gameNames': [], 'scan': {'roots': 0, 'manifests': 0}}
     import subprocess
     import string
+    import re
     import xml.etree.ElementTree as ET
     command = [
         'powershell.exe', '-NoProfile', '-NonInteractive', '-Command',
@@ -107,6 +108,8 @@ def get_installed_xbox_packages():
     result = subprocess.run(command, **kwargs)
     families = set()
     identities = set()
+    product_ids = set()
+    game_names = set()
     if result.returncode == 0:
         for line in result.stdout.splitlines():
             kind, separator, value = line.strip().partition('|')
@@ -137,22 +140,35 @@ def get_installed_xbox_packages():
                     gaming_roots.add(configured_root)
             except Exception:
                 pass
+    configs = set()
     for xbox_root in gaming_roots:
-        configs = list(xbox_root.glob('*/Content/MicrosoftGame.config'))
-        configs += list(xbox_root.glob('*/MicrosoftGame.config'))
-        configs += list(xbox_root.glob('*/*/MicrosoftGame.config'))
-        for config in configs:
-            try:
-                root = ET.parse(config).getroot()
-                identity = next((node for node in root.iter() if node.tag.rsplit('}', 1)[-1] == 'Identity'), None)
-                name = identity.get('Name') if identity is not None else None
-                if name:
-                    identities.add(name)
-            except Exception:
-                pass
+        try:
+            configs.update(xbox_root.rglob('MicrosoftGame.config'))
+        except Exception:
+            pass
+    for config in list(configs)[:1000]:
+        try:
+            parent = config.parent.parent if config.parent.name.lower() == 'content' else config.parent
+            if parent.name:
+                game_names.add(parent.name)
+            raw_text = config.read_text(encoding='utf-8-sig', errors='ignore')
+            product_ids.update(re.findall(r'(?<![A-Z0-9])[A-Z0-9]{12}(?![A-Z0-9])', raw_text.upper()))
+        except Exception:
+            raw_text = ''
+        try:
+            root = ET.parse(config).getroot()
+            identity = next((node for node in root.iter() if node.tag.rsplit('}', 1)[-1] == 'Identity'), None)
+            name = identity.get('Name') if identity is not None else None
+            if name:
+                identities.add(name)
+        except Exception:
+            pass
     return {
         'packageFamilyNames': sorted(families),
         'packageIdentityNames': sorted(identities),
+        'productIds': sorted(product_ids),
+        'gameNames': sorted(game_names),
+        'scan': {'roots': len(gaming_roots), 'manifests': len(configs)},
     }
 
 
@@ -564,9 +580,10 @@ class ArchiveHTTPRequestHandler(SimpleHTTPRequestHandler):
             import json
             try:
                 packages = get_installed_xbox_packages()
-                payload = json.dumps({'ok': True, **packages, 'count': len(packages['packageFamilyNames']) + len(packages['packageIdentityNames'])}).encode('utf-8')
+                count = sum(len(packages[key]) for key in ('packageFamilyNames', 'packageIdentityNames', 'productIds', 'gameNames'))
+                payload = json.dumps({'ok': True, **packages, 'count': count}).encode('utf-8')
             except Exception as e:
-                payload = json.dumps({'ok': False, 'error': str(e), 'packageFamilyNames': [], 'packageIdentityNames': []}).encode('utf-8')
+                payload = json.dumps({'ok': False, 'error': str(e), 'packageFamilyNames': [], 'packageIdentityNames': [], 'productIds': [], 'gameNames': [], 'scan': {'roots': 0, 'manifests': 0}}).encode('utf-8')
             self.send_response(200)
             self.send_header('Content-Type', 'application/json; charset=utf-8')
             self.send_header('Access-Control-Allow-Origin', '*')
