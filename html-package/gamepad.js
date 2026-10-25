@@ -11,6 +11,7 @@
   let returnFocus = null;
   let keyboard = null, keyboardTarget = null, selectedBeforeKeyboard = null;
   let audioCtx = null, hapticStopTimer = null;
+  let pageScrollToken = 0, pageScrollFocusLocked = false;
 
   /* --- Web Audio API Synthesizer (Instant, 0 assets) --- */
   function getAudio() {
@@ -250,7 +251,7 @@
     return cards[0] || null;
   }
 
-  function focus(element) {
+  function focus(element, ensureInView = true) {
     if (!element) return;
     for (const sel of ['#tag-picker', '#genre-picker']) {
       const picker = document.querySelector(sel);
@@ -261,9 +262,9 @@
     element.focus({preventScroll: true});
 
     if (element.classList.contains('game-open') || element.closest('.game-card')) {
-      scrollCardIntoComfortView(element);
+      if (ensureInView) scrollCardIntoComfortView(element);
       lastFocusedGameId = element.dataset?.game || element.closest('.game-card')?.querySelector('.game-open')?.dataset?.game;
-    } else {
+    } else if (ensureInView) {
       element.scrollIntoView({block: 'nearest', inline: 'nearest', behavior: 'smooth'});
     }
     lastFocused = element;
@@ -1112,21 +1113,39 @@
   function pageScroll(direction) {
     if (welcomeScreen() || keyboard?.open) return;
     const target = currentDialog();
-    if (direction === 0) {
-      if (target) {
-        target.scrollTop = 0;
-        target.scrollTo({top: 0, behavior: 'auto'});
-      } else {
+    if (!target) {
+      const token = ++pageScrollToken;
+      pageScrollFocusLocked = true;
+      if (document.activeElement?.closest?.('#game-grid')) document.activeElement.blur();
+      const settleFocus = () => requestAnimationFrame(() => {
+        if (token !== pageScrollToken) return;
+        window.__archive?.renderGames?.(true);
+        requestAnimationFrame(() => {
+          if (token !== pageScrollToken) return;
+          const best = getBestVisibleGameCard();
+          if (best) focus(best, false);
+          pageScrollFocusLocked = false;
+        });
+      });
+      if (direction === 0) {
         document.documentElement.scrollTop = 0;
         document.body.scrollTop = 0;
         window.scrollTo({top: 0, behavior: 'auto'});
+        announce('Đã cuộn lên đầu trang.');
+      } else {
+        window.scrollBy({top: direction * window.innerHeight * .82, behavior: 'auto'});
       }
+      settleFocus();
+      return;
+    }
+    if (direction === 0) {
+      target.scrollTop = 0;
+      target.scrollTo({top: 0, behavior: 'auto'});
       announce('Đã cuộn lên đầu trang.');
       return;
     }
     const amount = direction * (target?.clientHeight || window.innerHeight) * .82;
-    if (target) target.scrollBy({top: amount, behavior: 'smooth'});
-    else window.scrollBy({top: amount, behavior: 'smooth'});
+    target.scrollBy({top: amount, behavior: 'smooth'});
   }
 
   function press(pad, index) {
@@ -1283,7 +1302,7 @@
 
   /* Listen for virtual grid renders to restore focus safely without jumping to top */
   document.addEventListener('archive:rendered', () => {
-    if (!gamepadMode || currentDialog() || keyboard?.open) return;
+    if (!gamepadMode || currentDialog() || keyboard?.open || pageScrollFocusLocked) return;
     if (lastFocusedGameId) {
       const match = document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`);
       if (match && isCardInViewport(match)) {
@@ -1298,7 +1317,7 @@
   });
 
   new MutationObserver(() => {
-    if (!gamepadMode || !bar.isConnected) return;
+    if (!gamepadMode || !bar.isConnected || pageScrollFocusLocked) return;
     if (currentDialog() || keyboard?.open) return;
     if (lastFocusedGameId) {
       const match = document.querySelector(`.game-open[data-game="${lastFocusedGameId}"]`);
