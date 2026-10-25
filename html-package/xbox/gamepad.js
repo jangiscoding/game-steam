@@ -14,7 +14,7 @@
   const bar = document.createElement('div');
   bar.className = 'gamepad-bar';
   bar.hidden = true;
-  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>LT / RT</b> Lật trang</span><span><b>LT+RT</b> Lên đầu</span><span><b>⧉</b> Steam</span>';
+  bar.innerHTML = '<span class="gamepad-connected">⊞ Tay cầm đã kết nối</span><span><b>✥</b> Di chuyển</span><span><b class="pad-a">A</b> Chọn</span><span><b class="pad-b">B</b> Quay lại</span><span><b class="pad-x">X</b> Thích</span><span><b class="pad-menu">☰</b> Xóa lọc</span><span><b>LB / RB</b> Đổi nhóm</span><span><b class="pad-y">Y</b> Tìm kiếm</span><span><b>RS</b> Cuộn</span><span><b>LT / RT</b> Cuộn trang</span><span><b>LT+RT</b> Lên đầu</span><span><b>⧉</b> Steam</span>';
   document.body.append(bar);
 
   function buildKeyboard() {

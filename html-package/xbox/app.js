@@ -4,7 +4,6 @@ const catalog=window.XBOX_GAME_PASS_DATA;
 const $=selector=>document.querySelector(selector);
 const esc=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const number=value=>new Intl.NumberFormat('vi-VN').format(value);
-const PAGE_SIZE=36;
 const PERSONAL_KEY='jang-xbox-personal-v1';
 const readPersonal=()=>{try{return JSON.parse(localStorage.getItem(PERSONAL_KEY))||{};}catch{return {};}};
 const savedPersonal=readPersonal();
@@ -39,7 +38,6 @@ const featureFilters=[
 ];
 
 let filtered=[];
-let page=1;
 let activeCollection='all';
 let activeGenre='all';
 let activeFeature='all';
@@ -68,13 +66,12 @@ function initialize(){
   renderCollections();
   renderGenreChips();
   renderFeatureChips();
-  $('#search').addEventListener('input',()=>{page=1;applyFilters();});
-  $('#collections').addEventListener('click',event=>{const button=event.target.closest('[data-collection]');if(!button)return;activeCollection=button.dataset.collection;page=1;renderCollections();applyFilters();});
-  $('#genre-chips').addEventListener('click',event=>{const button=event.target.closest('[data-genre]');if(!button)return;activeGenre=button.dataset.genre;page=1;renderGenreChips();applyFilters();});
-  $('#feature-chips').addEventListener('click',event=>{const button=event.target.closest('[data-feature]');if(!button)return;activeFeature=button.dataset.feature;page=1;renderFeatureChips();applyFilters();});
-  $('#sort-buttons').addEventListener('click',event=>{const button=event.target.closest('[data-sort]');if(!button)return;activeSort=button.dataset.sort;page=1;document.querySelectorAll('[data-sort]').forEach(item=>item.classList.toggle('active',item===button));applyFilters();});
+  $('#search').addEventListener('input',applyFilters);
+  $('#collections').addEventListener('click',event=>{const button=event.target.closest('[data-collection]');if(!button)return;activeCollection=button.dataset.collection;renderCollections();applyFilters();});
+  $('#genre-chips').addEventListener('click',event=>{const button=event.target.closest('[data-genre]');if(!button)return;activeGenre=button.dataset.genre;renderGenreChips();applyFilters();});
+  $('#feature-chips').addEventListener('click',event=>{const button=event.target.closest('[data-feature]');if(!button)return;activeFeature=button.dataset.feature;renderFeatureChips();applyFilters();});
+  $('#sort-buttons').addEventListener('click',event=>{const button=event.target.closest('[data-sort]');if(!button)return;activeSort=button.dataset.sort;document.querySelectorAll('[data-sort]').forEach(item=>item.classList.toggle('active',item===button));applyFilters();});
   $('#active-filters').addEventListener('click',event=>{if(!event.target.closest('[data-reset-filters]'))return;activeCollection='all';activeGenre='all';activeFeature='all';$('#search').value='';renderCollections();renderGenreChips();renderFeatureChips();applyFilters();});
-  $('#pagination').addEventListener('click',event=>{const button=event.target.closest('[data-page]');if(!button)return;page=Number(button.dataset.page);render();scrollTo({top:document.querySelector('.catalog-section').offsetTop-70,behavior:'smooth'});});
   $('#game-grid').addEventListener('click',event=>{const button=event.target.closest('[data-game]');if(button)openDetail(button.dataset.game);});
   $('#game-grid').addEventListener('click',event=>{const button=event.target.closest('[data-favorite]');if(button){event.stopPropagation();toggleFavorite(button.dataset.favorite);}});
   $('#detail').addEventListener('click',event=>{
@@ -87,12 +84,12 @@ function initialize(){
     if($('#detail').open)return;
     const current=Math.max(0,collections.findIndex(item=>item.id===activeCollection));
     activeCollection=collections[(current+event.detail.direction+collections.length)%collections.length].id;
-    page=1;renderCollections();applyFilters();
+    renderCollections();applyFilters();
   });
   document.addEventListener('xbox:gamepad-reset',()=>{
     if($('#detail').open)return;
     activeCollection='all';activeGenre='all';activeFeature='all';$('#search').value='';
-    page=1;renderCollections();renderGenreChips();renderFeatureChips();applyFilters();
+    renderCollections();renderGenreChips();renderFeatureChips();applyFilters();
   });
   document.addEventListener('xbox:gamepad-favorite',event=>toggleFavorite(event.detail.id,Boolean($('#detail').open)));
   applyFilters();
@@ -169,14 +166,7 @@ function applyFilters(){
 }
 
 function render(){
-  const pages=Math.max(1,Math.ceil(filtered.length/PAGE_SIZE));page=Math.min(page,pages);
-  const games=filtered.slice((page-1)*PAGE_SIZE,page*PAGE_SIZE);
-  $('#game-grid').innerHTML=games.length?games.map(game=>`<article class="game-card ${isInstalled(game.id)?'is-installed':''}"><button data-game="${esc(game.id)}"><div class="art"><img src="${esc(safeImage(game.imageUrl))}" alt="${esc(game.name)}" loading="lazy"><div class="badges">${platformBadges(game)}</div></div><div class="card-body"><div class="genre">${esc(genreLabel(game.genres?.[0]||'PC Game Pass'))}</div><h3>${esc(game.name)}</h3><p>${esc(game.publisher||game.developer||'Microsoft Store')}</p></div></button><button class="favorite-button ${favorites.has(game.id)?'selected':''}" data-favorite="${esc(game.id)}" aria-label="${favorites.has(game.id)?'Bỏ khỏi':'Thêm vào'} game yêu thích">${favorites.has(game.id)?'♥':'♡'}</button></article>`).join(''):'<div class="empty">Không tìm thấy game phù hợp.</div>';
-  const start=Math.max(1,page-2),end=Math.min(pages,start+4);let controls='';
-  if(page>1)controls+=`<button data-page="${page-1}">←</button>`;
-  for(let index=start;index<=end;index++)controls+=`<button class="${index===page?'active':''}" data-page="${index}">${index}</button>`;
-  if(page<pages)controls+=`<button data-page="${page+1}">→</button>`;
-  $('#pagination').innerHTML=pages>1?controls:'';
+  $('#game-grid').innerHTML=filtered.length?filtered.map(game=>`<article class="game-card ${isInstalled(game.id)?'is-installed':''}"><button data-game="${esc(game.id)}"><div class="art"><img src="${esc(safeImage(game.imageUrl))}" alt="${esc(game.name)}" loading="lazy" decoding="async"><div class="badges">${platformBadges(game)}</div></div><div class="card-body"><div class="genre">${esc(genreLabel(game.genres?.[0]||'PC Game Pass'))}</div><h3>${esc(game.name)}</h3><p>${esc(game.publisher||game.developer||'Microsoft Store')}</p></div></button><button class="favorite-button ${favorites.has(game.id)?'selected':''}" data-favorite="${esc(game.id)}" aria-label="${favorites.has(game.id)?'Bỏ khỏi':'Thêm vào'} game yêu thích">${favorites.has(game.id)?'♥':'♡'}</button></article>`).join(''):'<div class="empty">Không tìm thấy game phù hợp.</div>';
   document.querySelectorAll('.art img').forEach(image=>image.addEventListener('error',()=>{image.closest('.art')?.classList.add('no-image');image.remove();},{once:true}));
   document.dispatchEvent(new CustomEvent('xbox:navigation-updated'));
 }
